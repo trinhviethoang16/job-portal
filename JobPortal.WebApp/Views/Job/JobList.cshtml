@@ -1,0 +1,39 @@
+﻿@model List<JobPortal.Data.Entities.Job>
+
+@foreach(var job in Model)
+{
+    <div class="single-post d-flex flex-row">
+        <!--Job skill list-->
+        <div class="thumb">
+            <img height="70" width="120" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="">
+            <ul class="tags">
+                <li>
+                    <a href="#">Art</a>
+                </li>
+                <li>
+                    <a href="#">Media</a>
+                </li>
+                <li>
+                    <a href="#">Design</a>
+                </li>
+            </ul>
+        </div>
+        <!--End job skill list-->
+        <div class="details">
+            <div class="title d-flex flex-row justify-content-between">
+                <div class="titles">
+                    <a href="/Job/Detail/@job.Id"><h4> @job.Name</h4></a>
+                    <h6>@job.ProvinceName</h6>
+                </div>
+                <ul class="btns">
+                    <li><a href="/Job/Detail/@job.Id"><span class="lnr lnr-heart"></span></a></li>
+                    <li><a href="#">Apply</a></li>
+                </ul>
+            </div>
+            <p>@job.Description</p>
+            <h5>Job Nature: Full time</h5>
+            <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+            <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+        </div>
+    </div>
+}

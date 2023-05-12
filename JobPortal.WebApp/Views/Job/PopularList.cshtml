@@ -1,0 +1,15 @@
+﻿@model List<JobPortal.Data.Entities.Job>
+
+@foreach(var job in Model)
+{
+    <div class="single-rated">
+        <img href="/Job/Detail/@job.Id" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
+        <a href="/Job/Detail/@job.Id"><h4>@job.Name</h4></a>
+        <h6>@job.ProvinceName</h6>
+        <p>@job.Description</p>
+        <h5>Job Nature: Full time</h5>
+        <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+        <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+        <a href="#" class="btns text-uppercase">Apply job</a>
+    </div>
+}

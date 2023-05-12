@@ -1,0 +1,235 @@
+﻿@model JobPortal.Data.Entities.Job
+
+@{
+	Layout = "~/Views/Shared/_LayoutShortBanner.cshtml";
+}
+
+<!-- Start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Job Details
+				</h1>
+				<p class="text-white link-nav"><a asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-controller="Home" asp-action="Single"> Job Details</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<!-- Start post Area -->
+<section class="post-area section-gap">
+	<div class="container">
+		<div class="row justify-content-center d-flex">
+			<div class="col-lg-8 post-list">
+				<div class="single-post d-flex flex-row">
+					<div class="thumb">
+						<img height="70" width="120" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="">
+						<ul class="tags">
+							<li>
+								<a href="#">Art</a>
+							</li>
+							<li>
+								<a href="#">Media</a>
+							</li>
+							<li>
+								<a href="#">Design</a>
+							</li>
+						</ul>
+					</div>
+					<div class="details">
+						<div class="title d-flex flex-row justify-content-between">
+							<div class="titles">
+								<a href="#"><h4>@Model.Name</h4></a>
+								<h6>@Model.ProvinceName</h6>
+							</div>
+							<ul class="btns">
+								<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
+								<li><a href="#">Apply</a></li>
+							</ul>
+						</div>
+						<p>@Model.Description</p>
+						<h5>Job Nature: Full time</h5>
+						<p class="address"><span class="lnr lnr-map"></span> @Model.ShortDescription</p>
+						<p class="address"><span class="lnr lnr-database"></span> @Model.MinSalary - @Model.MaxSalary</p>
+					</div>
+				</div>
+				<div class="single-post job-details">
+					<h4 class="single-title">Whom we are looking for</h4>
+					<p>@Model.Description</p>
+					<p>@Model.Description</p>
+				</div>
+				<div class="single-post job-experience">
+					<h4 class="single-title">Experience Requirements</h4>
+					<ul>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+					</ul>
+				</div>
+				<div class="single-post job-experience">
+					<h4 class="single-title">Job Features & Overviews</h4>
+					<ul>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+					</ul>
+				</div>
+				<div class="single-post job-experience">
+					<h4 class="single-title">Education Requirements</h4>
+					<ul>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+						<li>
+							<img src="~/assets/user/img/pages/list.jpg" alt="">
+							<span>@Model.Description</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4 sidebar">
+				<div class="single-slidebar">
+					<!--Province-->
+					<h4>Jobs by Location</h4>
+					<ul class="cat-list">
+						<vc:Province></vc:Province>
+					</ul>
+				</div>
+
+				@*<div class="single-slidebar">
+					<!--Popular-->
+					<h4>Top rated job posts</h4>
+					<div class="active-relatedjob-carusel">
+						@Html.Partial("../Job/PopularList", Model.OrderByDescending(j => j.Popular).Take(6).ToList())
+					</div>
+				</div>*@
+
+				<div class="single-slidebar">
+					<!--Skill-->
+					<vc:Skill></vc:Skill>
+				</div>
+				@*<div class="single-slidebar">
+					<h4>Carrer Advice Blog</h4>
+					<div class="blog-list">
+						<div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+							<a href="#">
+								<h4>
+									Home Audio Recording <br>
+									For Everyone
+								</h4>
+							</a>
+							<div class="meta justify-content-between d-flex">
+								<p>
+									02 Hours ago
+								</p>
+								<p>
+									<span class="lnr lnr-heart"></span>
+									06
+									<span class="lnr lnr-bubble"></span>
+									02
+								</p>
+							</div>
+						</div>
+						<div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
+							<a href="#">
+								<h4>
+									Home Audio Recording <br>
+									For Everyone
+								</h4>
+							</a>
+							<div class="meta justify-content-between d-flex">
+								<p>
+									02 Hours ago
+								</p>
+								<p>
+									<span class="lnr lnr-heart"></span>
+									06
+									<span class="lnr lnr-bubble"></span>
+									02
+								</p>
+							</div>
+						</div>
+						<div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+							<a href="#">
+								<h4>
+									Home Audio Recording <br>
+									For Everyone
+								</h4>
+							</a>
+							<div class="meta justify-content-between d-flex">
+								<p>
+									02 Hours ago
+								</p>
+								<p>
+									<span class="lnr lnr-heart"></span>
+									06
+									<span class="lnr lnr-bubble"></span>
+									02
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>*@
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End post Area -->
+<!-- Start callto-action Area -->
+<section class="callto-action-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10 text-white">Join us today without any hesitation</h1>
+					<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+					<a class="primary-btn" href="#">I am a Candidate</a>
+					<a class="primary-btn" href="#">We are an Employer</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End calto-action Area -->

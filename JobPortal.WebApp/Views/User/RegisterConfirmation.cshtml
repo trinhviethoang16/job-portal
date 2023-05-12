@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "_LayoutLogin";
+}
+
+<div class="account_grid">
+    <div class=" login-right">
+        <h3>Vui lòng xác thực Gmail</h3>
+        @{
+            if (@ViewBag.DisplayConfirmAccountLink)
+            {
+                    <a id="confirm-link" href="@ViewBag.EmailConfirmationUrl">Bấm vào đây để xác nhận !</a>
+            }
+            else
+            {
+                <p>
+                    Please check your email to confirm your account.
+                </p>
+            }
+        }
+    </div>
+</div>

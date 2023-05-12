@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+using JobPortal.Data.DataContext;
+using JobPortal.Data.Entities;
+using JobPortal.Data.ViewModel;
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a id="manage" class="ticker-btn" @*asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"*@>@UserManager.GetUserName(User)</a>
+    </li>
+    <li>
+        <form id="logoutForm" class="form-inline" asp-action="Logout" asp-controller="User" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="ticker-btn">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li>
+        <a class="ticker-btn" id="register" asp-action="Register" asp-controller="User">Register</a>
+    </li>
+    <li>
+        <a class="ticker-btn" id="login" asp-action="Login" asp-controller="User">Login</a>
+    </li>
+}

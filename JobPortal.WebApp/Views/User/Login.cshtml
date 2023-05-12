@@ -1,0 +1,92 @@
+﻿@model JobPortal.Data.ViewModel.LoginViewModel
+
+@{
+    Layout = "_LayoutLogin";
+}
+
+<!-- /Logo -->
+<h4 class="mb-2">Welcome to Sneat! 👋</h4>
+<p class="mb-4">Please sign-in to your account and start the adventure</p>
+
+<form id="account" class="mb-3" action="#" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email"
+               type="text"
+               class="form-control"
+               autocomplete="username"
+               aria-required="true"
+               placeholder="Enter your email"
+               autofocus />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3 form-password-toggle">
+        <div class="d-flex justify-content-between">
+            <label asp-for="Password" class="form-label">Password</label>
+            <a href="#">
+                <small>Forgot Password?</small>
+            </a>
+        </div>
+        <div class="input-group input-group-merge">
+            <input asp-for="Password"
+                   type="password"
+                   class="form-control"
+                   autocomplete="current-password"
+                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                   aria-required="true" />
+            <span asp-validation-for="Password" class="input-group-text cursor-pointer"></span>
+        </div>
+    </div>
+    @*<div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="remember-me" />
+            <label class="form-check-label" for="remember-me"> Remember Me </label>
+        </div>
+    </div>*@
+    <div class="mb-3">
+        <button id="login-submit" class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+    </div>
+</form>
+
+<p class="text-center">
+    <span>New on our platform?</span>
+    <a asp-controller="User" asp-action="Register">
+        <span>Create an account</span>
+    </a>
+</p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@*<div class="account_grid">
+    <div class="login-right">
+        <h3>KHÁCH HÀNG ĐÃ ĐĂNG KÝ</h3>
+        <p>Nếu bạn đã có tài khoản, vui lòng đăng nhập.</p>
+        <section>
+            <form id="account" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <label asp-for="Email" class="form-label"></label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                    <label asp-for="Password" class="form-label"></label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">ĐĂNG NHẬP</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class=" login-left">
+        <h3>KHÁNG HÀNG MỚI</h3>
+        <p>Bằng cách tạo tài khoản, bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn, lưu trữ nhiều địa chỉ giao hàng, xem và theo dõi đơn đặt hàng trong tài khoản của bạn,...</p>
+        <a class="acount-btn" asp-controller="User" asp-action="Register">Tạo tài khoản</a>
+    </div>
+    <div class="clearfix"> </div>
+</div>*@

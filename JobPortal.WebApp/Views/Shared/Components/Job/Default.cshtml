@@ -1,0 +1,213 @@
+﻿@model List<JobPortal.Data.Entities.Job>
+
+<!-- Start popular-post Area -->
+<section class="popular-post-area pt-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="active-popular-post-carusel">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="single-popular-post d-flex flex-row">
+                            <div class="thumb">
+                                <img href="/Job/Detail/@Model[i].Id" class="img-fluid" src="~/assets/user/img/p1.png" alt="">
+                                <a class="btns text-uppercase" href="/Job/Detail/@Model[i].Id">view job</a>
+                            </div>
+                            <div class="details">
+                                <a href="/Job/Detail/@Model[i].Id"><h4>@Model[i].Name</h4></a>
+                                <h6>@Model[i].ProvinceName</h6>
+                                <p>
+                                    @Model[i].Description
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else if (i == 1 || i == 3 || i == 5)
+                    {
+                        <div class="single-popular-post d-flex flex-row">
+                            <div class="thumb">
+                                <img href="/Job/Detail/@Model[i].Id" class="img-fluid" src="~/assets/user/img/p2.png" alt="">
+                                <a class="btns text-uppercase" href="/Job/Detail/@Model[i].Id">view job</a>
+                            </div>
+                            <div class="details">
+                                <a href="/Job/Detail/@Model[i].Id"><h4>@Model[i].Name</h4></a>
+                                <h6>@Model[i].ProvinceName</h6>
+                                <p>
+                                    @Model[i].Description
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else if (i == 2 || i == 4)
+                    {
+                        <div class="single-popular-post d-flex flex-row">
+                            <div class="thumb">
+                                <img href="/Job/Detail/@Model[i].Id" class="img-fluid" src="~/assets/user/img/p1.png" alt="">
+                                <a class="btns text-uppercase" href="/Job/Detail/@Model[i].Id">view job</a>
+                            </div>
+                            <div class="details">
+                                <a href="/Job/Detail/@Model[i].Id"><h4>@Model[i].Name</h4></a>
+                                <h6>@Model[i].ProvinceName</h6>
+                                <p>
+                                    @Model[i].Description
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End popular-post Area -->
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Workplace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstApplyDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastApplyDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProvinceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProvinceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Workplace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstApplyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastApplyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvinceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvinceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@

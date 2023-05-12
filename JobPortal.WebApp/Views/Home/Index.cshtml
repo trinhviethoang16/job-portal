@@ -1,0 +1,180 @@
+﻿@model List<JobPortal.Data.Entities.Job>
+
+<!--Category-->
+<vc:Category></vc:Category>
+
+<!--Job-->
+<vc:Job></vc:Job>
+
+<!--Skill categories-->
+<vc:Skill-Categories></vc:Skill-Categories>
+s
+<!-- End feature-cat Area -->
+<!-- Start post Area -->
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+                <!--Time list-->
+                <ul class="cat-list">
+                    <li><a href="#">Recent</a></li>
+                    <li><a href="#">Full Time</a></li>
+                    <li><a href="#">Intern</a></li>
+                    <li><a href="#">Part Time</a></li>
+                </ul>
+                <!--End time list-->
+
+                <!--Job list-->
+                @Html.Partial("../Job/JobList", Model)
+                <!--End job list-->
+
+                <a class="text-uppercase loadmore-btn mx-auto d-block" href="~/assets/user/category.html">Load More job Posts</a>
+
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <!--Province-->
+                    <h4>Jobs by Location</h4>
+                    <ul class="cat-list">
+                        <vc:Province></vc:Province>
+                    </ul>
+                </div>
+
+                <div class="single-slidebar">
+                    <!--Popular-->
+                    <h4>Top rated job posts</h4>
+                    <div class="active-relatedjob-carusel">
+                        @Html.Partial("../Job/PopularList", Model.OrderByDescending(j => j.Popular).Take(6).ToList())
+                    </div>
+                </div>
+                <div class="single-slidebar">
+                    <!--Skill-->
+                    <vc:Skill></vc:Skill>
+                </div>
+                <div class="single-slidebar">
+                    <h4>Carrer Advice Blog</h4>
+                    <div class="blog-list">
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End post Area -->
+<!-- Start callto-action Area -->
+<section class="callto-action-area section-gap" id="join">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
+                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                    <a class="primary-btn" href="#">I am a Candidate</a>
+                    <a class="primary-btn" href="#">Request Free Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End calto-action Area -->
+<!-- Start download Area -->
+<section class="download-area section-gap" id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 download-left">
+                <img class="img-fluid" src="../assets/user/img/d1.png" alt="">
+            </div>
+            <div class="col-lg-6 download-right">
+                <h1>
+                    Download the <br>
+                    Job Listing App Today!
+                </h1>
+                <p class="subs">
+                    It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned.
+                </p>
+                <div class="d-flex flex-row">
+                    <div class="buttons">
+                        <i class="fa fa-apple" aria-hidden="true"></i>
+                        <div class="desc">
+                            <a href="#">
+                                <p>
+                                    <span>Available</span> <br>
+                                    on App Store
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <i class="fa fa-android" aria-hidden="true"></i>
+                        <div class="desc">
+                            <a href="#">
+                                <p>
+                                    <span>Available</span> <br>
+                                    on Play Store
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End download Area -->

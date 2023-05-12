@@ -1,0 +1,76 @@
+﻿@model JobPortal.Data.Entities.Province
+
+@{
+    ViewData["Title"] = "Create";
+    //Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-header">Create Province</h5>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="Create" id="form">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ParentID" class="control-label"></label>
+                            <input asp-for="ParentID" class="form-control" />
+                            <span asp-validation-for="ParentID" class="text-danger"></span>
+                        </div> <br />
+                        <div class="form-group">
+                            <input style="background-color: forestgreen" onclick="onConfirm()" type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br />
+            <div>
+                <a style="background-color: gray" class="btn btn-primary" asp-action="Index">Back to List</a>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+    function onConfirm() {
+        Swal.fire({
+          title: 'Thêm mới danh mục?',
+          text: "Bạn có chắc sẽ thêm mới danh mục này?",
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Xác nhận!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+              $("#form").submit();
+            Swal.fire(
+              'Thêm thành công!',
+              '',
+              'success'
+            )
+          } 
+        })
+    }
+
+
+</script>
+
+}
