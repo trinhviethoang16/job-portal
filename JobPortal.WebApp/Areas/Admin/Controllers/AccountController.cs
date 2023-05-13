@@ -13,7 +13,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     [Route("Account")]
     public class AccountController : Controller
     {
-        private readonly DataDbContext _context;
+        //private readonly DataDbContext _context;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<AppUser> _logger;

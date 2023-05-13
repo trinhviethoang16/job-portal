@@ -55,10 +55,10 @@ namespace JobPortal.Data.Extensions
             });
 
             modelBuilder.Entity<Category>().HasData(
-               new Category() { Id = 1, Name = "Skill", Slug = "skill" },
-               new Category() { Id = 2, Name = "Title", Slug = "title" },
-               new Category() { Id = 3, Name = "Employer", Slug = "employer" },
-               new Category() { Id = 4, Name = "Province", Slug = "province" }
+               new Category() { Id = 1, Name = "Skill", Slug = "skill", Description = "Skill ne" },
+               new Category() { Id = 2, Name = "Title", Slug = "title", Description = "Title ne" },
+               new Category() { Id = 3, Name = "Employer", Slug = "employer", Description = "Employer ne" },
+               new Category() { Id = 4, Name = "Province", Slug = "province", Description = "Province ne" }
             );
 
             modelBuilder.Entity<Time>().HasData(

@@ -17,7 +17,6 @@
         public string? ShortDescription { get; set; }
         public string? Introduce { get; set; }
         public ICollection<Skill>? Skills { get; set; }
-        public int? SkillId { get; set; }
         public string? SkillName { get; set; }
         public AppUser? AppUser { get; set; }
         public Guid? UserId { set; get; }

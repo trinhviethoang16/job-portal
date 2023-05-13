@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "74711067-d888-44a0-9410-711d93bfb69e",
+                            ConcurrencyStamp = "ca5a9d6e-1446-4273-8fc8-30d346660e6f",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "7c87d0a2-225d-4f35-9a04-a461bbc61816",
+                            ConcurrencyStamp = "184c4f95-59dd-42d5-aacd-a6f60c3e0328",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "48edd6c0-da03-4c36-bf9e-452b569ea69a",
+                            ConcurrencyStamp = "52de3c5b-a1ca-4ea5-98ce-8d54823120a7",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -205,14 +205,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b555b907-fc1c-45c2-886a-f43aa5d3e3a4",
+                            ConcurrencyStamp = "f17eeb99-893b-4d75-9ec7-f5603555d190",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB2qVM9mpT82kLeTi0scEqy/HmCfT4l3ftfaFBJDKZCg4GcfxG8rFrCdpg28/J7XHg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN6IvWYJY8lnTKkOl9s3VvV7/AZmQbK+6/CaMOqV2v5sFZ79e2ClAe90qSiLwT2ykw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -375,9 +375,6 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SkillId")
-                        .HasColumnType("int");
 
                     b.Property<string>("SkillName")
                         .HasColumnType("nvarchar(max)");

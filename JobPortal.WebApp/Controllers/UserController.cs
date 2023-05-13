@@ -11,7 +11,7 @@ using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 
-namespace ProjectJobPortal.Controllers
+namespace JobPortal.WebApp.Controllers
 {
     public class UserController : Controller
     {
@@ -22,7 +22,7 @@ namespace ProjectJobPortal.Controllers
         private readonly ILogger<AppUser> _logger;
         //private readonly IEmailSender _sender;
         //IEmailSender sender
-        public UserController( ILogger<AppUser> logger, IUserStore<AppUser> userStore, UserManager<AppUser> userManager, DataDbContext context, SignInManager<AppUser> signInManager)
+        public UserController(ILogger<AppUser> logger, IUserStore<AppUser> userStore, UserManager<AppUser> userManager, DataDbContext context, SignInManager<AppUser> signInManager)
         {
             //_sender = sender;
             _logger = logger;
