@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,8 +38,19 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
 builder.Services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
 builder.Services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
 
+//Session
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.Name = "viethoang";
+    options.IdleTimeout = new TimeSpan(0, 30, 0);
+    //options.IdleTimeout = TimeSpan.FromMinutes(30);
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    //options.LoginPath = "/User/Login";
 });
 
 builder.Services.AddSession();

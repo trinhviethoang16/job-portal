@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 
@@ -13,22 +12,17 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     [Route("Account")]
     public class AccountController : Controller
     {
-        //private readonly DataDbContext _context;
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly ILogger<AppUser> _logger;
+        private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ILogger<AppUser> logger)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _logger = logger;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
-        
 
         [HttpGet]
-        [Route("login")]
-        //[Route("Login")]
+        [Route("Login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login()
         {
@@ -37,41 +31,47 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("login")]
-        //[Route("Login")]
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel userModel)
+        [Route("Login")]
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            string returnUrl = Url.Content("~/admin/index");
-            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                
-                var result = await _signInManager.PasswordSignInAsync(userModel.Email, userModel.Password, false, lockoutOnFailure: false);
+                var result = await signInManager.PasswordSignInAsync(
+                    model.Email,
+                    model.Password,
+                    model.RememberMe,
+                    false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("index", "home");
+                    }
                 }
-                //if (result.RequiresTwoFactor)
-                //{
-                //    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl });
-                //}
-                //if (result.IsLockedOut)
-                //{
-                //    _logger.LogWarning("User account locked out.");
-                //    return RedirectToPage("./Lockout");
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                //    return View();
-                //}
+
             }
-            // If we got this far, something failed, redisplay form
-            return View();
+            return View(model);
         }
 
+        [Route("Logout")]
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
+        }
+
+        // This method added for role tutorial
+        [HttpGet]
+        [Route("access-denied")]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
