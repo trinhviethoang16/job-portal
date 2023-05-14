@@ -13,5 +13,7 @@ namespace JobPortal.Data.ViewModel
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 }

@@ -6,23 +6,27 @@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
 @if (SignInManager.IsSignedIn(User))
 {
     <li>
-        <a id="manage" class="ticker-btn" @*asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"*@>@UserManager.GetUserName(User)</a>
+        <a class="ticker-btn">Hi, @(user.FullName ?? user.UserName)</a>
     </li>
     <li>
-        <form id="logoutForm" class="form-inline" asp-action="Logout" asp-controller="User" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="ticker-btn">Logout</button>
+        <form id="logoutForm" class="form-inline">
+            <a href="/dang-xuat" class="ticker-btn">Logout</a>
         </form>
     </li>
 }
 else
 {
     <li>
-        <a class="ticker-btn" id="register" asp-action="Register" asp-controller="User">Register</a>
+        <a href ="/dang-ky" class="ticker-btn">Register</a>
     </li>
     <li>
-        <a class="ticker-btn" id="login" asp-action="Login" asp-controller="User">Login</a>
+        <a href="/dang-nhap" class="ticker-btn">Login</a>
     </li>
 }
