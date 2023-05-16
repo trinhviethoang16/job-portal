@@ -3,14 +3,14 @@
 @using JobPortal.Data.Entities;
 @using JobPortal.Data.ViewModel;
 @using Microsoft.AspNetCore.Http
-@inject SignInManager<AppUser> SignInManager
-@inject UserManager<AppUser> UserManager
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
 
 @{
-    var user = await UserManager.GetUserAsync(User);
+    var user = await userManager.GetUserAsync(User);
 }
 
-@if (SignInManager.IsSignedIn(User))
+@if (signInManager.IsSignedIn(User))
 {
     <li>
         <a class="ticker-btn">Hi, @(user.FullName ?? user.UserName)</a>

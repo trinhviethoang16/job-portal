@@ -12,17 +12,17 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     [Route("Account")]
     public class AccountController : Controller
     {
-        private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
+        //private readonly RoleManager<AppRole> roleManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(SignInManager<AppUser> signInManager)
         {
-            this.userManager = userManager;
             this.signInManager = signInManager;
+            //this.roleManager = roleManager;
         }
 
         [HttpGet]
-        [Route("Login")]
+        [Route("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login()
         {
@@ -31,7 +31,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("Login")]
+        [Route("login")]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -47,17 +47,26 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                     {
                         return Redirect(returnUrl);
                     }
+                    else if (!model.Email.Equals("admin@gmail.com"))
+                    {
+                        await signInManager.SignOutAsync();
+                        return RedirectToAction("accessdenied", "account");
+                    }
+                    //else if (!roleManager.Roles.Equals("Admin"))
+                    //{
+                    //    await signInManager.SignOutAsync();
+                    //    return RedirectToAction("accessdenied", "account");
+                    //}
                     else
                     {
                         return RedirectToAction("index", "home");
                     }
                 }
-
             }
             return View(model);
         }
 
-        [Route("Logout")]
+        [Route("logout")]
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
@@ -65,7 +74,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             return RedirectToAction("index", "home");
         }
 
-        // This method added for role tutorial
         [HttpGet]
         [Route("access-denied")]
         [AllowAnonymous]
