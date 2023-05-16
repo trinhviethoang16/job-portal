@@ -15,10 +15,15 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         private readonly SignInManager<AppUser> signInManager;
         //private readonly RoleManager<AppRole> roleManager;
 
+        //public AccountController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager)
+        //{
+        //    this.signInManager = signInManager;
+        //    this.roleManager = roleManager;
+        //}
+
         public AccountController(SignInManager<AppUser> signInManager)
         {
             this.signInManager = signInManager;
-            //this.roleManager = roleManager;
         }
 
         [HttpGet]

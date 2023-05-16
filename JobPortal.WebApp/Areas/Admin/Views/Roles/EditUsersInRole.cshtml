@@ -1,0 +1,39 @@
+﻿@model List<JobPortal.Data.ViewModel.UserRoleViewModel>
+
+@{
+    var roleId = ViewBag.roleId;
+}
+
+<div class="content-wrapper">
+
+    <div class="row">
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Phân quyền cho user</h4>
+                    <form method="post" class="p-3">
+
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <div class="form-check m-1">
+                                <input type="hidden" asp-for="@Model[i].UserId" />
+                                <input type="hidden" asp-for="@Model[i].UserName" />
+                                <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                                <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                                    @Model[i].UserName
+                                </label>
+                            </div>
+                        }
+
+                        <input type="submit" value="Update" class="btn btn-primary mt-3"
+                               style="width:auto" />
+                        <a asp-action="EditRole" asp-route-id="@roleId"
+                           class="btn btn-secondary mt-3" style="width:auto">Cancel</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

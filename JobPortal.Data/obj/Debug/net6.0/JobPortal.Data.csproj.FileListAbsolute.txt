@@ -12,3 +12,17 @@ E:\Code\source\job-portal\JobPortal.Data\obj\Debug\net6.0\refint\JobPortal.Data.
 E:\Code\source\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.pdb
 E:\Code\source\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.genruntimeconfig.cache
 E:\Code\source\job-portal\JobPortal.Data\obj\Debug\net6.0\ref\JobPortal.Data.dll
+D:\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Data.deps.json
+D:\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Data.runtimeconfig.json
+D:\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Data.dll
+D:\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Data.pdb
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.csproj.AssemblyReference.cache
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.AssemblyInfoInputs.cache
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.AssemblyInfo.cs
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.csproj.CoreCompileInputs.cache
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.dll
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\refint\JobPortal.Data.dll
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.pdb
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.genruntimeconfig.cache
+D:\job-portal\JobPortal.Data\obj\Debug\net6.0\ref\JobPortal.Data.dll
