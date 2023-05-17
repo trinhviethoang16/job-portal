@@ -1,0 +1,60 @@
+﻿@model JobPortal.Data.Entities.Job
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Employer/Views/Shared/_EmployerLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="card">
+        <h1 class="card-header">Details of Category</h1>
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TitleName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TitleName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ShortDescription)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ShortDescription)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MinAge)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MinAge)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MaxAge)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MaxAge)
+                </dd>
+            </dl>
+            <div>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+            </div>
+            <br />
+            <div>
+                <a style="background-color: gray" class="btn btn-primary" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

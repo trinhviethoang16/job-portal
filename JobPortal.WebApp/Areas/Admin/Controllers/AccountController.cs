@@ -13,13 +13,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> signInManager;
-        //private readonly RoleManager<AppRole> roleManager;
-
-        //public AccountController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager)
-        //{
-        //    this.signInManager = signInManager;
-        //    this.roleManager = roleManager;
-        //}
 
         public AccountController(SignInManager<AppUser> signInManager)
         {
@@ -57,11 +50,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                         await signInManager.SignOutAsync();
                         return RedirectToAction("accessdenied", "account");
                     }
-                    //else if (!roleManager.Roles.Equals("Admin"))
-                    //{
-                    //    await signInManager.SignOutAsync();
-                    //    return RedirectToAction("accessdenied", "account");
-                    //}
                     else
                     {
                         return RedirectToAction("index", "home");

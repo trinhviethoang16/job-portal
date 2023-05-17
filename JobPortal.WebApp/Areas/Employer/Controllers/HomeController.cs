@@ -11,38 +11,10 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
     [Authorize(Roles = "Employer")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly DataDbContext _context;
-
-        public HomeController(ILogger<HomeController> logger, DataDbContext context)
-        {
-            _logger = logger;
-            _context = context;
-        }
-
+        //Loi o day
         [Route("index")]
         [Route("")]
         public IActionResult Index()
-        {
-            return View();
-        }
-
-
-        [Route("blog-home")]
-        public IActionResult BlogHome()
-        {
-            return View();
-        }
-
-        [Route("category")]
-        public IActionResult Category()
-        {
-            return View();
-        }
-
-
-        [Route("blog-single")]
-        public IActionResult BlogSingle()
         {
             return View();
         }

@@ -14,11 +14,11 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     [Area("Admin")]
     [Route("admin/category")]
 
-    public class CategoriesController : Controller
+    public class JobsController : Controller
     {
         private readonly DataDbContext _context;
 
-        public CategoriesController(DataDbContext context)
+        public JobsController(DataDbContext context)
         {
             _context = context;
         }

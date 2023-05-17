@@ -1,693 +1,509 @@
-﻿
+﻿<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-8 mb-4 order-0">
+            <div class="card">
+                <div class="d-flex align-items-end row">
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                            <p class="mb-4">
+                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
+                                your profile.
+                            </p>
 
-<!-- Start banner Area -->
-<section class="banner-area relative" id="home">
-    <div class="overlay overlay-bg"></div>
-    <div class="container">
-        <div class="row fullscreen d-flex align-items-center justify-content-center">
-            <div class="banner-content col-lg-12">
-                <h1 class="text-white">
-                    <span>1500+</span> Jobs posted last week
-                </h1>
-                <ng-form action="~/assets/user/search.html" class="serach-form-area">
-                    <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
                         </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects" >
-                                <select>
-                                    <option value="1">Select area</option>
-                                    <option value="2">Dhaka</option>
-                                    <option value="3">Rajshahi</option>
-                                    <option value="4">Barishal</option>
-                                    <option value="5">Noakhali</option>
-                                </select>
+                    </div>
+                    <div class="col-sm-5 text-center text-sm-left">
+                        <div class="card-body pb-0 px-0 px-md-4">
+                            <img src="~/assets/admin/assets/img/illustrations/man-with-laptop-light.png"
+                                 height="140"
+                                 alt="View Badge User"
+                                 data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                 data-app-light-img="illustrations/man-with-laptop-light.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 order-1">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="~/assets/admin/assets/img/icons/unicons/chart-success.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Profit</span>
+                            <h3 class="card-title mb-2">$12,628</h3>
+                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="~/assets/admin/assets/img/icons/unicons/wallet-info.png"
+                                         alt="Credit Card"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt6"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span>Sales</span>
+                            <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Total Revenue -->
+        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+            <div class="card">
+                <div class="row row-bordered g-0">
+                    <div class="col-md-8">
+                        <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
+                        <div id="totalRevenueChart" class="px-2"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-primary dropdown-toggle"
+                                            type="button"
+                                            id="growthReportId"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        2022
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
+                                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option value="1">All Category</option>
-                                    <option value="2">Medical</option>
-                                    <option value="3">Technology</option>
-                                    <option value="4">Goverment</option>
-                                    <option value="5">Development</option>
-                                </select>
+                        <div id="growthChart"></div>
+                        <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
+
+                        <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
+                            <div class="d-flex">
+                                <div class="me-2">
+                                    <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <small>2022</small>
+                                    <h6 class="mb-0">$32.5k</h6>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="me-2">
+                                    <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <small>2021</small>
+                                    <h6 class="mb-0">$41.2k</h6>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-2 form-cols">
-                            <button type="button" class="btn btn-info">
-                                <span class="lnr lnr-magnifier"></span> Search
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Total Revenue -->
+        <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+            <div class="row">
+                <div class="col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="~/assets/admin/assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt4"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="d-block mb-1">Payments</span>
+                            <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+                            <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="~/assets/admin/assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt1"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="cardOpt1">
+                                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Transactions</span>
+                            <h3 class="card-title mb-2">$14,857</h3>
+                            <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div>
+                <div class="row"> -->
+                <div class="col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                                <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                                    <div class="card-title">
+                                        <h5 class="text-nowrap mb-2">Profile Report</h5>
+                                        <span class="badge bg-label-warning rounded-pill">Year 2021</span>
+                                    </div>
+                                    <div class="mt-sm-auto">
+                                        <small class="text-success text-nowrap fw-semibold"><i class="bx bx-chevron-up"></i> 68.2%</small>
+                                        <h3 class="mb-0">$84,686k</h3>
+                                    </div>
+                                </div>
+                                <div id="profileReportChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Order Statistics -->
+        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                    <div class="card-title mb-0">
+                        <h5 class="m-0 me-2">Order Statistics</h5>
+                        <small class="text-muted">42.82k Total Sales</small>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn p-0"
+                                type="button"
+                                id="orederStatistics"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
+                            <a class="dropdown-item" href="javascript:void(0);">Select All</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Share</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-column align-items-center gap-1">
+                            <h2 class="mb-2">8,258</h2>
+                            <span>Total Orders</span>
+                        </div>
+                        <div id="orderStatisticsChart"></div>
+                    </div>
+                    <ul class="p-0 m-0">
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <span class="avatar-initial rounded bg-label-primary">
+                                    <i class="bx bx-mobile-alt"></i>
+                                </span>
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <h6 class="mb-0">Electronic</h6>
+                                    <small class="text-muted">Mobile, Earbuds, TV</small>
+                                </div>
+                                <div class="user-progress">
+                                    <small class="fw-semibold">82.5k</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <h6 class="mb-0">Fashion</h6>
+                                    <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                                </div>
+                                <div class="user-progress">
+                                    <small class="fw-semibold">23.8k</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <h6 class="mb-0">Decor</h6>
+                                    <small class="text-muted">Fine Art, Dining</small>
+                                </div>
+                                <div class="user-progress">
+                                    <small class="fw-semibold">849k</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <span class="avatar-initial rounded bg-label-secondary">
+                                    <i class="bx bx-football"></i>
+                                </span>
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <h6 class="mb-0">Sports</h6>
+                                    <small class="text-muted">Football, Cricket Kit</small>
+                                </div>
+                                <div class="user-progress">
+                                    <small class="fw-semibold">99</small>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/ Order Statistics -->
+        <!-- Expense Overview -->
+        <div class="col-md-6 col-lg-4 order-1 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item">
+                            <button type="button"
+                                    class="nav-link active"
+                                    role="tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#navs-tabs-line-card-income"
+                                    aria-controls="navs-tabs-line-card-income"
+                                    aria-selected="true">
+                                Income
                             </button>
-                        </div>
-                    </div>
-                </ng-form>
-                <p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End banner Area -->
-<!-- Start features Area -->
-<section class="features-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Searching</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Applying</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Security</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Notifications</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End features Area -->
-<!-- Start popular-post Area -->
-<section class="popular-post-area pt-100">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="active-popular-post-carusel">
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img class="img-fluid" src="~/assets/user/img/p1.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a>
-                    </div>
-                    <div class="details">
-                        <a href="#"><h4>Creative Designer</h4></a>
-                        <h6>Los Angeles</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-                        </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/p2.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a>
-                    </div>
-                    <div class="details">
-                        <a href="#"><h4>Creative Designer</h4></a>
-                        <h6>Los Angeles</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-                        </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/p1.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a>
-                    </div>
-                    <div class="details">
-                        <a href="#"><h4>Creative Designer</h4></a>
-                        <h6>Los Angeles</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-                        </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/p2.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a>
-                    </div>
-                    <div class="details">
-                        <a href="#"><h4>Creative Designer</h4></a>
-                        <h6>Los Angeles</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-                        </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/p1.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a>
-                    </div>
-                    <div class="details">
-                        <a href="#"><h4>Creative Designer</h4></a>
-                        <h6>Los Angeles</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-                        </p>
-                    </div>
-                </div>
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/p2.png" alt="">
-                        <a class="btns text-uppercase" href="#">view job post</a>
-                    </div>
-                    <div class="details">
-                        <a href="#"><h4>Creative Designer</h4></a>
-                        <h6>Los Angeles</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End popular-post Area -->
-<!-- Start feature-cat Area -->
-<section class="feature-cat-area pt-100" id="category">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="menu-content pb-60 col-lg-10">
-                <div class="title text-center">
-                    <h1 class="mb-10">Featured Job Categories</h1>
-                    <p>Who are in extremely love with eco friendly system.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat">
-                    <a href="~/assets/user/category.html">
-                        <img src="~/assets/user/img/o1.png" alt="">
-                    </a>
-                    <p>Accounting</p>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat">
-                    <a href="~/assets/user/category.html">
-                        <img src="~/assets/user/img/o2.png" alt="">
-                    </a>
-                    <p>Development</p>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat">
-                    <a href="~/assets/user/category.html">
-                        <img src="~/assets/user/img/o3.png" alt="">
-                    </a>
-                    <p>Technology</p>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat">
-                    <a href="~/assets/user/category.html">
-                        <img src="~/assets/user/img/o4.png" alt="">
-                    </a>
-                    <p>Media & News</p>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat">
-                    <a href="~/assets/user/category.html">
-                        <img src="~/assets/user/img/o5.png" alt="">
-                    </a>
-                    <p>Medical</p>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="single-fcat">
-                    <a href="~/assets/user/category.html">
-                        <img src="~/assets/user/img/o6.png" alt="">
-                    </a>
-                    <p>Goverment</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End feature-cat Area -->
-<!-- Start post Area -->
-<section class="post-area section-gap">
-    <div class="container">
-        <div class="row justify-content-center d-flex">
-            <div class="col-lg-8 post-list">
-                <ul class="cat-list">
-                    <li><a href="#">Recent</a></li>
-                    <li><a href="#">Full Time</a></li>
-                    <li><a href="#">Intern</a></li>
-                    <li><a href="#">part Time</a></li>
-                </ul>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-                <div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="~/assets/user/img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                                <h6>Premium Labels Limited</h6>
-                            </div>
-                            <ul class="btns">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
-                            </ul>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                        </p>
-                        <h5>Job Nature: Full time</h5>
-                        <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                        <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                    </div>
-                </div>
-
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="~/assets/user/category.html">Load More job Posts</a>
-
-            </div>
-            <div class="col-lg-4 sidebar">
-                <div class="single-slidebar">
-                    <h4>Jobs by Location</h4>
-                    <ul class="cat-list">
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>New York</p><span>37</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Park Montana</p><span>57</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Atlanta</p><span>33</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Arizona</p><span>36</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Florida</p><span>47</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Rocky Beach</p><span>27</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Chicago</p><span>17</span></a></li>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab">Expenses</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab">Profit</button>
+                        </li>
                     </ul>
                 </div>
-
-                <div class="single-slidebar">
-                    <h4>Top rated job posts</h4>
-                    <div class="active-relatedjob-carusel">
-                        <div class="single-rated">
-                            <img class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
-                            <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                            <h6>Premium Labels Limited</h6>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                            <a href="#" class="btns text-uppercase">Apply job</a>
-                        </div>
-                        <div class="single-rated">
-                            <img class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
-                            <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                            <h6>Premium Labels Limited</h6>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                            <a href="#" class="btns text-uppercase">Apply job</a>
-                        </div>
-                        <div class="single-rated">
-                            <img class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
-                            <a href="~/assets/user/single.html"><h4>Creative Art Designer</h4></a>
-                            <h6>Premium Labels Limited</h6>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                            <a href="#" class="btns text-uppercase">Apply job</a>
+                <div class="card-body px-0">
+                    <div class="tab-content p-0">
+                        <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
+                            <div class="d-flex p-4 pt-3">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    <img src="~/assets/admin/assets/img/icons/unicons/wallet.png" alt="User" />
+                                </div>
+                                <div>
+                                    <small class="text-muted d-block">Total Balance</small>
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="mb-0 me-1">$459.10</h6>
+                                        <small class="text-success fw-semibold">
+                                            <i class="bx bx-chevron-up"></i>
+                                            42.9%
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="incomeChart"></div>
+                            <div class="d-flex justify-content-center pt-4 gap-2">
+                                <div class="flex-shrink-0">
+                                    <div id="expensesOfWeek"></div>
+                                </div>
+                                <div>
+                                    <p class="mb-n1 mt-1">Expenses This Week</p>
+                                    <small class="text-muted">$39 less than last week</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="single-slidebar">
-                    <h4>Jobs by Category</h4>
-                    <ul class="cat-list">
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Technology</p><span>37</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Media & News</p><span>57</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Goverment</p><span>33</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Medical</p><span>36</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Restaurants</p><span>47</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Developer</p><span>27</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="~/assets/user/category.html"><p>Accounting</p><span>17</span></a></li>
+            </div>
+        </div>
+        <!--/ Expense Overview -->
+        <!-- Transactions -->
+        <div class="col-md-6 col-lg-4 order-2 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title m-0 me-2">Transactions</h5>
+                    <div class="dropdown">
+                        <button class="btn p-0"
+                                type="button"
+                                id="transactionID"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="p-0 m-0">
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">Paypal</small>
+                                    <h6 class="mb-0">Send money</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">+82.6</h6>
+                                    <span class="text-muted">USD</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">Wallet</small>
+                                    <h6 class="mb-0">Mac'D</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">+270.69</h6>
+                                    <span class="text-muted">USD</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">Transfer</small>
+                                    <h6 class="mb-0">Refund</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">+637.91</h6>
+                                    <span class="text-muted">USD</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/cc-success.png" alt="User" class="rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">Credit Card</small>
+                                    <h6 class="mb-0">Ordered Food</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">-838.71</h6>
+                                    <span class="text-muted">USD</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">Wallet</small>
+                                    <h6 class="mb-0">Starbucks</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">+203.33</h6>
+                                    <span class="text-muted">USD</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="d-flex">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    <small class="text-muted d-block mb-1">Mastercard</small>
+                                    <h6 class="mb-0">Ordered Food</h6>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">-92.45</h6>
+                                    <span class="text-muted">USD</span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-
-                <div class="single-slidebar">
-                    <h4>Carrer Advice Blog</h4>
-                    <div class="blog-list">
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="~/assets/user/single.html">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
-                            <a href="~/assets/user/single.html">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="~/assets/user/single.html">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+        <!--/ Transactions -->
     </div>
-</section>
-<!-- End post Area -->
-<!-- Start callto-action Area -->
-<section class="callto-action-area section-gap" id="join">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="menu-content col-lg-9">
-                <div class="title text-center">
-                    <h1 class="mb-10 text-white">Join us today without any hesitation</h1>
-                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                    <a class="primary-btn" href="#">I am a Candidate</a>
-                    <a class="primary-btn" href="#">Request Free Demo</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End calto-action Area -->
-<!-- Start download Area -->
-<section class="download-area section-gap" id="app">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 download-left">
-                <img class="img-fluid" src="../assets/user/img/d1.png" alt="">
-            </div>
-            <div class="col-lg-6 download-right">
-                <h1>
-                    Download the <br>
-                    Job Listing App Today!
-                </h1>
-                <p class="subs">
-                    It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has been achieving great heights so far as its popularity and technological advancement are concerned.
-                </p>
-                <div class="d-flex flex-row">
-                    <div class="buttons">
-                        <i class="fa fa-apple" aria-hidden="true"></i>
-                        <div class="desc">
-                            <a href="#">
-                                <p>
-                                    <span>Available</span> <br>
-                                    on App Store
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <i class="fa fa-android" aria-hidden="true"></i>
-                        <div class="desc">
-                            <a href="#">
-                                <p>
-                                    <span>Available</span> <br>
-                                    on Play Store
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End download Area -->
+</div>
+<!-- / Content -->

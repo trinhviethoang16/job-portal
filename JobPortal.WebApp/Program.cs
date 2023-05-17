@@ -50,7 +50,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-    //options.LoginPath = "/User/Login";
+    //options.LoginPath = "/Account/Login";
 });
 
 builder.Services.AddSession();
