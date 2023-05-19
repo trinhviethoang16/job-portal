@@ -20,9 +20,9 @@
         public string? SkillName { get; set; }
         public AppUser? AppUser { get; set; }
         public Guid? UserId { set; get; }
-        public string? AppUserFullName { get; set; }
-        public string? AppUserPhone { get; set; }
-        public string? AppUserAddress { get; set; }
-        public int? AppUserAge { get; set; }
+        public string? UserFullName { get; set; }
+        public string? UserPhone { get; set; }
+        public string? UserAddress { get; set; }
+        public int? UserAge { get; set; }
     }
 }

@@ -22,8 +22,10 @@ namespace JobPortal.Data.Entities
         public string? Contact { get; set; }
         public string? WebsiteURL { get; set; }
         public string? Location { get; set; }
+        public bool? SetRole { get; set; }
 
         //Role
-        public bool? SetRole { get; set; } //0 is User, 1 is Employer
+        public AppRole? AppRole { get; set; }
+        public string? RoleName { get; set;}
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
+using JobPortal.Data.DataContext;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -13,10 +14,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> signInManager;
+        private readonly DataDbContext dataDbContext;
 
-        public AccountController(SignInManager<AppUser> signInManager)
+        public AccountController(SignInManager<AppUser> signInManager, DataDbContext dataDbContext)
         {
             this.signInManager = signInManager;
+            this.dataDbContext = dataDbContext;
         }
 
         [HttpGet]
@@ -41,11 +44,17 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                     false);
                 if (result.Succeeded)
                 {
+                    string? roleName = dataDbContext.Users.FirstOrDefault(x => model.Email == x.Email).RoleName;
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
-                    else if (!model.Email.Equals("admin@gmail.com"))
+                    //else if (!model.Email.Equals("admin@gmail.com"))
+                    //{
+                    //    await signInManager.SignOutAsync();
+                    //    return RedirectToAction("accessdenied", "account");
+                    //}
+                    else if (!roleName.Equals("Admin"))
                     {
                         await signInManager.SignOutAsync();
                         return RedirectToAction("accessdenied", "account");
@@ -57,14 +66,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 }
             }
             return View(model);
-        }
-
-        [Route("logout")]
-        [HttpGet]
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToAction("index", "home");
         }
 
         [HttpGet]

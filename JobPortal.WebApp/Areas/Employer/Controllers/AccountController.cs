@@ -3,22 +3,23 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
+using System;
+using JobPortal.Data.DataContext;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
     [Area("Employer")]
     [Route("employer/auth")]
     [Route("employer")]
-    //[Route("Account")]
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> signInManager;
-        private readonly RoleManager<AppRole> roleManager;
+        private readonly DataDbContext dataDbContext;
 
-        public AccountController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager)
+        public AccountController(SignInManager<AppUser> signInManager, DataDbContext dataDbContext)
         {
             this.signInManager = signInManager;
-            this.roleManager = roleManager;
+            this.dataDbContext = dataDbContext;
         }
 
         [HttpGet]
@@ -43,16 +44,12 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                     false);
                 if (result.Succeeded)
                 {
+                    string? roleName = dataDbContext.Users.FirstOrDefault(x => model.Email == x.Email).RoleName;
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
-                    //else if (!roleManager.Roles.Equals("Employer"))
-                    //{
-                    //    await signInManager.SignOutAsync();
-                    //    return RedirectToAction("accessdenied", "account");
-                    //}
-                    else if (!model.Email.Equals("employer@gmail.com"))
+                    else if (!roleName.Equals("Employer"))
                     {
                         await signInManager.SignOutAsync();
                         return RedirectToAction("accessdenied", "account");

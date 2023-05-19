@@ -44,9 +44,10 @@ namespace JobPortal.Data.Extensions
                 Email = "admin@gmail.com",
                 NormalizedEmail = "ADMIN@GMAIL.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Abc123!"),
+                PasswordHash = hasher.HashPassword(null, "Abc123!@#"),
                 SecurityStamp = string.Empty,
-                FullName = "Adminitrator"
+                FullName = "Adminitrator",
+                RoleName = "Admin"
             });
             //new AppUser
             //{

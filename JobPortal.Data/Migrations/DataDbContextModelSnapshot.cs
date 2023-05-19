@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "ca5a9d6e-1446-4273-8fc8-30d346660e6f",
+                            ConcurrencyStamp = "1b3ceefb-86dd-4405-87c7-06033d9c1c33",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "184c4f95-59dd-42d5-aacd-a6f60c3e0328",
+                            ConcurrencyStamp = "f0cd10a8-ecb1-456c-8703-c74a204ece8a",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "52de3c5b-a1ca-4ea5-98ce-8d54823120a7",
+                            ConcurrencyStamp = "5e412494-14c2-4a25-8b40-7887227c22f4",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -95,6 +95,9 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
+
+                    b.Property<Guid?>("AppRoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -164,6 +167,11 @@ namespace JobPortal.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RoleName")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("User");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -190,6 +198,8 @@ namespace JobPortal.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppRoleId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -205,15 +215,16 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f17eeb99-893b-4d75-9ec7-f5603555d190",
+                            ConcurrencyStamp = "2d06abe8-c49d-40bb-8c0e-2c8e7684644b",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN6IvWYJY8lnTKkOl9s3VvV7/AZmQbK+6/CaMOqV2v5sFZ79e2ClAe90qSiLwT2ykw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA/acCr/JH2uyOFD7GrPb8DW3KUwdDHcqTsCcH1mEqfsmnyB1BCYNkrCxAbIBh9WCw==",
                             PhoneNumberConfirmed = false,
+                            RoleName = "Admin",
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
@@ -297,24 +308,28 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = 1,
+                            Description = "Skill ne",
                             Name = "Skill",
                             Slug = "skill"
                         },
                         new
                         {
                             Id = 2,
+                            Description = "Title ne",
                             Name = "Title",
                             Slug = "title"
                         },
                         new
                         {
                             Id = 3,
+                            Description = "Employer ne",
                             Name = "Employer",
                             Slug = "employer"
                         },
                         new
                         {
                             Id = 4,
+                            Description = "Province ne",
                             Name = "Province",
                             Slug = "province"
                         });
@@ -328,20 +343,8 @@ namespace JobPortal.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AppUserAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("AppUserAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AppUserFullName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid?>("AppUserId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AppUserPhone")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Certificate")
                         .HasMaxLength(256)
@@ -388,8 +391,20 @@ namespace JobPortal.Data.Migrations
                     b.Property<string>("TitleName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserAge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserFullName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserPhone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -409,9 +424,6 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AppUserFullName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("AppUserId")
                         .HasColumnType("uniqueidentifier");
@@ -481,6 +493,9 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TitleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserFullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Workplace")
@@ -727,6 +742,16 @@ namespace JobPortal.Data.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("AppUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("JobPortal.Data.Entities.AppUser", b =>
+                {
+                    b.HasOne("JobPortal.Data.Entities.AppRole", "AppRole")
+                        .WithMany()
+                        .HasForeignKey("AppRoleId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("AppRole");
                 });
 
             modelBuilder.Entity("JobPortal.Data.Entities.Blog", b =>

@@ -27,7 +27,7 @@
         public int? MaxSalary { get; set; }
         public string? ImageURL { get; set; }
         public AppUser? AppUser { get; set; }
-        public string? AppUserFullName { get; set; }
+        public string? UserFullName { get; set; }
         public ICollection<Skill>? Skills { get; set; }
     }
 }

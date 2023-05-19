@@ -49,7 +49,7 @@
     </div>
     @*<br />
     <div class="mb-3">
-        <button asp-area="Employer" asp-action="Login" asp-controller="Account" class="btn btn-primary d-grid w-100">Login for Employer</button>
+    <button asp-area="Employer" asp-action="Login" asp-controller="Account" class="btn btn-primary d-grid w-100">Login for Employer</button>
     </div>*@
 </form>
 
@@ -59,6 +59,9 @@
         <span>Create an account</span>
     </a>
 </p>
+
+<a asp-area="Employer" asp-action="Login" asp-controller="Account"
+   class="btn btn-primary d-grid w-100" style="position:center">Login for Employer</a>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

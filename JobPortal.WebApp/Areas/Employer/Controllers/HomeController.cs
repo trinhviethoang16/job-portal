@@ -11,7 +11,6 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
     [Authorize(Roles = "Employer")]
     public class HomeController : Controller
     {
-        //Loi o day
         [Route("index")]
         [Route("")]
         public IActionResult Index()

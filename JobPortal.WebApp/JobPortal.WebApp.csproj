@@ -37,4 +37,8 @@
     <ProjectReference Include="..\JobPortal.Data\JobPortal.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\jobs\images\" />
+  </ItemGroup>
+
 </Project>
