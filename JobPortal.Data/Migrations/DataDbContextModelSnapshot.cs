@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "1b3ceefb-86dd-4405-87c7-06033d9c1c33",
+                            ConcurrencyStamp = "d5d02685-7009-4f3d-be88-7c35285d3888",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "f0cd10a8-ecb1-456c-8703-c74a204ece8a",
+                            ConcurrencyStamp = "fecbdc84-0fd7-4af7-85d1-1319c5bc2633",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "5e412494-14c2-4a25-8b40-7887227c22f4",
+                            ConcurrencyStamp = "a65e6cbb-ddf4-4af4-a0c3-6bbd9f931513",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -215,14 +215,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2d06abe8-c49d-40bb-8c0e-2c8e7684644b",
+                            ConcurrencyStamp = "37caacaa-d46d-4abd-b403-d294b2be8b72",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA/acCr/JH2uyOFD7GrPb8DW3KUwdDHcqTsCcH1mEqfsmnyB1BCYNkrCxAbIBh9WCw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP4CbXIfwFnF+Fj6PhCdvb01PWHXTrzxgKigJEYEto1EE5RHWAJ1ocQvxfiTbh3HKQ==",
                             PhoneNumberConfirmed = false,
                             RoleName = "Admin",
                             SecurityStamp = "",
@@ -596,6 +596,13 @@ namespace JobPortal.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Times", (string)null);
@@ -604,17 +611,20 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Part time"
+                            Name = "Part time",
+                            Slug = "part-time"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Full time"
+                            Name = "Full time",
+                            Slug = "full-time"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Work form home"
+                            Name = "Work from home",
+                            Slug = "work-from-home"
                         });
                 });
 
@@ -806,7 +816,7 @@ namespace JobPortal.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("JobPortal.Data.Entities.Time", "Time")
-                        .WithMany()
+                        .WithMany("Jobs")
                         .HasForeignKey("TimeId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -910,6 +920,11 @@ namespace JobPortal.Data.Migrations
                     b.Navigation("Provinces");
 
                     b.Navigation("Skills");
+                });
+
+            modelBuilder.Entity("JobPortal.Data.Entities.Time", b =>
+                {
+                    b.Navigation("Jobs");
                 });
 #pragma warning restore 612, 618
         }

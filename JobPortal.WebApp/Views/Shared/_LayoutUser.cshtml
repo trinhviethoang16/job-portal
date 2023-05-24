@@ -32,27 +32,15 @@
 		<div class="container">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a asp-controller="Home" asp-action="Index"><img style="height: 80px; width:220px" src="~/assets/user/img/logo.png" alt="" title="" /></a>
+					<a href="/"><img style="height: 60px; width:200px" src="~/assets/user/img/logo.png" alt="" title="" /></a>
 				</div>
 				<!-- Start nav-menu-container -->
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li class="menu-active"><a asp-controller="Home" asp-action="Index">Home</a></li>
-						<li><a asp-controller="Home" asp-action="AboutUs">About Us</a></li>
-						<li><a asp-controller="Home" asp-action="Category">Category</a></li>
-						<li><a asp-controller="Home" asp-action="Price">Price</a></li>
-						<li><a asp-controller="Home" asp-action="BlogHome">Blog</a></li>
-						<li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-						<li class="menu-has-children">
-							<a href="">Pages</a>
-							<ul>
-								<li><a asp-controller="Home" asp-action="Elements">elements</a></li>
-								<li><a asp-controller="Home" asp-action="Search">search</a></li>
-								<li><a asp-controller="Home" asp-action="BlogSingle">single</a></li>
-							</ul>
-						</li>
+
 						<!--Login & Signup-->
-						<partial name="_LoginPartial.cshtml" />
+						<partial name="_MenuPartial.cshtml" />
+
 					</ul>
 				</nav>
 				<!-- End nav-menu-container -->
@@ -60,57 +48,7 @@
 		</div>
 	</header>
 	<!-- End header -->
-	
-	<!-- Start banner Area -->
-	<section class="banner-area relative" id="home">
-		<div class="overlay overlay-bg"></div>
-		<div class="container">
-			<div class="row fullscreen d-flex align-items-center justify-content-center">
-				<div class="banner-content col-lg-12">
-					<h1 class="text-white">
-						<span>1500+</span> Jobs posted last week
-					</h1>
-					<ng-form action="~/assets/user/search.html" class="serach-form-area">
-						<div class="row justify-content-center form-wrap">
-							<div class="col-lg-4 form-cols">
-								<input type="text" class="form-control" name="search" placeholder="what are you looging for?">
-							</div>
-							<div class="col-lg-3 form-cols">
-								<div class="default-select" id="default-selects" ">
-									<select>
-										<option value="1">Select area</option>
-										<option value="2">Dhaka</option>
-										<option value="3">Rajshahi</option>
-										<option value="4">Barishal</option>
-										<option value="5">Noakhali</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-3 form-cols">
-								<div class="default-select" id="default-selects2">
-									<select>
-										<option value="1">All Category</option>
-										<option value="2">Medical</option>
-										<option value="3">Technology</option>
-										<option value="4">Goverment</option>
-										<option value="5">Development</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-2 form-cols">
-								<button type="button" class="btn btn-info">
-									<span class="lnr lnr-magnifier"></span> Search
-								</button>
-							</div>
-						</div>
-					</ng-form>
-					<p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End banner Area -->
-	
+
 	<!-- Start RenderBody-->
 	@RenderBody()
 	<!-- Start RenderBody-->

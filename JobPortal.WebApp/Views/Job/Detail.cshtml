@@ -1,7 +1,7 @@
 ﻿@model JobPortal.Data.Entities.Job
 
 @{
-	Layout = "~/Views/Shared/_LayoutShortBanner.cshtml";
+	Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
 <!-- Start banner Area -->
@@ -13,7 +13,7 @@
 				<h1 class="text-white">
 					Job Details
 				</h1>
-				<p class="text-white link-nav"><a asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a asp-controller="Home" asp-action="Single"> Job Details</a></p>
+				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Job Details</a></p>
 			</div>
 		</div>
 	</div>
@@ -134,23 +134,42 @@
 					<!--Province-->
 					<h4>Jobs by Location</h4>
 					<ul class="cat-list">
-						<vc:Province></vc:Province>
+						@foreach (var pro in ViewBag.ListProvinces)
+						{
+							<li><a class="justify-content-between d-flex" href="#"><p>@pro.Name</p><span>@pro.Id</span></a></li>
+						}
 					</ul>
 				</div>
-
-				@*<div class="single-slidebar">
+				<div class="single-slidebar">
 					<!--Popular-->
 					<h4>Top rated job posts</h4>
 					<div class="active-relatedjob-carusel">
-						@Html.Partial("../Job/PopularList", Model.OrderByDescending(j => j.Popular).Take(6).ToList())
+						@foreach (var job in ViewBag.ListJobs)
+						{
+							<div class="single-rated">
+								<img href="/Job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
+								<a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
+								<h6>@job.ProvinceName</h6>
+								<p>@job.Description</p>
+								<h5>Job Nature: Full time</h5>
+								<p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+								<p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+								<a href="#" class="btns text-uppercase">Apply job</a>
+							</div>
+						}
 					</div>
-				</div>*@
-
+				</div>
 				<div class="single-slidebar">
 					<!--Skill-->
-					<vc:Skill></vc:Skill>
+					<h4>Jobs by Skill</h4>
+					<ul class="cat-list">
+						@foreach (var skill in ViewBag.ListSkills)
+						{
+							<li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>Popular</span></a></li>
+						}
+					</ul>
 				</div>
-				@*<div class="single-slidebar">
+				<div class="single-slidebar">
 					<h4>Carrer Advice Blog</h4>
 					<div class="blog-list">
 						<div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
@@ -211,7 +230,7 @@
 							</div>
 						</div>
 					</div>
-				</div>*@
+				</div>
 			</div>
 		</div>
 	</div>

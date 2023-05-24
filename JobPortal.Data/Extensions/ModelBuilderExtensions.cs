@@ -76,9 +76,9 @@ namespace JobPortal.Data.Extensions
             );
 
             modelBuilder.Entity<Time>().HasData(
-               new Time() { Id = 1, Name = "Part time" },
-               new Time() { Id = 2, Name = "Full time" },
-               new Time() { Id = 3, Name = "Work form home" }
+               new Time() { Id = 1, Name = "Part time", Slug = "part-time", ParentId = null },
+               new Time() { Id = 2, Name = "Full time", Slug = "full-time", ParentId = null },
+               new Time() { Id = 3, Name = "Work from home", Slug = "work-from-home", ParentId = null }
             );
         }
     }

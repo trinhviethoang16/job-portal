@@ -63,14 +63,6 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
             return View(model);
         }
 
-        [Route("logout")]
-        [HttpGet]
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-            return RedirectToRoute("index", "home");
-        }
-
         [HttpGet]
         [Route("access-denied")]
         [AllowAnonymous]

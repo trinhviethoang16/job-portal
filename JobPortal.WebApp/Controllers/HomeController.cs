@@ -9,63 +9,62 @@ namespace JobPortal.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        
         private readonly DataDbContext _context;
+        private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, DataDbContext context)
         {
-            
+            _logger = logger;
             _context = context;
         }
 
         public IActionResult Index()
         {
-            List<Job> jobList = _context.Jobs.ToList();
-            return View(jobList);
+            ViewBag.ListCategories = _context.Categories.OrderBy(c => c.Id).ToList();
+            ViewBag.ListJobs = _context.Jobs.OrderBy(j =>  j.Id).Take(6).ToList();
+            ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(6).ToList();
+            return View();
         }
 
+        [Route("about-us")]
         public IActionResult AboutUs()
         {
             return View();
         }
 
-        public IActionResult Category()
-        {
-            return View();
-        }
-
+        [Route("price")]
         public IActionResult Price()
         {
             return View();
         }
 
-        public IActionResult BlogHome()
+        [Route("blog")]
+        public IActionResult Blog()
         {
             return View();
         }
 
-        public IActionResult BlogSingle()
-        {
-            return View();
-        }
-
+        [Route("contact")]
         public IActionResult Contact()
         {
             return View();
         }
 
+        [Route("elements")]
         public IActionResult Elements()
         {
             return View();
         }
 
-        public IActionResult Search()
+        [Route("search")]
+        public async Task<IActionResult> Search()
         {
-            return View();
-        }
-        public IActionResult Single()
-        {
-            return View();
+            ViewBag.ListJobs = _context.Jobs.OrderBy(p => p.Id).Take(6).ToList();
+            ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(10).ToList();
+            ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
+            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).ToListAsync();
+            return View(jobs);
         }
 
         public IActionResult Privacy()

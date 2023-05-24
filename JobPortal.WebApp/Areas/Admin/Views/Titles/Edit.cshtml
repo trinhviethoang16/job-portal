@@ -5,14 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
-
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <h1 class="card-header">Edit Title</h1>
         <div class="card-body">
-
             <div class="row">
                 <div class="col-md-4">
                     <form asp-action="Edit">
@@ -39,8 +35,8 @@
 </div>
 
 
-
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

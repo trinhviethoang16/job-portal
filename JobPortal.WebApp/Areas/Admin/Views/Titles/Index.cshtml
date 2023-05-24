@@ -5,13 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <h1 class="card-header">Table of Titles</h1>
         <div class="card-body">
-
             <a asp-action="Create" class="btn btn-primary">Create New</a>
             <p> <br /></p>
             <div class="table-responsive text-nowrap">
@@ -31,7 +28,6 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
-
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -44,10 +40,8 @@
                                         </div>
                                     </div>
                                 </td>
-
                             </tr>
                         }
-
                     </tbody>
                 </table>
             </div>

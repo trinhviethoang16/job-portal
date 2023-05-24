@@ -1,122 +1,226 @@
-﻿@model List<JobPortal.Data.Entities.Job>
+﻿@model IEnumerable<JobPortal.Data.Entities.Job>
 
-<!--Category-->
-<vc:Category></vc:Category>
-
-<!--Job-->
-<vc:Job></vc:Job>
-
-<!--Skill categories-->
-<vc:Skill-Categories></vc:Skill-Categories>
-
-<!-- End feature-cat Area -->
-<!-- Start post Area -->
-<section class="post-area section-gap">
+<!-- Start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
     <div class="container">
-        <div class="row justify-content-center d-flex">
-            <div class="col-lg-8 post-list">
-                <!--Time list-->
-                <ul class="cat-list">
-                    <li><a href="#">Recent</a></li>
-                    <li><a href="#">Full Time</a></li>
-                    <li><a href="#">Intern</a></li>
-                    <li><a href="#">Part Time</a></li>
-                </ul>
-                <!--End time list-->
-                <!--Job list-->
-                @Html.Partial("../Job/JobList", Model)
-                <!--End job list-->
-
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="~/assets/user/category.html">Load More job Posts</a>
-
-            </div>
-            <div class="col-lg-4 sidebar">
-                <div class="single-slidebar">
-                    <!--Province-->
-                    <h4>Jobs by Location</h4>
-                    <ul class="cat-list">
-                        <vc:Province></vc:Province>
-                    </ul>
-                </div>
-
-                <div class="single-slidebar">
-                    <!--Popular-->
-                    <h4>Top rated job posts</h4>
-                    <div class="active-relatedjob-carusel">
-                        @Html.Partial("../Job/PopularList", Model.OrderByDescending(j => j.Popular).Take(6).ToList())
-                    </div>
-                </div>
-                <div class="single-slidebar">
-                    <!--Skill-->
-                    <vc:Skill></vc:Skill>
-                </div>
-                <div class="single-slidebar">
-                    <h4>Carrer Advice Blog</h4>
-                    <div class="blog-list">
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="banner-content col-lg-12">
+                <h1 class="text-white">
+                    <span>1500+</span> Jobs posted last week
+                </h1>
+                <ng-form action="~/assets/user/search.html" class="serach-form-area">
+                    <div class="row justify-content-center form-wrap">
+                        <div class="col-lg-4 form-cols">
+                            <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+                        </div>
+                        <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects" ">
+                                <select>
+                                    <option value="1">Select area</option>
+                                    <option value="2">Dhaka</option>
+                                    <option value="3">Rajshahi</option>
+                                    <option value="4">Barishal</option>
+                                    <option value="5">Noakhali</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
+                        <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects2">
+                                <select>
+                                    <option value="1">All Category</option>
+                                    <option value="2">Medical</option>
+                                    <option value="3">Technology</option>
+                                    <option value="4">Goverment</option>
+                                    <option value="5">Development</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
+                        <div class="col-lg-2 form-cols">
+                            <button type="button" class="btn btn-info">
+                                <span class="lnr lnr-magnifier"></span> Search
+                            </button>
                         </div>
                     </div>
-                </div>
+                </ng-form>
+                <p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
             </div>
         </div>
     </div>
 </section>
-<!-- End post Area -->
+<!-- End banner Area -->
+<!-- Start features Area -->
+<section class="features-area">
+    <div class="container">
+        <div class="row">
+            <!--Category-->
+            @foreach (var cate in ViewBag.ListCategories)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature">
+                        <h4>@cate.Name</h4>
+                        <p>@cate.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!--Job-->
+<!-- Start popular-post Area -->
+<section class="popular-post-area pt-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="active-popular-post-carusel">
+            @foreach (var job in ViewBag.ListJobs)
+            {
+                <div class="single-popular-post d-flex flex-row">
+                    <div class="thumb">
+                        <img href="/Job/@job.Slug" class="img-fluid" src="~/assets/user/img/p1.png" alt="">
+                        <a class="btns text-uppercase" href="/Job/@job.Slug">view job</a>
+                    </div>
+                    <div class="details">
+                        <a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
+                        <h6>@job.ProvinceName</h6>
+                        <p>@job.Description</p>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Skill categories-->
+<!-- Start feature-cat Area -->
+<section class="feature-cat-area pt-100" id="category">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">Featured Skill Categories</h1>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var job in ViewBag.ListSkills)
+            {
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="single-fcat">
+                        <a href="~/assets/user/category.html">
+                            <img src="~/assets/user/img/o1.png" alt="">
+                        </a>
+                        <p>@job.Name</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Start feature-cat Area -->
+<section class="feature-cat-area pt-100" id="category">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-30 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">TOP EMPLOYERS</h1>
+                    <p>There are Top Employer in our system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        @for (int i = 0; i < 4; i++)
+        {
+            if (i == 0)
+            {
+                    <div class='col-xs-16 col-3'>
+                        <a asp-action="index">
+                            <div class="card">
+                                <img class="card-img card-img-top" src="~/assets/user/img/o1.png" alt="Card image" height='200' width='200'>
+                                <div class='card-body'>
+                                    <h4 class='card-title text-center'>Employer Name</h4>
+                                    <footer class='card-text text-center'>
+                                        <span>
+                                            <span> Quantity Jobs </span>
+                                            <span>&nbsp;-&nbsp;</span>
+                                        </span>
+                                        <span>Province</span>
+                                    </footer>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            }
+            else if (i == 1)
+            {
+                    <div class='col-xs-16 col-3'>
+                        <a asp-action="index">
+                            <div class="card">
+                                <img class="card-img card-img-top" src="~/assets/user/img/o1.png" alt="Card image" height='200' width='200'>
+                                <div class='card-body'>
+                                    <h4 class='card-title text-center'>Employer Name</h4>
+                                    <footer class='card-text text-center'>
+                                        <span>
+                                            <span> Quantity Jobs </span>
+                                            <span>&nbsp;-&nbsp;</span>
+                                        </span>
+                                        <span>Province</span>
+                                    </footer>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            }
+            else if (i == 2)
+            {
+                    <div class='col-xs-16 col-3'>
+                        <a asp-action="index">
+                            <div class="card">
+                                <img class="card-img card-img-top" src="~/assets/user/img/o1.png" alt="Card image" height='200' width='200'>
+                                <div class='card-body'>
+                                    <h4 class='card-title text-center'>Employer Name</h4>
+                                    <footer class='card-text text-center'>
+                                        <span>
+                                            <span> Quantity Jobs </span>
+                                            <span>&nbsp;-&nbsp;</span>
+                                        </span>
+                                        <span>Province</span>
+                                    </footer>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            }
+            else if (i == 3)
+            {
+                    <div class='col-xs-16 col-3'>
+                        <a asp-action="index">
+                            <div class="card">
+                                <img class="card-img card-img-top" src="~/assets/user/img/o1.png" alt="Card image" height='200' width='200'>
+                                <div class='card-body'>
+                                    <h4 class='card-title text-center'>Employer Name</h4>
+                                    <footer class='card-text text-center'>
+                                        <span>
+                                            <span> Quantity Jobs </span>
+                                            <span>&nbsp;-&nbsp;</span>
+                                        </span>
+                                        <span>Province</span>
+                                    </footer>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            }
+        }
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
 <!-- Start callto-action Area -->
 <section class="callto-action-area section-gap" id="join">
     <div class="container">

@@ -9,7 +9,6 @@
     <div class="card">
         <h1 class="card-header">Create Skill</h1>
         <div class="card-body">
-            
             <div class="row">
                 <div class="col-md-4">
                     <form asp-action="Create">
@@ -26,20 +25,16 @@
                     </form>
                 </div>
             </div>
-
             <br />
             <div>
                 <a style="background-color: gray" class="btn btn-primary" asp-action="Index">Back to List</a>
             </div>
-
         </div>
     </div>
 </div>
-
-
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    }
+}

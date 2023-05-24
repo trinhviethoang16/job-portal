@@ -5,6 +5,7 @@ using JobPortal.Data.Entities;
 
 namespace JobPortal.WebApp.Controllers
 {
+    [Route("job")]
     public class JobController : Controller
     {
         private readonly DataDbContext _context;
@@ -14,28 +15,61 @@ namespace JobPortal.WebApp.Controllers
             _context = context;
         }
 
-        public IActionResult JobList()
+        //Job list by time
+        [Route("")]
+        public async Task<IActionResult> Index(string timelog, string q)
         {
-            List<Job> jobList = _context.Jobs.ToList();
-            return View(jobList);
-        }
-        public IActionResult PopularList()
-        {
-            List<Job> jobList = _context.Jobs.ToList();
-            return View(jobList);
-        }
+            ViewBag.ListJobs = _context.Jobs.OrderBy(p => p.Id).Take(6).ToList();
+            ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(10).ToList();
+            ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
+            ViewBag.q = q;
 
-        public IActionResult Detail(int id)
-        {
-            Job job = _context.Jobs.Where(x => x.Id == id).FirstOrDefault();
-            return View(job);
-        }
+            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).ToListAsync();
 
-        public IActionResult Category(int id)
-        {
-            ViewBag.CategoryName = _context.Categories.FirstOrDefault(x => id == x.Id).Name;
-            List<Job> jobs = _context.Jobs.Where(x => x.Category.Id == id).ToList();
+            if (timelog != null && q != null)
+            {
+                jobs = await (from t in _context.Times
+                              join job in _context.Jobs on t.Id equals job.Id
+                              orderby job.Id descending
+                              where t.Slug == timelog && job.Name.Contains(q)
+                              select job).ToListAsync();
+                return View(jobs);
+
+            }
+            else
+            {
+                if (timelog != null)
+                {
+                    ViewBag.Time = _context.Times.FirstOrDefault(t => t.Slug == timelog);
+
+                    jobs = await (from t in _context.Times
+                                  join job in _context.Jobs on t.Id equals job.Id
+                                  orderby job.Id descending
+                                  where t.Slug == timelog
+                                  select job).ToListAsync();
+                    return View(jobs);
+                }
+
+                if (q != null)
+                {
+                    jobs = _context.Jobs.Where(job => job.Name.Contains(q)).OrderByDescending(j => j.Id).ToList();
+                    return View(jobs);
+                }
+            }
+            jobs = await _context.Jobs.OrderByDescending(j => j.Id).ToListAsync();
             return View(jobs);
+        }
+
+        [Route("{slug}")]
+        public async Task<IActionResult> Detail(string slug)
+        {
+			ViewBag.ListJobs = _context.Jobs.OrderBy(p => p.Id).Take(6).ToList();
+			ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(10).ToList();
+			ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+			ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
+			var job = await _context.Jobs.Where(p => p.Slug == slug).FirstOrDefaultAsync();
+            return View(job);
         }
     }
 }

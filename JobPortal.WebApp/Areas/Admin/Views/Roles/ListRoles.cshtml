@@ -12,46 +12,47 @@
                 <div class="card-body">
                     <h4 class="card-title">Quản lý quyền</h4>
                     <p class="card-description">
-                        <code><a asp-action="CreateRole">Thêm mới</a></code>
+                        <code><a asp-action="CreateRole">Add new</a></code>
                     </p>
 
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
                                     <tr>
-                                        <th>#</th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Name)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Description)
-                                        </th>
-                                        <th></th>
+                                        <td>
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            <a asp-action="EditRole" asp-route-Id="@item.Id">Edit</a>
+                                            <a style="background-color: darkred" class="btn btn-primary" asp-action="DeleteRole" asp-route-Id="@item.Id">Delete</a>
+                                            @*<input type="submit" class="text-danger" onclick="deleteItem('@item.Id')" style="background: transparent; border: none; font-weight: 700; " value="Delete" />*@
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @item.Id
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Description)
-                                            </td>
-                                            <td>
-                                                <a asp-action="EditRole" asp-route-Id="@item.Id">Sửa</a>
-                                                <button type="button" class="text-danger" onclick="deleteItem('@item.Id')" style="background: transparent; border: none; font-weight: 700; ">Xóa</button>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                }
+                            </tbody>
+                        </table>
 
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,31 +61,34 @@
 
 <style>
     input.btn.btn-danger {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-}
-th { font-weight: 700!important}
+        position: absolute;
+        right: 25px;
+        top: 25px;
+    }
+
+    th {
+        font-weight: 700 !important
+    }
 </style>
 
 <script>
     function deleteItem(id) {
         Swal.fire({
-          title: 'Xác nhận xóa?',
-          text: "Bạn có chắc sẽ xóa role này?",
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Xóa!'
+            title: 'Xác nhận xóa?',
+            text: "Bạn có chắc sẽ xóa role này?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa!'
         }).then((result) => {
-          if (result.isConfirmed) {
-              window.location.href = '/admin/auth/delete-role/' + id;
-            Swal.fire(
-              'Xóa thành công!',
-              '',
-              'success'
-            )
-          }
+            if (result.isConfirmed) {
+                window.location.href = '/admin/auth/delete-role/' + id;
+                Swal.fire(
+                    'Xóa thành công!',
+                    '',
+                    'success'
+                )
+            }
         })
     }
 </script>

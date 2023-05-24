@@ -1,0 +1,194 @@
+﻿@model IEnumerable<JobPortal.Data.Entities.Job>
+
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!-- Start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					@if (ViewBag.Time == null)
+					{
+						<span>Sản phẩm mới nhất</span>
+					}
+					else
+					{
+						<span>@ViewBag.Category.Name</span>
+					}
+				</h1>
+				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href ="/job"> Jobs</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<!-- Start post Area -->
+<section class="post-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center d-flex">
+            <div class="col-lg-8 post-list">
+
+                <!--Time list-->
+                <ul class="cat-list">
+                    @foreach (var time in @ViewBag.ListTimes)
+                    {
+                        <li><a href="/job?timelog=@time.Slug">@time.Name</a></li>
+                    }
+                </ul>
+                <!--End time list-->
+
+                <!--Job list-->
+                @foreach (var job in Model)
+                {
+                    <div class="single-post d-flex flex-row">
+                        <!--Job skill list-->
+                        <div class="thumb">
+                            <img height="70" width="120" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="">
+                            <ul class="tags">
+                                <li>
+                                    <a href="#">Art</a>
+                                </li>
+                                <li>
+                                    <a href="#">Media</a>
+                                </li>
+                                <li>
+                                    <a href="#">Design</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--End job skill list-->
+                        <div class="details">
+                            <div class="title d-flex flex-row justify-content-between">
+                                <div class="titles">
+                                    <a href="/Job/@job.Slug"><h4> @job.Name</h4></a>
+                                    <h6>@job.ProvinceName</h6>
+                                </div>
+                                <ul class="btns">
+                                    <li><a href="/Job/@job.Slug"><span class="lnr lnr-heart"></span></a></li>
+                                    <li><a href="#">Apply</a></li>
+                                </ul>
+                            </div>
+                            <p>@job.Description</p>
+                            <h5>Job Nature: Full time</h5>
+                            <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+                            <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+                        </div>
+                    </div>
+                }
+                <!--End job list-->
+
+                <!--Load more jobs-->
+                <a class="text-uppercase loadmore-btn mx-auto d-block" href="~/assets/user/category.html">Load More job Posts</a>
+
+            </div>
+            <div class="col-lg-4 sidebar">
+                <div class="single-slidebar">
+                    <!--Province-->
+                    <h4>Jobs by Location</h4>
+                    <ul class="cat-list">
+                        @foreach (var pro in ViewBag.ListProvinces)
+                        {
+                            <li><a class="justify-content-between d-flex" href="#"><p>@pro.Name</p><span>@pro.Id</span></a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="single-slidebar">
+                    <!--Popular-->
+                    <h4>Top rated job posts</h4>
+                    <div class="active-relatedjob-carusel">
+                        @foreach (var job in ViewBag.ListJobs)
+                        {
+                            <div class="single-rated">
+                                <img href="/Job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
+                                <a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
+                                <h6>@job.ProvinceName</h6>
+                                <p>@job.Description</p>
+                                <h5>Job Nature: Full time</h5>
+                                <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+                                <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+                                <a href="#" class="btns text-uppercase">Apply job</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="single-slidebar">
+                    <!--Skill-->
+                    <h4>Jobs by Skill</h4>
+                    <ul class="cat-list">
+                        @foreach (var skill in ViewBag.ListSkills)
+                        {
+                            <li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>Popular</span></a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="single-slidebar">
+                    <h4>Carrer Advice Blog</h4>
+                    <div class="blog-list">
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End post Area -->

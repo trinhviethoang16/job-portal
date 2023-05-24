@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using JobPortal.Data.DataContext;
+@using JobPortal.Data.Entities;
+@using JobPortal.Data.ViewModel;
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+
+<li class="menu-active"><a href="/">Home</a></li>
+<li><a href="/job">All Jobs</a></li>
+<li><a href="/search">Search</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/price">Price</a></li>
+<li class="menu-has-children">
+    <a href="">Pages</a>
+    <ul>
+        <li><a href="/about-us">about us</a></li>
+        <li><a href="/contact">contact</a></li>
+        <li><a href="/elements">elements</a></li>
+    </ul>
+</li>
+
+@if (signInManager.IsSignedIn(User))
+{
+    <li>
+        <a class="ticker-btn">Hi, @(user.FullName ?? user.UserName)</a>
+    </li>
+    <li>
+        <form id="logoutForm" class="form-inline">
+            <a href="/dang-xuat" class="ticker-btn">Logout</a>
+        </form>
+    </li>
+}
+else
+{
+    <li>
+        <a href ="/dang-ky" class="ticker-btn">Register</a>
+    </li>
+    <li>
+        <a href="/dang-nhap" class="ticker-btn">Login</a>
+    </li>
+}
