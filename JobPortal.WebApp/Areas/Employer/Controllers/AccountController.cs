@@ -14,11 +14,15 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> signInManager;
+        private readonly RoleManager<AppRole> roleManager;
+        private readonly UserManager<AppUser> userManager;
         private readonly DataDbContext dataDbContext;
 
-        public AccountController(SignInManager<AppUser> signInManager, DataDbContext dataDbContext)
+        public AccountController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, DataDbContext dataDbContext)
         {
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
+            this.userManager = userManager;
             this.dataDbContext = dataDbContext;
         }
 
@@ -38,21 +42,31 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
             if (!ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(
-                    model.Email,
-                    model.Password,
-                    model.RememberMe,
-                    false);
+                            model.Email,
+                            model.Password,
+                            model.RememberMe,
+                            false);
                 if (result.Succeeded)
                 {
-                    string? roleName = dataDbContext.Users.FirstOrDefault(x => model.Email == x.Email).RoleName;
-                    if (!string.IsNullOrEmpty(returnUrl))
+                    //get email from login site and check 
+                    var user = await userManager.FindByEmailAsync(model.Email);
+
+                    //get role by user
+                    var roles = await userManager.GetRolesAsync(user);
+                    if (user == null || !await userManager.CheckPasswordAsync(user, model.Password))
                     {
-                        return Redirect(returnUrl);
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        return View(model);
                     }
-                    else if (!roleName.Equals("Employer"))
+                    // check role
+                    else if (!roles.Contains("Employer"))
                     {
                         await signInManager.SignOutAsync();
                         return RedirectToAction("accessdenied", "account");
+                    }
+                    else if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
                     }
                     else
                     {
@@ -60,6 +74,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                     }
                 }
             }
+            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

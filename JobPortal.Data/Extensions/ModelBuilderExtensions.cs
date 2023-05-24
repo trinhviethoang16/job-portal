@@ -11,7 +11,6 @@ namespace JobPortal.Data.Extensions
             // Any guid
             var roleId = new Guid("8D04DCE2-969A-435D-BBA4-DF3F325983DC");
             var adminId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00DE");
-            //var employerId = new Guid("15BD226F-8514-93B1-B1B5-F12668BE58DC");
             modelBuilder.Entity<AppRole>().HasData(new AppRole
             {
                 Id = roleId,
@@ -46,21 +45,8 @@ namespace JobPortal.Data.Extensions
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Abc123!@#"),
                 SecurityStamp = string.Empty,
-                FullName = "Adminitrator",
-                RoleName = "Admin"
+                FullName = "Adminitrator"
             });
-            //new AppUser
-            //{
-            //    Id = employerId,
-            //    UserName = "employer@gmail.com",
-            //    NormalizedUserName = "EMPLOYER@GMAIL.COM",
-            //    Email = "employer@gmail.com",
-            //    NormalizedEmail = "EMPLOYER@GMAIL.COM",
-            //    EmailConfirmed = true,
-            //    PasswordHash = hasher.HashPassword(null, "Abc123!"),
-            //    SecurityStamp = string.Empty,
-            //    FullName = "Employer"
-            //});
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
             {

@@ -47,7 +47,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         [AllowAnonymous]
         [Route("login")]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
-
         {
             if (!ModelState.IsValid)
             {
@@ -87,7 +86,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
 
         [HttpGet]
         [Route("access-denied")]

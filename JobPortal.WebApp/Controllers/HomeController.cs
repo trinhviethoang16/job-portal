@@ -20,9 +20,11 @@ namespace JobPortal.WebApp.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.ListCategories = _context.Categories.OrderBy(c => c.Id).ToList();
-            ViewBag.ListJobs = _context.Jobs.OrderBy(j =>  j.Id).Take(6).ToList();
+            ViewBag.ListCategories = _context.Categories.OrderBy(c => c.Id).Take(6).ToList();
             ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(6).ToList();
+            ViewBag.ListJobs = _context.Jobs.OrderBy(j => j.Id).Take(6).ToList();
+            //Tam thoi de yen nhu z
+            ViewBag.ListEmployers = _context.Users.OrderBy(u => u.Id).Take(4).ToList();
             return View();
         }
 

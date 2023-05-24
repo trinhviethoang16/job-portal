@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "d5d02685-7009-4f3d-be88-7c35285d3888",
+                            ConcurrencyStamp = "18a1c891-8d0e-42a5-9cea-696c78c09f75",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "fecbdc84-0fd7-4af7-85d1-1319c5bc2633",
+                            ConcurrencyStamp = "45adc1fd-ebbb-4f9f-bb8d-552982d81ff9",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "a65e6cbb-ddf4-4af4-a0c3-6bbd9f931513",
+                            ConcurrencyStamp = "31913d53-57b4-4604-be7e-97f94eaa3fb9",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -95,9 +95,6 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
-
-                    b.Property<Guid?>("AppRoleId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -167,11 +164,6 @@ namespace JobPortal.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("RoleName")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("User");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -198,8 +190,6 @@ namespace JobPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppRoleId");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -215,16 +205,15 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "37caacaa-d46d-4abd-b403-d294b2be8b72",
+                            ConcurrencyStamp = "e5fc18b3-768e-4f32-84b8-d56a7bc0bad4",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP4CbXIfwFnF+Fj6PhCdvb01PWHXTrzxgKigJEYEto1EE5RHWAJ1ocQvxfiTbh3HKQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAiWmZ59sAAgmIDmXmIVrgKMpIXr2g+dyy+CvXBHXQS8xhTYiT5/dPC8QSQejGfFxw==",
                             PhoneNumberConfirmed = false,
-                            RoleName = "Admin",
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
@@ -752,16 +741,6 @@ namespace JobPortal.Data.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("AppUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("JobPortal.Data.Entities.AppUser", b =>
-                {
-                    b.HasOne("JobPortal.Data.Entities.AppRole", "AppRole")
-                        .WithMany()
-                        .HasForeignKey("AppRoleId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("AppRole");
                 });
 
             modelBuilder.Entity("JobPortal.Data.Entities.Blog", b =>

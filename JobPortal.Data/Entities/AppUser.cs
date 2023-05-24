@@ -25,7 +25,7 @@ namespace JobPortal.Data.Entities
         public bool? SetRole { get; set; }
 
         //Role
-        public AppRole? AppRole { get; set; }
-        public string? RoleName { get; set;}
+        //public AppRole? AppRole { get; set; }
+        //public string? RoleName { get; set;}
     }
 }
