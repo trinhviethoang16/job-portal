@@ -65,10 +65,9 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
-
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a asp-controller="Home" asp-action="Index" class="app-brand-link">
+                    <a href="/admin" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <svg width="25"
                                  viewBox="0 0 25 42"
@@ -127,7 +126,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a asp-controller="Home" asp-action="Index" class="menu-link">
+                        <a href="/admin" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
@@ -170,12 +169,12 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a class="menu-link" asp-controller="Roles" asp-action="ListRoles" >
+                                <a class="menu-link" href="/admin/auth/list-roles">
                                     <div data-i18n="Account">Roles Management</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a class="menu-link" asp-controller="AppUser" asp-action="index">
+                                <a class="menu-link" href="/admin/users">
                                     <div data-i18n="Notifications">Set Role For User</div>
                                 </a>
                             </li>
@@ -186,40 +185,34 @@
           
                     
                     <!-- Contents -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Contents</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">management</span></li>
                     <li class="menu-item">
-                        <a asp-controller="Categories" asp-action="Index" class="menu-link">
+                        <a href="/admin/category" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Categories Management</div>
+                            <div data-i18n="Tables">Categories</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
-                        <a asp-controller="Provinces" asp-action="Index" class="menu-link">
+                        <a href="/admin/province" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Provinces Management</div>
+                            <div data-i18n="Tables">Provinces</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
-                        <a asp-controller="Skills" asp-action="Index" class="menu-link">
+                        <a href="/admin/skill" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Skills Management</div>
+                            <div data-i18n="Tables">Skills</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
-                        <a asp-controller="Titles" asp-action="Index" class="menu-link">
+                        <a href="/admin/title" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Titles Management</div>
+                            <div data-i18n="Tables">Titles</div>
                         </a>
                     </li>
-
-
-
-
-
-
 
 
                     <!-- Misc -->
@@ -349,9 +342,10 @@
                 <div class="content-wrapper">
 
 
-                    <!-- Start Render Body -->
+                    <!-- Start RenderBody -->
                     @RenderBody()
-                    <!-- End Render Body -->
+                    <!-- End RenderBody -->
+
                     <!-- Footer -->
                     <footer class="content-footer footer bg-footer-theme">
                         <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
@@ -391,11 +385,12 @@
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-    @*<div class="buy-now">
+
+    <div class="buy-now">
     <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
     target="_blank"
     class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
-    </div>*@
+    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

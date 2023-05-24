@@ -6,14 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("admin/authorization")]
     [Route("admin/auth")]
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         private readonly RoleManager<AppRole> roleManager;
-
         private readonly UserManager<AppUser> userManager;
 
         public RolesController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager)
@@ -46,7 +45,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 AppRole appRole = new AppRole
                 {
                     Name = model.RoleName,
-
                     Description = model.Description
                 };
 
@@ -62,7 +60,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-
             return View(model);
         }
 
@@ -88,13 +85,11 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 
             foreach (var user in userManager.Users)
             {
-
                 if (await userManager.IsInRoleAsync(user, role.Name))
                 {
                     model.Users.Add(user.UserName);
                 }
             }
-
             return View(model);
         }
 
@@ -111,7 +106,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             }
 
             role.Name = model.RoleName;
-
             var result = await roleManager.UpdateAsync(role);
 
             if (result.Succeeded)
@@ -131,7 +125,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         public async Task<IActionResult> EditUsersInRole(Guid roleId)
         {
             ViewBag.roleId = roleId;
-
             var role = await roleManager.FindByIdAsync(roleId.ToString());
 
             if (role == null)
@@ -158,10 +151,8 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 {
                     userRoleViewModel.IsSelected = false;
                 }
-
                 model.Add(userRoleViewModel);
             }
-
             return View(model);
         }
 
@@ -180,7 +171,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             for (int i = 0; i < model.Count; i++)
             {
                 var user = await userManager.FindByIdAsync(model[i].UserId.ToString());
-
                 IdentityResult result = null;
 
                 if (model[i].IsSelected && !(await userManager.IsInRoleAsync(user, role.Name)))
@@ -199,12 +189,15 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 if (result.Succeeded)
                 {
                     if (i < (model.Count - 1))
+                    {
                         continue;
+                    }
                     else
+                    {
                         return RedirectToAction("EditRole", new { Id = roleId });
+                    }
                 }
             }
-
             return RedirectToAction("EditRole", new { Id = roleId });
         }
 
@@ -232,12 +225,8 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-
                 return View("ListRoles");
             }
         }
-
-
-
     }
 }
