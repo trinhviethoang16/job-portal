@@ -11,13 +11,13 @@
 		<div class="row d-flex align-items-center justify-content-center">
 			<div class="about-content col-lg-12">
 				<h1 class="text-white">
-					@if (ViewBag.Time == null)
+                    @if (ViewBag.Time == null)
 					{
 						<span>Sản phẩm mới nhất</span>
 					}
 					else
 					{
-						<span>@ViewBag.Category.Name</span>
+                        <span>@ViewBag.Time.Name</span>
 					}
 				</h1>
 				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href ="/job"> Jobs</a></p>
@@ -64,11 +64,11 @@
                         <div class="details">
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
-                                    <a href="/Job/@job.Slug"><h4> @job.Name</h4></a>
+                                    <a href="/job/@job.Slug"><h4> @job.Name</h4></a>
                                     <h6>@job.ProvinceName</h6>
                                 </div>
                                 <ul class="btns">
-                                    <li><a href="/Job/@job.Slug"><span class="lnr lnr-heart"></span></a></li>
+                                    <li><a href="/job/@job.Slug"><span class="lnr lnr-heart"></span></a></li>
                                     <li><a href="#">Apply</a></li>
                                 </ul>
                             </div>

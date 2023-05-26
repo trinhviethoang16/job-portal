@@ -26,8 +26,31 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            var users = userManager.Users;
-            return View(users);
+            var users = userManager.Users.ToList();
+            var userRoles = new List<Dictionary<string, string>>();
+
+            foreach (var user in users)
+            {
+                var roles = userManager.GetRolesAsync(user).Result;
+                var roleNames = new List<string>();
+
+                foreach (var role in roles)
+                {
+                    var roleName = roleManager.FindByNameAsync(role).Result.Name;
+                    roleNames.Add(roleName);
+                }
+
+                userRoles.Add(new Dictionary<string, string>
+        {
+            { "userId", user.Id.ToString()},
+            { "UserName", user.UserName },
+            { "Email", user.Email },
+            { "RoleNames", string.Join(", ", roleNames) }
+
+        });
+            }
+
+            return View(userRoles);
         }
 
         // Phân quyền Users

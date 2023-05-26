@@ -10,16 +10,16 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Quản lý quyền</h4>
+                    <h4 class="card-title">Roles Management</h4>
                     <p class="card-description">
-                        <code><a asp-action="CreateRole">Add new</a></code>
+                        <a class="btn btn-primary" asp-action="CreateRole">Create new role</a>
                     </p>
 
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>ID</th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Name)
                                     </th>

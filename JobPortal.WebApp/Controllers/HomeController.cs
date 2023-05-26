@@ -58,17 +58,6 @@ namespace JobPortal.WebApp.Controllers
             return View();
         }
 
-        [Route("search")]
-        public async Task<IActionResult> Search()
-        {
-            ViewBag.ListJobs = _context.Jobs.OrderBy(p => p.Id).Take(6).ToList();
-            ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(10).ToList();
-            ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
-            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
-            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).ToListAsync();
-            return View(jobs);
-        }
-
         public IActionResult Privacy()
         {
             return View();

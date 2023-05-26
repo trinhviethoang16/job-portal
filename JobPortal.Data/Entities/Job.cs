@@ -22,7 +22,7 @@
         public ICollection<Province>? Provinces { get; set; }
         public string? ProvinceName { get; set; }
         public Time? Time { get; set; }
-        public string? TimeName { get; set; }
+        public int? TimeId { get; set; }
         public int? MinSalary { get; set; }
         public int? MaxSalary { get; set; }
         public string? ImageURL { get; set; }

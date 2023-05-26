@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("admin/category")]
+    [Authorize(Roles = "Admin")]
 
     public class CategoriesController : Controller
     {

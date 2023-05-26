@@ -1,4 +1,6 @@
-﻿@model IEnumerable<JobPortal.Data.Entities.AppUser>
+﻿@*@model IEnumerable<JobPortal.Data.Entities.AppUser>*@
+@model List<Dictionary<string, string>>
+
 @{
     ViewData["Title"] = "Quản lý người dùng";
 }
@@ -9,40 +11,40 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Quản lý người dùng</h4>
+                    <h4 class="card-title">List User With Role</h4>
 
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Role
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model)
+                                {
                                     <tr>
-                                        <th>
-                                            Name
-                                        </th>
-                                        <th>
-                                            Email
-                                        </th>
-                                        <th></th>
+                                        <td>@user["UserName"]</td>
+                                        <td>@user["Email"]</td>
+                                        <td>@user["RoleNames"]</td>
+                                        <td>
+                                            <a asp-action="ManageUserRoles" asp-route-userId="@user["userId"]">Set Role</a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @item.FullName 
-                                            </td>
-                                            <td>
-                                                @item.Email
-                                            </td>
-                                            <td>
-                                                <a asp-action="ManageUserRoles" asp-route-userId="@item.Id">Quản lý quyền</a>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                }
+                            </tbody>
+                        </table>
 
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,9 +53,12 @@
 
 <style>
     input.btn.btn-danger {
-    position: absolute;
-    right: 25px;
-    top: 25px;
-}
-th { font-weight: 700!important}
+        position: absolute;
+        right: 25px;
+        top: 25px;
+    }
+
+    th {
+        font-weight: 700 !important
+    }
 </style>
