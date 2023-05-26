@@ -16,6 +16,7 @@ namespace JobPortal.Data.ViewModel
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Xác nhận mật khẩu")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]

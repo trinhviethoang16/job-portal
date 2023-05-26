@@ -41,9 +41,9 @@ builder.Services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
 //Session
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options => {
-    options.Cookie.Name = "viethoang";
-    options.IdleTimeout = new TimeSpan(0, 30, 0);
-    //options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.Name = "jobportal";
+    options.IdleTimeout = new TimeSpan(0, 5, 0);
+    //options.IdleTimeout = TimeSpan.FromMinutes(5);
 });
 
 builder.Services.ConfigureApplicationCookie(options =>

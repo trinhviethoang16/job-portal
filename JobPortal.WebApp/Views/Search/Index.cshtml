@@ -16,55 +16,76 @@
                 <p class="text-white link-nav">
                     <a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="#"> Job searching page</a>
                 </p>
-                <!--NGUYEN CHINH CSS GIUM TAO CHO NAY CHO DEP NHE MAY-->
+                
                 <!--Search text area-->
-                <form class ="serach-form-area" method="get" asp-action="Index">
-                    <div class="form-group mb-2">
-                        <label for="inputPassword2" class="sr-only">Password</label>
-                        <input type="text" class="form-control" id="inputPassword2" placeholder="Search..." name="q" value="@if(ViewBag.q!= null) {
-                        <text>@ViewBag.q</text>}">
-                        <input type="hidden" name="catelog" value="@if(ViewBag.Category != null) {
-                        <text>@ViewBag.Category.Slug</text>}">
+                @*<div class="row justify-content-center form-wrap">
+                    <div class="col-lg-4 form-cols">
+                        <form class="serach-form-area" method="get" asp-action="Index">
+                            <div class="form-group mb-2">
+                                <label for="inputPassword2" class="sr-only">Password</label>
+                                <input type="text" class="form-control" id="inputPassword2" placeholder="Type something to search..." name="q" value="@if(ViewBag.q!= null) {
+                                <text>@ViewBag.q</text>
+                                }">
+                                <input type="hidden" name="catelog" value="@if(ViewBag.Category != null) {
+                                <text>@ViewBag.Category.Slug</text>
+                                }">
+                            </div>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
-                        <span class="lnr lnr-magnifier"></span> Search
-                    </button>
-                </form>
-                <!--Search filter area-->
-                @*<ng-form action="#" class="serach-form-area">
+                    <div class="col-lg-2 form-cols">
+                        <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
+                            <span class="lnr lnr-magnifier"></span> Search
+                        </button>
+                    </div>
+                </div>*@
+
+
+
+
+
+
+
+                <form class="serach-form-area" method="get" asp-action="Index">
                     <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+                        <div class="col-xs-16 col-8 form-cols">
+                            <label for="inputPassword2" class="sr-only">Password</label>
+                            <input type="text" class="form-control" id="inputPassword2" placeholder="Type something to search..." name="q" value="@if(ViewBag.q!= null) {
+                            <text>@ViewBag.q</text>
+                            }">
+                            <input type="hidden" name="catelog" value="@if(ViewBag.Category != null) {
+                            <text>@ViewBag.Category.Slug</text>
+                            }">
                         </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects" ">
-                                <select>
-                                    <option value="1">Select area</option>
-                                    <option value="2">Dhaka</option>
-                                    <option value="3">Rajshahi</option>
-                                    <option value="4">Barishal</option>
-                                    <option value="5">Noakhali</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option value="1">All Category</option>
-                                    <option value="2">Medical</option>
-                                    <option value="3">Technology</option>
-                                    <option value="4">Goverment</option>
-                                    <option value="5">Development</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 form-cols">
-                            <button type="button" class="btn btn-info">
+
+
+                        <div class="col-xs-16 col-2 form-cols">
+                            <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
                                 <span class="lnr lnr-magnifier"></span> Search
                             </button>
                         </div>
                     </div>
-                </ng-form>*@
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <p class="text-white">49 Results found for <span>"Web developer"</span></p>
             </div>
         </div>
@@ -115,7 +136,6 @@
                     </div>
                 }
                 <!--End job list-->
-
                 <!--Load more jobs-->
                 <a class="text-uppercase loadmore-btn mx-auto d-block" href="~/assets/user/category.html">Load More job Posts</a>
 
@@ -125,18 +145,18 @@
                     <!--Province-->
                     <h4>Jobs by Location</h4>
                     <ul class="cat-list">
-                                        @foreach (var pro in ViewBag.ListProvinces)
-                                        {
+                        @foreach (var pro in ViewBag.ListProvinces)
+                        {
                             <li><a class="justify-content-between d-flex" href="#"><p>@pro.Name</p><span>@pro.Id</span></a></li>
-                                        }
+                        }
                     </ul>
                 </div>
                 <div class="single-slidebar">
                     <!--Popular-->
                     <h4>Top rated job posts</h4>
                     <div class="active-relatedjob-carusel">
-                                        @foreach (var job in ViewBag.ListJobs)
-                                        {
+                        @foreach (var job in ViewBag.ListJobs)
+                        {
                             <div class="single-rated">
                                 <img href="/Job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
                                 <a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
@@ -147,17 +167,17 @@
                                 <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
                                 <a href="#" class="btns text-uppercase">Apply job</a>
                             </div>
-                                        }
+                        }
                     </div>
                 </div>
                 <div class="single-slidebar">
                     <!--Skill-->
                     <h4>Jobs by Skill</h4>
                     <ul class="cat-list">
-                                        @foreach (var skill in ViewBag.ListSkills)
-                                        {
+                        @foreach (var skill in ViewBag.ListSkills)
+                        {
                             <li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>Popular</span></a></li>
-                                        }
+                        }
                     </ul>
                 </div>
                 <div class="single-slidebar">
