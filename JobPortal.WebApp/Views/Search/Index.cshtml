@@ -22,11 +22,9 @@
                         <div class="col-xs-16 col-8 form-cols">
                             <label for="inputPassword2" class="sr-only">Password</label>
                             <input type="text" class="form-control" id="inputPassword2" placeholder="what are you looking for ?" name="q" value="@if(ViewBag.q!= null) {
-                            <text>@ViewBag.q</text>
-}">
+                            <text>@ViewBag.q</text>}">
                             <input type="hidden" name="catelog" value="@if(ViewBag.Category != null) {
-                            <text>@ViewBag.Category.Slug</text>
-}">
+                            <text>@ViewBag.Category.Slug</text>}">
                         </div>
                         <div class="col-xs-16 col-2 form-cols">
                             <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
@@ -35,7 +33,7 @@
                         </div>
                     </div>
                 </form>
-                <p class="text-white">49 Results found for <span>"Web developer"</span></p>
+                <p class="text-white">@Model.Count() Results found for <span>"Job developer"</span></p>
             </div>
         </div>
     </div>
@@ -52,7 +50,7 @@
                     <div class="single-post d-flex flex-row">
                         <!--Job skill list-->
                         <div class="thumb">
-                            <img height="55" width="100" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="EMPLOYER IMAGE">
+                            <img height="55" width="100" src="https://localhost:7211/images/jobs/@job.ImageURL" alt="EMPLOYER IMAGE">
                             <ul class="tags">
                                 <!--Job skill area-->
                                 <li>
@@ -126,7 +124,7 @@
                     <ul class="cat-list">
                         @foreach (var skill in ViewBag.ListSkills)
                         {
-                            <li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>Popular</span></a></li>
+                            <li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>@skill.JobPopular</span></a></li>
                         }
                     </ul>
                 </div>

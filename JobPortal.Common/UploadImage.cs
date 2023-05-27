@@ -16,31 +16,26 @@ namespace JobPortal.Common
                     var fileExtension = Path.GetExtension(fileName);
                     var newFileName = string.Concat(myUniqueFileName, fileExtension);
 
-                    var filepath =
-            new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", path)).Root + $@"\{newFileName}";
+                    var filepath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", path)).Root 
+                        + $@"\{newFileName}";
 
                     using (FileStream fs = System.IO.File.Create(filepath))
                     {
                         files.CopyTo(fs);
                         fs.Flush();
                     }
-
-
                     var newImageName = newFileName;
-
                     return newImageName.ToString();
                 }
                 else
                 {
                     return String.Empty;
                 }
-
             }
             else
             {
                 return String.Empty;
             }
-
         }
     }
 }

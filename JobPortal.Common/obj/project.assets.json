@@ -303,11 +303,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Code\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
+      "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
       "projectName": "JobPortal.Common",
-      "projectPath": "E:\\Code\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
+      "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\Code\\job-portal\\JobPortal.Common\\obj\\",
+      "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

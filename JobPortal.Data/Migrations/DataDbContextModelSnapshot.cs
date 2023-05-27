@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "084c8f1b-86dc-4842-a0e8-251458a6b86b",
+                            ConcurrencyStamp = "428d99c3-f624-4f70-8da3-29b2a6581945",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "4c93edbd-add4-4f15-ae4e-21cf4d2cea8b",
+                            ConcurrencyStamp = "9205880e-8678-4c86-a595-959c7d437ba9",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "e85c6396-b5d6-433f-9421-7e6fa81381a4",
+                            ConcurrencyStamp = "a912d7c9-9117-4268-bf6f-72783629c343",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -210,14 +210,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3ca522ba-d333-46dd-bc08-bdd601e57f56",
+                            ConcurrencyStamp = "b041a58e-17ce-4f8f-a6b5-6bb75e331b99",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM/VqxsqYYROUBvxeLh2WkyrjCPm1fgm/raucBBeocXFp3cOWS480BpTfKNCHToy0g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDdV+L07ioZcwUBH09Nu2Ujbl4vqiaRIbb6BRjXja9TTfGYlxuFCMJW9ynyaErxveA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

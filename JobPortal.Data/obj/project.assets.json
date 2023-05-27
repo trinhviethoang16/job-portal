@@ -2647,11 +2647,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Code\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+      "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
       "projectName": "JobPortal.Data",
-      "projectPath": "E:\\Code\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+      "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\Code\\job-portal\\JobPortal.Data\\obj\\",
+      "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

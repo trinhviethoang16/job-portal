@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\jobs\**" />
+    <Content Remove="wwwroot\jobs\**" />
+    <EmbeddedResource Remove="wwwroot\jobs\**" />
+    <None Remove="wwwroot\jobs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Job\Index.cshtml" />
   </ItemGroup>
 
@@ -44,7 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\jobs\images\" />
+    <Folder Include="wwwroot\images\categories\" />
+    <Folder Include="wwwroot\images\cvs\" />
+    <Folder Include="wwwroot\images\blogs\" />
+    <Folder Include="wwwroot\images\skills\" />
   </ItemGroup>
 
 </Project>

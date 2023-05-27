@@ -16,10 +16,10 @@
                             <div class="default-select" id="default-selects" ">
                                 <select>
                                     <option>Select area</option>
-                            @foreach (var province in ViewBag.FilterProvinces)
-                            {
+                                    @foreach (var province in ViewBag.FilterProvinces)
+                                    {
                                         <option value="@province.Id">@province.Name</option>
-                            }
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -27,10 +27,10 @@
                             <div class="default-select" id="default-selects2">
                                 <select>
                                     <option>Select category</option>
-                            @foreach (var cate in ViewBag.FilterCategories)
-                            {
+                                    @foreach (var cate in ViewBag.FilterCategories)
+                                    {
                                         <option value="@cate.Id">@cate.Name</option>
-                            }
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -72,11 +72,11 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="active-popular-post-carusel">
-                            @foreach (var job in ViewBag.ListJobs)
-                            {
+                @foreach (var job in ViewBag.ListJobs)
+                {
                     <div class="single-popular-post d-flex flex-row">
                         <div class="thumb">
-                            <img href="/job/@job.Slug" class="img-fluid" src="../assets/user/img/p1.png" alt="">
+                            <img href="/job/@job.Slug" class="img-fluid" src="https://localhost:7211/images/jobs/@job.ImageURL" alt="JOB IMAGE" height='70' width='70'>
                             <a class="btns text-uppercase" href="/job/@job.Slug">View job</a>
                         </div>
                         <div class="details">
@@ -85,7 +85,7 @@
                             <p>@job.Description</p>
                         </div>
                     </div>
-                            }
+                }
             </div>
         </div>
     </div>
@@ -104,17 +104,17 @@
             </div>
         </div>
         <div class="row">
-                            @foreach (var job in ViewBag.ListSkills)
-                            {
+            @foreach (var job in ViewBag.ListSkills)
+            {
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
-                        <a href="../assets/user/category.html">
+                        <a href="">
                             <img src="../assets/user/img/o1.png" alt="">
                         </a>
                         <p>@job.Name</p>
                     </div>
                 </div>
-                            }
+            }
         </div>
     </div>
 </section>
@@ -131,12 +131,12 @@
             </div>
         </div>
         <div class="row">
-                            @foreach (var emp in ViewBag.ListEmployers)
-                            {
+            @foreach (var emp in ViewBag.ListEmployers)
+            {
                 <div class='col-xs-16 col-3'>
                     <a asp-action="index">
                         <div class="card">
-                            <img class="card-img card-img-top" src="../assets/user/img/o1.png" alt="Card image" height='200' width='200'>
+                            <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
                             <div class='card-body'>
                                 <h4 class='card-title text-center'>@emp.FullName</h4>
                                 <footer class='card-text text-center'>
@@ -150,7 +150,7 @@
                         </div>
                     </a>
                 </div>
-                            }
+            }
         </div>
     </div>
 </section>

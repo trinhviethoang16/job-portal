@@ -10668,11 +10668,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Code\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
+      "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
       "projectName": "JobPortal.WebApp",
-      "projectPath": "E:\\Code\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
+      "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\Code\\job-portal\\JobPortal.WebApp\\obj\\",
+      "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10689,11 +10689,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Code\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
-              "projectPath": "E:\\Code\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
+            "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+              "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
             },
-            "E:\\Code\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj": {
-              "projectPath": "E:\\Code\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj"
+            "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj": {
+              "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj"
             }
           }
         }
