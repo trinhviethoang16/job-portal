@@ -1,129 +1,64 @@
-﻿@model JobPortal.Data.ViewModel.RegisterViewModel
+﻿@model JobPortal.Data.ViewModel.LoginViewModel
 
 @{
     Layout = "_LayoutLogin";
 }
 
 <!-- /Logo -->
-<h4 class="mb-2">Adventure starts here 🚀</h4>
-<p class="mb-4">Make your app management easy and fun!</p>
+<h4 class="mb-2">Welcome to Sneat! 👋</h4>
+<p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-<form id="registerForm" class="mb-3" action="#" method="post">
+<form asp-action="Login" asp-controller="Account" id="account" class="mb-3" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="mb-3">
         <label asp-for="Email" class="form-label">Email</label>
-        <input asp-for="Email" type="text" class="form-control" autocomplete="username" aria-required="true" placeholder="Enter your email" />
+        <input asp-for="Email"
+               type="text"
+               class="form-control"
+               autocomplete="username"
+               aria-required="true"
+               placeholder="Enter your email"
+               autofocus />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3 form-password-toggle">
-        <label asp-for="Password" class="form-label">Password</label>
+        <div class="d-flex justify-content-between">
+            <label asp-for="Password" class="form-label">Password</label>
+            <a href="#">
+                <small>Forgot Password?</small>
+            </a>
+        </div>
         <div class="input-group input-group-merge">
             <input asp-for="Password"
                    type="password"
                    class="form-control"
-                   autocomplete="new-password"
+                   autocomplete="current-password"
                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                    aria-required="true" />
-            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+            <span asp-validation-for="Password" class="input-group-text cursor-pointer"></span>
         </div>
-    </div>
-    <div class="mb-3 form-password-toggle">
-        <label asp-for="ConfirmPassword" class="form-label">Confirm password</label>
-        <div class="input-group input-group-merge">
-            <input asp-for="ConfirmPassword"
-                   type="password"
-                   class="form-control"
-                   autocomplete="new-password"
-                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                   aria-required="true" />
-            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-        </div>
-    </div>
-    <div class="mb-3">
-        <label asp-for="FullName" class="form-label">Full name</label>
-        <input asp-for="FullName" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your name" />
-        <span asp-validation-for="FullName" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Age" class="form-label">Age</label>
-        <input asp-for="Age" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your age" />
-        <span asp-validation-for="Age" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Address" class="form-label">Address</label>
-        <input asp-for="Address" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your address" />
-        <span asp-validation-for="Address" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-            <label class="form-check-label" for="terms-conditions">
-                I agree to
-                <a href="javascript:void(0);">privacy policy & terms</a>
-            </label>
+            <input class="form-check-input" type="checkbox" id="remember-me" />
+            <label class="form-check-label" for="remember-me"> Remember Me </label>
         </div>
     </div>
-    <button id="registerSubmit" type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
+    <div class="mb-3">
+        <button id="login-submit" class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+    </div>
 </form>
 
 <p class="text-center">
-    <span>Already have an account?</span>
+    <span>New on our platform?</span>
     <a href="/dang-ky">
-        <span>Sign in instead</span>
+        <span>Create an account</span>
     </a>
 </p>
+
+<a asp-area="Employer" asp-action="Login" asp-controller="Account"
+   class="btn btn-primary d-grid w-100" style="position:center">Login for Employer</a>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-
-@*<div class="register">
-    <form id="registerForm" method="post">
-        <div class="register-top-grid">
-            <h3>ĐĂNG KÝ TÀI KHOẢN & THÔNG TIN CÁ NHÂN</h3>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Email"></label>
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Password"></label>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="ConfirmPassword"></label>
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="FullName" class="form-control" autocomplete="" aria-required="true" />
-                <label asp-for="FullName"></label>
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Age" class="form-control" autocomplete="" aria-required="true" />
-                <label asp-for="Age"></label>
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Phone" class="form-control" autocomplete="" aria-required="true" />
-                <label asp-for="Phone"></label>
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Address" class="form-control" autocomplete="" aria-required="true" />
-                <label asp-for="Address"></label>
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="clearfix"> </div>
-            <div class="register-but">
-                <form>
-                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">ĐĂNG KÝ</button>
-                    <div class="clearfix"> </div>
-                </form>
-            </div>
-        </div>
-    </form>
-</div>*@

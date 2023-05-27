@@ -96,6 +96,55 @@ button.accept-policy[b-g3qskucjmi] {
   white-space: nowrap;
   line-height: 60px;
 }
+/* _content/JobPortal.WebApp/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-d5nathhzww] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-d5nathhzww] {
+  color: #0077cc;
+}
+
+.btn-primary[b-d5nathhzww] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-d5nathhzww], .nav-pills .show > .nav-link[b-d5nathhzww] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-d5nathhzww] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-d5nathhzww] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-d5nathhzww] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-d5nathhzww] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-d5nathhzww] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
 /* _content/JobPortal.WebApp/Views/Shared/_LayoutLogin.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
@@ -139,55 +188,6 @@ button.accept-policy[b-b58nmmbcx4] {
 }
 
 .footer[b-b58nmmbcx4] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
-/* _content/JobPortal.WebApp/Views/Shared/_LayoutUser.cshtml.rz.scp.css */
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand[b-fmyzb3b44r] {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-a[b-fmyzb3b44r] {
-  color: #0077cc;
-}
-
-.btn-primary[b-fmyzb3b44r] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active[b-fmyzb3b44r], .nav-pills .show > .nav-link[b-fmyzb3b44r] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.border-top[b-fmyzb3b44r] {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom[b-fmyzb3b44r] {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow[b-fmyzb3b44r] {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy[b-fmyzb3b44r] {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-.footer[b-fmyzb3b44r] {
   position: absolute;
   bottom: 0;
   width: 100%;

@@ -18,7 +18,7 @@ namespace JobPortal.WebApp.Controllers
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            _context = context;
+            this._context = context;
         }
 
         [HttpGet]
@@ -45,7 +45,7 @@ namespace JobPortal.WebApp.Controllers
                     Email = model.Email
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
-                //dang ky thanh cong thi chuyen trang dang nhap
+                //đăng ký thành công thì chuyển trang đăng nhập
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
@@ -95,15 +95,6 @@ namespace JobPortal.WebApp.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("index", "home");
-        }
-
-        // This method added for role tutorial
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("opps")]
-        public IActionResult AccessDenied()
-        {
-            return View();
         }
     }
 }

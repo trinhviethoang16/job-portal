@@ -25,6 +25,9 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.ListJobs = _context.Jobs.OrderBy(j => j.Id).Take(6).ToList();
             //Tam thoi de yen nhu z
             ViewBag.ListEmployers = _context.Users.OrderBy(u => u.Id).Take(4).ToList();
+            //For search filter area
+            ViewBag.FilterCategories = _context.Categories.OrderBy(c => c.Id).ToList();
+            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
             return View();
         }
 

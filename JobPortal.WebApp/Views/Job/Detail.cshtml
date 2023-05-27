@@ -1,7 +1,7 @@
 ﻿@model JobPortal.Data.Entities.Job
 
 @{
-	Layout = "~/Views/Shared/_LayoutUser.cshtml";
+	Layout = "_Layout";
 }
 
 <!-- Start banner Area -->
@@ -26,8 +26,9 @@
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
 					<div class="thumb">
-						<img height="70" width="120" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="">
+						<img height="55" width="100" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="EMPLOYER IMAGE">
 						<ul class="tags">
+							<!--Job skill area-->
 							<li>
 								<a href="#">Art</a>
 							</li>
@@ -45,13 +46,9 @@
 								<a href="#"><h4>@Model.Name</h4></a>
 								<h6>@Model.ProvinceName</h6>
 							</div>
-							<ul class="btns">
-								<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-								<li><a href="#">Apply</a></li>
-							</ul>
 						</div>
 						<p>@Model.Description</p>
-						<h5>Job Nature: Full time</h5>
+						<h5>Job Nature: @Model.Time.Name</h5>
 						<p class="address"><span class="lnr lnr-map"></span> @Model.ShortDescription</p>
 						<p class="address"><span class="lnr lnr-database"></span> @Model.MinSalary - @Model.MaxSalary</p>
 					</div>
@@ -128,7 +125,10 @@
 						</li>
 					</ul>
 				</div>
+				<!--Apply-->
+				<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug">apply now</a>
 			</div>
+
 			<div class="col-lg-4 sidebar">
 				<div class="single-slidebar">
 					<!--Province-->
@@ -147,14 +147,14 @@
 						@foreach (var job in ViewBag.ListJobs)
 						{
 							<div class="single-rated">
-								<img href="/Job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
-								<a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
+								<img href="/job/@job.Slug" class="img-fluid" src="../assets/user/img/r1.jpg" alt="">
+								<a href="/job/@job.Slug"><h4>@job.Name</h4></a>
 								<h6>@job.ProvinceName</h6>
 								<p>@job.Description</p>
-								<h5>Job Nature: Full time</h5>
+								<h5>Job Nature: @job.Time.Name</h5>
 								<p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
 								<p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
-								<a href="#" class="btns text-uppercase">Apply job</a>
+								<a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
 							</div>
 						}
 					</div>

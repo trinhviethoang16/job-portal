@@ -1,15 +1,14 @@
-﻿@model JobPortal.Data.Entities.Category
+﻿@model JobPortal.Data.Entities.Province
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
 }
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
-        <h1 class="card-header">Details of Category</h1>
+        <h1 class="card-header">Details of Province</h1>
         <div class="card-body">
-
             <dl class="row">
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Name)
@@ -18,16 +17,14 @@
                     @Html.DisplayFor(model => model.Name)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayNameFor(model => model.ParentID)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Description)
+                    @Html.DisplayFor(model => model.ParentID)
                 </dd>
             </dl>
-
             <div>
                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
-
             </div>
             <br />
             <div>

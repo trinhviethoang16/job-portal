@@ -1,29 +1,29 @@
 ﻿@model IEnumerable<JobPortal.Data.Entities.Job>
 
 @{
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    Layout = "_Layout";
 }
 
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
-	<div class="overlay overlay-bg"></div>
-	<div class="container">
-		<div class="row d-flex align-items-center justify-content-center">
-			<div class="about-content col-lg-12">
-				<h1 class="text-white">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
                     @if (ViewBag.Time == null)
-					{
-						<span>Sản phẩm mới nhất</span>
-					}
-					else
-					{
+                    {
+                        <span>Sản phẩm mới nhất</span>
+                    }
+                    else
+                    {
                         <span>@ViewBag.Time.Name</span>
-					}
-				</h1>
-				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href ="/job"> Jobs</a></p>
-			</div>
-		</div>
-	</div>
+                    }
+                </h1>
+                <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/job"> Jobs</a></p>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- End banner Area -->
 <!-- Start post Area -->
@@ -31,24 +31,23 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
-
                 <!--Time list-->
-                <ul class="cat-list">
+                <ul class="cat-list" style="width:auto">
                     @foreach (var time in @ViewBag.ListTimes)
                     {
-                        <li><a href="/job?timelog=@time.Slug">@time.Name</a></li>
+                        <li class="col-xs-12 col-4"><a href="/job?timelog=@time.Slug">@time.Name</a></li>
                     }
                 </ul>
                 <!--End time list-->
-
                 <!--Job list-->
                 @foreach (var job in Model)
                 {
                     <div class="single-post d-flex flex-row">
                         <!--Job skill list-->
                         <div class="thumb">
-                            <img height="70" width="120" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="">
+                            <img height="55" width="100" src="https://careerhub.vn/upload/company/jsq1638871498.png" alt="EMPLOYER IMAGE">
                             <ul class="tags">
+                                <!--Job skill area-->
                                 <li>
                                     <a href="#">Art</a>
                                 </li>
@@ -69,20 +68,19 @@
                                 </div>
                                 <ul class="btns">
                                     <li><a href="/job/@job.Slug"><span class="lnr lnr-heart"></span></a></li>
-                                    <li><a href="#">Apply</a></li>
+                                    <li><a href="/job/@job.Slug">Apply</a></li>
                                 </ul>
                             </div>
                             <p>@job.Description</p>
-                            <h5>Job Nature: Full time</h5>
+                            <h5>Job Nature: @job.Time.Name</h5>
                             <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
                         </div>
                     </div>
                 }
                 <!--End job list-->
-
                 <!--Load more jobs-->
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="~/assets/user/category.html">Load More job Posts</a>
+                <a class="text-uppercase loadmore-btn mx-auto d-block" href="../assets/user/category.html">Load More job Posts</a>
 
             </div>
             <div class="col-lg-4 sidebar">
@@ -103,14 +101,14 @@
                         @foreach (var job in ViewBag.ListJobs)
                         {
                             <div class="single-rated">
-                                <img href="/Job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
-                                <a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
+                                <img href="/job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
+                                <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
                                 <h6>@job.ProvinceName</h6>
                                 <p>@job.Description</p>
-                                <h5>Job Nature: Full time</h5>
+                                <h5>Job Nature: @job.Time.Name</h5>
                                 <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
                                 <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
-                                <a href="#" class="btns text-uppercase">Apply job</a>
+                                <a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
                             </div>
                         }
                     </div>

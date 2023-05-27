@@ -38,7 +38,7 @@ namespace JobPortal.Data.DataContext
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CVConfiguration());
             modelBuilder.ApplyConfiguration(new JobConfiguration());
-            //modelBuilder.ApplyConfiguration(new JobSkillConfiguration());
+            modelBuilder.ApplyConfiguration(new JobSkillConfiguration());
             modelBuilder.ApplyConfiguration(new ProvinceConfiguration());
             modelBuilder.ApplyConfiguration(new SkillConfiguration());
             modelBuilder.ApplyConfiguration(new TimeConfiguration());
@@ -59,7 +59,7 @@ namespace JobPortal.Data.DataContext
         public DbSet<Category> Categories { get; set; }
         public DbSet<CV> CVs { get; set; }
         public DbSet<Job> Jobs { get; set; }
-        //public DbSet<JobSkill> JobSkills { get; set; }
+        public DbSet<JobSkill> JobSkills { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Time> Times { get; set; }

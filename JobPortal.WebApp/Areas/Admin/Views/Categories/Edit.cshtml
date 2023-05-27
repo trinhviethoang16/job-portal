@@ -5,13 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <h1 class="card-header">Edit Category</h1>
         <div class="card-body">
-
             <div class="row">
                 <div class="col-md-4">
                     <form asp-action="Edit">
@@ -27,7 +24,7 @@
                             <input asp-for="Description" class="form-control" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
-                        <br/>
+                        <br />
                         <div class="form-group">
                             <input type="submit" value="Save" class="btn btn-primary" />
                         </div>
@@ -43,5 +40,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

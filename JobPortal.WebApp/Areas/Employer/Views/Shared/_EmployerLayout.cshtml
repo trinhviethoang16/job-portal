@@ -28,7 +28,7 @@
       class="light-style layout-menu-fixed"
       dir="ltr"
       data-theme="theme-default"
-      @*data-assets-path="~/assets/admin/assets"*@
+@*data-assets-path="~/assets/admin/assets"*@
       data-template="vertical-menu-template-free">
 <head>
     <meta charset="utf-8" />
@@ -77,7 +77,6 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
-
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a asp-controller="Home" asp-action="Index" class="app-brand-link">
@@ -124,8 +123,6 @@
                                 </g>
                             </svg>
                         </span>
-
-
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">Employer Site</span>
                     </a>
 
@@ -139,25 +136,25 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a asp-controller="Home" asp-action="Index" class="menu-link">
+                        <a href="/employer/index" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
 
                     <!-- Contents -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Contents</span></li>
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Management</span></li>
                     <li class="menu-item">
-                        <a asp-controller="Jobs" asp-action="Index" class="menu-link">
+                        <a href="/employer/job" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Jobs Management</div>
+                            <div data-i18n="Tables">Jobs</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
-                        <a @*asp-controller="Applicant" asp-action="Index"*@ class="menu-link">
+                        <a href="/employer/applicant" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Applicants Management</div>
+                            <div data-i18n="Tables">Applicants</div>
                         </a>
                     </li>
 
@@ -182,8 +179,6 @@
                 </ul>
             </aside>
             <!-- / Menu -->
-
-
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
@@ -286,7 +281,6 @@
                 <!-- / Navbar -->
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
-
 
                     <!-- Start Render Body -->
                     @RenderBody()

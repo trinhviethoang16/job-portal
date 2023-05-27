@@ -31,16 +31,11 @@ namespace JobPortal.Data.ViewModel
         public int? Age { get; set; }
 
         [Display(Name = "Số điện thoại")]
-		[StringLength(12, ErrorMessage = "Quá nhiều kí tự.", MinimumLength = 9)]
-		public string? Phone { get; set; }
+        [StringLength(12, ErrorMessage = "Quá nhiều kí tự.", MinimumLength = 9)]
+        public string? Phone { get; set; }
 
-		[Display(Name = "Địa chỉ")]
-		[StringLength(200, ErrorMessage = "Địa chỉ không thể quá 200 kí tự.")]
-		public string? Address { get; set; }
-
-
-        //Role
-		//public bool? SetRole { get; set; } //0 is User, 1 is Employer
-		//public bool? IsAdmin { get; set; } //0 for default value, 1 only for Admin account
-	}
+        [Display(Name = "Địa chỉ")]
+        [StringLength(200, ErrorMessage = "Địa chỉ không thể quá 200 kí tự.")]
+        public string? Address { get; set; }
+    }
 }

@@ -7,30 +7,30 @@
                 <h1 class="text-white">
                     <span>1500+</span> Jobs posted last week
                 </h1>
-                <ng-form action="~/assets/user/search.html" class="serach-form-area">
+                <ng-form action="../assets/user/search.html" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+                            <input type="text" class="form-control" name="search" placeholder="what are you looking for ?">
                         </div>
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects" ">
                                 <select>
-                                    <option value="1">Select area</option>
-                                    <option value="2">Dhaka</option>
-                                    <option value="3">Rajshahi</option>
-                                    <option value="4">Barishal</option>
-                                    <option value="5">Noakhali</option>
+                                    <option>Select area</option>
+                            @foreach (var province in ViewBag.FilterProvinces)
+                            {
+                                        <option value="@province.Id">@province.Name</option>
+                            }
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects2">
                                 <select>
-                                    <option value="1">All Category</option>
-                                    <option value="2">Medical</option>
-                                    <option value="3">Technology</option>
-                                    <option value="4">Goverment</option>
-                                    <option value="5">Development</option>
+                                    <option>Select category</option>
+                            @foreach (var cate in ViewBag.FilterCategories)
+                            {
+                                        <option value="@cate.Id">@cate.Name</option>
+                            }
                                 </select>
                             </div>
                         </div>
@@ -47,7 +47,6 @@
     </div>
 </section>
 <!-- End banner Area -->
-
 <!--Category-->
 <!-- Start features Area -->
 <section class="features-area">
@@ -73,20 +72,20 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="active-popular-post-carusel">
-            @foreach (var job in ViewBag.ListJobs)
-            {
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img href="/Job/@job.Slug" class="img-fluid" src="../assets/user/img/p1.png" alt="">
-                        <a class="btns text-uppercase" href="/Job/@job.Slug">view job</a>
+                            @foreach (var job in ViewBag.ListJobs)
+                            {
+                    <div class="single-popular-post d-flex flex-row">
+                        <div class="thumb">
+                            <img href="/job/@job.Slug" class="img-fluid" src="../assets/user/img/p1.png" alt="">
+                            <a class="btns text-uppercase" href="/job/@job.Slug">View job</a>
+                        </div>
+                        <div class="details">
+                            <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
+                            <h6>@job.ProvinceName</h6>
+                            <p>@job.Description</p>
+                        </div>
                     </div>
-                    <div class="details">
-                        <a href="/Job/@job.Slug"><h4>@job.Name</h4></a>
-                        <h6>@job.ProvinceName</h6>
-                        <p>@job.Description</p>
-                    </div>
-                </div>
-            }
+                            }
             </div>
         </div>
     </div>
@@ -105,8 +104,8 @@
             </div>
         </div>
         <div class="row">
-            @foreach (var job in ViewBag.ListSkills)
-            {
+                            @foreach (var job in ViewBag.ListSkills)
+                            {
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
                         <a href="../assets/user/category.html">
@@ -115,7 +114,7 @@
                         <p>@job.Name</p>
                     </div>
                 </div>
-            }
+                            }
         </div>
     </div>
 </section>
@@ -132,26 +131,26 @@
             </div>
         </div>
         <div class="row">
-        @foreach (var emp in ViewBag.ListEmployers)
-        {
-            <div class='col-xs-16 col-3'>
-                <a asp-action="index">
-                    <div class="card">
-                        <img class="card-img card-img-top" src="../assets/user/img/o1.png" alt="Card image" height='200' width='200'>
-                        <div class='card-body'>
-                            <h4 class='card-title text-center'>@emp.FullName</h4>
-                            <footer class='card-text text-center'>
-                                <span>
-                                    <span> @emp.Address </span>
-                                    <span>&nbsp;-&nbsp;</span>
-                                </span>
-                                <span>@emp.Address</span>
-                            </footer>
+                            @foreach (var emp in ViewBag.ListEmployers)
+                            {
+                <div class='col-xs-16 col-3'>
+                    <a asp-action="index">
+                        <div class="card">
+                            <img class="card-img card-img-top" src="../assets/user/img/o1.png" alt="Card image" height='200' width='200'>
+                            <div class='card-body'>
+                                <h4 class='card-title text-center'>@emp.FullName</h4>
+                                <footer class='card-text text-center'>
+                                    <span>
+                                        <span> @emp.Address </span>
+                                        <span>&nbsp;-&nbsp;</span>
+                                    </span>
+                                    <span>@emp.Address</span>
+                                </footer>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-        }
+                    </a>
+                </div>
+                            }
         </div>
     </div>
 </section>

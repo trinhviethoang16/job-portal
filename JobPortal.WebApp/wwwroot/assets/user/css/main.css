@@ -2562,7 +2562,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .post-list .cat-list li {
   text-align: center;
   margin-right: 10px;
-  width: 100px;
+  width: auto;
   display: inline-block;
   background-color: #fff;
   border: 1px solid #eee;

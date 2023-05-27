@@ -6,6 +6,6 @@
         public string Name { get; set; }
         public string Slug { get; set; }
         public int? ParentId { set; get; }
-        public List<Job> Jobs { get; set; }
+        public List<Job>? Jobs { get; set; }
     }
 }

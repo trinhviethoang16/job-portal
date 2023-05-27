@@ -7,7 +7,6 @@
     <div class="card">
         <h1 style="text-align:center" class="card-header">Table of Provinces</h1>
         <div class="card-body">
-            
             <a asp-action="Create" class="btn btn-primary">Create New</a>
             <p> <br /></p>
             <div class="table-responsive text-nowrap">
@@ -26,7 +25,6 @@
                             <th>
                                 Actions
                             </th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -36,14 +34,12 @@
                                 <td>
                                     <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@Html.DisplayFor(modelItem => item.Id)</strong>
                                 </td>
-
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ParentID)
                                 </td>
-
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -56,46 +52,11 @@
                                         </div>
                                     </div>
                                 </td>
-
                             </tr>
                         }
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParentID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParentID)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-*@

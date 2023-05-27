@@ -9,7 +9,6 @@
     <div class="card">
         <h1 class="card-header">Delete Skill</h1>
         <div class="card-body">
-
             <dl class="row">
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Name)
@@ -18,7 +17,6 @@
                     @Html.DisplayFor(model => model.Name)
                 </dd>
             </dl>
-
             <form asp-action="Delete">
                 <input type="hidden" asp-for="Id" />
                 <input type="submit" value="Delete" class="btn btn-danger" />

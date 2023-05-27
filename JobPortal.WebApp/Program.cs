@@ -51,6 +51,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
     //options.LoginPath = "/Account/Login";
+    //options.LoginPath = "/dang-ky";
 });
 
 builder.Services.AddSession();
@@ -71,7 +72,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();;
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 
