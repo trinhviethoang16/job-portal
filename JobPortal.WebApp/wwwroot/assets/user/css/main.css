@@ -2451,7 +2451,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .single-popular-post {
   background-color: #222;
-  padding: 20px;
+  height: 200px;
+  padding: 10px;
 }
 
 .single-popular-post .details {
@@ -2477,7 +2478,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .single-popular-post .thumb img {
   margin-top: 10px;
-  margin-left: 5px;
+  /*margin-left: 5px;*/
 }
 
 .single-popular-post .btns {
@@ -2488,6 +2489,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   bottom: 22px;
   font-weight: 400;
   padding: 9px;
+  margin-left:13px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

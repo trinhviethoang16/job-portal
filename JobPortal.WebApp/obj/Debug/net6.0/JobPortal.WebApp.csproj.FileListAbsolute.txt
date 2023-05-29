@@ -545,7 +545,6 @@ D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\staticwebassets.development.json
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Areas\Employer\Views\Shared\_EmployerLayout.cshtml.rz.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutLogin.cshtml.rz.scp.css
-D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutUser.cshtml.rz.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\bundle\JobPortal.WebApp.styles.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\projectbundle\JobPortal.WebApp.bundle.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.WebApp.csproj.CopyComplete
@@ -1712,3 +1711,4 @@ E:\Code\job-portal\JobPortal.WebApp\bin\Debug\net6.0\Microsoft.Extensions.Depend
 E:\Code\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.WebApp.MvcApplicationPartsAssemblyInfo.cs
 E:\Code\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 E:\Code\source\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
