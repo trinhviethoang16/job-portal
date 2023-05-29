@@ -27,5 +27,6 @@
         public string? ImageURL { get; set; }
         public AppUser? AppUser { get; set; }
         public Guid? UserId { get; set; }
+        public virtual ICollection<Skill>? Skills { get; set; }
     }
 }

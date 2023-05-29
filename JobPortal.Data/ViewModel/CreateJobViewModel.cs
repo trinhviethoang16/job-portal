@@ -9,7 +9,6 @@ namespace JobPortal.Data.ViewModel
         public string Name { get; set; }
         public string? Description { get; set; }
         public string? ShortDescription { get; set; }
-        public string? Workplace { get; set; }
         public byte? MinAge { get; set; }
         public byte? MaxAge { get; set; }
         public int? MinSalary { get; set; }

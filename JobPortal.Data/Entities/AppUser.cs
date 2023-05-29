@@ -23,7 +23,8 @@ namespace JobPortal.Data.Entities
         public string? WebsiteURL { get; set; }
         public string? Location { get; set; }
         public bool? SetRole { get; set; }
-
+        public Category? Category { get; set; }
+        public int? CategoryId { get; set; }
         //Role
         //public AppRole? AppRole { get; set; }
         //public string? RoleName { get; set;}

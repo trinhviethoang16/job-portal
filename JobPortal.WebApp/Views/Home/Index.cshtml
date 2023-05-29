@@ -16,10 +16,10 @@
                             <div class="default-select" id="default-selects" ">
                                 <select>
                                     <option>Select area</option>
-                                    @foreach (var province in ViewBag.FilterProvinces)
-                                    {
+                            @foreach (var province in ViewBag.FilterProvinces)
+                            {
                                         <option value="@province.Id">@province.Name</option>
-                                    }
+                            }
                                 </select>
                             </div>
                         </div>
@@ -27,10 +27,10 @@
                             <div class="default-select" id="default-selects2">
                                 <select>
                                     <option>Select category</option>
-                                    @foreach (var cate in ViewBag.FilterCategories)
-                                    {
+                            @foreach (var cate in ViewBag.FilterCategories)
+                            {
                                         <option value="@cate.Id">@cate.Name</option>
-                                    }
+                            }
                                 </select>
                             </div>
                         </div>
@@ -53,15 +53,22 @@
     <div class="container">
         <div class="row">
             <!--Category-->
-            @foreach (var cate in ViewBag.ListCategories)
-            {
+                            @{
+                                int count = 0;
+                            }
+                            @foreach (var cate in ViewBag.ListCategories)
+                            {
+
                 <div class="col-lg-3 col-md-6">
                     <div class="single-feature">
                         <h4>@cate.Name</h4>
                         <p>@cate.Description</p>
                     </div>
                 </div>
-            }
+                                count++;
+                                if (count == 4) break;
+                                count = 0;
+                            }
         </div>
     </div>
 </section>
@@ -72,22 +79,20 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="active-popular-post-carusel">
-                @foreach (var job in ViewBag.ListJobs)
-                {
-                <div class="single-popular-post d-flex flex-row">
-                    <div class="thumb">
-                        <img style="width:100; height:100" href="/job/@job.Slug" src="https://localhost:7211/images/jobs/@job.ImageURL" alt="JOB IMAGE">
-                        
-                        <a class="btns text-uppercase" href="/job/@job.Slug">View job</a>
+                            @foreach (var job in ViewBag.ListJobs)
+                            {
+                    <div class="single-popular-post d-flex flex-row">
+                        <div class="thumb">
+                            <img href="/job/@job.Slug" class="img-fluid" src="https://localhost:7211/images/jobs/@job.ImageURL" alt="JOB IMAGE" height='70' width='70'>
+                            <a class="btns text-uppercase" href="/job/@job.Slug">View job</a>
+                        </div>
+                        <div class="details">
+                            <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
+                            <h6>@job.ProvinceName</h6>
+                            <p>@job.Description</p>
+                        </div>
                     </div>
-                    
-                    <div class="details">
-                        <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                        <h6>@job.ProvinceName</h6>
-                        <p>@job.Description</p>
-                    </div>
-                </div>
-                }
+                            }
             </div>
         </div>
     </div>
@@ -106,8 +111,8 @@
             </div>
         </div>
         <div class="row">
-            @foreach (var job in ViewBag.ListSkills)
-            {
+                            @foreach (var job in ViewBag.ListSkills)
+                            {
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
                         <a href="">
@@ -116,7 +121,7 @@
                         <p>@job.Name</p>
                     </div>
                 </div>
-            }
+                            }
         </div>
     </div>
 </section>
@@ -133,8 +138,8 @@
             </div>
         </div>
         <div class="row">
-            @foreach (var emp in ViewBag.ListEmployers)
-            {
+                            @foreach (var emp in ViewBag.ListEmployers)
+                            {
                 <div class='col-xs-16 col-3'>
                     <a asp-action="index">
                         <div class="card">
@@ -152,7 +157,7 @@
                         </div>
                     </a>
                 </div>
-            }
+                            }
         </div>
     </div>
 </section>
@@ -180,7 +185,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 download-left">
-                <img class="img-fluid" src="../assets/user/img/d1.png" alt="">
+                <img src="../assets/user/img/d1.png" alt="">
             </div>
             <div class="col-lg-6 download-right">
                 <h1>
