@@ -19,7 +19,7 @@
             </dl>
             <form asp-action="Delete">
                 <input type="hidden" asp-for="Id" />
-                <input type="submit" value="Delete" class="btn btn-danger" />
+                <input type="submit" value="Delete" class="btn btn-danger" onclick="return showConfirmation()" />
             </form>
             <br />
             <div>
@@ -28,3 +28,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showConfirmation() {
+        // Hiển thị pop-up xác nhận
+        if (confirm("Are you sure you want to delete this?")) {
+            // Nếu người dùng đồng ý, submit form
+            document.getElementById("delete-form").submit();
+            return true;
+        } else {
+            // Ngược lại, hủy yêu cầu xóa
+            return false;
+        }
+    }
+</script>

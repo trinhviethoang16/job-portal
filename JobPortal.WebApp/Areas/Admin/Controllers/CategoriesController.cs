@@ -9,12 +9,14 @@ using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using JobPortal.Common;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("admin/category")]
-    [Authorize(Roles = "Admin")]
+    
 
     public class CategoriesController : Controller
     {
@@ -67,7 +69,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         [HttpPost]
         [Route("create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Category category)
+        public async Task<IActionResult> Create(Category category)
         {
             if (ModelState.IsValid)
             {
@@ -77,6 +79,29 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             }
             return View(category);
         }
+
+        //[HttpPost]
+        //[Route("create")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(Category model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Category item = new Category()
+        //        {
+        //            Name = model.Name,
+        //            Description = model.Description,
+        //            Slug = TextHelper.ToUnsignString(model.Name).ToLower(),
+
+        //        };
+
+        //        _context.Add(item);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(model);
+        //}
+
 
         // GET: Admin/Categories/Edit/5
         [Route("edit")]
