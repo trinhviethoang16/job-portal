@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aXAaUD0n3CfKqJHuJsdRusLr/p/hNjsMBb+5uv4DE5In728IvFMiKHNN7uH6Z02aifJ2e2ob2YYfh+sPUFskZw==",
+  "dgSpecHash": "XsK0kgDSbqZ70pOjzMUC+B+kxL4vw9wd+L39o3SHmNhJ2hwGk4rdR7yzT9i9HGj8EI/PLMMwjDnqo5bb8wEHVQ==",
   "success": true,
-  "projectFilePath": "D:\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+  "projectFilePath": "D:\\DoAnCNA\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

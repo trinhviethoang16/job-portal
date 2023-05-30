@@ -48,6 +48,9 @@ namespace JobPortal.WebApp.Controllers
                 //đăng ký thành công thì chuyển trang đăng nhập
                 if (result.Succeeded)
                 {
+                    // Add role "user" cho User mới tạo
+                    await userManager.AddToRoleAsync(user, "User");
+
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction(nameof(Login));
                 }

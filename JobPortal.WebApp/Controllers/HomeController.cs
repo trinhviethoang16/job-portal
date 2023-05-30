@@ -91,6 +91,7 @@ namespace JobPortal.WebApp.Controllers
             return View();
         }
 
+        
         [Route("register-employer")]
         public async Task<IActionResult> RegisterEmployer()
         {
@@ -99,7 +100,7 @@ namespace JobPortal.WebApp.Controllers
             var user = await userManager.FindByEmailAsync(account.Email);
             var roles = await userManager.GetRolesAsync(user);
             // check role
-            if (roles.Contains("User"))
+            if (!User.IsInRole("User"))
             {
                 return RedirectToAction("accessdenied", "home");
             }
