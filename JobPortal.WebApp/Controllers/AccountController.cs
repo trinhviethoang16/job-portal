@@ -23,7 +23,7 @@ namespace JobPortal.WebApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("dang-ky")]
+        [Route("register")]
         public IActionResult Register()
         {
             return View();
@@ -31,7 +31,7 @@ namespace JobPortal.WebApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("dang-ky")]
+        [Route("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace JobPortal.WebApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("dang-nhap")]
+        [Route("login")]
         public async Task<IActionResult> Login()
         {
             return View();
@@ -69,7 +69,7 @@ namespace JobPortal.WebApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("dang-nhap")]
+        [Route("login")]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -88,7 +88,7 @@ namespace JobPortal.WebApp.Controllers
             return View(model);
         }
 
-        [Route("dang-xuat")]
+        [Route("logout")]
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Logout()

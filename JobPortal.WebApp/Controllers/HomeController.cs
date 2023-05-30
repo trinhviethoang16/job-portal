@@ -4,31 +4,61 @@ using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.WebApp.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using JobPortal.Data.ViewModel;
 
 namespace JobPortal.WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly SignInManager<AppUser> signInManager;
+        private readonly RoleManager<AppRole> roleManager;
+        private readonly UserManager<AppUser> userManager;
         private readonly DataDbContext _context;
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, DataDbContext context)
+        public HomeController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, DataDbContext dataDbContext)
         {
-            _logger = logger;
-            _context = context;
+            this.signInManager = signInManager;
+            this.roleManager = roleManager;
+            this.userManager = userManager;
+            this._context = dataDbContext;
         }
 
         public IActionResult Index()
         {
-            ViewBag.ListCategories = _context.Categories.OrderBy(c => c.Id).Take(6).ToList();
-            ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(6).ToList();
-            ViewBag.ListJobs = _context.Jobs.OrderBy(j => j.Id).Take(6).ToList();
-            //Tam thoi de yen nhu z
-            ViewBag.ListEmployers = _context.Users.OrderBy(u => u.Id).Take(4).ToList();
+            //for random value
+            var random = new Random();
+
+            //for model
+            var jobs = _context.Jobs.OrderByDescending(j => j.Id).Take(6).ToList();
+
             //For search filter area
-            ViewBag.FilterCategories = _context.Categories.OrderBy(c => c.Id).ToList();
-            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
-            return View();
+            //ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+            //ViewBag.FilterCategories = _context.Categories.OrderBy(p => p.Id).ToList();
+
+            ViewBag.ListEmployers = _context.Users.OrderBy(u => u.Id).Take(4).ToList();
+            //random categories - 4
+            var employerList = _context.Users.ToList();
+            var randomEmployers = employerList.OrderBy(e => random.Next()).Take(4).ToList();
+            ViewBag.RandomEmployers = randomEmployers;
+
+            //random categories - 4
+            var categoryList = _context.Categories.ToList();
+            var randomCategories = categoryList.OrderBy(c => random.Next()).Take(4).ToList();
+            ViewBag.RandomCategories = randomCategories;
+
+            //random jobs - 6
+            var jobList = _context.Jobs.ToList();
+            var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
+            ViewBag.RandomJobs = randomJobs;
+
+            //random skills - 6
+            var skillList = _context.Skills.ToList();
+            var randomSkills = skillList.OrderBy(s =>  random.Next()).Take(6).ToList();
+            ViewBag.RandomSkills = randomSkills;
+
+            return View(jobs);
         }
 
         [Route("about-us")]
@@ -57,6 +87,32 @@ namespace JobPortal.WebApp.Controllers
 
         [Route("elements")]
         public IActionResult Elements()
+        {
+            return View();
+        }
+
+        [Route("register-employer")]
+        public async Task<IActionResult> RegisterEmployer()
+        {
+            //Nguyen fix lai khuc nay giup t
+            var account = await userManager.GetUserAsync(User);
+            var user = await userManager.FindByEmailAsync(account.Email);
+            var roles = await userManager.GetRolesAsync(user);
+            // check role
+            if (roles.Contains("User"))
+            {
+                return RedirectToAction("accessdenied", "home");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpGet]
+        [Route("access-denied")]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
         {
             return View();
         }

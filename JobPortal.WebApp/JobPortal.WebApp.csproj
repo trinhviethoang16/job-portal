@@ -54,7 +54,6 @@
     <Folder Include="wwwroot\images\categories\" />
     <Folder Include="wwwroot\images\cvs\" />
     <Folder Include="wwwroot\images\blogs\" />
-    <Folder Include="wwwroot\images\skills\" />
   </ItemGroup>
 
 </Project>

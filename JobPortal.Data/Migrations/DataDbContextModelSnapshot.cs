@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "5cf0d02c-cc10-44f0-ae53-cb39d9408097",
+                            ConcurrencyStamp = "9eb38a32-9b6a-46b6-87ec-1d00449fee1a",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "b8fe9ed3-ca0b-4536-bbca-a3e77a618df3",
+                            ConcurrencyStamp = "01caef77-5a9e-4c21-a999-852e31cf3933",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "7864ed00-c579-4239-b953-0d8c284abefa",
+                            ConcurrencyStamp = "f9f0872b-c319-4369-be9b-8a47e03f763a",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -210,14 +210,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8bfa0c2-7bce-4f2f-b3d6-ee795ce88681",
+                            ConcurrencyStamp = "01d87786-659d-4535-a7ae-a69639717894",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM8i9sBiPf/x7BKBPg728XmEb8zAVC94oSnty1/757LUmUBp6iPZ3RRIbtguSvPLAg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG/QgJrrxT4vF2S8gcpBaSLoNO90NnrZAMtaFtBN0OJRYoktUvpyocq8EJCtFiDD1Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -303,28 +303,28 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Skill ne",
+                            Description = "an ability to do an activity",
                             Name = "Skill",
                             Slug = "skill"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Title ne",
+                            Description = "the name of a work of art",
                             Name = "Title",
                             Slug = "title"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Employer ne",
+                            Description = "an organization employs people",
                             Name = "Employer",
                             Slug = "employer"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Province ne",
+                            Description = "a principal administrative",
                             Name = "Province",
                             Slug = "province"
                         });
@@ -466,9 +466,6 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<int?>("TitleId")
                         .HasColumnType("int");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -786,7 +783,7 @@ namespace JobPortal.Data.Migrations
             modelBuilder.Entity("JobPortal.Data.Entities.Job", b =>
                 {
                     b.HasOne("JobPortal.Data.Entities.AppUser", "AppUser")
-                        .WithMany()
+                        .WithMany("Jobs")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -920,6 +917,11 @@ namespace JobPortal.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("JobPortal.Data.Entities.AppUser", b =>
+                {
+                    b.Navigation("Jobs");
                 });
 
             modelBuilder.Entity("JobPortal.Data.Entities.Category", b =>

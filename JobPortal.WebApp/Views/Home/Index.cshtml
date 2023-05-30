@@ -1,46 +1,35 @@
-﻿<!-- Start banner Area -->
+﻿@model IEnumerable<JobPortal.Data.Entities.Job>
+
+@{
+    Layout = "_Layout";
+}
+
+<!-- Start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
-        <div class="row fullscreen d-flex align-items-center justify-content-center">
+        <div class="row search-page-top d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    <span>1500+</span> Jobs posted last week
+                    <span>@Model.Count()+</span> Jobs posted last week
                 </h1>
-                <ng-form action="../assets/user/search.html" class="serach-form-area">
+                <!--Search area-->
+                <form class="serach-form-area" method="get" asp-controller="Search" asp-action="Index">
                     <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looking for ?">
+                        <div class="col-xs-16 col-8 form-cols">
+                            <label for="inputPassword2" class="sr-only">Password</label>
+                            <input type="text" class="form-control" id="inputPassword2" placeholder="what are you looking for ?" name="q" value="@if (ViewBag.q != null)
+                            {<text>@ViewBag.q</text>}">
+                            <input type="hidden" name="catelog" value="@if (ViewBag.Category != null)
+                            {<text>@ViewBag.Category.Slug</text>}">
                         </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects" ">
-                                <select>
-                                    <option>Select area</option>
-                            @foreach (var province in ViewBag.FilterProvinces)
-                            {
-                                        <option value="@province.Id">@province.Name</option>
-                            }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option>Select category</option>
-                            @foreach (var cate in ViewBag.FilterCategories)
-                            {
-                                        <option value="@cate.Id">@cate.Name</option>
-                            }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 form-cols">
-                            <button type="button" class="btn btn-info">
+                        <div class="col-xs-16 col-2 form-cols">
+                            <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
                                 <span class="lnr lnr-magnifier"></span> Search
                             </button>
                         </div>
                     </div>
-                </ng-form>
+                </form>
                 <p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
             </div>
         </div>
@@ -53,22 +42,15 @@
     <div class="container">
         <div class="row">
             <!--Category-->
-                            @{
-                                int count = 0;
-                            }
-                            @foreach (var cate in ViewBag.ListCategories)
-                            {
-
+            @foreach (var cate in ViewBag.RandomCategories)
+            {
                 <div class="col-lg-3 col-md-6">
                     <div class="single-feature">
                         <h4>@cate.Name</h4>
                         <p>@cate.Description</p>
                     </div>
                 </div>
-                                count++;
-                                if (count == 4) break;
-                                count = 0;
-                            }
+            }
         </div>
     </div>
 </section>
@@ -79,11 +61,11 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="active-popular-post-carusel">
-                            @foreach (var job in ViewBag.ListJobs)
-                            {
+                @foreach (var job in ViewBag.RandomJobs)
+                {
                     <div class="single-popular-post d-flex flex-row">
                         <div class="thumb">
-                            <img href="/job/@job.Slug" class="img-fluid" src="https://localhost:7211/images/jobs/@job.ImageURL" alt="JOB IMAGE" height='70' width='70'>
+                            <img href="/job/@job.Slug" class="img-fluid" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="JOB IMAGE" height="70" width="70">
                             <a class="btns text-uppercase" href="/job/@job.Slug">View job</a>
                         </div>
                         <div class="details">
@@ -92,7 +74,7 @@
                             <p>@job.Description</p>
                         </div>
                     </div>
-                            }
+                }
             </div>
         </div>
     </div>
@@ -111,17 +93,18 @@
             </div>
         </div>
         <div class="row">
-                            @foreach (var job in ViewBag.ListSkills)
-                            {
+            <!--6-->
+            @foreach (var skill in ViewBag.RandomSkills)
+            {
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
                         <a href="">
-                            <img src="../assets/user/img/o1.png" alt="">
+                            <img height="70" width="80" src="https://localhost:7211/images/skills/@skill.Logo" alt="">
                         </a>
-                        <p>@job.Name</p>
+                        <p>@skill.Name</p>
                     </div>
                 </div>
-                            }
+            }
         </div>
     </div>
 </section>
@@ -138,26 +121,27 @@
             </div>
         </div>
         <div class="row">
-                            @foreach (var emp in ViewBag.ListEmployers)
-                            {
-                <div class='col-xs-16 col-3'>
-                    <a asp-action="index">
-                        <div class="card">
-                            <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
-                            <div class='card-body'>
-                                <h4 class='card-title text-center'>@emp.FullName</h4>
-                                <footer class='card-text text-center'>
-                                    <span>
-                                        <span> @emp.Address </span>
-                                        <span>&nbsp;-&nbsp;</span>
-                                    </span>
-                                    <span>@emp.Address</span>
-                                </footer>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                            }
+        <!--4-->
+        @foreach (var emp in ViewBag.RandomEmployers)
+        {
+            <div class='col-xs-16 col-3'>
+                <a asp-action="index">
+                     <div class="card">
+                         <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
+                         <div class='card-body'>
+                            <h4 class='card-title text-center'>@emp.FullName</h4>
+                            <footer class='card-text text-center'>
+                                <span>
+                                    <span> @emp.Address </span>
+                                    <span>&nbsp;-&nbsp;</span>
+                                </span>
+                                <span>@emp.Address</span>
+                            </footer>
+                         </div>
+                     </div>
+                </a>
+            </div>
+        }
         </div>
     </div>
 </section>
@@ -224,3 +208,55 @@
     </div>
 </section>
 <!-- End download Area -->
+
+
+
+@*<!-- Start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-center">
+            <div class="banner-content col-lg-12">
+                <h1 class="text-white">
+                    <span>1500+</span> Jobs posted last week
+                </h1>
+                <ng-form action="../assets/user/search.html" class="serach-form-area">
+                    <div class="row justify-content-center form-wrap">
+                        <div class="col-lg-4 form-cols">
+                            <input type="text" class="form-control" name="search" placeholder="what are you looking for ?">
+                        </div>
+                        <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects" ">
+                                <select>
+                                    <option>Select area</option>
+                            @foreach (var province in ViewBag.FilterProvinces)
+                            {
+                                        <option value="@province.Id">@province.Name</option>
+                            }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects2">
+                                <select>
+                                    <option>Select category</option>
+                            @foreach (var cate in ViewBag.FilterCategories)
+                            {
+                                        <option value="@cate.Id">@cate.Name</option>
+                            }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 form-cols">
+                            <button type="button" class="btn btn-info">
+                                <span class="lnr lnr-magnifier"></span> Search
+                            </button>
+                        </div>
+                    </div>
+                </ng-form>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->*@
