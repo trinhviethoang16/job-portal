@@ -31,14 +31,13 @@ namespace JobPortal.WebApp.Controllers
             var random = new Random();
 
             //for model
-            var jobs = _context.Jobs.OrderByDescending(j => j.Id).Take(6).ToList();
+            var jobs = _context.Jobs.ToList();
 
             //For search filter area
             //ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
             //ViewBag.FilterCategories = _context.Categories.OrderBy(p => p.Id).ToList();
 
-            ViewBag.ListEmployers = _context.Users.OrderBy(u => u.Id).Take(4).ToList();
-            //random categories - 4
+            //random employers - 4
             var employerList = _context.Users.ToList();
             var randomEmployers = employerList.OrderBy(e => random.Next()).Take(4).ToList();
             ViewBag.RandomEmployers = randomEmployers;
@@ -48,15 +47,15 @@ namespace JobPortal.WebApp.Controllers
             var randomCategories = categoryList.OrderBy(c => random.Next()).Take(4).ToList();
             ViewBag.RandomCategories = randomCategories;
 
-            //random jobs - 6
-            var jobList = _context.Jobs.ToList();
-            var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
-            ViewBag.RandomJobs = randomJobs;
-
             //random skills - 6
             var skillList = _context.Skills.ToList();
-            var randomSkills = skillList.OrderBy(s =>  random.Next()).Take(6).ToList();
+            var randomSkills = skillList.OrderBy(s => random.Next()).Take(6).ToList();
             ViewBag.RandomSkills = randomSkills;
+
+            //random jobs - 6
+            var jobList = _context.Jobs.Include(j => j.Province).ToList();
+            var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
+            ViewBag.RandomJobs = randomJobs;
 
             return View(jobs);
         }
@@ -91,11 +90,10 @@ namespace JobPortal.WebApp.Controllers
             return View();
         }
 
-        
+
         [Route("register-employer")]
         public async Task<IActionResult> RegisterEmployer()
         {
-            //Nguyen fix lai khuc nay giup t
             var account = await userManager.GetUserAsync(User);
             var user = await userManager.FindByEmailAsync(account.Email);
             var roles = await userManager.GetRolesAsync(user);

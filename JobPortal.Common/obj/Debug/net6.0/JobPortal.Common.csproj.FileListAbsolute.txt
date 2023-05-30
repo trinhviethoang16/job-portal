@@ -46,3 +46,15 @@ D:\DoAnCNA\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.dll
 D:\DoAnCNA\job-portal\JobPortal.Common\obj\Debug\net6.0\refint\JobPortal.Common.dll
 D:\DoAnCNA\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.pdb
 D:\DoAnCNA\job-portal\JobPortal.Common\obj\Debug\net6.0\ref\JobPortal.Common.dll
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\bin\Debug\net6.0\JobPortal.Common.deps.json
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\bin\Debug\net6.0\JobPortal.Common.dll
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\bin\Debug\net6.0\JobPortal.Common.pdb
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.AssemblyInfo.cs
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.dll
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\refint\JobPortal.Common.dll
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\JobPortal.Common.pdb
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Common\obj\Debug\net6.0\ref\JobPortal.Common.dll

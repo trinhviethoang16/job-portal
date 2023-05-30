@@ -13,24 +13,16 @@
                 <h1 class="text-white">
                     <span>@Model.Count()+</span> Jobs posted last week
                 </h1>
-                <!--Search area-->
-                <form class="serach-form-area" method="get" asp-controller="Search" asp-action="Index">
-                    <div class="row justify-content-center form-wrap">
-                        <div class="col-xs-18 col-7 form-cols">
-                            <label for="inputPassword2" class="sr-only">Password</label>
-                            <input type="text" class="form-control" id="inputPassword2" placeholder="what are you looking for ?" name="q" value="@if (ViewBag.q != null)
-                            {<text>@ViewBag.q</text>}">
-                            <input type="hidden" name="catelog" value="@if (ViewBag.Category != null)
-                            {<text>@ViewBag.Category.Slug</text>}">
-                        </div>
-                        <div class="col-xs-18 col-3 form-cols">
-                            <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
-                                <span class="lnr lnr-magnifier"></span> Search
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
+                <!--Search box-->
+                @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
+                @if(ViewBag.q == null)
+                {
+                    <p style="font-size: 20px" class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
+                }
+                else
+                {
+                     <p style="font-size: 20px" class="text-white"><span>@Model.Count()</span> Results found for <span>"@ViewBag.q"</span></p>
+                }
             </div>
         </div>
     </div>
@@ -70,7 +62,7 @@
                         </div>
                         <div class="details">
                             <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                            <h6>@job.ProvinceName</h6>
+                            <h6>@job.Province.Name</h6>
                             <p>@job.Description</p>
                         </div>
                     </div>
@@ -79,7 +71,6 @@
         </div>
     </div>
 </section>
-
 <!--Skill categories-->
 <!-- Start feature-cat Area -->
 <section class="feature-cat-area pt-100" id="category">
@@ -121,27 +112,27 @@
             </div>
         </div>
         <div class="row">
-        <!--4-->
-        @foreach (var emp in ViewBag.RandomEmployers)
-        {
-            <div class='col-xs-16 col-3'>
-                <a asp-action="index">
-                     <div class="card">
-                         <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
-                         <div class='card-body'>
-                            <h4 class='card-title text-center'>@emp.FullName</h4>
-                            <footer class='card-text text-center'>
-                                <span>
-                                    <span> @emp.Address </span>
-                                    <span>&nbsp;-&nbsp;</span>
-                                </span>
-                                <span>@emp.Address</span>
-                            </footer>
-                         </div>
-                     </div>
-                </a>
-            </div>
-        }
+            <!--4-->
+            @foreach (var emp in ViewBag.RandomEmployers)
+            {
+                <div class='col-xs-16 col-3'>
+                    <a asp-action="index">
+                        <div class="card">
+                            <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
+                            <div class='card-body'>
+                                <h4 class='card-title text-center'>@emp.FullName</h4>
+                                <footer class='card-text text-center'>
+                                    <span>
+                                        <span> @emp.Address </span>
+                                        <span>&nbsp;-&nbsp;</span>
+                                    </span>
+                                    <span>@emp.Address</span>
+                                </footer>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </section>
@@ -208,9 +199,6 @@
     </div>
 </section>
 <!-- End download Area -->
-
-
-
 @*<!-- Start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>

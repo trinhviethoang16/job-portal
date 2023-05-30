@@ -18,13 +18,24 @@ namespace JobPortal.WebApp.Controllers
         [Route("")]
         public async Task<IActionResult> Index(string q)
         {
-            ViewBag.ListJobs = _context.Jobs.OrderBy(p => p.Id).Take(6).ToList();
-            ViewBag.ListSkills = _context.Skills.OrderBy(s => s.Id).Take(10).ToList();
-            ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
-            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
-            ViewBag.q = q;
+			//for random value
+			var random = new Random();
 
-            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).ToListAsync();
+			//random jobs - 6
+			var jobList = _context.Jobs.Include(j => j.Province).ToList();
+			var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
+			ViewBag.ListJobs = randomJobs;
+
+			//random skills - 10
+			var skillList = _context.Skills.ToList();
+			var randomSkills = skillList.OrderBy(s => random.Next()).Take(10).ToList();
+			ViewBag.ListSkills = randomSkills;
+
+			ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
+
+            ViewBag.q = q;
+            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).Include(j => j.AppUser).ToListAsync();
 
             if (q != null)
             {
@@ -32,7 +43,7 @@ namespace JobPortal.WebApp.Controllers
                 return View(jobs);
             }
 
-            jobs = await _context.Jobs.OrderByDescending(j => j.Id).ToListAsync();
+            jobs = await _context.Jobs.OrderByDescending(j => j.Id).Include(j => j.AppUser).ToListAsync();
             return View(jobs);
         }
 

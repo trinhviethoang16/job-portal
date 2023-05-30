@@ -26,7 +26,7 @@
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
 					<div class="thumb">
-						<img height="70" width="100" src="https://localhost:7211/images/jobs/@Model.ImageURL" alt="EMPLOYER IMAGE">
+						<img height="100" width="120" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
 						<ul class="tags">
 							<!--Job skill area-->
 							<li>
@@ -44,7 +44,7 @@
 						<div class="title d-flex flex-row justify-content-between">
 							<div class="titles">
 								<a href="#"><h4>@Model.Name</h4></a>
-								<h6>@Model.ProvinceName</h6>
+								<h6>@Model.Province.Name</h6>
 							</div>
 						</div>
 						<p>@Model.Description</p>
@@ -149,7 +149,7 @@
 							<div class="single-rated">
 								<img href="/job/@job.Slug" class="img-fluid" src="../assets/user/img/r1.jpg" alt="">
 								<a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-								<h6>@job.ProvinceName</h6>
+								<h6>@job.Province.Name</h6>
 								<p>@job.Description</p>
 								<h5>Job Nature: @job.Time.Name</h5>
 								<p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>

@@ -16,24 +16,16 @@
                 <p class="text-white link-nav">
                     <a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="#"> Job searching page</a>
                 </p>
-                <!--Search area-->
-                <form class="serach-form-area" method="get" asp-action="Index">
-                    <div class="row justify-content-center form-wrap">
-                        <div class="col-xs-16 col-8 form-cols">
-                            <label for="inputPassword2" class="sr-only">Password</label>
-                            <input type="text" class="form-control" id="inputPassword2" placeholder="what are you looking for ?" name="q" value="@if(ViewBag.q!= null) {
-                            <text>@ViewBag.q</text>}">
-                            <input type="hidden" name="catelog" value="@if(ViewBag.Category != null) {
-                            <text>@ViewBag.Category.Slug</text>}">
-                        </div>
-                        <div class="col-xs-16 col-2 form-cols">
-                            <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
-                                <span class="lnr lnr-magnifier"></span> Search
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <p class="text-white">@Model.Count() Results found for <span>"@ViewBag.q"</span></p>
+                <!--Search box-->
+                @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
+                @if(ViewBag.q == null)
+                {
+                    <p style="font-size: 20px" class="text-white"><span>@Model.Count()</span> IT Jobs For <span> Developers</span></p>
+                }
+                else
+                {
+                     <p style="font-size: 20px" class="text-white"><span>@Model.Count()</span> Results found for <span>"@ViewBag.q"</span></p>
+                }
             </div>
         </div>
     </div>
@@ -50,7 +42,7 @@
                     <div class="single-post d-flex flex-row">
                         <!--Job skill list-->
                         <div class="thumb">
-                            <img height="55" width="100" src="https://localhost:7211/images/jobs/@job.ImageURL" alt="EMPLOYER IMAGE">
+                            <img href="/job/@job.Slug" height="100" width="120" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
                             <ul class="tags">
                                 <!--Job skill area-->
                                 <li>
@@ -69,7 +61,7 @@
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
                                     <a href="/job/@job.Slug"><h4> @job.Name</h4></a>
-                                    <h6>@job.ProvinceName</h6>
+                                    <h6>@job.Province.Name</h6>
                                 </div>
                                 <ul class="btns">
                                     <li><a href="/job/@job.Slug"><span class="lnr lnr-heart"></span></a></li>
@@ -84,113 +76,15 @@
                     </div>
                 }
                 <!--End job list-->
+
                 <!--Load more jobs-->
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="../assets/user/category.html">Load More job Posts</a>
+                @*<a class="text-uppercase loadmore-btn mx-auto d-block" href="../assets/user/category.html">Load More job Posts</a>*@
 
             </div>
-            <div class="col-lg-4 sidebar">
-                <div class="single-slidebar">
-                    <!--Province-->
-                    <h4>Jobs by Location</h4>
-                    <ul class="cat-list">
-                        @foreach (var pro in ViewBag.ListProvinces)
-                        {
-                            <li><a class="justify-content-between d-flex" href="#"><p>@pro.Name</p><span>@pro.Id</span></a></li>
-                        }
-                    </ul>
-                </div>
-                <div class="single-slidebar">
-                    <!--Popular-->
-                    <h4>Top rated job posts</h4>
-                    <div class="active-relatedjob-carusel">
-                        @foreach (var job in ViewBag.ListJobs)
-                        {
-                            <div class="single-rated">
-                                <img href="/job/@job.Slug" class="img-fluid" src="../assets/user/img/r1.jpg" alt="">
-                                <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                                <h6>@job.ProvinceName</h6>
-                                <p>@job.Description</p>
-                                <h5>Job Nature: @job.Time.Name</h5>
-                                <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
-                                <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
-                                <a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
-                            </div>
-                        }
-                    </div>
-                </div>
-                <div class="single-slidebar">
-                    <!--Skill-->
-                    <h4>Jobs by Skill</h4>
-                    <ul class="cat-list">
-                        @foreach (var skill in ViewBag.ListSkills)
-                        {
-                            <li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>123</span></a></li>
-                        }
-                    </ul>
-                </div>
-                <div class="single-slidebar">
-                    <h4>Carrer Advice Blog</h4>
-                    <div class="blog-list">
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <!-- Sidebar -->
+            @Html.Partial("../Shared/_SidebarPartial.cshtml")
+
         </div>
     </div>
 </section>

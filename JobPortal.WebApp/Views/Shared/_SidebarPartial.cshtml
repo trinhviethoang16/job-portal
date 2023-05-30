@@ -1,0 +1,103 @@
+﻿<div class="col-lg-4 sidebar">
+    <div class="single-slidebar">
+        <!--Province-->
+        <h4>Jobs by Location</h4>
+        <ul class="cat-list">
+            @foreach (var pro in ViewBag.ListProvinces)
+            {
+                <li><a class="justify-content-between d-flex" href="#"><p>@pro.Name</p><span>@pro.Id</span></a></li>
+            }
+        </ul>
+    </div>
+    <div class="single-slidebar">
+        <!--Popular-->
+        <h4>Top rated job posts</h4>
+        <div class="active-relatedjob-carusel">
+            @foreach (var job in ViewBag.ListJobs)
+            {
+                <div class="single-rated">
+                    <img href="/job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
+                    <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
+                    <h6>@job.Province.Name</h6>
+                    <p>@job.Description</p>
+                    <h5>Job Nature: @job.Time.Name</h5>
+                    <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+                    <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+                    <a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="single-slidebar">
+        <!--Skill-->
+        <h4>Jobs by Skill</h4>
+        <ul class="cat-list">
+            @foreach (var skill in ViewBag.ListSkills)
+            {
+                <li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>123</span></a></li>
+            }
+        </ul>
+    </div>
+    <div class="single-slidebar">
+        <h4>Carrer Advice Blog</h4>
+        <div class="blog-list">
+            <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                <a href="#">
+                    <h4>
+                        Home Audio Recording <br>
+                        For Everyone
+                    </h4>
+                </a>
+                <div class="meta justify-content-between d-flex">
+                    <p>
+                        02 Hours ago
+                    </p>
+                    <p>
+                        <span class="lnr lnr-heart"></span>
+                        06
+                        <span class="lnr lnr-bubble"></span>
+                        02
+                    </p>
+                </div>
+            </div>
+            <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
+                <a href="#">
+                    <h4>
+                        Home Audio Recording <br>
+                        For Everyone
+                    </h4>
+                </a>
+                <div class="meta justify-content-between d-flex">
+                    <p>
+                        02 Hours ago
+                    </p>
+                    <p>
+                        <span class="lnr lnr-heart"></span>
+                        06
+                        <span class="lnr lnr-bubble"></span>
+                        02
+                    </p>
+                </div>
+            </div>
+            <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                <a href="#">
+                    <h4>
+                        Home Audio Recording <br>
+                        For Everyone
+                    </h4>
+                </a>
+                <div class="meta justify-content-between d-flex">
+                    <p>
+                        02 Hours ago
+                    </p>
+                    <p>
+                        <span class="lnr lnr-heart"></span>
+                        06
+                        <span class="lnr lnr-bubble"></span>
+                        02
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,7 +19,6 @@
         public int? Popular { get; set; }
         public Province? Province { get; set; }
         public int? ProvinceId { get; set; }
-        public string? ProvinceName { get; set; }
         public Time? Time { get; set; }
         public int? TimeId { get; set; }
         public int? MinSalary { get; set; }
