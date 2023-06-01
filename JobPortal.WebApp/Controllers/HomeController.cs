@@ -90,32 +90,6 @@ namespace JobPortal.WebApp.Controllers
             return View();
         }
 
-
-        [Route("register-employer")]
-        public async Task<IActionResult> RegisterEmployer()
-        {
-            var account = await userManager.GetUserAsync(User);
-            var user = await userManager.FindByEmailAsync(account.Email);
-            var roles = await userManager.GetRolesAsync(user);
-            // check role
-            if (!User.IsInRole("User"))
-            {
-                return RedirectToAction("accessdenied", "home");
-            }
-            else
-            {
-                return View();
-            }
-        }
-
-        [HttpGet]
-        [Route("access-denied")]
-        [AllowAnonymous]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();

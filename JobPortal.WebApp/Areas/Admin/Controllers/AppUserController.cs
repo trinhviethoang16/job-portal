@@ -45,6 +45,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             { "userId", user.Id.ToString()},
             { "UserName", user.UserName },
             { "Email", user.Email },
+            { "Avatar", user.UrlAvatar },
             { "RoleNames", string.Join(", ", roleNames) }
 
         });

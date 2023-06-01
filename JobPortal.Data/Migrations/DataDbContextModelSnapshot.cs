@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "09435573-3ee4-490c-b053-df7a2af868ed",
+                            ConcurrencyStamp = "3d8a63a6-6ba4-43f7-894f-3f267581650d",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "fd9f6644-ca3e-4a7a-9ad2-e692fff81ace",
+                            ConcurrencyStamp = "dcf46a0f-8f3d-4db0-8d7b-c226f5027545",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "b4abf04b-5db9-49c7-a044-d2325b4dc20e",
+                            ConcurrencyStamp = "44a18fc0-2094-4060-8d0f-fc3639adb872",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -178,6 +178,9 @@ namespace JobPortal.Data.Migrations
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -210,14 +213,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "88f98ffd-9499-4c88-957e-43436a6514b6",
+                            ConcurrencyStamp = "3569babb-27e4-400a-a190-4bac249dbc09",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGB6oEh6xgvIroN84BDSuxSWU0V6X6E0sy5TvUTjoxRG3TdddWZEfdVw0bf2d3YAUw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ3OsLWQjt26cHb+liWs45J9OYU+nMpNaMrq1R5IOic25NQ+Qlf78P+9WFSxP2C2aw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

@@ -22,6 +22,9 @@
                                         Email
                                     </th>
                                     <th>
+                                        Avatar
+                                    </th>
+                                    <th>
                                         Role
                                     </th>
                                     <th></th>
@@ -33,6 +36,7 @@
                                     <tr>
                                         <td>@user["UserName"]</td>
                                         <td>@user["Email"]</td>
+                                        <td><img src="https://localhost:7211/images/employers/@user["Avatar"]" style="width: 40px" /></td>
                                         <td>@user["RoleNames"]</td>
                                         <td>
                                             <a asp-action="ManageUserRoles" asp-route-userId="@user["userId"]">Set Role</a>

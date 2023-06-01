@@ -65,7 +65,7 @@ namespace JobPortal.WebApp.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("login")]
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             return View();
         }
@@ -86,7 +86,6 @@ namespace JobPortal.WebApp.Controllers
                 {
                     return RedirectToAction("index", "home");
                 }
-
             }
             return View(model);
         }

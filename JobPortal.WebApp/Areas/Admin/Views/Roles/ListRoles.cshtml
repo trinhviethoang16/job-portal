@@ -41,7 +41,7 @@
                                             @Html.DisplayFor(modelItem => item.Description)
                                         </td>
                                         <td>
-                                            <a asp-action="EditRole" asp-route-Id="@item.Id">Edit</a>
+                                            <a class="btn btn-primary" asp-action="EditRole" asp-route-Id="@item.Id">Edit</a>
                                             <a style="background-color: darkred" class="btn btn-primary" asp-action="DeleteRole" asp-route-Id="@item.Id">Delete</a>
                                             @*<input type="submit" class="text-danger" onclick="deleteItem('@item.Id')" style="background: transparent; border: none; font-weight: 700; " value="Delete" />*@
                                         </td>

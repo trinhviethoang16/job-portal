@@ -11,6 +11,10 @@
         public int? TitleId { get; set; }
         public string? Description { get; set; }
         public string? ShortDescription { get; set; }
+        //public string? Desc_ObjectTarget { get; set; }
+        //public string? Desc_Experience { get; set; }
+        //public string? Desc_JobFeatures { get; set; }
+        //public string? Desc_Education { get; set; }
         public DateTime? CreateDate { get; set; }
         public byte? MinAge { get; set; }
         public byte? MaxAge { get; set; }

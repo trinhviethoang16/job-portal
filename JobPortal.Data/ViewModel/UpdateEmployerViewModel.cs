@@ -6,10 +6,15 @@ namespace JobPortal.Data.ViewModel
 {
     public class UpdateEmployerViewModel
     {
-		public IFormFile? Logo { get; set; }
-		public string? City { get; set; }
-		public string? Contact { get; set; }
+        [Display(Name = "Full name")]
+        public string? FullName { get; set; }
+        
+        public string? Description { get; set; }
+        public string? Contact { get; set; }
+
+        [Display(Name = "Logo")]
+        public IFormFile? UrlAvatar { get; set; }
+        public string? Location { get; set; }
 		public string? WebsiteURL { get; set; }
-		public string? Location { get; set; }
 	}
 }

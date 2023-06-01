@@ -216,12 +216,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/AboutUs.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcQWNjZXNzRGVuaWVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/AccessDenied.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW5pZWQuY3NodG1s
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Fail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcRmFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcU3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/Blog.cshtml]
@@ -246,10 +258,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/RegisterEmployer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlckVtcGxveWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Views/Job/Detail.cshtml]
