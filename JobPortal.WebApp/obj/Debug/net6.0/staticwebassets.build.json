@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OV5y7PRweJQW1B7EAIv5Kctu2xdQmgBNK2f+7SOM2XE=",
+  "Hash": "HxHodAVGnYx031lbqhxVvxY8fLVZqmLtvPDjIPnL33U=",
   "Source": "JobPortal.WebApp",
   "BasePath": "_content/JobPortal.WebApp",
   "Mode": "Default",
@@ -7293,23 +7293,6 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\0f1fd5e2-d326-43d3-9872-71290fa0a765.jpg",
-      "SourceId": "JobPortal.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\",
-      "BasePath": "_content/JobPortal.WebApp",
-      "RelativePath": "images/employers/0f1fd5e2-d326-43d3-9872-71290fa0a765.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\employers\\0f1fd5e2-d326-43d3-9872-71290fa0a765.jpg"
-    },
-    {
       "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\1fc3d75e-b020-4f8a-b7eb-c8fe0719a7e8.jpg",
       "SourceId": "JobPortal.WebApp",
       "SourceType": "Discovered",
@@ -7342,23 +7325,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\employers\\39a212de-1134-4454-8e48-33597ea5c2f9.jpg"
-    },
-    {
-      "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\41644be6-4af8-428c-b0d8-00cddbfc99a9.jpg",
-      "SourceId": "JobPortal.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\",
-      "BasePath": "_content/JobPortal.WebApp",
-      "RelativePath": "images/employers/41644be6-4af8-428c-b0d8-00cddbfc99a9.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\employers\\41644be6-4af8-428c-b0d8-00cddbfc99a9.jpg"
     },
     {
       "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\6116a0a9-cba7-4308-82df-9f1708fe4f7f.jpg",
@@ -7444,23 +7410,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\employers\\ce905c42-93e4-4b44-a6c1-d87b498f1de8.jpg"
-    },
-    {
-      "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\deff308b-5947-4e5e-a24b-0e7eb0a91c70.jpg",
-      "SourceId": "JobPortal.WebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\",
-      "BasePath": "_content/JobPortal.WebApp",
-      "RelativePath": "images/employers/deff308b-5947-4e5e-a24b-0e7eb0a91c70.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\employers\\deff308b-5947-4e5e-a24b-0e7eb0a91c70.jpg"
     },
     {
       "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\jobs\\2a58a53a-8e7b-4431-a82c-890b959406a2.jpg",

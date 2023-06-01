@@ -24,13 +24,13 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("{id}")]
-        public async Task<IActionResult> Update(Guid id)
+        public async Task<IActionResult> Register(Guid id)
         {
             var user = await _context.AppUsers.Where(u => u.Id == id).FirstAsync();
             // check role
             if (!User.IsInRole("User"))
             {
-                return RedirectToAction("accessdenied", "employer");
+                return RedirectToAction(nameof(AccessDenied));
             }
             else
             {
@@ -41,7 +41,7 @@ namespace JobPortal.WebApp.Controllers
         [Route("{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Guid id, UpdateEmployerViewModel model, string returnUrl)
+        public async Task<IActionResult> Register(Guid id, UpdateEmployerViewModel model, string returnUrl)
         {
             string POST_IMAGE_PATH = "images/employers/";
 
@@ -61,35 +61,11 @@ namespace JobPortal.WebApp.Controllers
             }
             else
             {
-                //tam thoi return ve nhu vay
                 return RedirectToAction(nameof(Fail));
             }
             return RedirectToAction(nameof(Success));
         }
 
-        //[Route("update-image/{id}")]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> UpdateImage(Guid id, IFormFile UrlImage)
-        //{
-        //    string POST_IMAGE_PATH = "images/employers/";
-
-        //    if (UrlImage != null)
-        //    {
-
-        //        var image = UploadImage.UploadImageFile(UrlImage, POST_IMAGE_PATH);
-
-        //        AppUser user = _context.AppUsers.Where(s => s.Id == id).First();
-        //        user.UrlAvatar = image;
-        //        _context.Update(user);
-        //        await _context.SaveChangesAsync();
-        //        return Redirect("/admin/product/update/" + id);
-        //    }
-        //    return Redirect("/admin/product/update/" + id);
-
-        //}
-
-        [HttpGet]
         [Route("access-denied")]
         [AllowAnonymous]
         public IActionResult AccessDenied()

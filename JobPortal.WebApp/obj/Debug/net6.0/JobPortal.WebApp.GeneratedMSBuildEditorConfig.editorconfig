@@ -224,12 +224,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcRmFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Success.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcU3VjY2Vzcy5jc2h0bWw=
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcVXBkYXRlLmNzaHRtbA==
+[E:/Code/source/job-portal/JobPortal.WebApp/Views/Employer/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZXJcU3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Views/Home/AboutUs.cshtml]
