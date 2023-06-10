@@ -8,8 +8,15 @@ using JobPortal.Data.DataContext;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
+    [Area("Employer")]
+    [Route("employer/applicant")]
     public class ApplicantController : Controller
     {
-        
+        [Route("")]
+        [Route("index")]
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

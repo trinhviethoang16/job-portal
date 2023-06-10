@@ -50,8 +50,6 @@ namespace JobPortal.WebApp.Controllers
                 {
                     // Add role "user" cho User mới tạo
                     await userManager.AddToRoleAsync(user, "User");
-
-                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction(nameof(Login));
                 }
                 foreach (var error in result.Errors)

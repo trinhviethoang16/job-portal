@@ -55,7 +55,7 @@ namespace JobPortal.WebApp.Controllers
                 user.Contact = model.Contact;
                 user.Location = model.Location;
                 user.WebsiteURL = model.WebsiteURL;
-                user.Status = 1; //for pending
+                user.Status = model.Status = 1; //for pending
                 _context.Update(user);
                 await _context.SaveChangesAsync();
             }

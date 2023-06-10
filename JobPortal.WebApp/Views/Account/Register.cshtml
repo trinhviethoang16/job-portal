@@ -11,12 +11,12 @@
 <form id="registerForm" class="mb-3" action="#" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email</label>
+        <label asp-for="Email" class="form-label">Email</label><span class="text-danger">*</span>
         <input asp-for="Email" type="text" class="form-control" autocomplete="username" aria-required="true" placeholder="Enter your email" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3 form-password-toggle">
-        <label asp-for="Password" class="form-label">Password</label>
+        <label asp-for="Password" class="form-label">Password</label><span class="text-danger">*</span>
         <div class="input-group input-group-merge">
             <input asp-for="Password"
                    type="password"
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="mb-3 form-password-toggle">
-        <label asp-for="ConfirmPassword" class="form-label">Confirm password</label>
+        <label asp-for="ConfirmPassword" class="form-label">Confirm password</label><span class="text-danger">*</span>
         <div class="input-group input-group-merge">
             <input asp-for="ConfirmPassword"
                    type="password"
@@ -40,17 +40,17 @@
         </div>
     </div>
     <div class="mb-3">
-        <label asp-for="FullName" class="form-label">Full name</label>
+        <label asp-for="FullName" class="form-label">Full name</label><span class="text-danger">*</span>
         <input asp-for="FullName" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your name" />
         <span asp-validation-for="FullName" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Age" class="form-label">Age</label>
+        <label asp-for="Age" class="form-label">Age</label><span class="text-danger">*</span>
         <input asp-for="Age" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your age" />
         <span asp-validation-for="Age" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Address" class="form-label">Address</label>
+        <label asp-for="Address" class="form-label">Address</label><span class="text-danger">*</span>
         <input asp-for="Address" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your address" />
         <span asp-validation-for="Address" class="text-danger"></span>
     </div>

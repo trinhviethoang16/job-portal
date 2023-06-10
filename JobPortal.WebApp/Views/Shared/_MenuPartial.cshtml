@@ -13,10 +13,14 @@
 <li class="menu-active"><a href="/">Home</a></li>
 <li><a href="/job">All Jobs</a></li>
 <li><a href="/search">Search</a></li>
-<li><a href="/blog">Blog</a></li>
+@if (signInManager.IsSignedIn(User))
+{
+    <li><a href="/apply/@user.Id">Interview</a></li>
+}
 <li class="menu-has-children">
     <a href="">Pages</a>
     <ul>
+        <li><a href="/blog">Blog</a></li>
         <li><a href="/price">Price</a></li>
         <li><a href="/about-us">about us</a></li>
         <li><a href="/contact">contact</a></li>
@@ -35,15 +39,15 @@
         </form>
     </li>
     <li>
-		<form id="logoutForm" class="form-inline">
+        <form id="logoutForm" class="form-inline">
             <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>
-		</form>
-	</li>
+        </form>
+    </li>
 }
 else
 {
     <li>
-        <a href ="/register" class="ticker-btn">Register</a>
+        <a href="/register" class="ticker-btn">Register</a>
     </li>
     <li>
         <a href="/login" class="ticker-btn">Login</a>

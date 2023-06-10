@@ -8,13 +8,14 @@ namespace JobPortal.Data.ViewModel
     {
         [Display(Name = "Full name")]
         public string? FullName { get; set; }
-        
+
         public string? Description { get; set; }
         public string? Contact { get; set; }
 
         [Display(Name = "Logo")]
         public IFormFile? UrlAvatar { get; set; }
         public string? Location { get; set; }
-		public string? WebsiteURL { get; set; }
-	}
+        public string? WebsiteURL { get; set; }
+        public int? Status { get; set; }
+    }
 }

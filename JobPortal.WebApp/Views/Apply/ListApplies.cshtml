@@ -1,0 +1,148 @@
+﻿@model IEnumerable<JobPortal.Data.ViewModel.ListCVsViewModel>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+
+<!-- Start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Interview job
+                </h1>
+                <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/"> Home page</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start contact-page Area -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="featured__controls">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        <li data-filter=".wait">Waiting</li>
+                        <li data-filter=".accept">Accepted</li>
+                        <li data-filter=".deny">Denied</li>
+                    </ul>
+                </div>
+                <div class="featured__filter">
+                    @foreach (var CV in Model)
+                    {
+                        <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}
+                                                             @if(CV.CVStatus == 1) {<text>wait</text>}
+                                                             @if(CV.CVStatus == 2) {<text>accept</text>}">
+                            <section class="d-flex mb-3" style="justify-content: space-between;">
+                                <p>
+                                    <span>CV Id: <b>CV_@CV.CVId</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
+                                    @{
+                                        switch (CV.CVStatus)
+                                        {
+                                            case 0: <span class="text-danger"><b>Denied</b></span>
+                                                break;
+                                            case 1: <span class="text-success"><b>Waiting</b></span>
+                                                break;
+                                            case 2: <span class="text-success"><b>Accepted</b></span>
+                                                break;
+                                            default: <span class="text-success"></span>
+                                                break;
+                                        }
+                                    }
+                                </p>
+                                <div>
+                                    @if (CV.CVStatus == 1)
+                                    {
+                                        <a href="/apply/cancel-cv/@CV.CVId" class="btn-sm btn-danger">Cancel CV</a>
+                                    }
+                                    @if (CV.CVStatus == 0)
+                                    {
+                                        <a href="/apply/delete-cv/@CV.CVId" class="btn-sm btn-danger">Delete CV</a>
+                                    }
+                                </div>
+                            </section>
+                            <table>
+                                <tbody id="items">
+                                    @foreach (var detail in CV.Detail)
+                                    {
+                                        <tr class="targetfields">
+                                            <td class="shoping__cart__item">
+                                                <img src="https://localhost:7211/images/skills/@detail.Skill.Logo" alt="@detail.Skill.Name" style="width: 50px;">
+                                                @*<a href="/product/item.ProductSlug">*@
+                                                <a href="">
+                                                    <h5>
+                                                        @detail.Skill.Name
+                                                    </h5>
+                                                </a>
+                                                <br />
+                                            </td>
+                                            <td class="shoping__cart__price" style="width: 200px">
+                                                @detail.Skill.Name <i class="pl-3" style="font-weight: 400"></i>
+                                            </td>
+                                            <td class="shoping__cart__total__@detail.CVId" id="total_item.CartId">
+                                                @detail.Skill.Name
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                @*<tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th>Total</th>
+                                        <th>
+                                            <span style="font-size: 18px; color: #dd2222; float: right;" id="total__">0</span>
+                                        </th>
+                                    </tr>
+                                </tfoot>*@
+                            </table>
+                        </div>
+                        @*<script type="text/javascript">
+                            $(document).ready(function () {
+                            total_calculate(@detail.);
+                            });
+                            function total_calculate(id) {
+                            var total = 0;
+                            //loop through subtotal
+                            $(".targetfields .shoping__cart__total__" + id).each(function () {
+                            //chck if not empty
+                            var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
+                            total += value; //add that value
+                            })
+                            //assign to total span
+                            $("#total__" + id).text(total.toFixed(0))
+                            }
+                        </script>*@
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End contact-page Area -->
+
+<style>
+    .shoping__cart__table {
+        border: 1px solid #e7e1e1;
+        margin-bottom: 20px;
+        display: block;
+        border-radius: 4px;
+        padding: 20px 30px;
+        box-shadow: 6px 6px 5px #cccccc1c;
+    }
+    .shoping__cart__table table tfoot tr th {
+        padding-top: 15px;
+    }
+    .shoping__cart__table table tbody tr td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>

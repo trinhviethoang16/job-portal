@@ -1,0 +1,218 @@
+﻿@*@model IEnumerable<Ecommerce.Data.ViewModel.ListOrdersViewModel>*@
+@{
+    ViewData["Title"] = "Tất cả đơn hàng";
+}
+
+<div class="content-wrapper">
+
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Quản lý tiến trình duyệt đơn</h4>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Tất Cả Ứng Viên</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Chờ Xác Nhận Đơn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Đơn Đã Chấp Nhận</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Đơn Đã Từ Chối</a>
+                        </li>
+                    </ul>
+                    @* <div class="table-responsive">
+                    <table class="table">
+                    <thead>
+                    <tr>
+                    <th>
+                    Mã đơn hàng
+                    </th>
+                    <th>
+                    Thời gian đặt
+                    </th>
+                    <th>
+                    Trạng thái đơn
+                    </th>
+                    <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr class="header">
+                    <td>
+                    <b>#DH_@item.OrderId</b>
+                    </td>
+                    <td>
+                    @item.OrderDate
+                    </td>
+                    <td>
+                    @{
+                    switch (item.OrderStatus)
+                    {
+                    case 0:
+                    <span class="text-danger"><b>Đã Hủy</b></span>
+                    break;
+                    case 1:
+                    <span class="text-success"><b>Chờ Xác Nhận</b></span>
+                    break;
+                    case 2:
+                    <span class="text-success"><b>Chờ Lấy Hàng</b></span>
+                    break;
+                    case 3:
+                    <span class="text-success"><b>Đang Giao</b></span>
+                    break;
+                    case 4:
+                    <span class="text-success"><b>Đã Giao</b></span>
+                    break;
+                    default:
+                    <span class="text-success"></span>
+                    break;
+                    }
+                    }
+                    </td>
+                    <td>
+                    @if (item.OrderStatus == 1)
+                    {
+                    <a href="/admin/order/update-order-status/@item.OrderId/2">Duyệt</a>
+                    <a href="/admin/order/update-order-status/@item.OrderId/0" class="text-danger">Hủy đơn</a>
+                    }
+                    @if (item.OrderStatus == 2)
+                    {
+                    <a href="/admin/order/update-order-status/@item.OrderId/3">Đánh dấu Đang Giao</a>
+                    <a href="/admin/order/update-order-status/@item.OrderId/0" class="text-danger">Hủy đơn</a>
+                    }
+                    @if (item.OrderStatus == 3)
+                    {
+                    <a href="/admin/order/update-order-status/@item.OrderId/4">Đánh dấu Đã Giao</a>
+                    <a href="/admin/order/update-order-status/@item.OrderId/0" class="text-danger">Hủy đơn</a>
+                    }
+
+                    </td>
+                    </tr>
+                    <tr>
+                    <th></th>
+                    <th>Sản phẩm</th>
+                    <th>Đơn giá (số lượng)</th>
+                    <th>Tổng</th>
+                    </tr>
+                    @foreach (var order in item.Detail)
+                    {
+
+                    <tr class="targetfields">
+                    <td>
+                    <img src="https://localhost:7025/products/images/@order.Product.UrlImage" alt="@order.Product.Name" style="width: 50px;">
+                    </td>
+                    <td>@order.Product.Name</td>
+                    <td>@order.Product.Price <i class="pl-3" style="font-weight: 400">(x @order.Quantity)</i></td>
+                    <td class="shoping__cart__total__@item.OrderId">@order.Price</td>
+                    </tr>
+                    }
+                    <tr style="background: #fbfbfb;">
+                    <th></th>
+                    <th></th>
+                    <th>Tổng tiền đơn hàng</th>
+                    <th>
+                    <span class="text-danger">
+                    <b id="total__@item.OrderId">0</b>
+                    </span>
+                    <script src="/admin/template/assets/vendors/js/vendor.bundle.base.js"></script>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                    total_calculate(@item.OrderId);
+                    });
+                    function total_calculate(id) {
+                    var total = 0;
+                    //loop through subtotal
+                    $(".targetfields .shoping__cart__total__" + id).each(function () {
+                    //chck if not empty
+                    var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
+                    total += value; //add that value
+                    })
+                    //assign to total span
+                    $("#total__" + id).text(total.toFixed(0))
+                    }
+                    </script>
+
+                    </th>
+                    </tr>
+
+                    }
+                    </tbody>
+                    </table>
+
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //Fixing jQuery Click Events for the iPad
+            var ua = navigator.userAgent,
+                event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+            if ($('.table').length > 0) {
+                $('.table .header').on(event, function () {
+                    $(this).toggleClass("active", "").nextUntil('.header').css('display', function (i, v) {
+                        return this.style.display === 'table-row' ? 'none' : 'table-row';
+                    });
+                });
+            }
+        })
+    </script>
+}
+
+<style>
+    .table thead tr {
+        display: table-row !important;
+        font-weight: 700 !important;
+    }
+
+    .table tr.header {
+        font-weight: bold;
+        background-color: #fff;
+        cursor: pointer;
+        -webkit-user-select: none;
+        /* Chrome all / Safari all */
+        -moz-user-select: none;
+        /* Firefox all */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Likely future */
+    }
+
+    .table tr:not(.header) {
+        display: none;
+    }
+
+    .table .header:after {
+        content: "\002b";
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        float: right;
+        color: #999;
+        text-align: center;
+        padding: 3px;
+        transition: transform .25s linear;
+        -webkit-transition: -webkit-transform .25s linear;
+    }
+
+    .table .header.active:after {
+        content: "\2212";
+    }
+</style>

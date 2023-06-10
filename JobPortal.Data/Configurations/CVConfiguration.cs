@@ -13,7 +13,6 @@ namespace JobPortal.Data.Configurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Certificate).HasMaxLength(256);
             builder.Property(x => x.Major).HasMaxLength(100);
-            builder.Property(x => x.CurrentJob).HasMaxLength(256);
         }
     }
 }
