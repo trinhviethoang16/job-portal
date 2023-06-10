@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "9478085f-e470-4c31-8fbc-7ece36b2a597",
+                            ConcurrencyStamp = "cb36e021-2a26-4775-994c-31b0ab933c1f",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "5c6cebdc-d9c1-4218-a744-963bf0173ef7",
+                            ConcurrencyStamp = "b3567b0b-ef27-4cef-af05-8c42312025ab",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "41b0511e-0799-4dc2-8fbf-8ffc1be3416f",
+                            ConcurrencyStamp = "3bab1e15-17bf-4be8-afe3-495ca8e925ab",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -213,14 +213,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3a1de77b-065a-4d59-92c0-36ca379d25f2",
+                            ConcurrencyStamp = "45645c34-8c88-45c5-96a4-dcc7478e44e4",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPgkpz7Dx8c/loOGGBq2g6svLycZeX9IVTgmVrXKOrxGXw7Pj8huYRg6SLCkbTwACg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPi1S8S07U+1jJqUukd9QLDfaPHlJTt9Qh/EXTVDHiaXbli88SrOFJM7iItR5KlJFA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -385,7 +385,7 @@ namespace JobPortal.Data.Migrations
                     b.Property<int?>("TitleId")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -430,7 +430,7 @@ namespace JobPortal.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid?>("AppUserId")
+                    b.Property<Guid>("AppUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("CategoryId")
@@ -473,17 +473,20 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int?>("ProvinceId")
+                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SkillId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TimeId")
+                    b.Property<int>("TimeId")
                         .HasColumnType("int");
 
                     b.Property<int?>("TitleId")
@@ -496,6 +499,8 @@ namespace JobPortal.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("ProvinceId");
+
+                    b.HasIndex("SkillId");
 
                     b.HasIndex("TimeId");
 
@@ -628,21 +633,6 @@ namespace JobPortal.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Titles", (string)null);
-                });
-
-            modelBuilder.Entity("JobSkill", b =>
-                {
-                    b.Property<int>("JobsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SkillsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("JobsId", "SkillsId");
-
-                    b.HasIndex("SkillsId");
-
-                    b.ToTable("JobSkill");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -821,7 +811,8 @@ namespace JobPortal.Data.Migrations
                     b.HasOne("JobPortal.Data.Entities.AppUser", "AppUser")
                         .WithMany("Jobs")
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("JobPortal.Data.Entities.Category", "Category")
                         .WithMany()
@@ -831,12 +822,19 @@ namespace JobPortal.Data.Migrations
                     b.HasOne("JobPortal.Data.Entities.Province", "Province")
                         .WithMany("Jobs")
                         .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("JobPortal.Data.Entities.Skill", "Skill")
+                        .WithMany("Jobs")
+                        .HasForeignKey("SkillId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("JobPortal.Data.Entities.Time", "Time")
                         .WithMany("Jobs")
                         .HasForeignKey("TimeId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("JobPortal.Data.Entities.Title", "Title")
                         .WithMany("Jobs")
@@ -848,6 +846,8 @@ namespace JobPortal.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Province");
+
+                    b.Navigation("Skill");
 
                     b.Navigation("Time");
 
@@ -882,21 +882,6 @@ namespace JobPortal.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("JobSkill", b =>
-                {
-                    b.HasOne("JobPortal.Data.Entities.Job", null)
-                        .WithMany()
-                        .HasForeignKey("JobsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("JobPortal.Data.Entities.Skill", null)
-                        .WithMany()
-                        .HasForeignKey("SkillsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -979,6 +964,8 @@ namespace JobPortal.Data.Migrations
             modelBuilder.Entity("JobPortal.Data.Entities.Skill", b =>
                 {
                     b.Navigation("CVDetails");
+
+                    b.Navigation("Jobs");
                 });
 
             modelBuilder.Entity("JobPortal.Data.Entities.Time", b =>

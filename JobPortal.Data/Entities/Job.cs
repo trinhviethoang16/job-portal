@@ -22,14 +22,15 @@
         public DateTime? LastApplyDate { get; set; }
         public int? Popular { get; set; }
         public Province? Province { get; set; }
-        public int? ProvinceId { get; set; }
+        public int ProvinceId { get; set; }
         public Time? Time { get; set; }
-        public int? TimeId { get; set; }
+        public int TimeId { get; set; }
         public int? MinSalary { get; set; }
         public int? MaxSalary { get; set; }
         public string? ImageURL { get; set; }
         public AppUser? AppUser { get; set; }
-        public Guid? AppUserId { get; set; }
-        public virtual ICollection<Skill>? Skills { get; set; }
+        public Guid AppUserId { get; set; }
+        public Skill? Skill { get; set; }
+        public int? SkillId { get; set; }
     }
 }

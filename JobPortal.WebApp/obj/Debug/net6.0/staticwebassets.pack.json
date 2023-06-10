@@ -893,6 +893,10 @@
       "PackagePath": "staticwebassets\\assets\\user\\fonts\\fontawesome-webfont.woff2"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\img\\Logo.ico",
+      "PackagePath": "staticwebassets\\assets\\user\\img\\Logo.ico"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\img\\b1.jpg",
       "PackagePath": "staticwebassets\\assets\\user\\img\\b1.jpg"
     },
@@ -1115,10 +1119,6 @@
     {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\img\\elements\\success-radio.png",
       "PackagePath": "staticwebassets\\assets\\user\\img\\elements\\success-radio.png"
-    },
-    {
-      "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\img\\favicon.ico",
-      "PackagePath": "staticwebassets\\assets\\user\\img\\favicon.ico"
     },
     {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\img\\header-bg.jpg",

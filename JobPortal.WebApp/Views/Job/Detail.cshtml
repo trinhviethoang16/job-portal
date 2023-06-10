@@ -1,7 +1,12 @@
 ﻿@model JobPortal.Data.Entities.Job
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
 
 @{
-	Layout = "_Layout";
+    var user = await userManager.GetUserAsync(User);
+    Layout = "_Layout";
 }
 
 <!-- Start banner Area -->
@@ -126,7 +131,7 @@
 					</ul>
 				</div>
 				<!--Apply-->
-				<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug">apply now</a>
+				<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug/@user.Id">apply now</a>
 			</div>
 
 			<div class="col-lg-4 sidebar">

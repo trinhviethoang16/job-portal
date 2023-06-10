@@ -32,6 +32,11 @@ namespace JobPortal.WebApp.Controllers
             {
                 return RedirectToAction(nameof(AccessDenied));
             }
+            // da dang ky
+            else if (user.Status == 1)
+            {
+                return RedirectToAction(nameof(Waiting));
+            }
             else
             {
                 return View(user);
@@ -81,6 +86,12 @@ namespace JobPortal.WebApp.Controllers
 
         [Route("fail")]
         public IActionResult Fail()
+        {
+            return View();
+        }
+
+        [Route("waiting")]
+        public IActionResult Waiting()
         {
             return View();
         }
