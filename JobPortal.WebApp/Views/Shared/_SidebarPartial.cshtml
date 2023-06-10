@@ -16,7 +16,7 @@
             @foreach (var job in ViewBag.ListJobs)
             {
                 <div class="single-rated">
-                    <img href="/job/@job.Slug" class="img-fluid" src="~/assets/user/img/r1.jpg" alt="">
+                    <img href="/job/@job.Slug" class="img-fluid" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="">
                     <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
                     <h6>@job.Province.Name</h6>
                     <p>@job.Description</p>

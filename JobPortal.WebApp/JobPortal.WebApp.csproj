@@ -24,7 +24,6 @@
     <None Include="Views\Apply\Apply.cshtml" />
     <None Include="Views\Apply\Fail.cshtml" />
     <None Include="Views\Apply\ListApplies.cshtml" />
-    <None Include="Views\Apply\Success.cshtml" />
     <None Include="Views\Job\Index.cshtml" />
     <None Include="wwwroot\assets\admin\.github\workflows\handle-new-issue-comment.yml" />
     <None Include="wwwroot\assets\admin\.github\workflows\handle-new-issue.yml" />
@@ -384,6 +383,7 @@
     <Folder Include="wwwroot\images\categories\" />
     <Folder Include="wwwroot\images\cvs\" />
     <Folder Include="wwwroot\images\blogs\" />
+    <Folder Include="wwwroot\images\cvs\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -131,7 +131,14 @@
 					</ul>
 				</div>
 				<!--Apply-->
-				<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug/@user.Id">apply now</a>
+				@if (signInManager.IsSignedIn(User))
+				{
+					<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug/@user.Id">apply now</a>
+				}
+				else
+				{
+					<a class="text-uppercase loadmore-btn mx-auto d-block" href="/login">login to apply now</a>
+				}
 			</div>
 
 			<div class="col-lg-4 sidebar">

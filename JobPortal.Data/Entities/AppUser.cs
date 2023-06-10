@@ -27,8 +27,5 @@ namespace JobPortal.Data.Entities
         public int? CategoryId { get; set; }
         public ICollection<Job>? Jobs { get; set; }
         public int? Status { set; get; } //1 for pending, 2...
-        //Role
-        //public AppRole? AppRole { get; set; }
-        //public string? RoleName { get; set;}
     }
 }

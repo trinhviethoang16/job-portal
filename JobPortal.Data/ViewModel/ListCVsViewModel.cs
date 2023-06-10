@@ -13,16 +13,9 @@ namespace JobPortal.Data.ViewModel
         public string Description { get; set; }
         public string ShortDescription { get; set; }
         public string Introduce { get; set; }
-        public IEnumerable<CVDetailViewModel> Detail { get; set; }
         public Guid UserId { set; get; }
-        public int CVStatus { get; set; } // = 0 all apply job // = 1 waiting // = 2 accepted // = 3 denied
-    }
-
-    public class CVDetailViewModel
-    {
-        public int Id { get; set; }
-        public int CVId { get; set; }
-        public int SkillId { get; set; }
-        public Skill? Skill { get; set; }
+        public int CVStatus { get; set; } // = 0 denied // = 1 waiting // = 2 accepted
+        public string JobName { get; set; }
+        public string EmployerLogo { get; set; }
     }
 }

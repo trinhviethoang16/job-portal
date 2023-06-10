@@ -40,21 +40,11 @@ namespace JobPortal.WebApp.Controllers
                                  GraduatedAt = cv.GraduatedAt,
                                  GPA = cv.GPA,
                                  Description = cv.Description,
-                                 ShortDescription = cv.ShortDescription,
                                  Introduce = cv.Introduce,
-                                 UserId = cv.UserId,
+                                 UserId = cv.AppUserId,
                                  CVStatus = cv.Status,
-                                 Detail = (from d in _context.CVDetails
-                                           where cv.Id == d.CVId
-                                           select new CVDetailViewModel()
-                                           {
-                                               CVId = d.CVId,
-                                               SkillId = d.SkillId,
-                                               Id = d.Id,
-                                               Skill = (from skill in _context.Skills
-                                                        where d.SkillId == skill.Id
-                                                        select skill).FirstOrDefault(),
-                                           }).AsEnumerable()
+                                 JobName = cv.Job.Name,
+                                 EmployerLogo = cv.Job.AppUser.UrlAvatar
                              }).Where(u => u.UserId == id).ToListAsync();
             return View(CVs);
         }
@@ -62,22 +52,22 @@ namespace JobPortal.WebApp.Controllers
         [Route("{slug}/{id}")]
         public async Task<IActionResult> Apply(string slug, Guid id)
         {
-            var job = await _context.Jobs.Where(j => j.Slug == slug).FirstAsync();
-            var user = await _context.AppUsers.Where(u => u.Id == id).FirstAsync();
-            var cv = await _context.CVs.Where(x => x.UserId == id).Where(x => x.JobId == job.Id).FirstAsync();
+            var job = await _context.Jobs.Where(j => j.Slug == slug).FirstOrDefaultAsync();
+            var user = await _context.AppUsers.Where(u => u.Id == id).FirstOrDefaultAsync();
+            var cv = await _context.CVs.Where(x => x.AppUserId == id && x.JobId == job.Id).FirstOrDefaultAsync();
             // check role
             if (!User.IsInRole("User"))
             {
                 return RedirectToAction(nameof(AccessDenied));
             }
-            // check đã nộp cv ở job đó hay chưa
-            else if (cv.Status == 1)
+            // check cv đã tồn tại
+            else if (cv != null)
             {
                 return RedirectToAction(nameof(Waiting));
             }
             else
             {
-                return View(user);
+                return View();
             }
         }
 
@@ -88,33 +78,39 @@ namespace JobPortal.WebApp.Controllers
         {
             var job = await _context.Jobs.Where(j => j.Slug == slug).FirstAsync();
 
-            CV cv = new CV()
+            if (ModelState.IsValid)
             {
-                ApplyDate = DateTime.Now,
-                Certificate = model.Certificate,
-                GraduatedAt = model.GraduatedAt,
-                GPA = model.GPA,
-                Description = model.Description,
-                ShortDescription = model.ShortDescription,
-                Introduce = model.Introduce,
-                UserId = id,
-                JobId = job.Id,
-                Status = 1
-            };
-            _context.CVs.Add(cv);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("ListApplies");
+                string POST_IMAGE_PATH = "images/cvs/";
+
+                if (model.UrlImage != null)
+                {
+                    var image = UploadImage.UploadImageFile(model.UrlImage, POST_IMAGE_PATH);
+
+                    CV cv = new CV()
+                    {
+                        ApplyDate = DateTime.Now,
+                        UrlImage = image,
+                        Certificate = model.Certificate,
+                        Major = model.Major,
+                        GraduatedAt = model.GraduatedAt,
+                        GPA = model.GPA,
+                        Description = model.Description,
+                        Introduce = model.Introduce,
+                        AppUserId = id,
+                        JobId = job.Id,
+                        Status = 1 //waiting
+                    };
+                    _context.CVs.Add(cv);
+                    await _context.SaveChangesAsync();
+                    return Redirect("/apply/" + id);
+                }
+            }
+            return RedirectToAction(nameof(Fail));
         }
 
         [Route("access-denied")]
         [AllowAnonymous]
         public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
-        [Route("success")]
-        public IActionResult Success()
         {
             return View();
         }

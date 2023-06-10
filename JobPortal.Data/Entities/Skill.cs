@@ -9,7 +9,5 @@
         public Category? Category { get; set; }
         public int? CategoryId { get; set; }
         public virtual ICollection<Job>? Jobs { get; set; }
-        //CV - Skill
-        public List<CVDetail> CVDetails { get; set; }
     }
 }

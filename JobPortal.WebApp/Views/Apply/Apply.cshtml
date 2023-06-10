@@ -4,6 +4,8 @@
     Layout = "_Layout";
 }
 
+<!-- CKEditor -->
+<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
@@ -13,7 +15,7 @@
                 <h1 class="text-white">
                     <span>Apply job</span>
                 </h1>
-                <p class="text-white"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/"> Home page</a></p>
+                <p class="text-white"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Apply now !</a></p>
             </div>
         </div>
     </div>
@@ -26,45 +28,50 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 style="text-align: center" class="card-title">Application for approval to become an employer</h4>
+                        <h4 style="text-align: center" class="card-title">Apply your CV and start the adventure</h4>
                         <br />
                         <div class="col-md-4i">
                             <form asp-action="Apply" enctype="multipart/form-data" id="form">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <@*div class="form-group">
-                                            <label asp-for="FullName" class="control-label"></label><span class="text-danger">*</span>
-                                            <input asp-for="FullName" class="form-control" />
-                                            <span asp-validation-for="FullName" class="text-danger"></span>
+                                        <div class="form-group">
+                                            <label asp-for="Certificate" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Certificate" class="form-control" />
+                                            <span asp-validation-for="Certificate" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Description" class="control-label"></label>
-                                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                                            <label asp-for="Major" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Major" class="form-control" rows="3"></textarea>
+                                            <span asp-validation-for="Major" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Description" class="form-control" id="CKEditor" style="height: 450px"></textarea>
                                             <span asp-validation-for="Description" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Contact" class="control-label"></label><span class="text-danger">*</span>
-                                            <textarea asp-for="Contact" class="form-control" id="editor" style="height: 450px"></textarea>
-                                            <span asp-validation-for="Contact" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label asp-for="UrlAvatar" class="control-label"></label><span class="text-danger">*</span>
-                                            <input type="file" asp-for="UrlAvatar" class="form-control" accept="image/*" id="imgInp" />
-                                            <span asp-validation-for="UrlAvatar" class="text-danger"></span>
-                                            <img id="blah" src="#" alt="your image" style="width: 335px;" />
+                                            <label asp-for="Introduce" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Introduce" class="form-control" />
+                                            <span asp-validation-for="Introduce" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Location" class="control-label"></label><span class="text-danger">*</span>
-                                            <input asp-for="Location" class="form-control" />
-                                            <span asp-validation-for="Location" class="text-danger"></span>
+                                            <label asp-for="GPA" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="GPA" class="form-control" />
+                                            <span asp-validation-for="GPA" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="WebsiteURL" class="control-label"></label><span class="text-danger">*</span>
-                                            <input asp-for="WebsiteURL" class="form-control" />
-                                            <span asp-validation-for="WebsiteURL" class="text-danger"></span>
-                                        </div>*@
+                                            <label asp-for="GraduatedAt" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="GraduatedAt" class="form-control" />
+                                            <span asp-validation-for="GraduatedAt" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="UrlImage" class="control-label"></label><span class="text-danger">*</span>
+                                            <input type="file" asp-for="UrlImage" class="form-control" accept="image/*" id="imgInp" />
+                                            <span asp-validation-for="UrlImage" class="text-danger"></span>
+                                            <img id="blah" src="#" alt="your cv image" style="width: 335px;" />
+                                        </div>
                                         <div class="form-group">
                                             <input type="submit" onclick="onConfirm()" value="Create" class="btn btn-primary" />
                                         </div>
@@ -87,38 +94,40 @@
     }
     <script>
         imgInp.onchange = evt => {
-      const [file] = imgInp.files
-      if (file) {
-        blah.src = URL.createObjectURL(file)
-      }
-    }
+            const [file] = imgInp.files
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
     </script>
 
     <script>
-      var quill = new Quill('#editor', {
-        theme: 'snow'
-      });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
     </script>
 
     <script>
         function onConfirm() {
             Swal.fire({
-              title: 'Register to employer?',
-              text: "Are you sure you want to apply as an employer?y?",
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Confirm!'
+                title: 'Apply this job?',
+                text: "Are you sure you want to apply this job?y?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm!'
             }).then((result) => {
-              if (result.isConfirmed) {
-                  $("#form").submit();
-                Swal.fire(
-                  'Success!',
-                  '',
-                  'success'
-                )
-              } 
+                if (result.isConfirmed) {
+                    $("#form").submit();
+                    Swal.fire(
+                        'Success!',
+                        '',
+                        'success'
+                    )
+                }
             })
         }
     </script>
+
+    <script>CKEDITOR.replace('CKEditor');</script>
 }

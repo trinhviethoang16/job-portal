@@ -30,100 +30,104 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="featured__controls">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".wait">Waiting</li>
-                        <li data-filter=".accept">Accepted</li>
-                        <li data-filter=".deny">Denied</li>
-                    </ul>
-                </div>
-                <div class="featured__filter">
-                    @foreach (var CV in Model)
-                    {
-                        <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}
-                                                             @if(CV.CVStatus == 1) {<text>wait</text>}
-                                                             @if(CV.CVStatus == 2) {<text>accept</text>}">
-                            <section class="d-flex mb-3" style="justify-content: space-between;">
-                                <p>
-                                    <span>CV Id: <b>CV_@CV.CVId</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
-                                    @{
-                                        switch (CV.CVStatus)
-                                        {
-                                            case 0: <span class="text-danger"><b>Denied</b></span>
-                                                break;
-                                            case 1: <span class="text-success"><b>Waiting</b></span>
-                                                break;
-                                            case 2: <span class="text-success"><b>Accepted</b></span>
-                                                break;
-                                            default: <span class="text-success"></span>
-                                                break;
-                                        }
-                                    }
-                                </p>
-                                <div>
-                                    @if (CV.CVStatus == 1)
-                                    {
-                                        <a href="/apply/cancel-cv/@CV.CVId" class="btn-sm btn-danger">Cancel CV</a>
-                                    }
-                                    @if (CV.CVStatus == 0)
-                                    {
-                                        <a href="/apply/delete-cv/@CV.CVId" class="btn-sm btn-danger">Delete CV</a>
-                                    }
-                                </div>
-                            </section>
-                            <table>
-                                <tbody id="items">
-                                    @foreach (var detail in CV.Detail)
-                                    {
-                                        <tr class="targetfields">
-                                            <td class="shoping__cart__item">
-                                                <img src="https://localhost:7211/images/skills/@detail.Skill.Logo" alt="@detail.Skill.Name" style="width: 50px;">
-                                                @*<a href="/product/item.ProductSlug">*@
-                                                <a href="">
-                                                    <h5>
-                                                        @detail.Skill.Name
-                                                    </h5>
-                                                </a>
-                                                <br />
-                                            </td>
-                                            <td class="shoping__cart__price" style="width: 200px">
-                                                @detail.Skill.Name <i class="pl-3" style="font-weight: 400"></i>
-                                            </td>
-                                            <td class="shoping__cart__total__@detail.CVId" id="total_item.CartId">
-                                                @detail.Skill.Name
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                                @*<tfoot>
-                                    <tr>
-                                        <th></th>
-                                        <th>Total</th>
-                                        <th>
-                                            <span style="font-size: 18px; color: #dd2222; float: right;" id="total__">0</span>
-                                        </th>
-                                    </tr>
-                                </tfoot>*@
-                            </table>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="featured__controls">
+                            <ul>
+                                <li class="active" data-filter="*">All</li>
+                                <li data-filter=".wait">Waiting</li>
+                                <li data-filter=".accept">Accepted</li>
+                                <li data-filter=".deny">Denied</li>
+                            </ul>
                         </div>
-                        @*<script type="text/javascript">
-                            $(document).ready(function () {
-                            total_calculate(@detail.);
-                            });
-                            function total_calculate(id) {
-                            var total = 0;
-                            //loop through subtotal
-                            $(".targetfields .shoping__cart__total__" + id).each(function () {
-                            //chck if not empty
-                            var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
-                            total += value; //add that value
-                            })
-                            //assign to total span
-                            $("#total__" + id).text(total.toFixed(0))
+                        <div class="featured__filter">
+                            @foreach (var CV in Model)
+                            {
+                                <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}
+                                                                     @if(CV.CVStatus == 1) {<text>wait</text>}
+                                                                     @if(CV.CVStatus == 2) {<text>accept</text>}">
+                                    <section class="d-flex mb-3" style="justify-content: space-between;">
+                                        <p>
+                                                <span>CV: <b>@CV.Certificate</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
+                                            @{
+                                                switch (CV.CVStatus)
+                                                {
+                                                    case 0: <span class="text-danger"><b>Denied</b></span>
+                                                        break;
+                                                    case 1: <span class="text-success"><b>Waiting</b></span>
+                                                        break;
+                                                    case 2: <span class="text-success"><b>Accepted</b></span>
+                                                        break;
+                                                    default: <span class="text-success"></span>
+                                                        break;
+                                                }
+                                            }
+                                        </p>
+                                        <div>
+                                            @if (CV.CVStatus == 2)
+                                            {
+                                                <a href="/apply/feedback-cv/@CV.CVId" class="btn-sm btn-danger">Feedback</a>
+                                            }
+                                            @if (CV.CVStatus == 1)
+                                            {
+                                                <a href="/apply/cancel-cv/@CV.CVId" class="btn-sm btn-danger">Cancel CV</a>
+                                            }
+                                            @if (CV.CVStatus == 0)
+                                            {
+                                                <a href="/apply/delete-cv/@CV.CVId" class="btn-sm btn-danger">Delete CV</a>
+                                            }
+                                        </div>
+                                    </section>
+                                    <table>
+                                        <tbody id="items">
+                                            <tr class="targetfields">
+                                                <td class="shoping__cart__item">
+                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px;">
+                                                        <a href="">
+                                                            <h5>
+                                                                @CV.JobName
+                                                            </h5>
+                                                        </a>
+                                                    <br />
+                                                </td>
+                                                <td class="shoping__cart__price" style="width: 200px">
+                                                    @CV.Major <i class="pl-3" style="font-weight: 400"></i>
+                                                </td>
+                                                <td class="shoping__cart__total__" id="total_item.CartId">
+                                                    @CV.GPA
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        @*<tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th>Total</th>
+                                                <th>
+                                                    <span style="font-size: 18px; color: #dd2222; float: right;" id="total__">0</span>
+                                                </th>
+                                            </tr>
+                                        </tfoot>*@
+                                    </table>
+                                </div>
+                                @*<script type="text/javascript">
+                                    $(document).ready(function () {
+                                    total_calculate(@detail.);
+                                    });
+                                    function total_calculate(id) {
+                                    var total = 0;
+                                    //loop through subtotal
+                                    $(".targetfields .shoping__cart__total__" + id).each(function () {
+                                    //chck if not empty
+                                    var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
+                                    total += value; //add that value
+                                    })
+                                    //assign to total span
+                                    $("#total__" + id).text(total.toFixed(0))
+                                    }
+                                </script>*@
                             }
-                        </script>*@
-                    }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

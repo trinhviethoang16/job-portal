@@ -27,11 +27,8 @@
 	<link rel="stylesheet" href="~/assets/user/css/animate.min.css">
 	<link rel="stylesheet" href="~/assets/user/css/owl.carousel.css">
 	<link rel="stylesheet" href="~/assets/user/css/main.css">
-
+	<!-- CKEditor -->
 	<script type="text/javascript" src="~/assets/ckeditor/ckeditor.js"></script>
-	 
-
-
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -154,19 +151,12 @@
 	<!-- Client -->
 	<script src="~/client/js/main.js"></script>
 	<script src="~/client/js/mixitup.min.js"></script>
-
-
-
-
 	<script>
 		var loader = document.getElementById("preloader");
 		window.addEventListener("load", function () {
 			loader.style.display = "none";
 		}) I
 	</script>
-
-
-
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
