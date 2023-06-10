@@ -4,6 +4,8 @@
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
 
+
+<link rel="stylesheet" href="~/client/css/style.css" type="text/css">
 @{
     var user = await userManager.GetUserAsync(User);
 }

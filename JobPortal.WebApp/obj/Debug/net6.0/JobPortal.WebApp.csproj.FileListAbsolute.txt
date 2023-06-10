@@ -543,7 +543,6 @@ D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\staticwebassets.build.json
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\staticwebassets.development.json
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Areas\Employer\Views\Shared\_EmployerLayout.cshtml.rz.scp.css
-D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutLogin.cshtml.rz.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\bundle\JobPortal.WebApp.styles.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\projectbundle\JobPortal.WebApp.bundle.scp.css
 D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.WebApp.csproj.CopyComplete
@@ -2853,3 +2852,4 @@ C:\Users\ADMIN\Downloads\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.WebApp.genruntimeconfig.cache
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.WebApp\obj\Debug\net6.0\ref\JobPortal.WebApp.dll
 E:\Code\source\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutAccount.cshtml.rz.scp.css
+D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutAccount.cshtml.rz.scp.css
