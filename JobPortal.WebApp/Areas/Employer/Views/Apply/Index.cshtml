@@ -1,0 +1,221 @@
+﻿@model IEnumerable<JobPortal.Data.ViewModel.ListCVsViewModel>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <br />
+                    <ul class="nav nav-tabs" style="justify-content: center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/employer/apply/@user.Id/3">All applicants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employer/apply/@user.Id/1">Waiting applicants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employer/apply/@user.Id/2">Accepted applicants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employer/apply/@user.Id/0">Denied applicants</a>
+                        </li>
+                    </ul>
+                    <br/>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Applicant name
+                                    </th>
+                                    <th>
+                                        Job name
+                                    </th>
+                                    <th>
+                                        Apply date
+                                    </th>
+                                    <th>
+                                        Apply status
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var CV in Model)
+                                {
+                                    <tr class="header">
+                                        <td>
+                                            <b>@CV.UserName</b>
+                                        </td>
+                                        <td>
+                                            @CV.JobName
+                                        </td>
+                                        <td>
+                                            @CV.ApplyDate
+                                        </td>
+                                        <td>
+                                            @{
+                                                switch (CV.CVStatus)
+                                                {
+                                                    case 0:
+                                                        <span class="text-danger"><b>Denied</b></span>
+                                                        break;
+                                                    case 1:
+                                                        <span class="text-success"><b>Waiting</b></span>
+                                                        break;
+                                                    case 2:
+                                                        <span class="text-success"><b>Accepted</b></span>
+                                                        break;
+                                                    default:
+                                                        <span class="text-success"></span>
+                                                        break;
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (CV.CVStatus == 1)
+                                            {
+                                                <a href="/employer/apply/update-cv-status/@user.Id/@CV.CVId/2">Accepted</a>
+                                                <a href="/employer/apply/update-cv-status/@user.Id/@CV.CVId/0" class="text-danger">Denied</a>
+                                            }
+                                            @if (CV.CVStatus == 2)
+                                            {
+                                                <a href="#">Feedback</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>Job</th>
+                                        <th>Certificate</th>
+                                        <th>Major</th>
+                                        <th>Graduated</th>
+                                        <th>GPA</th>
+                                        @*<th>Description</th>
+                                        <th>Introduce</th>
+                                        <th>CV Image</th>*@
+                                    </tr>
+                                    <tr class="targetfields">
+                                        <td>
+                                            <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px;">
+                                        </td>
+                                        <td>@CV.JobName</td>
+                                        <td>@CV.Certificate</td>
+                                        <td>@CV.Major</td>
+                                        <td>@CV.GraduatedAt</td>
+                                        <td>@CV.GPA</td>
+                                        @*<td>@CV.Description</td>
+                                        <td>@CV.Introduce</td>
+                                        <td>
+                                            <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="cv image" style="width: 100px;">
+                                        </td>*@
+                                    </tr>
+                                    @*<tr style="background: #fbfbfb;">
+                                        <th></th>
+                                        <th></th>
+                                        <th>Tổng tiền đơn hàng</th>
+                                        <th>
+                                            <span class="text-danger">
+                                                <b id="total__@item.OrderId">0</b>
+                                            </span>
+                                            <script src="/admin/template/assets/vendors/js/vendor.bundle.base.js"></script>
+                                            <script type="text/javascript">
+                                                $(document).ready(function () {
+                                                    total_calculate(@item.OrderId);
+                                                });
+                                                function total_calculate(id) {
+                                                    var total = 0;
+                                                    //loop through subtotal
+                                                    $(".targetfields .shoping__cart__total__" + id).each(function () {
+                                                        //chck if not empty
+                                                        var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
+                                                        total += value; //add that value
+                                                    })
+                                                    //assign to total span
+                                                    $("#total__" + id).text(total.toFixed(0))
+                                                }
+                                            </script>
+                                        </th>
+                                    </tr>*@
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //Fixing jQuery Click Events for the iPad
+            var ua = navigator.userAgent,
+                event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+            if ($('.table').length > 0) {
+                $('.table .header').on(event, function () {
+                    $(this).toggleClass("active", "").nextUntil('.header').css('display', function (i, v) {
+                        return this.style.display === 'table-row' ? 'none' : 'table-row';
+                    });
+                });
+            }
+        })
+    </script>
+}
+
+<style>
+    .table thead tr {
+        display: table-row !important;
+        font-weight: 700 !important;
+    }
+
+    .table tr.header {
+        font-weight: bold;
+        background-color: #fff;
+        cursor: pointer;
+        -webkit-user-select: none;
+        /* Chrome all / Safari all */
+        -moz-user-select: none;
+        /* Firefox all */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Likely future */
+    }
+
+    .table tr:not(.header) {
+        display: none;
+    }
+
+    .table .header:after {
+        content: "\002b";
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        float: right;
+        color: #999;
+        text-align: center;
+        padding: 3px;
+        transition: transform .25s linear;
+        -webkit-transition: -webkit-transform .25s linear;
+    }
+
+    .table .header.active:after {
+        content: "\2212";
+    }
+</style>
