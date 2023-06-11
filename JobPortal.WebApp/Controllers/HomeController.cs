@@ -34,8 +34,8 @@ namespace JobPortal.WebApp.Controllers
             var jobs = _context.Jobs.ToList();
 
             //For search filter area
-            //ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
-            //ViewBag.FilterCategories = _context.Categories.OrderBy(p => p.Id).ToList();
+            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+            ViewBag.FilterSkills = _context.Skills.OrderBy(s => s.Id).ToList();
 
             //random employers - 4
             var employerList = _context.Users.ToList();

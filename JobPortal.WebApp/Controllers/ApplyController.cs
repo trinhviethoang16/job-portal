@@ -52,23 +52,20 @@ namespace JobPortal.WebApp.Controllers
         [Route("{slug}/{id}")]
         public async Task<IActionResult> Apply(string slug, Guid id)
         {
-            var job = await _context.Jobs.Where(j => j.Slug == slug).FirstOrDefaultAsync();
-            var user = await _context.AppUsers.Where(u => u.Id == id).FirstOrDefaultAsync();
-            var cv = await _context.CVs.Where(x => x.AppUserId == id && x.JobId == job.Id).FirstOrDefaultAsync();
+            var job = await _context.Jobs.FirstOrDefaultAsync(j => j.Slug == slug);
+            var user = await _context.AppUsers.FirstOrDefaultAsync(u => u.Id == id);
             // check role
             if (!User.IsInRole("User"))
             {
                 return RedirectToAction(nameof(AccessDenied));
             }
+            var cv = await _context.CVs.Where(x => x.AppUserId == id && x.JobId == job.Id).FirstOrDefaultAsync();
             // check cv đã tồn tại
-            else if (cv != null)
+            if (cv != null)
             {
                 return RedirectToAction(nameof(Waiting));
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         [Route("{slug}/{id}")]

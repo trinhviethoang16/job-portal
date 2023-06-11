@@ -2589,6 +2589,70 @@
       "PackagePath": "staticwebassets\\assets\\ckeditor\\vendor\\promise.js"
     },
     {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\elegant-icons.css",
+      "PackagePath": "staticwebassets\\assets\\css\\elegant-icons.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\jquery-ui.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\jquery-ui.min.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\nice-select.css",
+      "PackagePath": "staticwebassets\\assets\\css\\nice-select.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\slicknav.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\slicknav.min.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\jquery-3.3.1.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-3.3.1.min.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-ui.min.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\jquery.nice-select.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.nice-select.min.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\jquery.slicknav.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.slicknav.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\main.js",
+      "PackagePath": "staticwebassets\\assets\\js\\main.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\mixitup.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\mixitup.min.js"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\owl.carousel.min.js"
+    },
+    {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\.gitattributes",
       "PackagePath": "staticwebassets\\assets\\user\\.gitattributes"
     },
@@ -3507,522 +3571,6 @@
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\assets\\user\\scss\\theme\\_variables.scss",
       "PackagePath": "staticwebassets\\assets\\user\\scss\\theme\\_variables.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\README.md",
-      "PackagePath": "staticwebassets\\client\\README.md"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\OwlCarousel2-2.3.4.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\OwlCarousel2-2.3.4.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\SlickNav-master.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\SlickNav-master.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\bootstrap-4.4.1-dist.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\bootstrap-4.4.1-dist.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\font-awesome-4.7.0.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\font-awesome-4.7.0.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\jquery-nice-select-1.1.0.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\jquery-nice-select-1.1.0.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\jquery-ui-1.12.1.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\jquery-ui-1.12.1.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\Source\\sass.zip",
-      "PackagePath": "staticwebassets\\client\\Source\\sass.zip"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\blog-details.html",
-      "PackagePath": "staticwebassets\\client\\blog-details.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\blog.html",
-      "PackagePath": "staticwebassets\\client\\blog.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\checkout.html",
-      "PackagePath": "staticwebassets\\client\\checkout.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\contact.html",
-      "PackagePath": "staticwebassets\\client\\contact.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\client\\css\\bootstrap.min.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\elegant-icons.css",
-      "PackagePath": "staticwebassets\\client\\css\\elegant-icons.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\font-awesome.min.css",
-      "PackagePath": "staticwebassets\\client\\css\\font-awesome.min.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\jquery-ui.min.css",
-      "PackagePath": "staticwebassets\\client\\css\\jquery-ui.min.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\nice-select.css",
-      "PackagePath": "staticwebassets\\client\\css\\nice-select.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\owl.carousel.min.css",
-      "PackagePath": "staticwebassets\\client\\css\\owl.carousel.min.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\slicknav.min.css",
-      "PackagePath": "staticwebassets\\client\\css\\slicknav.min.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\css\\style.css",
-      "PackagePath": "staticwebassets\\client\\css\\style.css"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\ElegantIcons.eot",
-      "PackagePath": "staticwebassets\\client\\fonts\\ElegantIcons.eot"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\ElegantIcons.svg",
-      "PackagePath": "staticwebassets\\client\\fonts\\ElegantIcons.svg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\ElegantIcons.ttf",
-      "PackagePath": "staticwebassets\\client\\fonts\\ElegantIcons.ttf"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\ElegantIcons.woff",
-      "PackagePath": "staticwebassets\\client\\fonts\\ElegantIcons.woff"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\FontAwesome.otf",
-      "PackagePath": "staticwebassets\\client\\fonts\\FontAwesome.otf"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\fontawesome-webfont.eot",
-      "PackagePath": "staticwebassets\\client\\fonts\\fontawesome-webfont.eot"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\fontawesome-webfont.svg",
-      "PackagePath": "staticwebassets\\client\\fonts\\fontawesome-webfont.svg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\fontawesome-webfont.ttf",
-      "PackagePath": "staticwebassets\\client\\fonts\\fontawesome-webfont.ttf"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\fontawesome-webfont.woff",
-      "PackagePath": "staticwebassets\\client\\fonts\\fontawesome-webfont.woff"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\fonts\\fontawesome-webfont.woff2",
-      "PackagePath": "staticwebassets\\client\\fonts\\fontawesome-webfont.woff2"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\banner\\banner-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\banner\\banner-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\banner\\banner-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\banner\\banner-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\blog-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\blog-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\blog-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\blog-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\blog-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\blog-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\blog-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\blog-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\blog-5.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\blog-5.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\blog-6.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\blog-6.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\details\\details-author.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\details\\details-author.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\details\\details-hero.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\details\\details-hero.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\details\\details-pic.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\details\\details-pic.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\sidebar\\sr-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\sidebar\\sr-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\sidebar\\sr-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\sidebar\\sr-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\blog\\sidebar\\sr-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\blog\\sidebar\\sr-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\breadcrumb.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\breadcrumb.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\cart\\cart-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\cart\\cart-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\cart\\cart-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\cart\\cart-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\cart\\cart-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\cart\\cart-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\categories\\cat-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\categories\\cat-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\categories\\cat-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\categories\\cat-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\categories\\cat-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\categories\\cat-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\categories\\cat-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\categories\\cat-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\categories\\cat-5.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\categories\\cat-5.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-5.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-5.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-6.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-6.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-7.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-7.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\featured\\feature-8.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\featured\\feature-8.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\hero\\banner.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\hero\\banner.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\language.png",
-      "PackagePath": "staticwebassets\\client\\img\\language.png"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\latest-product\\lp-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\latest-product\\lp-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\latest-product\\lp-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\latest-product\\lp-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\latest-product\\lp-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\latest-product\\lp-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\loader.gif",
-      "PackagePath": "staticwebassets\\client\\img\\loader.gif"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\logo.png",
-      "PackagePath": "staticwebassets\\client\\img\\logo.png"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\payment-item.png",
-      "PackagePath": "staticwebassets\\client\\img\\payment-item.png"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\product-details-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\product-details-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\product-details-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\product-details-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\product-details-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\product-details-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\product-details-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\product-details-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\product-details-5.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\product-details-5.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\thumb-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\thumb-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\thumb-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\thumb-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\thumb-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\thumb-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\details\\thumb-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\details\\thumb-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\discount\\pd-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\discount\\pd-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\discount\\pd-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\discount\\pd-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\discount\\pd-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\discount\\pd-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\discount\\pd-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\discount\\pd-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\discount\\pd-5.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\discount\\pd-5.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\discount\\pd-6.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\discount\\pd-6.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-1.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-1.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-10.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-10.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-11.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-11.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-12.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-12.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-2.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-2.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-3.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-3.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-4.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-4.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-5.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-5.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-6.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-6.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-7.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-7.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-8.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-8.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\img\\product\\product-9.jpg",
-      "PackagePath": "staticwebassets\\client\\img\\product\\product-9.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\index.html",
-      "PackagePath": "staticwebassets\\client\\index.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\bootstrap.min.js",
-      "PackagePath": "staticwebassets\\client\\js\\bootstrap.min.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\jquery-3.3.1.min.js",
-      "PackagePath": "staticwebassets\\client\\js\\jquery-3.3.1.min.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\jquery-ui.min.js",
-      "PackagePath": "staticwebassets\\client\\js\\jquery-ui.min.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\jquery.nice-select.min.js",
-      "PackagePath": "staticwebassets\\client\\js\\jquery.nice-select.min.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\jquery.slicknav.js",
-      "PackagePath": "staticwebassets\\client\\js\\jquery.slicknav.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\main.js",
-      "PackagePath": "staticwebassets\\client\\js\\main.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\mixitup.min.js",
-      "PackagePath": "staticwebassets\\client\\js\\mixitup.min.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\js\\owl.carousel.min.js",
-      "PackagePath": "staticwebassets\\client\\js\\owl.carousel.min.js"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\main.html",
-      "PackagePath": "staticwebassets\\client\\main.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\readme.txt",
-      "PackagePath": "staticwebassets\\client\\readme.txt"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_base.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_base.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_blog-details.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_blog-details.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_blog-sidebar.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_blog-sidebar.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_blog.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_blog.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_breadcrumb.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_breadcrumb.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_checkout.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_checkout.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_contact.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_contact.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_footer.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_footer.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_header.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_header.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_hero.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_hero.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_home-page.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_home-page.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_mixins.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_mixins.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_responsive.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_responsive.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_shop-details.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_shop-details.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_shop-grid.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_shop-grid.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_shoping-cart.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_shoping-cart.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_sidebar.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_sidebar.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\_variable.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\_variable.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\sass\\style.scss",
-      "PackagePath": "staticwebassets\\client\\sass\\style.scss"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\shop-details.html",
-      "PackagePath": "staticwebassets\\client\\shop-details.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\shop-grid.html",
-      "PackagePath": "staticwebassets\\client\\shop-grid.html"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\client\\shoping-cart.html",
-      "PackagePath": "staticwebassets\\client\\shoping-cart.html"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\css\\site.css",

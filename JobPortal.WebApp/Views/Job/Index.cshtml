@@ -11,13 +11,17 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    @if (ViewBag.Time == null)
+                    @if (ViewBag.Time == null && ViewBag.Province == null && ViewBag.Skill == null)
                     {
-                        <span>Let your dreams fly in the sky of imagination</span>
+                        <text>Let your dreams fly in the sky of imagination</text>
                     }
                     else
                     {
-                        <span>@ViewBag.Time.Name job</span>
+                        <text>
+                            @((ViewBag.Time != null ? $"{ViewBag.Time.Name} jobs" : null) ??
+                                (ViewBag.Province != null ? $"Jobs in {ViewBag.Province.Name}" :
+                                    (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" : null)))
+                        </text>
                     }
                 </h1>
                 <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/job"> Jobs</a></p>
@@ -35,7 +39,7 @@
                 <ul class="cat-list" style="width:auto">
                     @foreach (var time in @ViewBag.ListTimes)
                     {
-                        <li class="col-xs-12 col-4"><a href="/job?timelog=@time.Slug">@time.Name</a></li>
+                        <li class="col-xs-12 col-4"><a href="/job?slug=@time.Slug">@time.Name</a></li>
                     }
                 </ul>
                 <!--End time list-->
@@ -47,15 +51,9 @@
                         <div class="thumb">
                             <img href="/job/@job.Slug" height="100" width="120" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
                             <ul class="tags">
-                                <!--Job skill area-->
+                                <!--Skill-->
                                 <li>
-                                    <a href="#">Art</a>
-                                </li>
-                                <li>
-                                    <a href="#">Media</a>
-                                </li>
-                                <li>
-                                    <a href="#">Design</a>
+                                    <a href="#">@job.Skill.Name</a>
                                 </li>
                             </ul>
                         </div>
@@ -79,12 +77,11 @@
                     </div>
                 }
                 <!--End job list-->
-
                 <!--Load more jobs-->
                 @*<a class="text-uppercase loadmore-btn mx-auto d-block" href="../assets/user/category.html">Load More job Posts</a>*@
 
             </div>
-            
+
             <!-- Sidebar -->
             @Html.Partial("../Shared/_SidebarPartial.cshtml")
 

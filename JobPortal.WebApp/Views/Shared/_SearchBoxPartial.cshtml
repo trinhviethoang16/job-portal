@@ -1,15 +1,43 @@
 ﻿<!--Search area-->
 <form class="serach-form-area" method="get" asp-controller="Search" asp-action="Index">
     <div class="row justify-content-center form-wrap">
-        <div class="col-xs-18 col-7 form-cols">
+        <div class="col-lg-4 form-cols">
             <label for="inputPassword2" class="sr-only">Password</label>
             <input type="text" class="form-control" id="inputPassword2" placeholder="what are you looking for ?" name="q" value="@if (ViewBag.q != null)
             {<text>@ViewBag.q</text>}">
             <input type="hidden" name="catelog" value="@if (ViewBag.Category != null)
             {<text>@ViewBag.Category.Slug</text>}">
         </div>
-        <div class="col-xs-18 col-3 form-cols">
-            <button type="submit" class="btn btn-info" style="margin-left: -2rem;">
+        <div class="col-lg-3 form-cols">
+            <div class="default-select" id="default-selects">
+                <select name="province">
+                    <option>Select area</option>
+                    @if (ViewBag.FilterProvinces != null)
+                    {
+                        foreach (var province in ViewBag.FilterProvinces)
+                        {
+                            <option value="@province.Id">@province.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-3 form-cols">
+            <div class="default-select" id="default-selects2">
+                <select name="skill">
+                    <option>Select skill</option>
+                    @if (ViewBag.FilterSkills != null)
+                    {
+                        @foreach (var skill in ViewBag.FilterSkills)
+                        {
+                            <option value="@skill.Id">@skill.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-2 form-cols">
+            <button type="submit" class="btn btn-info" @*style="margin-left: -2rem;"*@>
                 <span class="lnr lnr-magnifier"></span> Search
             </button>
         </div>

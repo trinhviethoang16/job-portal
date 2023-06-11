@@ -15,14 +15,7 @@
                 </h1>
                 <!--Search box-->
                 @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
-                @if(ViewBag.q == null)
-                {
-                    <p style="font-size: 20px" class="text-white"> <span>Search by tags:</span> Developer, Engineer, Technology, Support, Manager, Senior, Junior</p>
-                }
-                else
-                {
-                     <p style="font-size: 20px" class="text-white"><span>@Model.Count()</span> Results found for <span>"@ViewBag.q"</span></p>
-                }
+                <p style="font-size: 20px" class="text-white"> <span>Search by tags:</span> Developer, Engineer, Technology, Support, Manager, Senior, Junior</p>
             </div>
         </div>
     </div>

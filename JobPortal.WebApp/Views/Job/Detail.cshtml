@@ -33,15 +33,9 @@
 					<div class="thumb">
 						<img height="100" width="120" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
 						<ul class="tags">
-							<!--Job skill area-->
+							<!--Skill-->
 							<li>
-								<a href="#">Art</a>
-							</li>
-							<li>
-								<a href="#">Media</a>
-							</li>
-							<li>
-								<a href="#">Design</a>
+								<a href="#">@Model.Skill.Name</a>
 							</li>
 						</ul>
 					</div>
@@ -61,35 +55,15 @@
 				<div class="single-post job-details">
 					<h4 class="single-title">Whom we are looking for</h4>
 					<p>@Model.Description</p>
-					<p>@Model.Description</p>
 				</div>
 				<div class="single-post job-experience">
 					<h4 class="single-title">Experience Requirements</h4>
 					<ul>
 						<li>
 							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
+							<span>@Model.MinAge - @Model.MaxAge</span>
 						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
+						
 					</ul>
 				</div>
 				<div class="single-post job-experience">
@@ -97,33 +71,13 @@
 					<ul>
 						<li>
 							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
+							<span>@Model.ShortDescription</span>
 						</li>
 					</ul>
 				</div>
 				<div class="single-post job-experience">
 					<h4 class="single-title">Education Requirements</h4>
 					<ul>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Description</span>
-						</li>
 						<li>
 							<img src="../assets/user/img/pages/list.jpg" alt="">
 							<span>@Model.Description</span>
@@ -140,7 +94,6 @@
 					<a class="text-uppercase loadmore-btn mx-auto d-block" href="/login">login to apply now</a>
 				}
 			</div>
-
 			<div class="col-lg-4 sidebar">
 				<div class="single-slidebar">
 					<!--Province-->
@@ -148,28 +101,9 @@
 					<ul class="cat-list">
 						@foreach (var pro in ViewBag.ListProvinces)
 						{
-							<li><a class="justify-content-between d-flex" href="#"><p>@pro.Name</p><span>@pro.Id</span></a></li>
+							<li><a class="justify-content-between d-flex" href="/job?slug=@pro.Slug"><p>@pro.Name</p><span></span></a></li>
 						}
 					</ul>
-				</div>
-				<div class="single-slidebar">
-					<!--Popular-->
-					<h4>Top rated job posts</h4>
-					<div class="active-relatedjob-carusel">
-						@foreach (var job in ViewBag.ListJobs)
-						{
-							<div class="single-rated">
-								<img href="/job/@job.Slug" class="img-fluid" src="../assets/user/img/r1.jpg" alt="">
-								<a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-								<h6>@job.Province.Name</h6>
-								<p>@job.Description</p>
-								<h5>Job Nature: @job.Time.Name</h5>
-								<p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
-								<p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
-								<a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
-							</div>
-						}
-					</div>
 				</div>
 				<div class="single-slidebar">
 					<!--Skill-->
@@ -177,7 +111,7 @@
 					<ul class="cat-list">
 						@foreach (var skill in ViewBag.ListSkills)
 						{
-							<li><a class="justify-content-between d-flex" href="#"><p>@skill.Name</p><span>123</span></a></li>
+							<li><a class="justify-content-between d-flex" href="/job?slug=@skill.Slug"><p>@skill.Name</p><span></span></a></li>
 						}
 					</ul>
 				</div>
