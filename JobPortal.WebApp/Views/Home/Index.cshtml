@@ -32,6 +32,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="single-feature">
                         <h4>@cate.Name</h4>
+                        <hr />
                         <p>@cate.Description</p>
                     </div>
                 </div>
@@ -85,7 +86,8 @@
                         <a href="/job?slug=@skill.Slug">
                             <img height="70" width="80" src="https://localhost:7211/images/skills/@skill.Logo" alt="">
                         </a>
-                        <p>@skill.Name</p>
+                        <hr />
+                        <a href="/job?slug=@skill.Slug">@skill.Name</a>
                     </div>
                 </div>
             }
@@ -100,7 +102,7 @@
             <div class="menu-content pb-30 col-lg-10">
                 <div class="title text-center">
                     <h1 class="mb-10">TOP EMPLOYERS</h1>
-                    <p>Recommend top employers.</p>
+                    <p>Recommend top employers</p>
                 </div>
             </div>
         </div>
@@ -114,6 +116,7 @@
                             <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
                             <div class='card-body'>
                                 <h4 class='card-title text-center'>@emp.FullName</h4>
+                                <hr />
                                 <footer class='card-text text-center'>
                                     <span>
                                         <span> @emp.WebsiteURL </span>
