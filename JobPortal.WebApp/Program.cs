@@ -42,14 +42,14 @@ builder.Services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options => {
     options.Cookie.Name = "jobportal";
-    options.IdleTimeout = new TimeSpan(0, 5, 0);
-    //options.IdleTimeout = TimeSpan.FromMinutes(5);
+    options.IdleTimeout = new TimeSpan(0, 30, 0);
+    //options.IdleTimeout = TimeSpan.FromMinutes(30);
 });
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     //options.LoginPath = "/Account/Login";
     //options.LoginPath = "/login";
 });

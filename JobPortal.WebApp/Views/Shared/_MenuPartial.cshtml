@@ -1,7 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using JobPortal.Data.DataContext;
-@using JobPortal.Data.Entities;
-@using JobPortal.Data.ViewModel;
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
 @inject UserManager<AppUser> userManager
@@ -12,16 +9,16 @@
 
 <li class="menu-active"><a href="/">Home</a></li>
 <li><a href="/job">All Jobs</a></li>
-<li><a href="/search">Search</a></li>
 @if (signInManager.IsSignedIn(User))
 {
     <li><a href="/apply/@user.Id">Interview</a></li>
 }
+<li><a href="/blog">Blog</a></li>
 <li class="menu-has-children">
     <a href="">Pages</a>
     <ul>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/price">Price</a></li>
+        <li><a href="/search">search</a></li>
+        <li><a href="/price">price</a></li>
         <li><a href="/about-us">about us</a></li>
         <li><a href="/contact">contact</a></li>
         <li><a href="/elements">elements</a></li>

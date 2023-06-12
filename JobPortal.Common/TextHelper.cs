@@ -29,6 +29,8 @@ namespace JobPortal.Common
             {
                 str2 = str2.Replace("--", "-").ToLower();
             }
+            str2 = str2.Replace("#", "sharp");
+            str2 = str2.Replace("+", "p");
             return str2;
         }
         public static String GetFullTimestamp(DateTime value)

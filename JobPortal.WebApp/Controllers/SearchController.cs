@@ -40,8 +40,6 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
 
             ViewBag.q = q;
-            //ViewBag.province = province;
-            //ViewBag.skill = skill;
             ViewBag.province = await _context.Provinces.FirstOrDefaultAsync(p => p.Id == province);
             ViewBag.skill = await _context.Skills.FirstOrDefaultAsync(s => s.Id == skill);
 

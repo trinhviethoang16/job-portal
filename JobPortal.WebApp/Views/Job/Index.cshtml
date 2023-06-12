@@ -11,7 +11,7 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    @if (ViewBag.Time == null && ViewBag.Province == null && ViewBag.Skill == null)
+                    @if (ViewBag.Time == null && ViewBag.Province == null && ViewBag.Skill == null && ViewBag.Employer == null)
                     {
                         <text>Let your dreams fly in the sky of imagination</text>
                     }
@@ -20,7 +20,8 @@
                         <text>
                             @((ViewBag.Time != null ? $"{ViewBag.Time.Name} jobs" : null) ??
                                 (ViewBag.Province != null ? $"Jobs in {ViewBag.Province.Name}" :
-                                    (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" : null)))
+                                    (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" :
+                                        (ViewBag.Employer != null ? $"{ViewBag.Employer.FullName} Jobs" : null))))
                         </text>
                     }
                 </h1>
@@ -71,7 +72,7 @@
                             </div>
                             <p>@job.Description</p>
                             <h5>Job Nature: @job.Time.Name</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+                            <p class="address"><span class="lnr lnr-map"></span> @job.Introduce</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
                         </div>
                     </div>

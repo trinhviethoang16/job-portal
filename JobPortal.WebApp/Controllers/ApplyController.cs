@@ -105,6 +105,12 @@ namespace JobPortal.WebApp.Controllers
             return RedirectToAction(nameof(Fail));
         }
 
+        [Route("feedback")]
+        public IActionResult Feedback()
+        {
+            return View();
+        }
+
         [Route("access-denied")]
         [AllowAnonymous]
         public IActionResult AccessDenied()

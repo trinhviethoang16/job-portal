@@ -42,6 +42,7 @@ namespace JobPortal.Data.DataContext
             modelBuilder.ApplyConfiguration(new SkillConfiguration());
             modelBuilder.ApplyConfiguration(new TimeConfiguration());
             modelBuilder.ApplyConfiguration(new TitleConfiguration());
+            modelBuilder.ApplyConfiguration(new FeedbackConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
@@ -62,5 +63,6 @@ namespace JobPortal.Data.DataContext
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Time> Times { get; set; }
         public DbSet<Title> Titles { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

@@ -68,7 +68,11 @@
                                             <span asp-validation-for="WebsiteURL" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" onclick="onConfirm()" value="Create" class="btn btn-primary" />
+                                            <label asp-for="ProvinceId" class="control-label"></label><span class="text-danger">*</span>
+                                            <select asp-for="ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" onclick="onConfirm()" value="Register" class="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>

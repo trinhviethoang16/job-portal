@@ -82,7 +82,7 @@
             {
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
-                        <a href="">
+                        <a href="/job?slug=@skill.Slug">
                             <img height="70" width="80" src="https://localhost:7211/images/skills/@skill.Logo" alt="">
                         </a>
                         <p>@skill.Name</p>
@@ -100,7 +100,7 @@
             <div class="menu-content pb-30 col-lg-10">
                 <div class="title text-center">
                     <h1 class="mb-10">TOP EMPLOYERS</h1>
-                    <p>There are Top Employer in our system.</p>
+                    <p>Recommend top employers.</p>
                 </div>
             </div>
         </div>
@@ -109,17 +109,17 @@
             @foreach (var emp in ViewBag.RandomEmployers)
             {
                 <div class='col-xs-16 col-3'>
-                    <a asp-action="index">
+                    <a href="/job?slug=@emp.Slug">
                         <div class="card">
                             <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='250' width='150'>
                             <div class='card-body'>
                                 <h4 class='card-title text-center'>@emp.FullName</h4>
                                 <footer class='card-text text-center'>
                                     <span>
-                                        <span> @emp.Address </span>
+                                        <span> @emp.WebsiteURL </span>
                                         <span>&nbsp;-&nbsp;</span>
                                     </span>
-                                    <span>@emp.Address</span>
+                                    <span>@emp.Province.Name</span>
                                 </footer>
                             </div>
                         </div>
@@ -192,52 +192,3 @@
     </div>
 </section>
 <!-- End download Area -->
-@*<!-- Start banner Area -->
-<section class="banner-area relative" id="home">
-    <div class="overlay overlay-bg"></div>
-    <div class="container">
-        <div class="row fullscreen d-flex align-items-center justify-content-center">
-            <div class="banner-content col-lg-12">
-                <h1 class="text-white">
-                    <span>1500+</span> Jobs posted last week
-                </h1>
-                <ng-form action="../assets/user/search.html" class="serach-form-area">
-                    <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looking for ?">
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects" ">
-                                <select>
-                                    <option>Select area</option>
-                            @foreach (var province in ViewBag.FilterProvinces)
-                            {
-                                        <option value="@province.Id">@province.Name</option>
-                            }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option>Select category</option>
-                            @foreach (var cate in ViewBag.FilterCategories)
-                            {
-                                        <option value="@cate.Id">@cate.Name</option>
-                            }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 form-cols">
-                            <button type="button" class="btn btn-info">
-                                <span class="lnr lnr-magnifier"></span> Search
-                            </button>
-                        </div>
-                    </div>
-                </ng-form>
-
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End banner Area -->*@

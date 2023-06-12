@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +10,7 @@ using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using JobPortal.Common;
+using Microsoft.AspNetCore.Identity;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
@@ -25,154 +26,140 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
             _context = context;
         }
 
-        // GET: Employer/Job
-        [Route("index")]
-        [Route("")]
-        public async Task<IActionResult> Index()
+        [Route("{id}")]
+        public async Task<IActionResult> Index(Guid id)
         {
-              return _context.Jobs != null ? 
-                          View(await _context.Jobs.ToListAsync()) :
-                          Problem("Entity set 'ProjectJobPortalContext.Jobs'  is null.");
+            var jobs = await _context.Jobs
+                .Where(j => j.AppUserId == id)
+                .Include(j => j.AppUser)
+                .Include(j => j.Province)
+                .Include(j => j.Time)
+                .Include(j => j.Skill)
+                .Include(j => j.Title)
+                .OrderByDescending(j => j.Id)
+                .ToListAsync();
+            return View(jobs);
         }
 
-        // GET: Employer/Job/Details/5
-        [Route("detail")]
-        public async Task<IActionResult> Details(int? id)
+        [Route("{id}/create")]
+        public IActionResult Create(Guid id)
         {
-            if (id == null || _context.Jobs == null)
-            {
-                return NotFound();
-            }
-
-            var job = await _context.Jobs
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (job == null)
-            {
-                return NotFound();
-            }
-
-            return View(job);
-        }
-
-        // GET: Employer/Jo/Create
-        [Route("create")]
-        public IActionResult Create()
-        {
+            var user = _context.AppUsers.Where(u => u.Id == id).FirstAsync();
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Name");
+            ViewData["TimeId"] = new SelectList(_context.Times, "Id", "Name");
+            ViewData["SkillId"] = new SelectList(_context.Skills, "Id", "Name");
+            ViewData["TitleId"] = new SelectList(_context.Titles, "Id", "Name");
             return View();
         }
 
-        // POST: Employer/Job/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("create")]
+        [Route("{id}/create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,TitleName,Description,ShortDescription,MinAge,MaxAge")] Job job)
+        public async Task<IActionResult> Create(Guid id, CreateJobViewModel model)
         {
+            var user = await _context.AppUsers.Where(u => u.Id == id).FirstAsync();
             if (ModelState.IsValid)
             {
-                _context.Add(job);
+                Job job = new Job()
+                {
+                    Name = model.Name,
+                    Slug = TextHelper.ToUnsignString(model.Name).ToLower(),
+                    CreateDate = DateTime.Now,
+                    Description = model.Description,
+                    Introduce = model.Introduce,
+                    ObjectTarget = model.ObjectTarget,
+                    Experience = model.Experience,
+                    MinAge = model.MinAge,
+                    MaxAge = model.MaxAge,
+                    MinSalary = model.MinSalary,
+                    MaxSalary = model.MaxSalary,
+                    ProvinceId = model.ProvinceId,
+                    TimeId = model.TimeId,
+                    SkillId = model.SkillId,
+                    TitleId = model.TitleId,
+                    AppUserId = id
+                };
+                _context.Jobs.Add(job);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/employer/job/" + id);
             }
-            return View(job);
+            return View(model);
         }
 
-        // GET: Employer/Job/Edit/5
-        [Route("edit")]
-        public async Task<IActionResult> Edit(int? id)
+        [Route("{id}/update")]
+        public IActionResult Update(int id)
         {
-            if (id == null || _context.Jobs == null)
-            {
-                return NotFound();
-            }
-
-            var job = await _context.Jobs.FindAsync(id);
-            if (job == null)
-            {
-                return NotFound();
-            }
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Name");
+            ViewData["TimeId"] = new SelectList(_context.Times, "Id", "Name");
+            ViewData["SkillId"] = new SelectList(_context.Skills, "Id", "Name");
+            ViewData["TitleId"] = new SelectList(_context.Titles, "Id", "Name");
+            var job = _context.Jobs.Where(j => j.Id == id).First();
             return View(job);
         }
 
-        // POST: Employer/Job/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [Route("{id}/update")]
         [HttpPost]
-        [Route("edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,TitleName,Description,ShortDescription,MinAge,MaxAge")] Job job)
+        public async Task<IActionResult> Update(int id, UpdateJobViewModel model)
         {
-            if (id != job.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(job);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!JobExists(job.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(job);
+            Job job = _context.Jobs.Where(j => j.Id == id).First();
+            job.Name = model.Name;
+            job.Description = model.Description;
+            job.Introduce = model.Introduce;
+            job.Experience = model.Experience;
+            job.ObjectTarget = model.ObjectTarget;
+            job.MinAge = model.MinAge;
+            job.MaxAge = model.MaxAge;
+            job.ProvinceId = model.ProvinceId;
+            job.TimeId = model.TimeId;
+            job.SkillId = model.SkillId;
+            job.TitleId = model.TitleId;
+            _context.Jobs.Update(job);
+            await _context.SaveChangesAsync();
+            return Redirect("/employer/job/" + job.AppUserId);
         }
 
-        // GET: Employer/Job/Delete/5
-        [Route("delete")]
-        public async Task<IActionResult> Delete(int? id)
+        [HttpGet("{id}/delete")]
+        public IActionResult Delete(int id)
         {
-            if (id == null || _context.Jobs == null)
+            try
             {
-                return NotFound();
+                Job job = _context.Jobs.Where(s => s.Id == id).First();
+                _context.Jobs.Remove(job);
+                _context.SaveChanges();
+                return Redirect("/employer/job/" + job.AppUserId);
             }
-
-            var job = await _context.Jobs
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (job == null)
+            catch (System.Exception)
             {
-                return NotFound();
+                Job job = _context.Jobs.Where(s => s.Id == id).First();
+                return Redirect("/employer/job/" + job.AppUserId);
             }
-
-            return View(job);
         }
 
-        // POST: Employer/Job/Delete/5
-        [Route("delete")]
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpPost("delete-selected")]
+        public async Task<IActionResult> DeleteSelected(int[] listDelete)
         {
-            if (_context.Jobs == null)
-            {
-                return Problem("Entity set 'ProjectJobPortalContext.Jobs'  is null.");
-            }
-            var job = await _context.Jobs.FindAsync(id);
-            if (job != null)
+            var jobs = await _context.Jobs.Where(j => listDelete.Contains(j.Id)).ToListAsync();
+            foreach (var job in jobs)
             {
                 _context.Jobs.Remove(job);
             }
-            
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
-        private bool JobExists(int id)
-        {
-          return (_context.Jobs?.Any(e => e.Id == id)).GetValueOrDefault();
+            // Lấy giá trị id của người dùng từ một trong các job đã xóa
+            var userId = jobs.FirstOrDefault()?.AppUserId;
+
+            // Trả về trang Index với giá trị id
+            return RedirectToAction("Index", new { id = userId });
+
+            //foreach (int id in listDelete)
+            //{
+            //    var job = await _context.Jobs.FindAsync(id);
+            //    _context.Jobs.Remove(job);
+            //}
+            //await _context.SaveChangesAsync();
+            //return RedirectToAction("Index");
         }
     }
 }

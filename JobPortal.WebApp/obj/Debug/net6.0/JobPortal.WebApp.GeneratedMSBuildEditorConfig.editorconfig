@@ -184,20 +184,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Employer/Views/Job/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Employer/Views/Job/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Employer/Views/Job/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/Code/source/job-portal/JobPortal.WebApp/Areas/Employer/Views/Job/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Employer/Views/Job/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRW1wbG95ZXJcVmlld3NcSm9iXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Areas/Employer/Views/Shared/_EmployerLoginLayout.cshtml]

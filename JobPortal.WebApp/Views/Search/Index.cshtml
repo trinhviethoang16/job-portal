@@ -46,6 +46,13 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
+                <!--Time list-->
+                <ul class="cat-list" style="width:auto">
+                    @foreach (var time in @ViewBag.ListTimes)
+                    {
+                        <li class="col-xs-12 col-4"><a href="/job?slug=@time.Slug">@time.Name</a></li>
+                    }
+                </ul>
                 <!--Job list-->
                 @foreach (var job in Model)
                 {
@@ -74,7 +81,7 @@
                             </div>
                             <p>@job.Description</p>
                             <h5>Job Nature: @job.Time.Name</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> @job.ShortDescription</p>
+                            <p class="address"><span class="lnr lnr-map"></span> @job.Introduce</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
                         </div>
                     </div>

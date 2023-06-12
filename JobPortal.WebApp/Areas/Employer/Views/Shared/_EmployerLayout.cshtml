@@ -70,6 +70,8 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="~/assets/admin/assets/js/config.js"></script>
+    <!-- CKEditor -->
+    <script type="text/javascript" src="~/assets/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -179,9 +181,16 @@
                     <!-- Contents -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">Management</span></li>
                     <li class="menu-item">
-                        <a href="/employer/job" class="menu-link">
+                        <a href="/employer/job/@user.Id" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Jobs</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="/employer/blog/@user.Id" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Tables">Blogs</div>
                         </a>
                     </li>
 

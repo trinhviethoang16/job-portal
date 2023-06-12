@@ -1,0 +1,152 @@
+﻿@model JobPortal.Data.Entities.Job
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+    ViewData["Title"] = "Update job";
+}
+
+<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="text-align: center" class="card-title">Update your job</h4>
+                    <br />
+                    <div class="col-md-4i">
+                        <form asp-action="Update" enctype="multipart/form-data" id="form">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label asp-for="Name" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="Name" class="form-control" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="Introduce" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="Introduce" class="form-control" rows="3"></textarea>
+                                        <span asp-validation-for="Introduce" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="ObjectTarget" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="ObjectTarget" class="form-control" rows="3"></textarea>
+                                        <span asp-validation-for="ObjectTarget" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="Experience" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="Experience" class="form-control" rows="3"></textarea>
+                                        <span asp-validation-for="Experience" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="Description" class="form-control" id="CKEditor" style="height: 450px"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="MinAge" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="MinAge" class="form-control" />
+                                        <span asp-validation-for="MinAge" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="MaxAge" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="MaxAge" class="form-control" />
+                                        <span asp-validation-for="MaxAge" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="MinSalary" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="MinSalary" class="form-control" />
+                                        <span asp-validation-for="MinSalary" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="MaxSalary" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="MaxSalary" class="form-control" />
+                                        <span asp-validation-for="MaxSalary" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ProvinceId" class="control-label"></label><span class="text-danger">*</span>
+                                        <select asp-for="ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TimeId" class="control-label"></label><span class="text-danger">*</span>
+                                        <select asp-for="TimeId" class="form-control" asp-items="ViewBag.TimeId"></select>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="SkillId" class="control-label"></label><span class="text-danger">*</span>
+                                        <select asp-for="SkillId" class="form-control" asp-items="ViewBag.SkillId"></select>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="TitleId" class="control-label"></label><span class="text-danger">*</span>
+                                        <select asp-for="TitleId" class="form-control" asp-items="ViewBag.TitleId"></select>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <input type="submit" onclick="onConfirm()" value="Update" class="btn btn-primary"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <br />
+                            <div>
+                                <a class="btn btn-primary" href="/employer/job/@user.Id">Back to List</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+    }
+
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        function onConfirm() {
+            Swal.fire({
+                title: 'Update this job?',
+                text: "Are you sure to update this job?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form").submit();
+                    Swal.fire(
+                        'Update!',
+                        '',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+
+    <script>CKEDITOR.replace('CKEditor');</script>
+}

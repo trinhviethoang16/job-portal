@@ -14,16 +14,12 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> signInManager;
-        private readonly RoleManager<AppRole> roleManager;
         private readonly UserManager<AppUser> userManager;
-        private readonly DataDbContext dataDbContext;
 
-        public AccountController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, DataDbContext dataDbContext)
+        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             this.signInManager = signInManager;
-            this.roleManager = roleManager;
             this.userManager = userManager;
-            this.dataDbContext = dataDbContext;
         }
 
         [HttpGet]

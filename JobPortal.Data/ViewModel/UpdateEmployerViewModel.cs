@@ -17,5 +17,6 @@ namespace JobPortal.Data.ViewModel
         public string? Location { get; set; }
         public string? WebsiteURL { get; set; }
         public int? Status { get; set; }
+        public int ProvinceId { get; set; }
     }
 }

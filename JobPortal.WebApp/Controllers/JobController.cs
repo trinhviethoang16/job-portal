@@ -38,7 +38,7 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.ListProvinces = randomProvinces;
 
 
-			ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
+            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
             var jobs = await _context.Jobs.OrderByDescending(j => j.Id).Include(j => j.AppUser).ToListAsync();
 
             if (slug != null)
@@ -46,58 +46,76 @@ namespace JobPortal.WebApp.Controllers
                 var time = _context.Times.FirstOrDefault(t => t.Slug == slug);
                 var province = _context.Provinces.FirstOrDefault(p => p.Slug == slug);
                 var skill = _context.Skills.FirstOrDefault(s => s.Slug == slug);
+                var employer = _context.AppUsers.FirstOrDefault(e => e.Slug == slug);
 
-                jobs = await (time != null ? (from t in _context.Times
-                                              join job in _context.Jobs on t.Id equals job.TimeId
-                                              orderby job.Id descending
-                                              where t.Slug == slug
-                                              select job) :
-                                 (province != null ? (from p in _context.Provinces
-                                                      join job in _context.Jobs on p.Id equals job.ProvinceId
-                                                      orderby job.Id descending
-                                                      where p.Slug == slug
-                                                      select job) :
-                                                     (skill != null ? (from s in _context.Skills
-                                                                       join job in _context.Jobs on s.Id equals job.SkillId
-                                                                       orderby job.Id descending
-                                                                       where s.Slug == slug
-                                                                       select job) :
-                                                                       _context.Jobs))).ToListAsync();
                 if (time != null)
                 {
+                    jobs = await (from t in _context.Times
+                                  join job in _context.Jobs on t.Id equals job.TimeId
+                                  orderby job.Id descending
+                                  where t.Slug == slug
+                                  select job).ToListAsync();
                     ViewBag.Time = time;
                 }
                 else if (province != null)
                 {
+                    jobs = await (from p in _context.Provinces
+                                  join job in _context.Jobs on p.Id equals job.ProvinceId
+                                  orderby job.Id descending
+                                  where p.Slug == slug
+                                  select job).ToListAsync();
                     ViewBag.Province = province;
                 }
                 else if (skill != null)
                 {
+                    jobs = await (from s in _context.Skills
+                                  join job in _context.Jobs on s.Id equals job.SkillId
+                                  orderby job.Id descending
+                                  where s.Slug == slug
+                                  select job).ToListAsync();
                     ViewBag.Skill = skill;
-                }    
+                }
+                else if (employer != null)
+                {
+                    jobs = await (from e in _context.AppUsers
+                                  join job in _context.Jobs on e.Id equals job.AppUserId
+                                  orderby job.Id descending
+                                  where e.Slug == slug
+                                  select job).ToListAsync();
+                    ViewBag.Employer = employer;
+                }
+                else
+                {
+                    jobs = await _context.Jobs.OrderByDescending(j => j.Id)
+                        .Include(j => j.AppUser)
+                        .ToListAsync();
+                }
+
                 return View(jobs);
             }
-            jobs = await _context.Jobs.OrderByDescending(j => j.Id).Include(j => j.AppUser).ToListAsync();
+            jobs = await _context.Jobs.OrderByDescending(j => j.Id)
+                .Include(j => j.AppUser)
+                .ToListAsync();
             return View(jobs);
         }
 
         [Route("{slug}")]
         public async Task<IActionResult> Detail(string slug)
-		{
+        {
             //for random value
-			var random = new Random();
+            var random = new Random();
 
-			//random skills - 10
-			var skillList = _context.Skills.ToList();
-			var randomSkills = skillList.OrderBy(s => random.Next()).Take(10).ToList();
-			ViewBag.ListSkills = randomSkills;
+            //random skills - 10
+            var skillList = _context.Skills.ToList();
+            var randomSkills = skillList.OrderBy(s => random.Next()).Take(10).ToList();
+            ViewBag.ListSkills = randomSkills;
 
-			//random provinces - 5
-			var provinceList = _context.Provinces.ToList();
-			var randomProvinces = provinceList.OrderBy(p => random.Next()).Take(5).ToList();
-			ViewBag.ListProvinces = randomProvinces;
+            //random provinces - 5
+            var provinceList = _context.Provinces.ToList();
+            var randomProvinces = provinceList.OrderBy(p => random.Next()).Take(5).ToList();
+            ViewBag.ListProvinces = randomProvinces;
 
-			var job = await _context.Jobs
+            var job = await _context.Jobs
                 .Where(j => j.Slug == slug)
                 .Include(j => j.AppUser)
                 .Include(j => j.Time)

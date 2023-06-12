@@ -27,6 +27,7 @@ namespace JobPortal.WebApp.Controllers
         public async Task<IActionResult> Register(Guid id)
         {
             var user = await _context.AppUsers.Where(u => u.Id == id).FirstAsync();
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Name");
             // check role
             if (!User.IsInRole("User"))
             {
@@ -54,12 +55,14 @@ namespace JobPortal.WebApp.Controllers
             {
                 AppUser user = _context.AppUsers.Where(u => u.Id == id).First();
                 user.FullName = model.FullName;
+                user.Slug = TextHelper.ToUnsignString(model.FullName ?? user.FullName).ToLower();
                 var image = UploadImage.UploadImageFile(model.UrlAvatar, POST_IMAGE_PATH);
                 user.UrlAvatar = image;
                 user.Description = model.Description;
                 user.Contact = model.Contact;
                 user.Location = model.Location;
                 user.WebsiteURL = model.WebsiteURL;
+                user.ProvinceId = model.ProvinceId;
                 user.Status = model.Status = 1; //for pending
                 _context.Update(user);
                 await _context.SaveChangesAsync();

@@ -6,14 +6,11 @@ namespace JobPortal.Data.Entities
     {
         //User
         public string? FullName { get; set; }
-        public string? Image { get; set; }
         public string? Phone { get; set; }
         public string? Address { get; set; }
         public int? Age { get; set; }
         public DateTime? CreateDate { get; set; }
-        public string? Introduce { get; set; }
         public string? Description { get; set; }
-        public string? ShortDescription { get; set; }
         public string? UrlAvatar { get; set; }
 
         //Employer
@@ -26,6 +23,9 @@ namespace JobPortal.Data.Entities
         public Category? Category { get; set; }
         public int? CategoryId { get; set; }
         public ICollection<Job>? Jobs { get; set; }
-        public int? Status { set; get; } //1 for pending, 2...
+        public int? Status { set; get; } // 0 = default, 1 = pending, 2 = employer
+        public string? Slug { get; set; }
+        public Province? Province { get; set; }
+        public int? ProvinceId { get; set; }
     }
 }
