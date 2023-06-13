@@ -14,7 +14,7 @@ namespace JobPortal.Data.ViewModel
         public string Description { get; set; }
         public string Introduce { get; set; }
         public Guid UserId { set; get; }
-        public int Status { get; set; } // = 0 all apply job // = 1 waiting // = 2 accepted // = 3 denied
+        public int Status { get; set; } // = 0 denied // = 1 waiting // = 2 accepted // = -1 cancel
         public IFormFile UrlImage { get; set; }
 		public string Phone { get; set; }
 		public string Email { get; set; }

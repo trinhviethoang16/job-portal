@@ -30,8 +30,8 @@
 		<div class="row justify-content-center d-flex">
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
-					<div class="thumb">
-						<img height="100" width="120" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
+					<div class="thumb" style="align-items:center">
+						<img width="120" height="100" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
 						<ul class="tags">
 							<!--Skill-->
 							<li>
@@ -39,7 +39,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="details">
+					<div class="details" style="margin-left:20px">
 						<div class="title d-flex flex-row justify-content-between">
 							<div class="titles">
 								<a href="#"><h4>@Model.Name</h4></a>
@@ -97,7 +97,7 @@
 			<div class="col-lg-4 sidebar">
 				<div class="single-slidebar">
 					<!--Province-->
-					<h4>Jobs by Location</h4>
+					<h4 class="text-center">Jobs by Location</h4>
 					<ul class="cat-list">
 						@foreach (var pro in ViewBag.ListProvinces)
 						{
@@ -107,7 +107,7 @@
 				</div>
 				<div class="single-slidebar">
 					<!--Skill-->
-					<h4>Jobs by Skill</h4>
+					<h4 class="text-center">Jobs by Skill</h4>
 					<ul class="cat-list">
 						@foreach (var skill in ViewBag.ListSkills)
 						{
@@ -116,7 +116,7 @@
 					</ul>
 				</div>
 				<div class="single-slidebar">
-					<h4>Carrer Advice Blog</h4>
+					<h4 class="text-center">Carrer Advice Blog</h4>
 					<div class="blog-list">
 						<div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
 							<a href="#">

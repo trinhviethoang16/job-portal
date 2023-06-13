@@ -110,7 +110,33 @@ namespace JobPortal.WebApp.Controllers
             return RedirectToAction(nameof(Fail));
         }
 
-        [Route("feedback")]
+        [HttpGet("{id}/{CVid}/delete")]
+        public IActionResult Delete(Guid id, int CVid)
+        {
+            try
+            {
+                CV cv = _context.CVs.Where(cv => cv.Id == CVid).First();
+                _context.CVs.Remove(cv);
+                _context.SaveChanges();
+                return Redirect("/apply/" + id);
+            }
+            catch (System.Exception)
+            {
+                return Redirect("/apply/" + id);
+            }
+        }
+
+        [HttpGet("{id}/{CVid}/update/{status}")]
+        public IActionResult UpdateCV(Guid id, int CVid, int status)
+        {
+            CV cv = _context.CVs.Where(cv => cv.Id == CVid).First();
+            cv.Status = status;
+            _context.CVs.Update(cv);
+            _context.SaveChanges();
+            return Redirect("/apply/" + id);
+        }
+
+        [Route("{id}/{CVid}/feedback")]
         public IActionResult Feedback()
         {
             return View();

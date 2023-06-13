@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-description">
-                        <a href="/employer/job/@user.Id/create">Add new job</a>
+                        <a class="btn btn-primary" href="/employer/job/@user.Id/create">Add new job</a>
                     </p>
                     @*<form asp-action="Index" method="get" class="form-inline">
                         <div class="form-group mx-sm-3 mb-2">
@@ -50,7 +50,7 @@
                                             @Html.DisplayNameFor(model => model.Name)
                                         </th>
                                         <th>
-                                            Employer
+                                            @Html.DisplayNameFor(model => model.CreateDate)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Province)
@@ -81,7 +81,7 @@
                                                 @Html.DisplayFor(modelJob => job.Name)
                                             </td>
                                             <td>
-                                                <img src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" style="width: 40px" />
+                                                @Html.DisplayFor(modelJob => job.CreateDate)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelJob => job.Province.Name)

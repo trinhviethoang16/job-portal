@@ -15,7 +15,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 style="text-align: center" class="card-title">Update your job</h4>
+                    <h4 style="text-align: center" class="card-title">FORM UPDATE JOB</h4>
                     <br />
                     <div class="col-md-4i">
                         <form asp-action="Update" enctype="multipart/form-data" id="form">
@@ -75,10 +75,12 @@
                                         <input asp-for="MaxSalary" class="form-control" />
                                         <span asp-validation-for="MaxSalary" class="text-danger"></span>
                                     </div>
+                                    <br />
                                     <div class="form-group">
                                         <label asp-for="ProvinceId" class="control-label"></label><span class="text-danger">*</span>
                                         <select asp-for="ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
                                     </div>
+                                    <br />
                                     <div class="form-group">
                                         <label asp-for="TimeId" class="control-label"></label><span class="text-danger">*</span>
                                         <select asp-for="TimeId" class="form-control" asp-items="ViewBag.TimeId"></select>

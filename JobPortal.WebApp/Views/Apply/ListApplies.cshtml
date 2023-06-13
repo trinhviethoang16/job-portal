@@ -36,6 +36,7 @@
                             <ul>
                                 <li class="active" data-filter="*">All</li>
                                 <li data-filter=".wait">Waiting</li>
+                                <li data-filter=".cancel">Canceled</li>
                                 <li data-filter=".accept">Accepted</li>
                                 <li data-filter=".deny">Denied</li>
                             </ul>
@@ -45,16 +46,20 @@
                             {
                                 <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}
                                                                      @if(CV.CVStatus == 1) {<text>wait</text>}
+                                                                     @if(CV.CVStatus == -1) {<text>cancel</text>}
                                                                      @if(CV.CVStatus == 2) {<text>accept</text>}">
                                     <section class="d-flex mb-3" style="justify-content: space-between;">
                                         <p>
-                                                <span>CV: <b>@CV.Certificate</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
+                                            <span>CV: <b>@CV.Certificate</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
                                             @{
                                                 switch (CV.CVStatus)
                                                 {
                                                     case 0: <span class="text-danger"><b>Denied</b></span>
                                                         break;
                                                     case 1: <span class="text-success"><b>Waiting</b></span>
+                                                        break;
+                                                    case -1:
+                                                        <span class="text-success"><b>Canceled</b></span>
                                                         break;
                                                     case 2: <span class="text-success"><b>Accepted</b></span>
                                                         break;
@@ -64,17 +69,21 @@
                                             }
                                         </p>
                                         <div>
-                                            @if (CV.CVStatus == 2)
+                                            @if (CV.CVStatus == 0)
                                             {
-                                                <a href="/apply/feedback-cv/@CV.CVId" class="btn-sm btn-danger">Feedback</a>
+                                                <a href="/apply/@user.Id/@CV.CVId/delete" class="btn btn-danger">Delete CV</a>
                                             }
                                             @if (CV.CVStatus == 1)
                                             {
-                                                <a href="/apply/cancel-cv/@CV.CVId" class="btn-sm btn-danger">Cancel CV</a>
+                                                <a href="/apply/@user.Id/@CV.CVId/update/-1" class="btn btn-danger">Cancel CV</a>
                                             }
-                                            @if (CV.CVStatus == 0)
+                                            @if (CV.CVStatus == 2)
                                             {
-                                                <a href="/apply/delete-cv/@CV.CVId" class="btn-sm btn-danger">Delete CV</a>
+                                                <a href="/apply/@user.Id/@CV.CVId/feedback" class="btn btn-primary">Feedback CV</a>
+                                            }
+                                            @if (CV.CVStatus == -1)
+                                            {
+                                                <a href="/apply/@user.Id/@CV.CVId/update/1" class="btn btn-primary">Continue CV</a>
                                             }
                                         </div>
                                     </section>

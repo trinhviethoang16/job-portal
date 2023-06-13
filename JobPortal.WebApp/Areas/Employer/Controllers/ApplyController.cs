@@ -57,11 +57,11 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                 case 2: // accepted
                     CVs = await CV.Where(cv => cv.CVStatus == 2).ToListAsync();
                     break;
-                case 3: // all
-                    CVs = await CV.ToListAsync();
+                case 3: // all but cancel status
+                    CVs = await CV.Where(cv => cv.CVStatus != -1).ToListAsync();
                     break;
                 default:
-                    CVs = await CV.ToListAsync();
+                    CVs = await CV.Where(cv => cv.CVStatus != -1).ToListAsync();
                     break;
             }
             return View(CVs);
