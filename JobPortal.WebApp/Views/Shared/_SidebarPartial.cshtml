@@ -1,6 +1,6 @@
 ﻿<div class="col-lg-4 sidebar">
+    <!--Province-->
     <div class="single-slidebar">
-        <!--Province-->
         <h4>Jobs by Location</h4>
         <ul class="cat-list">
             @foreach (var pro in ViewBag.ListProvinces)
@@ -9,8 +9,9 @@
             }
         </ul>
     </div>
+
+    <!--Skill-->
     <div class="single-slidebar">
-        <!--Skill-->
         <h4>Jobs by Skill</h4>
         <ul class="cat-list">
             @foreach (var skill in ViewBag.ListSkills)
@@ -19,25 +20,30 @@
             }
         </ul>
     </div>
+
+    <!--Popular-->
     <div class="single-slidebar">
-        <!--Popular-->
         <h4>Top rated job posts</h4>
         <div class="active-relatedjob-carusel">
-            @foreach (var job in ViewBag.ListJobs)
-            {
-                <div class="single-rated">
-                    <img href="/job/@job.Slug" class="img-fluid" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="">
-                    <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                    <h6>@job.Province.Name</h6>
-                    <p>@job.Description</p>
-                    <h5>Job Nature: @job.Time.Name</h5>
-                    <p class="address"><span class="lnr lnr-map"></span> @job.Introduce</p>
-                    <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
-                    <a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
-                </div>
-            }
-        </div>
+            @*<div class="single-rated">*@
+                @foreach (var job in ViewBag.ListJobs)
+                {
+                    <div class="single-rated">
+                    <img href="/job/@job.Slug" style="width: 400px; height: 150px;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image">
+                        <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
+                        <h6>@job.Province.Name</h6>
+                        <p>@job.Description</p>
+                        <h5>Job Nature: @job.Time.Name</h5>
+                        <p class="address"><span class="lnr lnr-map"></span> @job.Introduce</p>
+                        <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+                        <a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
+                    </div>
+                }
+            @*</div>*@
+            </div>
     </div>
+
+    <!--Blog-->
     <div class="single-slidebar">
         <h4>Carrer Advice Blog</h4>
         <div class="blog-list">
