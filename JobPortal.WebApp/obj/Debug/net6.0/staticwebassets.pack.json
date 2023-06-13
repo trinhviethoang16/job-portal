@@ -3581,6 +3581,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\blogs\\shiba.jpg",
+      "PackagePath": "staticwebassets\\images\\blogs\\shiba.jpg"
+    },
+    {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\75f643b4-0c0a-4045-b24c-c013add1d444.jpg",
       "PackagePath": "staticwebassets\\images\\cvs\\75f643b4-0c0a-4045-b24c-c013add1d444.jpg"
     },

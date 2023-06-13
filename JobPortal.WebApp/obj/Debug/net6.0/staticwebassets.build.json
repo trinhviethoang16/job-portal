@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XNFRMgQFXL7g+qWh+0ACH3Ipi7IwQmdU/MQLae3Gf6w=",
+  "Hash": "s8ic/G6xnWXx3k2uHSRMO/j2xYNw+XWivN6y+yywdcY=",
   "Source": "JobPortal.WebApp",
   "BasePath": "_content/JobPortal.WebApp",
   "Mode": "Default",
@@ -15247,6 +15247,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\blogs\\shiba.jpg",
+      "SourceId": "JobPortal.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\",
+      "BasePath": "_content/JobPortal.WebApp",
+      "RelativePath": "images/blogs/shiba.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\blogs\\shiba.jpg"
     },
     {
       "Identity": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\75f643b4-0c0a-4045-b24c-c013add1d444.jpg",

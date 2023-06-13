@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "afc1dc7b-1c1e-4398-a48c-d5ca39a629ba",
+                            ConcurrencyStamp = "b540e89e-6ed5-4cdf-b370-7563b1295d10",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "54fcf8a4-07be-4eac-b2ec-f2c3c7cb8665",
+                            ConcurrencyStamp = "67da6110-1549-4901-8874-3b0942ec264c",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "9f73f4f5-50db-409d-9cf5-da7d8a6d3fce",
+                            ConcurrencyStamp = "8e5ccc04-e406-4c27-a632-a8224d492de2",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -214,14 +214,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4f54e274-9888-4c0e-a392-bed237ac12e7",
+                            ConcurrencyStamp = "260b0371-ee1f-431a-9e1e-10563b2d48ea",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPPTnyZGKbd6LOpZtcW6e2xcOszXSzuDMahutrLFcY9IjwFjCV1Gh2TsY8Gl0j1Nvw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM/8IGGL14iOgloFyQIQI98rw+9XL0oHAwT1m1cg+6MEMLRWILBwFXEGvXj5GIH5+w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -350,19 +350,25 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<string>("Certificate")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<float>("GPA")
                         .HasColumnType("real");
 
                     b.Property<string>("GraduatedAt")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Introduce")
                         .IsRequired()
@@ -373,8 +379,13 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<string>("Major")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

@@ -5,8 +5,6 @@ using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using JobPortal.Data.DataContext;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-//using Microsoft.AspNet.Identity;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -17,16 +15,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> signInManager;
-        private readonly RoleManager<AppRole> roleManager;
         private readonly UserManager<AppUser> userManager;
-        private readonly DataDbContext dataDbContext;
 
-        public AccountController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, DataDbContext dataDbContext)
+        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             this.signInManager = signInManager;
-            this.roleManager = roleManager;
             this.userManager = userManager;
-            this.dataDbContext = dataDbContext;
         }
 
         //public async Task<bool> IsUserAdmin(string userId)

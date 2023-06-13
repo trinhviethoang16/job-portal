@@ -23,7 +23,7 @@ namespace JobPortal.Data.Entities
         public Category? Category { get; set; }
         public int? CategoryId { get; set; }
         public ICollection<Job>? Jobs { get; set; }
-        public int? Status { set; get; } // 0 = default, 1 = pending, 2 = employer
+        public int? Status { set; get; } // 0 = denied, 1 = waiting, 2 = confirmed
         public string? Slug { get; set; }
         public Province? Province { get; set; }
         public int? ProvinceId { get; set; }

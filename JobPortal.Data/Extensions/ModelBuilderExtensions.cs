@@ -45,7 +45,8 @@ namespace JobPortal.Data.Extensions
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Abc123!@#"),
                 SecurityStamp = string.Empty,
-                FullName = "Adminitrator"
+                FullName = "Adminitrator",
+                Status = -1
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>

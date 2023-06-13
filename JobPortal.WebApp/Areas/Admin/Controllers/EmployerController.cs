@@ -13,70 +13,89 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("admin/apply-employer")]
-    [Authorize(Roles = "Admin")]
     public class EmployerController : Controller
     {
         private readonly DataDbContext _context;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public EmployerController(DataDbContext context)
+        public EmployerController(DataDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _context = context;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [Route("index/{status}")]
         [Route("{status}")]
         public async Task<IActionResult> Index(int status)
         {
-            var user = (from employer in _context.AppUsers
-                        orderby employer.Id descending
-                        select new UpdateEmployerViewModel()
+            var employer = (from emp in _context.AppUsers
+                        orderby emp.Id descending
+                        select new ListEmployersViewWModel()
                         {
-                            FullName = employer.FullName,
-                            Description = employer.Description,
-                            Contact = employer.Contact,
-                            Location = employer.Location,
-                            WebsiteURL = employer.WebsiteURL,
-                            Status = employer.Status
-                        });
-            var users = await user.ToListAsync();
+                            Id = emp.Id,
+                            FullName = emp.FullName,
+                            Description = emp.Description,
+                            Contact = emp.Contact,
+                            Location = emp.Location,
+                            WebsiteURL = emp.WebsiteURL,
+                            UrlAvatar = emp.UrlAvatar,
+                            RegisterDate = emp.CreateDate,
+                            ProvinceName = emp.Province.Name,
+                            Status = emp.Status
+                        });;
+            var employers = await employer.ToListAsync();
             switch (status)
             {
-                case 0:
-                    users = await user.Where(p => p.Status == 0).ToListAsync();
+                case 0: // denied
+                    employers = await employer.Where(p => p.Status == 0).ToListAsync();
                     break;
-                case 1:
-                    users = await user.Where(p => p.Status == 1).ToListAsync();
+                case 1: // pending
+                    employers = await employer.Where(p => p.Status == 1).ToListAsync();
                     break;
-                case 2:
-                    users = await user.Where(p => p.Status == 2).ToListAsync();
+                case 2: // confirmed
+                    employers = await employer.Where(p => p.Status == 2).ToListAsync();
                     break;
-                case 3:
-                    users = await user.Where(p => p.Status == 3).ToListAsync();
-                    break;
-                case 4:
-                    users = await user.Where(p => p.Status == 4).ToListAsync();
-                    break;
-                case 5:
-                    users = await user.ToListAsync();
+                case 3: // all but admin
+                    employers = await employer.Where(p => p.Status != null).ToListAsync();
                     break;
                 default:
-                    users = await user.ToListAsync();
+                    employers = await employer.Where(p => p.Status != null).ToListAsync();
                     break;
             }
-
-            return View(users);
+            return View(employers);
         }
 
-        [Route("update-user-status/{Id}/{status}")]
+        [Route("update-employer-status/{id}/{status}")]
         [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> UpdateStatus(Guid Id, int status)
+        public async Task<IActionResult> UpdateStatus(Guid id, int status)
         {
-            var user = await _context.AppUsers.FirstOrDefaultAsync(user => user.Id == Id);
-            user.Status = status;
-            _context.AppUsers.Update(user);
+            var employer = await _context.AppUsers.FirstOrDefaultAsync(user => user.Id == id);
+            employer.Status = status;
+            _context.AppUsers.Update(employer);
             await _context.SaveChangesAsync();
-            return Ok();
+
+            //get id and check 
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            //get role by id
+            var role = await _userManager.GetRolesAsync(user);
+
+            //Check status to set role
+            if (status == 0) //denied
+            {
+                if (await _userManager.IsInRoleAsync(user, "Employer"))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, "Employer");
+                    await _userManager.AddToRoleAsync(user, "User");
+                }
+            }
+            else if (status == 2) //confirmed
+            {
+                await _userManager.RemoveFromRoleAsync(user, "User");
+                await _userManager.AddToRoleAsync(user, "Employer");
+            }
+            return Redirect("/admin/apply-employer/" + status);
         }
     }
 }

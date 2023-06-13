@@ -41,21 +41,23 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                             EmployerLogo = cv.Job.AppUser.UrlAvatar,
                             UserName = cv.Job.AppUser.FullName,
                             CVImage = cv.UrlImage,
+                            CVPhone = cv.Phone,
+                            CVEmail = cv.Email,
                             EmployerId = cv.Job.AppUser.Id,
                         }).Where(cv => cv.EmployerId == id);
             var CVs = await CV.ToListAsync();
             switch (status)
             {
-                case 0:
+                case 0: // denied
                     CVs = await CV.Where(cv => cv.CVStatus == 0).ToListAsync();
                     break;
-                case 1:
+                case 1: // waiting
                     CVs = await CV.Where(cv => cv.CVStatus == 1).ToListAsync();
                     break;
-                case 2:
+                case 2: // accepted
                     CVs = await CV.Where(cv => cv.CVStatus == 2).ToListAsync();
                     break;
-                case 3:
+                case 3: // all
                     CVs = await CV.ToListAsync();
                     break;
                 default:

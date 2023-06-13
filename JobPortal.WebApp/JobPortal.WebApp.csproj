@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\images\categories\**" />
     <Compile Remove="wwwroot\jobs\**" />
+    <Content Remove="wwwroot\images\categories\**" />
     <Content Remove="wwwroot\jobs\**" />
+    <EmbeddedResource Remove="wwwroot\images\categories\**" />
     <EmbeddedResource Remove="wwwroot\jobs\**" />
+    <None Remove="wwwroot\images\categories\**" />
     <None Remove="wwwroot\jobs\**" />
   </ItemGroup>
 
@@ -352,9 +356,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\categories\" />
     <Folder Include="wwwroot\images\cvs\" />
-    <Folder Include="wwwroot\images\blogs\" />
     <Folder Include="wwwroot\images\cvs\" />
   </ItemGroup>
 

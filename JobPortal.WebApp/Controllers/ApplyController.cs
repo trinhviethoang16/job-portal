@@ -41,6 +41,9 @@ namespace JobPortal.WebApp.Controllers
                                  GPA = cv.GPA,
                                  Description = cv.Description,
                                  Introduce = cv.Introduce,
+                                 CVEmail = cv.Email,
+                                 CVPhone = cv.Phone,
+                                 //CVImage = cv.UrlImage,
                                  UserId = cv.AppUserId,
                                  CVStatus = cv.Status,
                                  JobName = cv.Job.Name,
@@ -93,6 +96,8 @@ namespace JobPortal.WebApp.Controllers
                         GPA = model.GPA,
                         Description = model.Description,
                         Introduce = model.Introduce,
+                        Phone = model.Phone,
+                        Email = model.Email,
                         AppUserId = id,
                         JobId = job.Id,
                         Status = 1 //waiting

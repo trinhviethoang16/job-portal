@@ -18,5 +18,7 @@
         public Guid AppUserId { set; get; }
         public int Status { get; set; } // = 0 denied // = 1 waiting // = 2 accepted
         public string? UrlImage { get; set; } //CV image
+        public string Phone { get; set; }
+        public string Email { get; set; }
     }
 }

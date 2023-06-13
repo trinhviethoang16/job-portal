@@ -11,7 +11,6 @@ namespace JobPortal.Data.ViewModel
         public string GraduatedAt { get; set; }
         public float GPA { get; set; }
         public string Description { get; set; }
-        public string ShortDescription { get; set; }
         public string Introduce { get; set; }
         public Guid UserId { get; set; }
         public string UserName { get; set; }
@@ -20,5 +19,7 @@ namespace JobPortal.Data.ViewModel
         public string EmployerLogo { get; set; }
         public Guid EmployerId { get; set; }
         public string CVImage { get; set; }
-    }
+		public string CVPhone { get; set; }
+		public string CVEmail { get; set; }
+	}
 }
