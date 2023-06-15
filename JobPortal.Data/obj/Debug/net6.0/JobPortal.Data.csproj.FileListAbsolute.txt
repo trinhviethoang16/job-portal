@@ -68,3 +68,6 @@ C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\obj\Debug\net6.0\refint\JobPo
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.pdb
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.genruntimeconfig.cache
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\obj\Debug\net6.0\ref\JobPortal.Data.dll
+E:\Code\source\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Common.dll
+E:\Code\source\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Common.pdb
+E:\Code\source\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.csproj.CopyComplete

@@ -9,7 +9,38 @@
 }
 
 <!-- Css Styles -->
-	<link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
+
+<!-- Feedback -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @*<form asp-action="Feeback" asp-route-id="@Model.Id" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label asp-for="UrlImage" class="control-label"></label>  <span class="text-danger">*</span>
+                        <input type="file" asp-for="UrlImage" class="form-control" accept="image/*" id="imgInp" />
+                        <span asp-validation-for="UrlImage" class="text-danger"></span>
+                        <img id="blah" src="#" alt="your image" style="width: 200px;" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                    </div>
+                </form>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>

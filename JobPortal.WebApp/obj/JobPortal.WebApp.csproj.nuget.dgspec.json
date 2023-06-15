@@ -92,7 +92,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+                "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

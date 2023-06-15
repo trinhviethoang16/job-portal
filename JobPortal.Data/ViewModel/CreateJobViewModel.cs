@@ -1,7 +1,5 @@
 ﻿using JobPortal.Data.Entities;
 using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace JobPortal.Data.ViewModel
 {
@@ -12,7 +10,6 @@ namespace JobPortal.Data.ViewModel
         public string? Introduce { get; set; }
         public string? ObjectTarget { get; set; }
         public string? Experience { get; set; }
-        public DateTime? CreateDate { get; set; }
         public byte? MinAge { get; set; }
         public byte? MaxAge { get; set; }
         public int ProvinceId { get; set; }

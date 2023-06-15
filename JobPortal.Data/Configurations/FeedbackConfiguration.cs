@@ -15,6 +15,7 @@ namespace JobPortal.Data.Configurations
             builder.Property(x => x.Address).HasMaxLength(256);
             builder.Property(x => x.Email).HasMaxLength(50);
             builder.Property(x => x.Phone).HasMaxLength(12);
+            builder.Property(x => x.Status).HasDefaultValue(0);
         }
     }
 }

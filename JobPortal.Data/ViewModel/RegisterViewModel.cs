@@ -12,31 +12,31 @@ namespace JobPortal.Data.ViewModel
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Mật khẩu")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Xác nhận mật khẩu")]
+        [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Tên đầy đủ")]
-        [StringLength(100, ErrorMessage = "Không thể quá 100 kí tự.")]
+        [Display(Name = "Full name")]
+        [StringLength(100, ErrorMessage = "Can't exceed 100 characters.")]
         public string? FullName { get; set; }
 
-        [Display(Name = "Tuổi")]
-        [Range(0, 150)]
+        [Display(Name = "Age")]
+        [Range(0, 100)]
         public int? Age { get; set; }
 
-        [Display(Name = "Số điện thoại")]
-        [StringLength(12, ErrorMessage = "Quá nhiều kí tự.", MinimumLength = 9)]
+        [Display(Name = "Phone")]
+        [StringLength(12, ErrorMessage = "Too many characters.", MinimumLength = 9)]
         public string? Phone { get; set; }
 
-        [Display(Name = "Địa chỉ")]
-        [StringLength(200, ErrorMessage = "Địa chỉ không thể quá 200 kí tự.")]
+        [Display(Name = "Address")]
+        [StringLength(200, ErrorMessage = "The address cannot be more than 200 characters.")]
         public string? Address { get; set; }
     }
 }

@@ -1,0 +1,63 @@
+﻿@model JobPortal.Data.Entities.Title
+
+@{
+    ViewData["Title"] = "Create title";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center">FORM CREATE TITLE</h4>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <form asp-action="Create" enctype="multipart/form-data" id="form">
+                                <div class="form-group" style="margin-bottom: 15px">
+                                    <label asp-for="Name" class="form-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group text-center" style="margin-bottom: 15px">
+                                    <input type="button" onclick="onConfirm()" value="Create" class="btn btn-primary" />
+                                </div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="text-center">
+                                    <a class="btn btn-primary" href="/admin/title">Back to List</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function onConfirm() {
+            Swal.fire({
+                title: 'Add new title?',
+                text: "Are you sure to add new title?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form").submit();
+                    Swal.fire(
+                        'Success!',
+                        '',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+}

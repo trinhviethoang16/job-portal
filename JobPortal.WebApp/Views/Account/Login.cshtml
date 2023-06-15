@@ -11,7 +11,7 @@
 <form asp-action="Login" asp-controller="Account" id="account" class="mb-3" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email</label>
+        <label asp-for="Email" class="form-label"></label>
         <input asp-for="Email"
                type="text"
                class="form-control"
@@ -23,7 +23,7 @@
     </div>
     <div class="mb-3 form-password-toggle">
         <div class="d-flex justify-content-between">
-            <label asp-for="Password" class="form-label">Password</label>
+            <label asp-for="Password" class="form-label"></label>
             <a href="#">
                 <small>Forgot Password?</small>
             </a>

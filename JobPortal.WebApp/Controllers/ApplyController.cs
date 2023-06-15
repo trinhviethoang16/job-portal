@@ -137,9 +137,24 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("{id}/{CVid}/feedback")]
-        public IActionResult Feedback()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Feedback(Guid id, int CVid, IFormFile UrlImage)
         {
-            return View();
+            string POST_IMAGE_PATH = "images/feedback/";
+
+            if (UrlImage != null)
+            {
+
+                var image = UploadImage.UploadImageFile(UrlImage, POST_IMAGE_PATH);
+
+                CV cv = _context.CVs.Where(s => s.Id == CVid).First();
+                cv.UrlImage = image;
+                _context.Update(cv);
+                await _context.SaveChangesAsync();
+                return Redirect("/apply/" + id);
+            }
+            return Redirect("/apply/" + id);
         }
 
         [Route("access-denied")]

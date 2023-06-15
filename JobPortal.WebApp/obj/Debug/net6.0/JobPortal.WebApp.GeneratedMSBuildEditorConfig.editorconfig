@@ -80,20 +80,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvdmluY2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Roles/CreateRole.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcQ3JlYXRlUm9sZS5jc2h0bWw=
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Role/CreateRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxDcmVhdGVSb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Roles/EditRole.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcRWRpdFJvbGUuY3NodG1s
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Role/EditRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxFZGl0Um9sZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Roles/EditUsersInRole.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcRWRpdFVzZXJzSW5Sb2xlLmNzaHRtbA==
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Role/EditUsersInRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxFZGl0VXNlcnNJblJvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Roles/ListRoles.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcTGlzdFJvbGVzLmNzaHRtbA==
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Role/ListRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZVxMaXN0Um9sZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Shared/Error.cshtml]
@@ -136,24 +136,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2tpbGxzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Titles/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVzXENyZWF0ZS5jc2h0bWw=
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Title/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Titles/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVzXERlbGV0ZS5jc2h0bWw=
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Title/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Titles/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Titles/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Titles/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVzXEluZGV4LmNzaHRtbA==
+[E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/Views/Title/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGl0bGVcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Code/source/job-portal/JobPortal.WebApp/Areas/Admin/_ViewImports.cshtml]
