@@ -57,6 +57,10 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             return View(model);
         }
 
+
+
+
+
         [Route("update/{id}")]
         public IActionResult Update(int id)
         {

@@ -7,16 +7,18 @@
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
+            <h1 style="text-align:center">Table of Title</h1>
             <div class="card">
+
                 <div class="card-body">
                     <p class="card-description">
                         <a class="btn btn-primary" href="/admin/title/create">Add new title</a>
                     </p>
                     @*<form asp-action="Index" method="get" class="form-inline">
-                        <div class="form-group mx-sm-3 mb-2">
-                            <input type="text" class="form-control" name="q" style="height: 2.3rem!important;">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">Filter</button>
+                    <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" name="q" style="height: 2.3rem!important;">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Filter</button>
                     </form>*@
                     <form asp-action="DeleteSelected" method="post">
                         <input type="submit" class="btn btn-danger" value="Delete Selected" onclick="return confirm('Confirm deletion of the selected sections ?') " />
@@ -33,20 +35,20 @@
                                 });
                             </script>
                         }
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <input type="checkbox" id="checkall" />
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Name)
-                                        </th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <div class="table-responsive ">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox" id="checkall" />
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     @foreach (var title in Model)
                                     {
                                         <tr>
@@ -62,10 +64,12 @@
                                                         <i class="bx bx-list-ul"></i>
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="/admin/title/update/@title.Id">
-                                                            <i class="bx bx-edit-alt me-1"></i> Update</a>
+                                                        <a class="dropdown-item update-button" href="/admin/title/update/@title.Id">
+                                                            <i class="bx bx-edit me-1"></i> Update
+                                                        </a>
                                                         <button class="dropdown-item delete-button" type="button" onclick="deleteItem(@title.Id)">
-                                                            <i class="bx bx-trash me-1"></i> Delete</button>
+                                                            <i class="bx bx-trash me-1"></i> Delete
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -91,6 +95,18 @@
     th {
         font-weight: 700 !important;
     }
+
+    .dropdown-item.update-button {
+        background: transparent;
+        border: none;
+        font-weight: 700;
+        color: forestgreen;
+    }
+
+        .dropdown-item.update-button:hover {
+            background: transparent;
+            color: forestgreen;
+        }
 
     .dropdown-item.delete-button {
         background: transparent;

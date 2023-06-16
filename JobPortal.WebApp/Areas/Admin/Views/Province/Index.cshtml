@@ -1,0 +1,147 @@
+﻿@model IEnumerable<JobPortal.Data.Entities.Province>
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <h1 style="text-align:center">Table of Province</h1>
+            <div class="card">
+
+
+                <div class="card-body">
+
+                    <form asp-action="DeleteSelected" method="post">
+                        <div class="d-flex justify-content-between mb-3">
+                            <a asp-action="Create" class="btn btn-primary">Create New</a>
+                            <input type="submit" class="btn btn-danger" value="Delete Selected" onclick="return confirm('Confirm deletion of the selected sections?')" />
+                        </div>
+                        @section Scripts {
+                            <script>
+                                $(function () {
+                                    $('#checkall').change(function () {
+                                        if ($(this).prop("checked") == true) {
+                                            $("input[name=listDelete]").prop("checked", true);
+                                        } else {
+                                            $("input[name=listDelete]").prop("checked", false);
+                                        }
+                                    });
+                                });
+                            </script>
+                        }
+                            <div class="table-responsive text-nowrap">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @*<i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@Html.DisplayNameFor(model => model.Id)</strong>*@
+                                                <input type="checkbox" id="checkall" />
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var province in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @*<i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@Html.DisplayFor(modelItem => item.Id)</strong>*@
+                                                <input type="checkbox" name="listDelete" value="@province.Id" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => province.Name)
+                                            </td>
+                                           
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                        <i class="bx bx-list-ul"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item update-button" href="/admin/province/update/@province.Id">
+                                                            <i class="bx bx-edit me-1"></i> Update
+                                                        </a>
+                                                        <button class="dropdown-item delete-button" type="button" onclick="deleteItem(@province.Id)">
+                                                            <i class="bx bx-trash me-1"></i> Delete
+                                                        </button>
+                                                    </div>
+                                                    @*<div class="dropdown-menu">
+                                                <a class="dropdown-item" asp-action="Edit" asp-route-id="@province.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                <a class="dropdown-item" asp-action="Details" asp-route-id="@province.Id"><i class="bx bx-detail me-1"></i> Details</a>
+                                                <a class="dropdown-item" asp-action="Delete" asp-route-id="@province.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                                </div>*@
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input.btn.btn-danger {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+    }
+
+    th {
+        font-weight: 700 !important;
+    }
+
+    .dropdown-item.update-button {
+        background: transparent;
+        border: none;
+        font-weight: 700;
+        color: forestgreen;
+    }
+
+        .dropdown-item.update-button:hover {
+            background: transparent;
+            color: forestgreen;
+        }
+
+    .dropdown-item.delete-button {
+        background: transparent;
+        border: none;
+        font-weight: 700;
+        color: #dc3545;
+    }
+
+        .dropdown-item.delete-button:hover {
+            background: transparent;
+            color: #dc3545;
+        }
+</style>
+
+<script>
+    function deleteItem(id) {
+        Swal.fire({
+            title: 'Delete this province?',
+            text: "Are you sure to delete the province?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Delete!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/admin/province/delete/' + id;
+                Swal.fire(
+                    'Deleted!',
+                    '',
+                    'success'
+                );
+            }
+        });
+    }
+</script>

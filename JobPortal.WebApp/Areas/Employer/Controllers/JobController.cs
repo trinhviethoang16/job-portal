@@ -105,6 +105,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         {
             Job job = _context.Jobs.Where(j => j.Id == id).First();
             job.Name = model.Name;
+            job.Slug = TextHelper.ToUnsignString(model.Name).ToLower();
             job.Description = model.Description;
             job.Introduce = model.Introduce;
             job.Experience = model.Experience;

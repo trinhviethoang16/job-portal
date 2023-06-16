@@ -6,5 +6,6 @@ namespace JobPortal.Data.ViewModel
     public class UpdateProvinceViewModel
     {
         public string Name { get; set; }
+        public string? Slug { get; set; }
     }
 }

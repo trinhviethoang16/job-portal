@@ -20,11 +20,11 @@
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                                 <div class="form-group text-center" style="margin-bottom: 15px">
-                                    <input type="button" onclick="onConfirm()" value="Create" class="btn btn-primary" />
+                                    <input style="background-color:forestgreen" type="button" onclick="onConfirm()" value="Create" class="btn btn-primary" />
                                 </div>
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="/admin/title">Back to List</a>
+                                    <a style="background-color:gray" class="btn btn-primary" href="/admin/title">Back to List</a>
                                 </div>
                             </form>
                         </div>
@@ -47,7 +47,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!'
+                confirmButtonText: 'Yes'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#form").submit();
