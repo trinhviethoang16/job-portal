@@ -5,13 +5,18 @@
 
 @{
     var user = await userManager.GetUserAsync(User);
+    var isSignedIn = signInManager.IsSignedIn(User);
+    var isInRoleUser = User.IsInRole("User");
 }
 
 <li class="menu-active"><a href="/">Home</a></li>
 <li><a href="/job">All Jobs</a></li>
-@if (signInManager.IsSignedIn(User))
+@if (isSignedIn)
 {
-    <li><a href="/apply/@user.Id">Interview</a></li>
+    if (!isInRoleUser)
+    {
+        <li><a href="/apply/@user.Id">Interview</a></li>
+    }
 }
 <li><a href="/blog">Blog</a></li>
 <li class="menu-has-children">
@@ -25,7 +30,7 @@
     </ul>
 </li>
 
-@if (signInManager.IsSignedIn(User))
+@if (isSignedIn)
 {
     <li>
         <a class="ticker-btn">Hi, @(user.FullName ?? user.UserName)</a>
@@ -36,9 +41,24 @@
         </form>
     </li>
     <li>
-        <form id="logoutForm" class="form-inline">
-            <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>
-        </form>
+        @if (user.Status == 1)
+        {
+            <form id="logoutForm" class="form-inline">
+                <a class="ticker-btn" href="#" type="button" onclick="onClick()">Register to Employer</a>
+            </form>
+        }
+        else if (!isInRoleUser)
+        {
+            <form id="logoutForm" class="form-inline">
+                <a class="ticker-btn" href="#" type="button" onclick="accessDenied()">Register to Employer</a>
+            </form>
+        }
+        else
+        {
+            <form id="logoutForm" class="form-inline">
+                <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>
+            </form>
+        }
     </li>
 }
 else
@@ -53,3 +73,23 @@ else
         <a href="/employer/login" class="ticker-btn">For Employer</a>
     </li>
 }
+
+<script>
+    function onClick() {
+        Swal.fire({
+            title: 'You already register !',
+            text: 'Please wait for the confirmation.',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        });
+    }
+
+    function accessDenied() {
+        Swal.fire({
+            title: 'Sorry !',
+            text: 'This page only for user account.',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+        });
+    }
+</script>

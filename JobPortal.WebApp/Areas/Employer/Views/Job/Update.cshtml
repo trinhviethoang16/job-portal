@@ -96,16 +96,16 @@
                                         <select asp-for="TitleId" class="form-control" asp-items="ViewBag.TitleId"></select>
                                     </div>
                                     <br />
-                                    <div class="form-group">
-                                        <input type="submit" onclick="onConfirm()" value="Update" class="btn btn-primary"/>
+                                    <div class="form-group text-center">
+                                        <input style="background-color:forestgreen" type="button" onclick="onUpdate()" value="Update" class="btn btn-primary" />
+                                    </div>
+                                    <br />
+                                    <div class="form-group text-center">
+                                        <a class="btn btn-primary" href="/employer/job/@user.Id">Back to List</a>
                                     </div>
                                 </div>
                             </div>
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <br />
-                            <div>
-                                <a class="btn btn-primary" href="/employer/job/@user.Id">Back to List</a>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -114,29 +114,20 @@
     </div>
 </div>
 
-<script>
-    imgInp.onchange = evt => {
-        const [file] = imgInp.files
-        if (file) {
-            blah.src = URL.createObjectURL(file)
-        }
-    }
-
-</script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
     <script>
-        function onConfirm() {
+        function onUpdate() {
             Swal.fire({
                 title: 'Update this job?',
                 text: "Are you sure to update this job?",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Confirm!'
+                confirmButtonText: 'Confirm'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#form").submit();

@@ -31,7 +31,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int status)
         {
             var employer = (from emp in _context.AppUsers
-                        orderby emp.Id descending
+                        orderby emp.CreateDate descending
                         select new ListEmployersViewWModel()
                         {
                             Id = emp.Id,
@@ -44,7 +44,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                             RegisterDate = emp.CreateDate,
                             ProvinceName = emp.Province.Name,
                             Status = emp.Status
-                        });;
+                        });
             var employers = await employer.ToListAsync();
             switch (status)
             {

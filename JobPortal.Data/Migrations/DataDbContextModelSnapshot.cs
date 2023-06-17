@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "b540e89e-6ed5-4cdf-b370-7563b1295d10",
+                            ConcurrencyStamp = "9d650661-a99c-4816-af0e-911c803578fb",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "67da6110-1549-4901-8874-3b0942ec264c",
+                            ConcurrencyStamp = "b34ae516-a1cf-496e-a5fa-0350d2e7edff",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "8e5ccc04-e406-4c27-a632-a8224d492de2",
+                            ConcurrencyStamp = "303774bd-b4ae-4bbb-9c48-3aa73507df5a",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -176,9 +176,7 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -214,16 +212,17 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "260b0371-ee1f-431a-9e1e-10563b2d48ea",
+                            ConcurrencyStamp = "95b5f6cf-18d4-4968-8d28-9b0a9396bec0",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM/8IGGL14iOgloFyQIQI98rw+9XL0oHAwT1m1cg+6MEMLRWILBwFXEGvXj5GIH5+w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIX80JMyL0VDPO5SkXXBPocEEe7I3jM3lYVLhVEIXpIVbI+5Wv3hhFN0GPho4Rq9oQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
+                            Status = -1,
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -289,6 +288,11 @@ namespace JobPortal.Data.Migrations
                     b.Property<string>("Description")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool?>("Disable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -449,6 +453,11 @@ namespace JobPortal.Data.Migrations
                     b.Property<byte?>("Rating")
                         .HasColumnType("tinyint");
 
+                    b.Property<int>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
@@ -488,12 +497,14 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("tinyint");
 
                     b.Property<int?>("MaxSalary")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<byte?>("MinAge")
                         .HasColumnType("tinyint");
 
                     b.Property<int?>("MinSalary")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -553,6 +564,11 @@ namespace JobPortal.Data.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Disable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -582,6 +598,11 @@ namespace JobPortal.Data.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<bool?>("Disable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Logo")
                         .HasColumnType("nvarchar(max)");
 
@@ -608,13 +629,13 @@ namespace JobPortal.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<bool?>("Disable")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Slug")
                         .IsRequired()
@@ -642,6 +663,12 @@ namespace JobPortal.Data.Migrations
                             Id = 3,
                             Name = "Work from home",
                             Slug = "work-from-home"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "At office",
+                            Slug = "at-office"
                         });
                 });
 
@@ -655,6 +682,11 @@ namespace JobPortal.Data.Migrations
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<bool?>("Disable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()

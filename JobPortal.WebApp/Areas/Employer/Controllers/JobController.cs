@@ -153,14 +153,6 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
 
             // Trả về trang Index với giá trị id
             return RedirectToAction("Index", new { id = userId });
-
-            //foreach (int id in listDelete)
-            //{
-            //    var job = await _context.Jobs.FindAsync(id);
-            //    _context.Jobs.Remove(job);
-            //}
-            //await _context.SaveChangesAsync();
-            //return RedirectToAction("Index");
         }
     }
 }

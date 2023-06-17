@@ -18,8 +18,13 @@
                                     <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
+                                <div class="form-group" style="margin-bottom: 15px">
+                                    <label asp-for="Description" class="form-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
                                 <div class="form-group text-center" style="margin-bottom: 15px">
-                                    <input style="background-color:forestgreen" type="button" onclick="onConfirm()" value="Create" class="btn btn-primary" />
+                                    <input style="background-color:forestgreen" type="button" onclick="onCreate()" value="Create" class="btn btn-primary" />
                                 </div>
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="text-center">
@@ -39,14 +44,14 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        function onConfirm() {
+        function onCreate() {
             Swal.fire({
                 title: 'Add new category?',
                 text: "Are you sure to add new category?",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Success!'
+                confirmButtonText: 'Success'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#form").submit();

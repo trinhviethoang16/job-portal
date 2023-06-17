@@ -125,16 +125,16 @@
     function deleteItem(id) {
         Swal.fire({
             title: 'Delete this title?',
-            text: "Are you sure to delete the title?",
+            text: "Are you sure you want to delete this title?",
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Delete!'
+            confirmButtonText: 'Delete'
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = '/admin/title/delete/' + id;
                 Swal.fire(
-                    'Delete success!',
+                    'Success!',
                     '',
                     'success'
                 );

@@ -8,6 +8,7 @@
         public int? ParentID { get; set; }
         public Category? Category { get; set; }
         public int? CategoryId { get; set; }
+        public bool? Disable { get; set; }
         public ICollection<Job>? Jobs { get; set; }
     }
 }

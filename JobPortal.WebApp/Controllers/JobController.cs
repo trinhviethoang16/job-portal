@@ -121,6 +121,8 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Time)
                 .FirstOrDefaultAsync();
 
+            ViewBag.CV = await _context.CVs.Where(cv => cv.Job.Slug == slug).FirstOrDefaultAsync();
+
             return View(job);
         }
     }

@@ -46,14 +46,22 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                Skill skill = new Skill()
+                string POST_IMAGE_PATH = "images/skills/";
+
+                if (model.Logo != null)
                 {
-                    Name = model.Name,
-                    Slug = TextHelper.ToUnsignString(model.Name).ToLower()
-                };
-                _context.Skills.Add(skill);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                    var logo = UploadImage.UploadImageFile(model.Logo, POST_IMAGE_PATH);
+
+                    Skill skill = new Skill()
+                    {
+                        Name = model.Name,
+                        Slug = TextHelper.ToUnsignString(model.Name).ToLower(),
+                        Logo = logo
+                    };
+                    _context.Skills.Add(skill);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             return View(model);
         }
@@ -78,14 +86,50 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             return Redirect("/admin/skill");
         }
 
+        [Route("update-image/{id}")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateImage(int id, IFormFile Logo)
+        {
+            string POST_IMAGE_PATH = "images/skills/";
+
+            if (Logo != null)
+            {
+                Skill skill = _context.Skills.Where(u => u.Id == id).First();
+                string oldLogoImage = skill.Logo;
+                var newLogoImage = UploadImage.UploadImageFile(Logo, POST_IMAGE_PATH);
+                skill.Logo = newLogoImage;
+                _context.Update(skill);
+                await _context.SaveChangesAsync();
+
+                if (!string.IsNullOrEmpty(oldLogoImage))
+                {
+                    string oldImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "skills", oldLogoImage);
+                    DeleteImage.DeleteImageFile(oldImagePath);
+                }
+
+                return Redirect("/admin/skill/update/" + id);
+            }
+            return Redirect("/admin/skill/update/" + id);
+        }
+
         [HttpGet("delete/{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
                 Skill skill = _context.Skills.Where(p => p.Id == id).First();
-                _context.Skills.Remove(skill);
-                _context.SaveChanges();
+                if (skill != null)
+                {
+                    string imageName = skill.Logo;
+                    _context.Skills.Remove(skill);
+                    _context.SaveChanges();
+                    if (!string.IsNullOrEmpty(imageName))
+                    {
+                        string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "skills", imageName);
+                        DeleteImage.DeleteImageFile(imagePath);
+                    }
+                }
                 return Redirect("/admin/skill");
             }
             catch (System.Exception)
@@ -101,9 +145,29 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             {
                 var skill = await _context.Skills.FindAsync(id);
                 _context.Skills.Remove(skill);
+
+                if (skill != null)
+                {
+                    string imageName = skill.Logo;
+
+                    _context.Skills.Remove(skill);
+                    _context.SaveChanges();
+
+                    if (!string.IsNullOrEmpty(imageName))
+                    {
+                        string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "skills", imageName);
+                        DeleteImage.DeleteImageFile(imagePath);
+                    }
+                }
             }
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        [Route("fail")]
+        public IActionResult Fail()
+        {
+            return View();
         }
     }
 }

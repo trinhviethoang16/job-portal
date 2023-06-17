@@ -151,12 +151,20 @@
 	<!-- Client -->
 	<script src="~/assets/js/main.js"></script>
 	<script src="~/assets/js/mixitup.min.js"></script>
+	<!-- Popup -->
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<!-- Bootstrap-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
 	<script>
 		var loader = document.getElementById("preloader");
 		window.addEventListener("load", function () {
 			loader.style.display = "none";
 		}) I
 	</script>
+
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

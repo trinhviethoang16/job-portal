@@ -15,6 +15,7 @@
         public string? Email { get; set; }
         public Job? Job { get; set; }
         public int JobId { get; set; }
-        public int Status { get; set; } //
+        // admin: 0 = default value, 1 = view feedback (already feedback) //user: 0 = not created yet, 1 = view feedback
+        public int Status { get; set; }
     }
 }

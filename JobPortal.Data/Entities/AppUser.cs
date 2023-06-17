@@ -19,11 +19,10 @@ namespace JobPortal.Data.Entities
         public string? Contact { get; set; }
         public string? WebsiteURL { get; set; }
         public string? Location { get; set; }
-        public bool? SetRole { get; set; }
         public Category? Category { get; set; }
         public int? CategoryId { get; set; }
         public ICollection<Job>? Jobs { get; set; }
-        public int? Status { set; get; } // 0 = denied, 1 = waiting, 2 = confirmed
+        public int? Status { set; get; } // 0 = denied, 1 = waiting, 2 = confirmed, null = default
         public string? Slug { get; set; }
         public Province? Province { get; set; }
         public int? ProvinceId { get; set; }

@@ -23,12 +23,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             this.userManager = userManager;
         }
 
-        //public async Task<bool> IsUserAdmin(string userId)
-        //{
-        //    var user = await userManager.FindByIdAsync(userId);
-        //    return await userManager.IsInRoleAsync(user, "Admin");
-        //}
-
         [HttpGet]
         [Route("login")]
         [AllowAnonymous]
@@ -64,8 +58,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                     // check role
                     else if (!roles.Contains("Admin"))
                     {
-                        await signInManager.SignOutAsync();
-                        return RedirectToAction("accessdenied", "account");
+                        ModelState.AddModelError(string.Empty, "This page is only for admin account.");
                     }
                     else if (!string.IsNullOrEmpty(returnUrl))
                     {

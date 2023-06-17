@@ -30,7 +30,7 @@ namespace JobPortal.WebApp.Controllers
         public async Task<IActionResult> ListApplies(Guid id)
         {
             var CVs = await (from cv in _context.CVs
-                             orderby cv.Id descending
+                             orderby cv.ApplyDate descending
                              select new ListCVsViewModel()
                              {
                                  CVId = cv.Id,
@@ -53,21 +53,8 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("{slug}/{id}")]
-        public async Task<IActionResult> Apply(string slug, Guid id)
+        public async Task<IActionResult> Apply()
         {
-            var job = await _context.Jobs.FirstOrDefaultAsync(j => j.Slug == slug);
-            var user = await _context.AppUsers.FirstOrDefaultAsync(u => u.Id == id);
-            // check role
-            if (!User.IsInRole("User"))
-            {
-                return RedirectToAction(nameof(AccessDenied));
-            }
-            var cv = await _context.CVs.Where(x => x.AppUserId == id && x.JobId == job.Id).FirstOrDefaultAsync();
-            // check cv đã tồn tại
-            if (cv != null)
-            {
-                return RedirectToAction(nameof(Waiting));
-            }
             return View();
         }
 
@@ -81,33 +68,29 @@ namespace JobPortal.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 string POST_IMAGE_PATH = "images/cvs/";
-
-                if (model.UrlImage != null)
+                var image = UploadImage.UploadImageFile(model.UrlImage, POST_IMAGE_PATH);
+                CV cv = new CV()
                 {
-                    var image = UploadImage.UploadImageFile(model.UrlImage, POST_IMAGE_PATH);
+                    ApplyDate = DateTime.Now,
+                    UrlImage = image,
+                    Certificate = model.Certificate,
+                    Major = model.Major,
+                    GraduatedAt = model.GraduatedAt,
+                    GPA = model.GPA,
+                    Description = model.Description,
+                    Introduce = model.Introduce,
+                    Phone = model.Phone,
+                    Email = model.Email,
+                    AppUserId = id,
+                    JobId = job.Id,
+                    Status = 1 //waiting
+                };
+                _context.CVs.Add(cv);
+                await _context.SaveChangesAsync();
+                return Redirect("/apply/" + id);
 
-                    CV cv = new CV()
-                    {
-                        ApplyDate = DateTime.Now,
-                        UrlImage = image,
-                        Certificate = model.Certificate,
-                        Major = model.Major,
-                        GraduatedAt = model.GraduatedAt,
-                        GPA = model.GPA,
-                        Description = model.Description,
-                        Introduce = model.Introduce,
-                        Phone = model.Phone,
-                        Email = model.Email,
-                        AppUserId = id,
-                        JobId = job.Id,
-                        Status = 1 //waiting
-                    };
-                    _context.CVs.Add(cv);
-                    await _context.SaveChangesAsync();
-                    return Redirect("/apply/" + id);
-                }
             }
-            return RedirectToAction(nameof(Fail));
+            return View(model);
         }
 
         [HttpGet("{id}/{CVid}/delete")]
@@ -116,8 +99,14 @@ namespace JobPortal.WebApp.Controllers
             try
             {
                 CV cv = _context.CVs.Where(cv => cv.Id == CVid).First();
+                string imageName = cv.UrlImage;
                 _context.CVs.Remove(cv);
                 _context.SaveChanges();
+                if (!string.IsNullOrEmpty(imageName))
+                {
+                    string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "cvs", imageName);
+                    DeleteImage.DeleteImageFile(imagePath);
+                }
                 return Redirect("/apply/" + id);
             }
             catch (System.Exception)
@@ -129,7 +118,7 @@ namespace JobPortal.WebApp.Controllers
         [HttpGet("{id}/{CVid}/update/{status}")]
         public IActionResult UpdateCV(Guid id, int CVid, int status)
         {
-            CV cv = _context.CVs.Where(cv => cv.Id == CVid).First();
+            CV cv = _context.CVs.Where(cv => cv.Id == CVid).First(); 
             cv.Status = status;
             _context.CVs.Update(cv);
             _context.SaveChanges();
@@ -145,9 +134,7 @@ namespace JobPortal.WebApp.Controllers
 
             if (UrlImage != null)
             {
-
                 var image = UploadImage.UploadImageFile(UrlImage, POST_IMAGE_PATH);
-
                 CV cv = _context.CVs.Where(s => s.Id == CVid).First();
                 cv.UrlImage = image;
                 _context.Update(cv);
@@ -155,19 +142,6 @@ namespace JobPortal.WebApp.Controllers
                 return Redirect("/apply/" + id);
             }
             return Redirect("/apply/" + id);
-        }
-
-        [Route("access-denied")]
-        [AllowAnonymous]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
-        [Route("fail")]
-        public IActionResult Fail()
-        {
-            return View();
         }
 
         [Route("waiting")]

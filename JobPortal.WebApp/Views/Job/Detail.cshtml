@@ -87,7 +87,18 @@
 				<!--Apply-->
 				@if (signInManager.IsSignedIn(User))
 				{
-					<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug/@user.Id">apply now</a>
+					if (!User.IsInRole("User"))
+					{
+						<a class="text-uppercase loadmore-btn mx-auto d-block" type="button" href="#" onclick="accessDenied()">apply now</a>
+					}
+					else if (@ViewBag.CV != null)
+					{
+						<a class="text-uppercase loadmore-btn mx-auto d-block" type="button" href="#" onclick="waiting()">apply now</a>
+					}
+					else
+					{
+						<a class="text-uppercase loadmore-btn mx-auto d-block" href="/apply/@Model.Slug/@user.Id">apply now</a>
+					}
 				}
 				else
 				{
@@ -198,3 +209,23 @@
 	</div>
 </section>
 <!-- End calto-action Area -->
+
+<script>
+	function accessDenied() {
+		Swal.fire({
+			title: 'Sorry !',
+			text: 'This page only for user account.',
+			icon: 'warning',
+			confirmButtonText: 'OK'
+		});
+	}
+
+	function waiting() {
+		Swal.fire({
+			title: 'You already submitted your cv !',
+			text: 'Please wait for the results from the employer.',
+			icon: 'info',
+			confirmButtonText: 'OK'
+		});
+	}
+</script>

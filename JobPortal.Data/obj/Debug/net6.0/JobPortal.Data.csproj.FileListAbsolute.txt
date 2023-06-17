@@ -74,3 +74,6 @@ E:\Code\source\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.csproj.
 D:\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Common.dll
 D:\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Common.pdb
 D:\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.csproj.CopyComplete
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Common.dll
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\bin\Debug\net6.0\JobPortal.Common.pdb
+C:\Users\ADMIN\Downloads\job-portal\JobPortal.Data\obj\Debug\net6.0\JobPortal.Data.csproj.CopyComplete

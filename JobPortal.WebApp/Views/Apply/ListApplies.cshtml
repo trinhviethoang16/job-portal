@@ -81,7 +81,7 @@
                                                                      @if(CV.CVStatus == 2) {<text>accept</text>}">
                                     <section class="d-flex mb-3" style="justify-content: space-between;">
                                         <p>
-                                            <span>CV: <b>@CV.Certificate</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
+                                            <span>CV: <b>@CV.JobName</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
                                             @{
                                                 switch (CV.CVStatus)
                                                 {
@@ -102,11 +102,11 @@
                                         <div>
                                             @if (CV.CVStatus == 0)
                                             {
-                                                <a href="/apply/@user.Id/@CV.CVId/delete" class="btn btn-danger">Delete CV</a>
+                                                <button type="button" onclick="onDelete('@CV.CVId')" class="btn btn-danger">Delete CV</button>
                                             }
                                             @if (CV.CVStatus == 1)
                                             {
-                                                <a href="/apply/@user.Id/@CV.CVId/update/-1" class="btn btn-danger">Cancel CV</a>
+                                                <button type="button" onclick="onCancel('@CV.CVId')" class="btn btn-danger">Cancel CV</button>
                                             }
                                             @if (CV.CVStatus == 2)
                                             {
@@ -114,7 +114,7 @@
                                             }
                                             @if (CV.CVStatus == -1)
                                             {
-                                                <a href="/apply/@user.Id/@CV.CVId/update/1" class="btn btn-primary">Continue CV</a>
+                                                <button type="button" onclick="onContinue('@CV.CVId')" class="btn btn-primary">Continue CV</button>
                                             }
                                         </div>
                                     </section>
@@ -125,7 +125,7 @@
                                                     <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px;">
                                                     <a href="">
                                                         <h5>
-                                                            @CV.JobName
+                                                            @CV.Certificate
                                                         </h5>
                                                         <h5>
                                                             @CV.CVPhone
@@ -198,3 +198,65 @@
         padding-bottom: 10px;
     }
 </style>
+
+<script>
+    function onDelete(id) {
+        Swal.fire({
+            title: 'Delete this CV?',
+            text: "Are you sure to delete the CV?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Delete'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/apply/@user.Id/' + id + '/delete';
+                Swal.fire(
+                    'Delete!',
+                    '',
+                    'success'
+                )
+            }
+        });
+    }
+
+    function onCancel(id) {
+        Swal.fire({
+            title: 'Cancel this CV?',
+            text: "Are you sure to cancel CV?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/apply/@user.Id/' + id + '/update/' + -1;
+                Swal.fire(
+                    'Cancel!',
+                    '',
+                    'success'
+                )
+            }
+        });
+    }
+
+    function onContinue(id) {
+        Swal.fire({
+            title: 'Continue this CV?',
+            text: "Are you sure to continue CV?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Continue'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/apply/@user.Id/' + id + '/update/' + 1;
+                Swal.fire(
+                    'Continue!',
+                    '',
+                    'success'
+                )
+            }
+        });
+    }
+</script>

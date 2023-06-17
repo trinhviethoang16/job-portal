@@ -24,24 +24,10 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("{id}")]
-        public async Task<IActionResult> Register(Guid id)
+        public IActionResult Register()
         {
-            var user = await _context.AppUsers.Where(u => u.Id == id).FirstAsync();
             ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Name");
-            // check role
-            if (!User.IsInRole("User"))
-            {
-                return RedirectToAction(nameof(AccessDenied));
-            }
-            // da dang ky
-            else if (user.Status == 1)
-            {
-                return RedirectToAction(nameof(Waiting));
-            }
-            else
-            {
-                return View(user);
-            }
+            return View();
         }
 
         [Route("{id}")]
@@ -51,54 +37,22 @@ namespace JobPortal.WebApp.Controllers
         {
             string POST_IMAGE_PATH = "images/employers/";
 
-            if (model.UrlAvatar != null)
-            {
-                AppUser user = _context.AppUsers.Where(u => u.Id == id).First();
-                user.FullName = model.FullName;
-                user.Slug = TextHelper.ToUnsignString(model.FullName ?? user.FullName).ToLower();
-                var image = UploadImage.UploadImageFile(model.UrlAvatar, POST_IMAGE_PATH);
-                user.CreateDate = DateTime.Now;
-                user.ProvinceId = model.ProvinceId;
-                user.UrlAvatar = image;
-                user.Description = model.Description;
-                user.Contact = model.Contact;
-                user.Location = model.Location;
-                user.WebsiteURL = model.WebsiteURL;
-                user.ProvinceId = model.ProvinceId;
-                user.Status = model.Status = 1; // waiting
-                _context.Update(user);
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                return RedirectToAction(nameof(Fail));
-            }
-            return RedirectToAction(nameof(Success));
-        }
-
-        [Route("access-denied")]
-        [AllowAnonymous]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
-        [Route("success")]
-        public IActionResult Success()
-        {
-            return View();
-        }
-
-        [Route("fail")]
-        public IActionResult Fail()
-        {
-            return View();
-        }
-
-        [Route("waiting")]
-        public IActionResult Waiting()
-        {
-            return View();
+            AppUser user = _context.AppUsers.Where(u => u.Id == id).First();
+            user.FullName = model.FullName;
+            user.Slug = TextHelper.ToUnsignString(model.FullName ?? user.FullName).ToLower();
+            var image = UploadImage.UploadImageFile(model.UrlAvatar, POST_IMAGE_PATH);
+            user.CreateDate = DateTime.Now;
+            user.ProvinceId = model.ProvinceId;
+            user.UrlAvatar = image;
+            user.Description = model.Description;
+            user.Contact = model.Contact;
+            user.Location = model.Location;
+            user.WebsiteURL = model.WebsiteURL;
+            user.ProvinceId = model.ProvinceId;
+            user.Status = 1; // waiting
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

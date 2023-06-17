@@ -50,6 +50,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 Category category = new Category()
                 {
                     Name = model.Name,
+                    Description = model.Description,
                     Slug = TextHelper.ToUnsignString(model.Name).ToLower()
                 };
                 _context.Categories.Add(category);
@@ -73,6 +74,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         {
             Category category = _context.Categories.Where(u => u.Id == id).First();
             category.Name = model.Name;
+            category.Description = model.Description;
             category.Slug = TextHelper.ToUnsignString(model.Name).ToLower();
             _context.Categories.Update(category);
             await _context.SaveChangesAsync();
