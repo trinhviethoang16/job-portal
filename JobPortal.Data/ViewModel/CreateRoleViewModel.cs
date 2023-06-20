@@ -10,6 +10,6 @@ namespace JobPortal.Data.ViewModel
 
         [Required]
         [Display(Name = "Description")]
-        public string Description { get; set; }
+        public string RoleDescription { get; set; }
     }
 }

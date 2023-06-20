@@ -45,7 +45,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 AppRole appRole = new AppRole
                 {
                     Name = model.RoleName,
-                    Description = model.Description
+                    Description = model.RoleDescription
                 };
 
                 IdentityResult result = await roleManager.CreateAsync(appRole);
@@ -81,7 +81,8 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             var model = new EditRoleViewModel
             {
                 Id = role.Id,
-                RoleName = role.Name
+                RoleName = role.Name,
+                RoleDescription = role.Description
             };
 
             foreach (var user in userManager.Users)
@@ -109,6 +110,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             }
 
             role.Name = model.RoleName;
+            role.Description = model.RoleDescription;
             var result = await roleManager.UpdateAsync(role);
 
             if (result.Succeeded)

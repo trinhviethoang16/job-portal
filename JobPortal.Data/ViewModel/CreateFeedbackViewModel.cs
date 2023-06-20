@@ -14,7 +14,7 @@ namespace JobPortal.Data.ViewModel
         public string? Address { get; set; }
 
         [Display(Name = "Your phone")]
-        [StringLength(12, ErrorMessage = "Too many numbers.", MinimumLength = 9)]
+        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string? Phone { get; set; }
 
         [Display(Name = "Description")]

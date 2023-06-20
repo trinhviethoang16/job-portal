@@ -1,8 +1,7 @@
-﻿@*@model IEnumerable<JobPortal.Data.Entities.AppUser>*@
-@model List<Dictionary<string, string>>
+﻿@model List<Dictionary<string, string>>
 
 @{
-    ViewData["Title"] = "Quản lý người dùng";
+    ViewData["Title"] = "User manager";
 }
 
 <div class="content-wrapper">
@@ -10,7 +9,8 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">List User With Role</h4>
+                    <h4 class="card-title" style="text-align:center">List User With Role</h4>
+                    <br />
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -39,7 +39,7 @@
                                         <td><img src="https://localhost:7211/images/employers/@user["Avatar"]" style="width: 40px" /></td>
                                         <td>@user["RoleNames"]</td>
                                         <td>
-                                            <a asp-action="ManageUserRoles" asp-route-userId="@user["userId"]">Set Role</a>
+                                            <a class="btn btn-primary" asp-action="ManageUserRoles" asp-route-userId="@user["userId"]">Set Role</a>
                                         </td>
                                     </tr>
                                 }

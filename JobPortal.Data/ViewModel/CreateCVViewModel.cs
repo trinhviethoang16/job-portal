@@ -42,7 +42,7 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Your phone")]
         [Required(ErrorMessage = "Please enter your phone")]
-        [StringLength(12, ErrorMessage = "Too many numbers.", MinimumLength = 9)]
+        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string Phone { get; set; }
 
         [Display(Name = "Your email")]

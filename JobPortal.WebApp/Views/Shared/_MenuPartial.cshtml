@@ -13,7 +13,7 @@
 <li><a href="/job">All Jobs</a></li>
 @if (isSignedIn)
 {
-    if (!isInRoleUser)
+    if (isInRoleUser)
     {
         <li><a href="/apply/@user.Id">Interview</a></li>
     }
@@ -47,13 +47,7 @@
                 <a class="ticker-btn" href="#" type="button" onclick="onClick()">Register to Employer</a>
             </form>
         }
-        else if (!isInRoleUser)
-        {
-            <form id="logoutForm" class="form-inline">
-                <a class="ticker-btn" href="#" type="button" onclick="accessDenied()">Register to Employer</a>
-            </form>
-        }
-        else
+        else if (user.Status == null)
         {
             <form id="logoutForm" class="form-inline">
                 <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>

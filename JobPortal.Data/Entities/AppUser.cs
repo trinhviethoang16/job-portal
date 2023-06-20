@@ -12,7 +12,7 @@ namespace JobPortal.Data.Entities
         public string? FullName { get; set; }
 
         [Display(Name = "Phone")]
-        [StringLength(12, ErrorMessage = "Too many numbers.", MinimumLength = 9)]
+        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string? Phone { get; set; }
 
         [Display(Name = "Address")]
@@ -52,7 +52,7 @@ namespace JobPortal.Data.Entities
         [Display(Name = "Category")]
         public int? CategoryId { get; set; }
         public ICollection<Job>? Jobs { get; set; }
-        public int? Status { set; get; } // 0 = denied, 1 = waiting, 2 = confirmed, null = default
+        public int? Status { set; get; } // 0 = denied, 1 = waiting, 2 = confirmed, -1 = admin, null = default
 
         [Required]
         public string Slug { get; set; }

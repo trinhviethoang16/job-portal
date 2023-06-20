@@ -1,49 +1,73 @@
 ﻿@model JobPortal.Data.ViewModel.EditRoleViewModel
 
 @{
-    ViewBag.Title = "Chỉnh sửa role";
+    ViewBag.Title = "Edit role";
 }
 
-<div class="content-wrapper">
-    <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Edit Role</h4>
-                    <form method="post" class="mt-3 row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label asp-for="Id" class="col-sm-2 col-form-label"></label>
-                                <div class="col-sm-10">
-                                    <input asp-for="Id" disabled class="form-control">
+                    <h4 class="card-title text-center">FORM EDIT ROLE</h4>
+                    <div class="row">
+                        <div class="col-md-8 mx-auto">
+                            <form method="post" enctype="multipart/form-data" id="form">
+                                <div class="form-group" style="margin-bottom: 15px">
+                                    <label asp-for="Id" class="form-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="Id" disabled class="form-control">
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label asp-for="RoleName" class="col-sm-2 col-form-label"></label>
-                                <div class="col-sm-10">
-                                    <input asp-for="RoleName" class="form-control">
-                                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                                <br />
+                                <div class="form-group" style="margin-bottom: 15px">
+                                    <label asp-for="RoleName" class="form-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="RoleName" class="form-control">
+                                        <span asp-validation-for="RoleName" class="text-danger"></span>
                                 </div>
-                            </div>
-
-                            <div asp-validation-summary="All" class="text-danger"></div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <a asp-action="ListRoles" class="btn btn-secondary">Cancel</a>
+                                <br />
+                                <div class="form-group" style="margin-bottom: 15px">
+                                    <label asp-for="RoleDescription" class="control-label"></label><span class="text-danger">*</span>
+                                    <input asp-for="RoleDescription" class="form-control" />
+                                    <span asp-validation-for="RoleDescription" class="text-danger"></span>
                                 </div>
-                            </div>
-                            @*<div class="card-footert pl-0 ml-0">
-                            <a asp-controller="Administration" asp-action="EditUsersInRole"
-                            asp-route-roleId="@Model.Id" class="btn btn-primary">
-                            Phân quyền user cho role này
-                            </a>
-                            </div>*@
+                                <div class="form-group text-center" style="margin-bottom: 15px">
+                                    <input style="background-color:forestgreen" type="button" onclick="onEdit()" value="Edit" class="btn btn-primary" />
+                                </div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="text-center">
+                                    <a style="background-color:gray" class="btn btn-primary" href="/admin/auth/list-roles">Back to List</a>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function onEdit() {
+            Swal.fire({
+                title: 'Edit this role?',
+                text: "Are you sure to edit this role?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form").submit();
+                    Swal.fire(
+                        'Success!',
+                        '',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+}

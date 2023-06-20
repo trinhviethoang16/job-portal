@@ -57,11 +57,11 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 case 2: // confirmed
                     employers = await employer.Where(p => p.Status == 2).ToListAsync();
                     break;
-                case 3: // all but admin
-                    employers = await employer.Where(p => p.Status != null).ToListAsync();
+                case 3: // all but admin & newly created account
+                    employers = await employer.Where(p => p.Status != null && p.Status != -1).ToListAsync();
                     break;
                 default:
-                    employers = await employer.Where(p => p.Status != null).ToListAsync();
+                    employers = await employer.Where(p => p.Status != null && p.Status != -1).ToListAsync();
                     break;
             }
             return View(employers);

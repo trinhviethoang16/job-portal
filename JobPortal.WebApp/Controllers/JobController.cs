@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace JobPortal.WebApp.Controllers
 {
@@ -10,10 +11,14 @@ namespace JobPortal.WebApp.Controllers
     public class JobController : Controller
     {
         private readonly DataDbContext _context;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public JobController(DataDbContext context)
+        public JobController(DataDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _context = context;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [Route("")]
@@ -121,9 +126,19 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Time)
                 .FirstOrDefaultAsync();
 
-            ViewBag.CV = await _context.CVs.Where(cv => cv.Job.Slug == slug).FirstOrDefaultAsync();
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+            var hasSubmittedCV = userId != Guid.Empty ? await HasSubmittedCV(userId, slug) : false;
+
+            ViewBag.HasSubmittedCV = hasSubmittedCV;
 
             return View(job);
         }
+
+        private async Task<bool> HasSubmittedCV(Guid userId, string jobSlug)
+        {
+            return await _context.CVs.AnyAsync(cv => cv.Job.Slug == jobSlug && cv.AppUserId == userId);
+        }
+
     }
 }

@@ -32,7 +32,7 @@ namespace JobPortal.Data.ViewModel
         public int? Age { get; set; }
 
         [Display(Name = "Phone")]
-        [StringLength(12, ErrorMessage = "Too many characters.", MinimumLength = 9)]
+        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string? Phone { get; set; }
 
         [Display(Name = "Address")]

@@ -46,6 +46,7 @@ namespace JobPortal.Data.Extensions
                 PasswordHash = hasher.HashPassword(null, "Abc123!@#"),
                 SecurityStamp = string.Empty,
                 FullName = "Adminitrator",
+                Slug = "adminitrator",
                 Status = -1
             });
 

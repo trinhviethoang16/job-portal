@@ -1,4 +1,5 @@
-﻿using JobPortal.Data.DataContext;
+﻿using JobPortal.Common;
+using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
@@ -40,16 +41,15 @@ namespace JobPortal.WebApp.Controllers
                 {
                     UserName = model.Email,
                     FullName = model.FullName,
+                    Slug = TextHelper.ToUnsignString(model.FullName).ToLower(),
                     Age = model.Age,
                     Address = model.Address,
                     Email = model.Email,
                     Phone = model.Phone
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
-                //đăng ký thành công thì chuyển trang đăng nhập
                 if (result.Succeeded)
                 {
-                    // Add role "user" cho User mới tạo
                     await userManager.AddToRoleAsync(user, "User");
                     return RedirectToAction(nameof(Login));
                 }

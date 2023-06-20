@@ -15,6 +15,10 @@ namespace JobPortal.Data.ViewModel
         [Required(ErrorMessage = "Role Name is required")]
         public string RoleName { get; set; }
 
+        [Display(Name = "Description")]
+        [StringLength(256, ErrorMessage = "The description cannot be more than 256 characters.")]
+        public string RoleDescription { get; set; }
+
         public List<string> Users { get; set; }
     }
 }
