@@ -11,6 +11,7 @@ namespace JobPortal.Data.ViewModel
 
         public Guid Id { get; set; }
 
+        [Display(Name = "Role")]
         [Required(ErrorMessage = "Role Name is required")]
         public string RoleName { get; set; }
 

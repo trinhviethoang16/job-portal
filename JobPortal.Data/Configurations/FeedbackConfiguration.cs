@@ -11,6 +11,7 @@ namespace JobPortal.Data.Configurations
             builder.ToTable("Feedbacks");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Description).HasMaxLength(256);
             builder.Property(x => x.City).HasMaxLength(30);
             builder.Property(x => x.Address).HasMaxLength(256);
             builder.Property(x => x.Email).HasMaxLength(50);

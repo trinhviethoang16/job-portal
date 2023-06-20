@@ -28,7 +28,7 @@ namespace JobPortal.Data.ViewModel
         public string? FullName { get; set; }
 
         [Display(Name = "Age")]
-        [Range(0, 100)]
+        [Range(0, 100, ErrorMessage = "Please enter valid age.")]
         public int? Age { get; set; }
 
         [Display(Name = "Phone")]
@@ -36,7 +36,7 @@ namespace JobPortal.Data.ViewModel
         public string? Phone { get; set; }
 
         [Display(Name = "Address")]
-        [StringLength(200, ErrorMessage = "The address cannot be more than 200 characters.")]
+        [StringLength(256, ErrorMessage = "Your address cannot be more than 200 characters.")]
         public string? Address { get; set; }
     }
 }

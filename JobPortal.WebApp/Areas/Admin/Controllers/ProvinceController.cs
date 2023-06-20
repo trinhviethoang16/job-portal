@@ -73,7 +73,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         {
             Province province = _context.Provinces.Where(u => u.Id == id).First();
             province.Name = model.Name;
-            province.Slug = TextHelper.ToUnsignString(model.Name).ToLower();
+            province.Slug = TextHelper.ToUnsignString(province.Name).ToLower();
             _context.Provinces.Update(province);
             await _context.SaveChangesAsync();
             return Redirect("/admin/province");

@@ -50,6 +50,11 @@
         <span asp-validation-for="Age" class="text-danger"></span>
     </div>
     <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label><span class="text-danger">*</span>
+        <input asp-for="Phone" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your phone" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
         <label asp-for="Address" class="form-label"></label><span class="text-danger">*</span>
         <input asp-for="Address" type="text" class="form-control" autocomplete="" aria-required="true" placeholder="Enter your address" />
         <span asp-validation-for="Address" class="text-danger"></span>

@@ -6,25 +6,23 @@ namespace JobPortal.Data.ViewModel
 {
     public class CreateBlogViewModel
     {
-        [Display(Name = "Tên Blog")]
+        [Display(Name = "Blog")]
         public string? Name { get; set; }
 
-        [Display(Name = "Tác giả")]
+        [Display(Name = "Author")]
         public string? Author { get; set; }
 
-        [Display(Name = "Tựa đề")]
+        [Display(Name = "Title")]
         public string? Title { get; set; }
 
-        [Display(Name = "Mô tả")]
+        [Display(Name = "Descriprion")]
         public string? Description { get; set; }
 
-        [Display(Name = "Mô tả ngắn")]
+        [Display(Name = "Introduce")]
         public string? ShortDescription { get; set; }
 
-        [Display(Name = "Hình ảnh")]
-        public string? Image { get; set; }
-
-        public IFormFile? ImageUrl { get; set; }
+        [Display(Name = "Image")]
+        public IFormFile? Image { get; set; }
         public Guid UserId { set; get; }
     }
 }

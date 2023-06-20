@@ -15,6 +15,7 @@ namespace JobPortal.Data.ViewModel
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Display(Name = "Remember")]
         public bool RememberMe { get; set; }
     }
 }

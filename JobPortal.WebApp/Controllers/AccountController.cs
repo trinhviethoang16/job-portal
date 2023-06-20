@@ -42,7 +42,8 @@ namespace JobPortal.WebApp.Controllers
                     FullName = model.FullName,
                     Age = model.Age,
                     Address = model.Address,
-                    Email = model.Email
+                    Email = model.Email,
+                    Phone = model.Phone
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
                 //đăng ký thành công thì chuyển trang đăng nhập

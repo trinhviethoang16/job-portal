@@ -48,7 +48,8 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             {
                 Title title = new Title()
                 {
-                    Name = model.Name
+                    Name = model.Name,
+                    Slug = TextHelper.ToUnsignString(model.Name).ToLower(),
                 };
                 _context.Titles.Add(title);
                 await _context.SaveChangesAsync();
@@ -57,17 +58,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             return View(model);
         }
 
-
-
-
-
         [Route("update/{id}")]
         public IActionResult Update(int id)
         {
             var title = _context.Titles.Where(t => t.Id == id).First();
             return View(title);
         }
-
 
         [Route("update/{id}")]
         [HttpPost]
@@ -76,6 +72,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         {
             Title title = _context.Titles.Where(t => t.Id == id).First();
             title.Name = model.Name;
+            title.Slug = TextHelper.ToUnsignString(title.Name).ToLower();
             _context.Titles.Update(title);
             await _context.SaveChangesAsync();
             return Redirect("/admin/title");

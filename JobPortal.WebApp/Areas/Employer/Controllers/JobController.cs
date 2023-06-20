@@ -105,13 +105,15 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         {
             Job job = _context.Jobs.Where(j => j.Id == id).First();
             job.Name = model.Name;
-            job.Slug = TextHelper.ToUnsignString(model.Name).ToLower();
+            job.Slug = TextHelper.ToUnsignString(job.Name).ToLower();
             job.Description = model.Description;
             job.Introduce = model.Introduce;
             job.Experience = model.Experience;
             job.ObjectTarget = model.ObjectTarget;
             job.MinAge = model.MinAge;
             job.MaxAge = model.MaxAge;
+            job.MinSalary = model.MinSalary;
+            job.MaxSalary = model.MaxSalary;
             job.ProvinceId = model.ProvinceId;
             job.TimeId = model.TimeId;
             job.SkillId = model.SkillId;

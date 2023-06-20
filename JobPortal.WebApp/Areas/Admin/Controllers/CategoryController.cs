@@ -75,7 +75,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             Category category = _context.Categories.Where(u => u.Id == id).First();
             category.Name = model.Name;
             category.Description = model.Description;
-            category.Slug = TextHelper.ToUnsignString(model.Name).ToLower();
+            category.Slug = TextHelper.ToUnsignString(category.Name).ToLower();
             _context.Categories.Update(category);
             await _context.SaveChangesAsync();
             return Redirect("/admin/category");

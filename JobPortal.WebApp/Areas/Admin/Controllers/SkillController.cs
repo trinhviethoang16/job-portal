@@ -80,7 +80,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         {
             Skill skill = _context.Skills.Where(u => u.Id == id).First();
             skill.Name = model.Name;
-            skill.Slug = TextHelper.ToUnsignString(model.Name).ToLower();
+            skill.Slug = TextHelper.ToUnsignString(skill.Name).ToLower();
             _context.Skills.Update(skill);
             await _context.SaveChangesAsync();
             return Redirect("/admin/skill");
