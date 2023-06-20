@@ -53,7 +53,11 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.RandomSkills = randomSkills;
 
             //random jobs - 6
-            var jobList = _context.Jobs.Include(j => j.Province).Include(j => j.AppUser).ToList();
+            var jobList = _context.Jobs
+                .Include(j => j.Province)
+                .Include(j => j.AppUser)
+                .Include(j => j.Title)
+                .ToList();
             var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
             ViewBag.RandomJobs = randomJobs;
 

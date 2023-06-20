@@ -4,6 +4,7 @@ using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using System;
 using Microsoft.AspNetCore.Identity;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Controllers
 {
@@ -22,8 +23,10 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("")]
-        public async Task<IActionResult> Index(string slug)
+        public IActionResult Index(string slug, int? page)
         {
+            int pageSize = 3; //number of jobs per page
+
             //for random value
             var random = new Random();
 
@@ -44,7 +47,11 @@ namespace JobPortal.WebApp.Controllers
 
 
             ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
-            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).Include(j => j.AppUser).ToListAsync();
+            var jobs = _context.Jobs
+                .OrderByDescending(j => j.Id)
+                .Include(j => j.AppUser)
+                .Include(j => j.Title)
+                .ToList();
 
             if (slug != null)
             {
@@ -55,53 +62,48 @@ namespace JobPortal.WebApp.Controllers
 
                 if (time != null)
                 {
-                    jobs = await (from t in _context.Times
+                    jobs = (from t in _context.Times
                                   join job in _context.Jobs on t.Id equals job.TimeId
                                   orderby job.Id descending
                                   where t.Slug == slug
-                                  select job).ToListAsync();
+                                  select job).ToList();
                     ViewBag.Time = time;
                 }
                 else if (province != null)
                 {
-                    jobs = await (from p in _context.Provinces
+                    jobs = (from p in _context.Provinces
                                   join job in _context.Jobs on p.Id equals job.ProvinceId
                                   orderby job.Id descending
                                   where p.Slug == slug
-                                  select job).ToListAsync();
+                                  select job).ToList();
                     ViewBag.Province = province;
                 }
                 else if (skill != null)
                 {
-                    jobs = await (from s in _context.Skills
+                    jobs = (from s in _context.Skills
                                   join job in _context.Jobs on s.Id equals job.SkillId
                                   orderby job.Id descending
                                   where s.Slug == slug
-                                  select job).ToListAsync();
+                                  select job).ToList();
                     ViewBag.Skill = skill;
                 }
                 else if (employer != null)
                 {
-                    jobs = await (from e in _context.AppUsers
+                    jobs = (from e in _context.AppUsers
                                   join job in _context.Jobs on e.Id equals job.AppUserId
                                   orderby job.Id descending
                                   where e.Slug == slug
-                                  select job).ToListAsync();
+                                  select job).ToList();
                     ViewBag.Employer = employer;
                 }
                 else
                 {
-                    jobs = await _context.Jobs.OrderByDescending(j => j.Id)
-                        .Include(j => j.AppUser)
-                        .ToListAsync();
+                    jobs = _context.Jobs.OrderByDescending(j => j.Id).ToList();
                 }
-
-                return View(jobs);
+                return View(jobs.ToPagedList(page ?? 1, pageSize));
             }
-            jobs = await _context.Jobs.OrderByDescending(j => j.Id)
-                .Include(j => j.AppUser)
-                .ToListAsync();
-            return View(jobs);
+            jobs = _context.Jobs.OrderByDescending(j => j.Id).ToList();
+            return View(jobs.ToPagedList(page ?? 1, pageSize));
         }
 
         [Route("{slug}")]
@@ -124,12 +126,13 @@ namespace JobPortal.WebApp.Controllers
                 .Where(j => j.Slug == slug)
                 .Include(j => j.AppUser)
                 .Include(j => j.Time)
+                .Include(j => j.Title)
                 .FirstOrDefaultAsync();
 
+            //check existing CV
             var user = await _userManager.GetUserAsync(User);
             var userId = user?.Id != null ? Guid.Parse(user.Id.ToString()) : Guid.Empty;
             var hasSubmittedCV = userId != Guid.Empty ? await HasSubmittedCV(userId, slug) : false;
-
             ViewBag.HasSubmittedCV = hasSubmittedCV;
 
             return View(job);

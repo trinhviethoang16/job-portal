@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<JobPortal.Data.Entities.Job>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 
 @{
     Layout = "_Layout";
@@ -76,21 +79,38 @@
                                 </div>
                                 <div class="ml-auto">
                                     <ul class="btns">
-                                        <!-- <li><a href="/job/@job.Slug"><span class="lnr lnr-heart"></span></a></li> -->
                                         <li><a href="/job/@job.Slug">Apply now</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <p>@job.Description</p>
                             <h5>Job Nature: @job.Time.Name</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> @job.Introduce</p>
+                            <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
                         </div>
                     </div>
                 }
                 <!--End job list-->
-                <!--Load more jobs-->
-                @*<a class="text-uppercase loadmore-btn mx-auto d-block" href="../assets/user/category.html">Load More job Posts</a>*@
+
+                <!--Page list-->
+                <div class="text-center">
+                    <ul class="pagination">
+                        @Html.PagedListPager((IPagedList)Model, page =>
+                        Url.Action("Index", new { page }),
+                        new PagedListRenderOptions
+                        {
+                        Display = PagedListDisplayMode.IfNeeded,
+                        LiElementClasses = new string[] { "page-item" },
+                        UlElementClasses = new string[] { "pagination" },
+                        PageClasses = new string[] { "page-link" },
+                        MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
+                        LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
+                        LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
+                        LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
+                        LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
+                        })
+                    </ul>
+                </div>
 
             </div>
 
@@ -117,3 +137,31 @@
     </div>
 </section>
 <!-- End calto-action Area -->
+
+<style>
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination li {
+        margin: 0 5px;
+    }
+    
+    .pagination li a {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination li.active a {
+        background-color: #333;
+        color: #fff;
+    }
+</style>

@@ -48,6 +48,7 @@
           "Microsoft.Extensions.Identity.Core": "6.0.3",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.3",
           "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": "6.0.3",
+          "X.PagedList.Mvc.Core": "8.4.7",
           "Microsoft.AspNetCore.Antiforgery": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "6.0.0.0",
@@ -350,6 +351,17 @@
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
           }
+        }
+      },
+      "JetBrains.Annotations/2022.3.1": {
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "assemblyVersion": "4242.42.42.42",
+            "fileVersion": "2022.3.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {}
         }
       },
       "MessagePack/2.1.152": {
@@ -2900,6 +2912,34 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "X.PagedList/8.4.7": {
+        "dependencies": {
+          "JetBrains.Annotations": "2022.3.1"
+        },
+        "runtime": {
+          "lib/net6.0/X.PagedList.dll": {
+            "assemblyVersion": "8.4.7.0",
+            "fileVersion": "8.4.7.0"
+          }
+        },
+        "compile": {
+          "lib/net6.0/X.PagedList.dll": {}
+        }
+      },
+      "X.PagedList.Mvc.Core/8.4.7": {
+        "dependencies": {
+          "X.PagedList": "8.4.7"
+        },
+        "runtime": {
+          "lib/net6.0/X.PagedList.Mvc.Core.dll": {
+            "assemblyVersion": "8.4.7.0",
+            "fileVersion": "8.4.7.0"
+          }
+        },
+        "compile": {
+          "lib/net6.0/X.PagedList.Mvc.Core.dll": {}
+        }
+      },
       "JobPortal.Common/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.15",
@@ -2919,7 +2959,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.3",
           "Microsoft.EntityFrameworkCore": "6.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.3",
-          "Microsoft.Extensions.Configuration.Json": "6.0.0"
+          "Microsoft.Extensions.Configuration.Json": "6.0.0",
+          "X.PagedList.Mvc.Core": "8.4.7"
         },
         "runtime": {
           "JobPortal.Data.dll": {}
@@ -4671,6 +4712,13 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
+    "JetBrains.Annotations/2022.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-11nsS3+lFICGkztVs9PP2NRItxf9fF+qD6xEW/T0YGto52zj07wseUeBdMAU1ah9HNVTDZyRC1u4NWdtJScwhw==",
+      "path": "jetbrains.annotations/2022.3.1",
+      "hashPath": "jetbrains.annotations.2022.3.1.nupkg.sha512"
+    },
     "MessagePack/2.1.152": {
       "type": "package",
       "serviceable": true,
@@ -5993,6 +6041,20 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "X.PagedList/8.4.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZA1WcyNviMUhivCgwKAm/5/YsNP3Yf/n81SzrPaHSJOcFzavA9MrXTT8M+ZX4fvHwLCL1bY6BPXvwZF5pRtgTg==",
+      "path": "x.pagedlist/8.4.7",
+      "hashPath": "x.pagedlist.8.4.7.nupkg.sha512"
+    },
+    "X.PagedList.Mvc.Core/8.4.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dS8sJr/aT3AoV9ePaqmF4wijh/2vqS9rxpOvzjPPStkQcR8rUaGPVezPgY/kJwWCZ2hdgKNralbU08So0otNxw==",
+      "path": "x.pagedlist.mvc.core/8.4.7",
+      "hashPath": "x.pagedlist.mvc.core.8.4.7.nupkg.sha512"
     },
     "JobPortal.Common/1.0.0": {
       "type": "project",

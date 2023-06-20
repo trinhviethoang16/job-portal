@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using Microsoft.Build.Framework;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Controllers
 {
@@ -17,10 +18,12 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("")]
-        public async Task<IActionResult> Index(string q, int province, int skill)
+        public async Task<IActionResult> Index(string q, int province, int skill, int? page)
         {
-			//for random value
-			var random = new Random();
+            int pageSize = 3; //number of jobs per page
+
+            //for random value
+            var random = new Random();
 
             //For search filter area
             ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
@@ -44,7 +47,11 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.skill = await _context.Skills.FirstOrDefaultAsync(s => s.Id == skill);
 
 
-            var jobs = await _context.Jobs.OrderByDescending(j => j.Id).Include(j => j.AppUser).ToListAsync();
+            var jobs = await _context.Jobs
+                .OrderByDescending(j => j.Id)
+                .Include(j => j.AppUser)
+                .Include(j => j.Title)
+                .ToListAsync();
 
             if (!string.IsNullOrEmpty(q))
             {
@@ -60,7 +67,7 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.SkillId == skill).ToList();
                 }
 
-                return View(jobs);
+                return View(jobs.ToPagedList(page ?? 1, pageSize));
             }
             else
             {
@@ -74,7 +81,7 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.SkillId == skill).ToList();
                 }
 
-                return View(jobs);
+                return View(jobs.ToPagedList(page ?? 1, pageSize));
             }
         }
     }
