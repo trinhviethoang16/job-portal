@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj": {}
+    "D:\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj": {}
   },
   "projects": {
-    "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+    "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
+        "projectUniqueName": "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
         "projectName": "JobPortal.Common",
-        "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\obj\\",
+        "projectPath": "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\job-portal\\JobPortal.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,21 +65,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj": {
+    "D:\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+        "projectUniqueName": "D:\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
         "projectName": "JobPortal.Data",
-        "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.Data\\obj\\",
+        "projectPath": "D:\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\job-portal\\JobPortal.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,8 +93,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
-                "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
+              "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+                "projectPath": "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
               }
             }
           }
@@ -158,21 +158,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj": {
+    "D:\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
+        "projectUniqueName": "D:\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
         "projectName": "JobPortal.WebApp",
-        "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\obj\\",
+        "projectPath": "D:\\job-portal\\JobPortal.WebApp\\JobPortal.WebApp.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\job-portal\\JobPortal.WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -186,11 +186,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
-                "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
+              "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+                "projectPath": "D:\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
               },
-              "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj": {
-                "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj"
+              "D:\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj": {
+                "projectPath": "D:\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj"
               }
             }
           }
@@ -277,7 +277,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

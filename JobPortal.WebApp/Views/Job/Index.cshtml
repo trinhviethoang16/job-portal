@@ -20,8 +20,8 @@
                         <text>
                             @((ViewBag.Time != null ? $"{ViewBag.Time.Name} jobs" : null) ??
                                 (ViewBag.Province != null ? $"Jobs in {ViewBag.Province.Name}" :
-                                    (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" :
-                                        (ViewBag.Employer != null ? $"{ViewBag.Employer.FullName} Jobs" : null))))
+                                (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" :
+                                (ViewBag.Employer != null ? $"{ViewBag.Employer.FullName} Jobs" : null))))
                         </text>
                     }
                 </h1>
@@ -59,16 +59,18 @@
                             </ul>
                         </div>
                         <!--End job skill list-->
-                        <div class="details" style="margin-left:20px">
+                        <div class="details" style="margin-left:20px; width:600px;">
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
-                                    <a href="/job/@job.Slug"><h4> @job.Name</h4></a>
+                                    <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
                                     <h6>@job.Province.Name</h6>
                                 </div>
-                                <ul class="btns">
-                                    @*<li><a href="/job/@job.Slug"><span class="lnr lnr-heart"></span></a></li>*@
-                                    <li><a href="/job/@job.Slug">Apply now</a></li>
-                                </ul>
+                                <div class="ml-auto">
+                                    <ul class="btns">
+                                        <!-- <li><a href="/job/@job.Slug"><span class="lnr lnr-heart"></span></a></li> -->
+                                        <li><a href="/job/@job.Slug">Apply now</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <p>@job.Description</p>
                             <h5>Job Nature: @job.Time.Name</h5>

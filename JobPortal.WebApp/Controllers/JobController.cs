@@ -127,7 +127,7 @@ namespace JobPortal.WebApp.Controllers
                 .FirstOrDefaultAsync();
 
             var user = await _userManager.GetUserAsync(User);
-            var userId = user.Id;
+            var userId = user?.Id != null ? Guid.Parse(user.Id.ToString()) : Guid.Empty;
             var hasSubmittedCV = userId != Guid.Empty ? await HasSubmittedCV(userId, slug) : false;
 
             ViewBag.HasSubmittedCV = hasSubmittedCV;

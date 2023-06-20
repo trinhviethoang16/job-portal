@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
 
 <!-- Feedback -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -22,16 +23,19 @@
                 </button>
             </div>
             <div class="modal-body">
-                @*<form asp-action="Feeback" asp-route-id="@Model.Id" enctype="multipart/form-data" method="post">
-                    <div class="form-group">
-                        <label asp-for="UrlImage" class="control-label"></label>  <span class="text-danger">*</span>
-                        <input type="file" asp-for="UrlImage" class="form-control" accept="image/*" id="imgInp" />
-                        <span asp-validation-for="UrlImage" class="text-danger"></span>
-                        <img id="blah" src="#" alt="your image" style="width: 200px;" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Cập nhật" class="btn btn-primary" />
-                    </div>
+                @*<form asp-action="Feeback" asp-route-id="@Model.Id" enctype="multipart/form-data"
+                method="post">
+                <div class="form-group">
+                <label asp-for="UrlImage" class="control-label"></label> <span
+                class="text-danger">*</span>
+                <input type="file" asp-for="UrlImage" class="form-control" accept="image/*"
+                id="imgInp" />
+                <span asp-validation-for="UrlImage" class="text-danger"></span>
+                <img id="blah" src="#" alt="your image" style="width: 200px;" />
+                </div>
+                <div class="form-group">
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                </div>
                 </form>*@
             </div>
             <div class="modal-footer">
@@ -50,7 +54,9 @@
                 <h1 class="text-white">
                     <span>Interview job</span>
                 </h1>
-                <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/"> Home page</a></p>
+                <p class="text-white link-nav">
+                    <a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/"> Home page</a>
+                </p>
             </div>
         </div>
     </div>
@@ -75,102 +81,138 @@
                         <div class="featured__filter">
                             @foreach (var CV in Model)
                             {
-                                <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}
-                                                                     @if(CV.CVStatus == 1) {<text>wait</text>}
-                                                                     @if(CV.CVStatus == -1) {<text>cancel</text>}
-                                                                     @if(CV.CVStatus == 2) {<text>accept</text>}">
-                                    <section class="d-flex mb-3" style="justify-content: space-between;">
-                                        <p>
-                                            <span>CV: <b>@CV.JobName</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
+                                <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {
+                            <text>deny</text>
+}
+                                                                     @if(CV.CVStatus == 1) {
+                            <text>wait</text>
+}
+                                                                     @if(CV.CVStatus == -1) {
+                            <text>cancel</text>
+}
+                                                                     @if(CV.CVStatus == 2) {
+                            <text>accept</text>
+}">
+                                                <section class="d-flex mb-3" style="justify-content: space-between;">
+                                                    <p>
+                                                        <span>CV: <b>@CV.JobName</b></span> | Apply date:
+                                            @CV.ApplyDate.ToString("dd/MM/yyyy") |
                                             @{
                                                 switch (CV.CVStatus)
                                                 {
-                                                    case 0: <span class="text-danger"><b>Denied</b></span>
+                                                    case 0:
+                                                                    <span class="text-danger"><b>Denied</b></span>
                                                         break;
-                                                    case 1: <span class="text-success"><b>Waiting</b></span>
+                                                    case 1:
+                                                                    <span class="text-success"><b>Waiting</b></span>
                                                         break;
                                                     case -1:
-                                                        <span class="text-success"><b>Canceled</b></span>
+                                                                    <span class="text-success"><b>Canceled</b></span>
                                                         break;
-                                                    case 2: <span class="text-success"><b>Accepted</b></span>
+                                                    case 2:
+                                                                    <span class="text-success"><b>Accepted</b></span>
                                                         break;
-                                                    default: <span class="text-success"></span>
+                                                    default:
+                                                                    <span class="text-success"></span>
                                                         break;
                                                 }
                                             }
-                                        </p>
-                                        <div>
+                                                    </p>
+                                                    <div>
                                             @if (CV.CVStatus == 0)
                                             {
-                                                <button type="button" onclick="onDelete('@CV.CVId')" class="btn btn-danger">Delete CV</button>
+                                                            <button type="button" onclick="onDelete('@CV.CVId')"
+                                                        class="btn btn-danger">Delete CV</button>
                                             }
                                             @if (CV.CVStatus == 1)
                                             {
-                                                <button type="button" onclick="onCancel('@CV.CVId')" class="btn btn-danger">Cancel CV</button>
+                                                            <button type="button" onclick="onCancel('@CV.CVId')"
+                                                        class="btn btn-danger">Cancel CV</button>
                                             }
                                             @if (CV.CVStatus == 2)
                                             {
-                                                <a href="/apply/@user.Id/@CV.CVId/feedback" class="btn btn-primary">Feedback CV</a>
+                                                            <a href="/apply/@user.Id/@CV.CVId/feedback"
+                                                        class="btn btn-primary">Feedback CV</a>
                                             }
                                             @if (CV.CVStatus == -1)
                                             {
-                                                <button type="button" onclick="onContinue('@CV.CVId')" class="btn btn-primary">Continue CV</button>
+                                                            <button type="button" onclick="onContinue('@CV.CVId')"
+                                                        class="btn btn-primary">Continue CV</button>
                                             }
-                                        </div>
-                                    </section>
-                                    <table>
-                                        <tbody id="items">
-                                            <tr class="targetfields">
-                                                <td class="shoping__cart__item">
-                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px;">
-                                                    <a href="">
-                                                        <h5>
+                                                    </div>
+                                                </section>
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Employer</th>
+                                                            <th>Phone Number</th>
+                                                            <th>Email</th>
+                                                            <th>Apply Date</th>
+                                                            <th>Introduce</th>
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody id="items">
+                                                        <tr class="targetfields">
+                                                            <td>
+                                                                <img src="https://localhost:7211/images/employers/@CV.EmployerLogo"
+                                                                alt="@CV.JobName" style="width: 100px;">
+                                                                <a href="">
+                                                                    <h5>
                                                             @CV.Certificate
-                                                        </h5>
-                                                        <h5>
-                                                            @CV.CVPhone
-                                                        </h5>
-                                                        <h5>
-                                                            @CV.CVEmail
-                                                        </h5>
-                                                    </a>
-                                                    <br />
-                                                </td>
-                                                <td class="shoping__cart__price" style="width: 200px">
-                                                    @CV.Major <i class="pl-3" style="font-weight: 400"></i>
-                                                </td>
-                                                <td class="shoping__cart__total__" id="total_item.CartId">
-                                                    @CV.GPA
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                                                    </h5>
+                                                                    <h5>
+                                                            @CV.UserName
+                                                                    </h5>
+                                                        @*<h5>
+                                                                    @CV.CVEmail
+                                                                </h5>*@
+                                                                </a>
+                                                                <br />
+                                                            </td>
+                                                            <td style="width: 200px; vertical-align: middle">
+                                                    @CV.CVPhone <i class="pl-3" style="font-weight: 400"></i>
+                                                            </td>
+                                                            <td style="vertical-align: middle" id="total_item.CartId">
+                                                    @CV.CVEmail
+                                                            </td>
+                                                            <td style="width: 200px; vertical-align: middle">
+                                                    @CV.ApplyDate <i class="pl-3" style="font-weight: 400"></i>
+                                                            </td>
+                                                            <td style="width: 200px; vertical-align: middle">
+                                                    @CV.Introduce <i class="pl-3" style="font-weight: 400"></i>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
                                         @*<tfoot>
-                                            <tr>
-                                                <th></th>
-                                                <th>Total</th>
-                                                <th>
-                                                    <span style="font-size: 18px; color: #dd2222; float: right;" id="total__">0</span>
-                                                </th>
-                                            </tr>
-                                        </tfoot>*@
-                                    </table>
-                                </div>
-                                @*<script type="text/javascript">
-                                    $(document).ready(function () {
-                                    total_calculate(@detail.);
-                                    });
-                                    function total_calculate(id) {
-                                    var total = 0;
-                                    //loop through subtotal
-                                    $(".targetfields .shoping__cart__total__" + id).each(function () {
-                                    //chck if not empty
-                                    var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
-                                    total += value; //add that value
-                                    })
-                                    //assign to total span
-                                    $("#total__" + id).text(total.toFixed(0))
-                                    }
-                                </script>*@
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Total</th>
+                                                        <th>
+                                                            <span style="font-size: 18px; color: #dd2222; float: right;"
+                                                                id="total__">0</span>
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>*@
+                                                </table>
+                                            </div>
+                                @*
+                            <script type="text/javascript">
+                            $(document).ready(function () {
+                            total_calculate(@detail.);
+                            });
+                            function total_calculate(id) {
+                            var total = 0;
+                            //loop through subtotal
+                            $(".targetfields .shoping__cart__total__" + id).each(function () {
+                            //chck if not empty
+                            var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
+                            total += value; //add that value
+                            })
+                            //assign to total span
+                            $("#total__" + id).text(total.toFixed(0))
+                            }
+                            </script>*@
                             }
                         </div>
                     </div>
@@ -190,13 +232,15 @@
         padding: 20px 30px;
         box-shadow: 6px 6px 5px #cccccc1c;
     }
-    .shoping__cart__table table tfoot tr th {
-        padding-top: 15px;
-    }
-    .shoping__cart__table table tbody tr td {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
+
+        .shoping__cart__table table tfoot tr th {
+            padding-top: 15px;
+        }
+
+        .shoping__cart__table table tbody tr td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
 </style>
 
 <script>
