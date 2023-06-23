@@ -32,7 +32,7 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Max age")]
         [Range(1, 100, ErrorMessage = "Please enter valid age.")]
-        [AgeRange("MinAge")] //Age Range Validation Attribute
+        //[AgeRange("MinAge")] //Age Range Validation Attribute
         public byte? MaxAge { get; set; }
 
         [Display(Name = "Province")]
@@ -47,7 +47,7 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Max salary")]
         [Range(1, int.MaxValue, ErrorMessage = "Please enter valid salary.")]
-        [SalaryRange("MinSalary")] //Salary Range Validation Attribute
+        //[SalaryRange("MinSalary")] //Salary Range Validation Attribute
         public int? MaxSalary { get; set; }
 
         [Display(Name = "Skill")]

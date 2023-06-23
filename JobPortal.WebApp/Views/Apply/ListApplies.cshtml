@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JobPortal.Data.ViewModel.ListCVsViewModel>
+﻿@model IEnumerable<JobPortal.Data.ViewModel.CVsViewModel>
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
@@ -10,40 +10,142 @@
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
+<head>
+    <style>
+        .shoping__cart__table {
+            border: 1px solid #e7e1e1;
+            margin-bottom: 20px;
+            display: block;
+            border-radius: 4px;
+            padding: 20px 30px;
+            box-shadow: 6px 6px 5px #cccccc1c;
+        }
 
-<!-- Feedback -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                @*<form asp-action="Feeback" asp-route-id="@Model.Id" enctype="multipart/form-data"
-                method="post">
-                <div class="form-group">
-                <label asp-for="UrlImage" class="control-label"></label> <span
-                class="text-danger">*</span>
-                <input type="file" asp-for="UrlImage" class="form-control" accept="image/*"
-                id="imgInp" />
-                <span asp-validation-for="UrlImage" class="text-danger"></span>
-                <img id="blah" src="#" alt="your image" style="width: 200px;" />
-                </div>
-                <div class="form-group">
-                <input type="submit" value="Cập nhật" class="btn btn-primary" />
-                </div>
-                </form>*@
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+        .shoping__cart__table table tfoot tr th {
+            padding-top: 15px;
+        }
+
+        .shoping__cart__table table tbody tr td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* Các lớp CSS mới */
+        .job-name {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .employer-address,
+        .employer-city,
+        .employer-email,
+        .employer-phone,
+        .employer-rating,
+        .employer-comment {
+            margin-bottom: 10px;
+        }
+
+            .employer-address strong,
+            .employer-city strong,
+            .employer-email strong,
+            .employer-phone strong,
+            .employer-rating strong {
+                color: #555;
+            }
+
+            .employer-comment strong {
+                display: block;
+                margin-top: 10px;
+            }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            background-color: #f5f5f5;
+        }
+
+        /* Background color */
+        .modal-content {
+            background-color: #f8f9fa;
+        }
+
+        /* Modal header */
+        .modal-header {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: none;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+        }
+
+        /* Modal body */
+        .modal-body {
+            padding: 2rem;
+        }
+
+            .modal-body hr {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .modal-body strong {
+                font-weight: bold;
+            }
+
+            .modal-body label.control-label {
+                font-weight: bold;
+            }
+
+        /* Modal footer */
+        .modal-footer {
+            border-top: none;
+            padding: 1rem;
+            justify-content: center;
+        }
+
+        /* Close button */
+        .modal-header .close {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        /* Apply button */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+
+            .btn-primary:focus {
+                box-shadow: none;
+            }
+
+        /* Employer information */
+        .modal-body .form-group {
+            margin-bottom: 0;
+        }
+
+            .modal-body .form-group div:not(:last-child) {
+                margin-bottom: 0.5rem;
+            }
+    </style>
+</head>
 
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
@@ -81,138 +183,144 @@
                         <div class="featured__filter">
                             @foreach (var CV in Model)
                             {
-                                <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {
-                            <text>deny</text>
-}
-                                                                     @if(CV.CVStatus == 1) {
-                            <text>wait</text>
-}
-                                                                     @if(CV.CVStatus == -1) {
-                            <text>cancel</text>
-}
-                                                                     @if(CV.CVStatus == 2) {
-                            <text>accept</text>
-}">
-                                                <section class="d-flex mb-3" style="justify-content: space-between;">
-                                                    <p>
-                                                        <span>CV: <b>@CV.JobName</b></span> | Apply date:
-                                            @CV.ApplyDate.ToString("dd/MM/yyyy") |
+                                <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}
+                                                                     @if(CV.CVStatus == 1) {<text>wait</text>}
+                                                                     @if(CV.CVStatus == -1) {<text>cancel</text>}
+                                                                     @if(CV.CVStatus == 2 || CV.CVStatus == 3) {<text>accept</text>}">
+                                    <section class="d-flex mb-3" style="justify-content: space-between;">
+                                        <p>
+                                            <span>CV: <b>@CV.JobName</b></span> | Apply date: @CV.ApplyDate.ToString("dd/MM/yyyy") |
                                             @{
                                                 switch (CV.CVStatus)
                                                 {
                                                     case 0:
-                                                                    <span class="text-danger"><b>Denied</b></span>
+                                                    <span class="text-danger"><b>Denied</b></span>
                                                         break;
                                                     case 1:
-                                                                    <span class="text-success"><b>Waiting</b></span>
+                                                    <span class="text-success"><b>Waiting</b></span>
                                                         break;
                                                     case -1:
-                                                                    <span class="text-success"><b>Canceled</b></span>
+                                                    <span class="text-success"><b>Canceled</b></span>
                                                         break;
                                                     case 2:
-                                                                    <span class="text-success"><b>Accepted</b></span>
+                                                    <span class="text-success"><b>Accepted</b></span>
+                                                        break;
+                                                    case 3:
+                                                    <span class="text-success"><b>Accepted</b></span>
                                                         break;
                                                     default:
-                                                                    <span class="text-success"></span>
+                                                    <span class="text-success"></span>
                                                         break;
                                                 }
                                             }
-                                                    </p>
-                                                    <div>
+                                        </p>
+                                        <div>
                                             @if (CV.CVStatus == 0)
                                             {
-                                                            <button type="button" onclick="onDelete('@CV.CVId')"
-                                                        class="btn btn-danger">Delete CV</button>
+                                                <button type="button" onclick="onDelete('@CV.CVId')" class="btn btn-danger">Delete CV</button>
                                             }
                                             @if (CV.CVStatus == 1)
                                             {
-                                                            <button type="button" onclick="onCancel('@CV.CVId')"
-                                                        class="btn btn-danger">Cancel CV</button>
+                                                <button type="button" onclick="onCancel('@CV.CVId')" class="btn btn-danger">Cancel CV</button>
                                             }
                                             @if (CV.CVStatus == 2)
                                             {
-                                                            <a href="/apply/@user.Id/@CV.CVId/feedback"
-                                                        class="btn btn-primary">Feedback CV</a>
+                                                <button type="button" onclick="onWaiting('@CV.CVId')" class="btn btn-danger">Waiting for feedback</button>
+                                            }
+                                            @if (CV.CVStatus == 3)
+                                            {
+                                                <button class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewFeedback-@CV.CVId">Feedback</button>
+                                                
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="viewFeedback-@CV.CVId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Employer Feedback</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Employer Information:</label>
+                                                                            <p class="job-name">Job name: @CV.JobName </p>
+                                                                            <p class="job-name">Feedback date: @CV.CommentOn</p>
+                                                                            <hr />
+                                                                            <div class="employer-address">
+                                                                                <strong>Address:</strong> @CV.EmployerAddress
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="employer-city">
+                                                                                <strong>City:</strong> @CV.EmployerCity
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="employer-email">
+                                                                                <strong>Email:</strong> @CV.EmployerEmail
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="employer-phone">
+                                                                                <strong>Phone:</strong> @CV.EmployerPhone
+                                                                            </div>
+                                                                            <hr />
+                                                                            <div class="employer-rating">
+                                                                                <strong>Rating:</strong> @CV.EmployerRating
+                                                                            </div>
+                                                                            <hr />
+                                                                            <div class="employer-comment">
+                                                                                <strong>Comment:</strong><br />
+                                                                                @Html.Raw(CV.EmployerComment)
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             }
                                             @if (CV.CVStatus == -1)
                                             {
-                                                            <button type="button" onclick="onContinue('@CV.CVId')"
-                                                        class="btn btn-primary">Continue CV</button>
+                                                <button type="button" onclick="onContinue('@CV.CVId')" class="btn btn-primary">Continue CV</button>
                                             }
-                                                    </div>
-                                                </section>
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Employer</th>
-                                                            <th>Phone Number</th>
-                                                            <th>Email</th>
-                                                            <th>Apply Date</th>
-                                                            <th>Introduce</th>
-                                                        </tr>
-
-                                                    </thead>
-                                                    <tbody id="items">
-                                                        <tr class="targetfields">
-                                                            <td>
-                                                                <img src="https://localhost:7211/images/employers/@CV.EmployerLogo"
-                                                                alt="@CV.JobName" style="width: 100px;">
-                                                                <a href="">
-                                                                    <h5>
-                                                            @CV.Certificate
-                                                                    </h5>
-                                                                    <h5>
-                                                            @CV.UserName
-                                                                    </h5>
-                                                        @*<h5>
-                                                                    @CV.CVEmail
-                                                                </h5>*@
-                                                                </a>
-                                                                <br />
-                                                            </td>
-                                                            <td style="width: 200px; vertical-align: middle">
-                                                    @CV.CVPhone <i class="pl-3" style="font-weight: 400"></i>
-                                                            </td>
-                                                            <td style="vertical-align: middle" id="total_item.CartId">
-                                                    @CV.CVEmail
-                                                            </td>
-                                                            <td style="width: 200px; vertical-align: middle">
-                                                    @CV.ApplyDate <i class="pl-3" style="font-weight: 400"></i>
-                                                            </td>
-                                                            <td style="width: 200px; vertical-align: middle">
-                                                    @CV.Introduce <i class="pl-3" style="font-weight: 400"></i>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                        @*<tfoot>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Total</th>
-                                                        <th>
-                                                            <span style="font-size: 18px; color: #dd2222; float: right;"
-                                                                id="total__">0</span>
-                                                        </th>
-                                                    </tr>
-                                                </tfoot>*@
-                                                </table>
-                                            </div>
-                                @*
-                            <script type="text/javascript">
-                            $(document).ready(function () {
-                            total_calculate(@detail.);
-                            });
-                            function total_calculate(id) {
-                            var total = 0;
-                            //loop through subtotal
-                            $(".targetfields .shoping__cart__total__" + id).each(function () {
-                            //chck if not empty
-                            var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
-                            total += value; //add that value
-                            })
-                            //assign to total span
-                            $("#total__" + id).text(total.toFixed(0))
-                            }
-                            </script>*@
+                                        </div>
+                                    </section>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="font-size: 18px">Employer</th>
+                                                <th style="font-size: 18px">Job</th>
+                                                <th style="font-size: 18px">Phone number</th>
+                                                <th style="font-size: 18px">Email</th>
+                                                <th style="font-size: 18px">Apply date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="items">
+                                            <tr class="targetfields">
+                                                <td>
+                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px;">
+                                                </td>
+                                                    <td style="width: 200px; vertical-align: middle">
+                                                    @CV.JobName <i class="pl-3"></i>
+                                                    </td>
+                                                <td style="width: 200px; vertical-align: middle">
+                                                    @CV.CVPhone <i class="pl-3"></i>
+                                                </td>
+                                                <td style="width: 200px; vertical-align: middle">
+                                                    @CV.CVEmail <i class="pl-3"></i>
+                                                </td>
+                                                <td style="width: 200px; vertical-align: middle">
+                                                    @CV.ApplyDate <i class="pl-3"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             }
                         </div>
                     </div>
@@ -223,84 +331,78 @@
 </section>
 <!-- End contact-page Area -->
 
-<style>
-    .shoping__cart__table {
-        border: 1px solid #e7e1e1;
-        margin-bottom: 20px;
-        display: block;
-        border-radius: 4px;
-        padding: 20px 30px;
-        box-shadow: 6px 6px 5px #cccccc1c;
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-
-        .shoping__cart__table table tfoot tr th {
-            padding-top: 15px;
+    <script>
+        function onDelete(id) {
+            Swal.fire({
+                title: 'Delete this CV?',
+                text: "Are you sure to delete the CV?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/apply/@user.Id/' + id + '/delete';
+                    Swal.fire(
+                        'Delete!',
+                        '',
+                        'success'
+                    )
+                }
+            });
         }
 
-        .shoping__cart__table table tbody tr td {
-            padding-top: 10px;
-            padding-bottom: 10px;
+        function onCancel(id) {
+            Swal.fire({
+                title: 'Cancel this CV?',
+                text: "Are you sure to cancel CV?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/apply/@user.Id/' + id + '/update/' + -1;
+                    Swal.fire(
+                        'Cancel!',
+                        '',
+                        'success'
+                    )
+                }
+            });
         }
-</style>
 
-<script>
-    function onDelete(id) {
-        Swal.fire({
-            title: 'Delete this CV?',
-            text: "Are you sure to delete the CV?",
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Delete'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/apply/@user.Id/' + id + '/delete';
-                Swal.fire(
-                    'Delete!',
-                    '',
-                    'success'
-                )
-            }
-        });
-    }
+        function onContinue(id) {
+            Swal.fire({
+                title: 'Continue this CV?',
+                text: "Are you sure to continue CV?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/apply/@user.Id/' + id + '/update/' + 1;
+                    Swal.fire(
+                        'Continue!',
+                        '',
+                        'success'
+                    )
+                }
+            });
+        }
 
-    function onCancel(id) {
-        Swal.fire({
-            title: 'Cancel this CV?',
-            text: "Are you sure to cancel CV?",
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/apply/@user.Id/' + id + '/update/' + -1;
-                Swal.fire(
-                    'Cancel!',
-                    '',
-                    'success'
-                )
-            }
-        });
-    }
-
-    function onContinue(id) {
-        Swal.fire({
-            title: 'Continue this CV?',
-            text: "Are you sure to continue CV?",
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Continue'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/apply/@user.Id/' + id + '/update/' + 1;
-                Swal.fire(
-                    'Continue!',
-                    '',
-                    'success'
-                )
-            }
-        });
-    }
-</script>
+        function onWaiting() {
+            Swal.fire({
+                title: 'Congratulations ! your CV has been accepted.',
+                text: 'Please wait for the feedback from the employer.',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>    
+}

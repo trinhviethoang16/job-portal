@@ -4,8 +4,9 @@ using System.Xml.Linq;
 
 namespace JobPortal.Data.ViewModel
 {
-    public class ListCVsViewModel
+    public class CVsViewModel
     {
+        //List CVs
         public int CVId { get; set; }
 
         [Display(Name = "Certificate")]
@@ -32,7 +33,7 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Applicant name")]
         public string UserName { get; set; }
-        public int CVStatus { get; set; } // = 0 denied // = 1 waiting // = 2 accepted // = -1 cancel
+        public int CVStatus { get; set; } // = 0 denied // = 1 waiting // = 2 accepted // = 3 already feedbak // = -1 cancel
 
         [Display(Name = "Job name")]
         public string JobName { get; set; }
@@ -50,5 +51,32 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Email")]
         public string CVEmail { get; set; }
-	}
+
+
+        //Feedback
+        [Display(Name = "Address")]
+        [StringLength(256, ErrorMessage = "The address cannot be more than 256 characters.")]
+        public string? EmployerAddress { get; set; }
+
+        [Display(Name = "Phone")]
+        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
+        public string? EmployerPhone { get; set; }
+
+        [Display(Name = "Comment")]
+        [StringLength(256, ErrorMessage = "The comment cannot be more than 256 characters.")]
+        public string? EmployerComment { get; set; }
+
+        [Display(Name = "Rating")]
+        [Range(0, 10, ErrorMessage = "Please enter valid rating (0-10).")]
+        public byte? EmployerRating { get; set; }
+
+        [Display(Name = "City")]
+        [StringLength(30, ErrorMessage = "The city cannot be more than 30 characters.")]
+        public string? EmployerCity { get; set; }
+
+        [Display(Name = "Email")]
+        [StringLength(50, ErrorMessage = "The email cannot be more than 50 characters.")]
+        public string? EmployerEmail { get; set; }
+        public DateTime? CommentOn { get; set; }
+    }
 }

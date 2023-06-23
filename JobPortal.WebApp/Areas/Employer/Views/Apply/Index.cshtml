@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JobPortal.Data.ViewModel.ListCVsViewModel>
+﻿@model IEnumerable<JobPortal.Data.ViewModel.CVsViewModel>
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Http
 @inject SignInManager<AppUser> signInManager
@@ -7,6 +7,174 @@
 @{
     var user = await userManager.GetUserAsync(User);
 }
+
+<!-- CKEditor -->
+<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<head>
+    <style>
+        .table thead tr {
+            display: table-row !important;
+            font-weight: 700 !important;
+        }
+
+        .table tr.header {
+            font-weight: bold;
+            background-color: #fff;
+            cursor: pointer;
+            -webkit-user-select: none;
+            /* Chrome all / Safari all */
+            -moz-user-select: none;
+            /* Firefox all */
+            -ms-user-select: none;
+            /* IE 10+ */
+            user-select: none;
+            /* Likely future */
+        }
+
+        .table tr:not(.header) {
+            display: none;
+        }
+
+        .table .header:after {
+            content: "\002b";
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            float: right;
+            color: #999;
+            text-align: center;
+            padding: 3px;
+            transition: transform .25s linear;
+            -webkit-transition: -webkit-transform .25s linear;
+        }
+
+        .table .header.active:after {
+            content: "\2212";
+        }
+
+        /* Các lớp CSS mới */
+        .job-name {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .employer-address,
+        .employer-city,
+        .employer-email,
+        .employer-phone,
+        .employer-rating,
+        .employer-comment {
+            margin-bottom: 10px;
+        }
+
+            .employer-address strong,
+            .employer-city strong,
+            .employer-email strong,
+            .employer-phone strong,
+            .employer-rating strong {
+                color: #555;
+            }
+
+            .employer-comment strong {
+                display: block;
+                margin-top: 10px;
+            }
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            background-color: #f5f5f5;
+        }
+
+        /* Background color */
+        .modal-content {
+            background-color: #f8f9fa;
+        }
+
+        /* Modal header */
+        .modal-header {
+            background-color: #007bff;
+            color: #fff;
+            border-bottom: none;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+        }
+
+        /* Modal body */
+        .modal-body {
+            padding: 2rem;
+        }
+
+            .modal-body hr {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .modal-body strong {
+                font-weight: bold;
+            }
+
+            .modal-body label.control-label {
+                font-weight: bold;
+            }
+
+        /* Modal footer */
+        .modal-footer {
+            border-top: none;
+            padding: 1rem;
+            justify-content: center;
+        }
+
+        /* Close button */
+        .modal-header .close {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        /* Apply button */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+
+            .btn-primary:focus {
+                box-shadow: none;
+            }
+
+        /* Employer information */
+        .modal-body .form-group {
+            margin-bottom: 0;
+        }
+
+            .modal-body .form-group div:not(:last-child) {
+                margin-bottom: 0.5rem;
+            }
+    </style>
+</head>
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -27,9 +195,9 @@
                             <a class="nav-link" href="/employer/apply/@user.Id/0">Denied</a>
                         </li>
                     </ul>
-                    <br/>
+                    <br />
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>
@@ -43,6 +211,9 @@
                                     </th>
                                     <th>
                                         Apply status
+                                    </th>
+                                    <th>
+                                        Actions
                                     </th>
                                     <th></th>
                                 </tr>
@@ -82,12 +253,133 @@
                                         <td>
                                             @if (CV.CVStatus == 1)
                                             {
-                                                <a class="btn btn-primary" type="button" onclick="onAccept(@CV.CVId)" href="#">Accept</a>
-                                                <a class="btn btn-danger" type="button" onclick="onDeny(@CV.CVId)" href="#">Deny</a>
+                                                <button class="btn btn-primary" type="button" onclick="onAccept(@CV.CVId)">Accept</button>
+                                                <button class="btn btn-danger" type="button" onclick="onDeny(@CV.CVId)">Deny</button>
                                             }
                                             @if (CV.CVStatus == 2)
                                             {
-                                                <a class="btn btn-primary" href="#">Feedback</a>
+                                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal">Feedback</a>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Provide Feedback</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="feedbackForm" asp-action="Feedback" asp-route-id="@user.Id" asp-route-CVId="@CV.CVId" enctype="multipart/form-data" method="post">
+                                                                    <div class="row">
+                                                                        <div class="col-md-8">
+                                                                            <div class="form-group">
+                                                                                <label asp-for="@CV.EmployerComment" class="control-label"></label><span class="text-danger">*</span>
+                                                                                <textarea asp-for="@CV.EmployerComment" name="EmployerComment" class="form-control" id="CKEditor" style="height: 450px"></textarea>
+                                                                                <span asp-validation-for="@CV.EmployerComment" class="text-danger"></span>
+                                                                            </div>
+                                                                            <hr />
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <label asp-for="@CV.EmployerAddress" class="control-label"></label><span class="text-danger">*</span>
+                                                                                <textarea asp-for="@CV.EmployerAddress" name="EmployerAddress" class="form-control" rows="3"></textarea>
+                                                                                <span asp-validation-for="@CV.EmployerAddress" class="text-danger"></span>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="form-group">
+                                                                                <label asp-for="@CV.EmployerCity" class="control-label"></label><span class="text-danger">*</span>
+                                                                                <input asp-for="@CV.EmployerCity" name="EmployerCity" class="form-control" />
+                                                                                <span asp-validation-for="@CV.EmployerCity" class="text-danger"></span>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="form-group">
+                                                                                <label asp-for="@CV.EmployerEmail" class="control-label"></label><span class="text-danger">*</span>
+                                                                                <input asp-for="@CV.EmployerEmail" name="EmployerEmail" class="form-control" />
+                                                                                <span asp-validation-for="@CV.EmployerEmail" class="text-danger"></span>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="form-group">
+                                                                                <label asp-for="@CV.EmployerPhone" class="control-label"></label><span class="text-danger">*</span>
+                                                                                <input asp-for="@CV.EmployerPhone" name="EmployerPhone" class="form-control" />
+                                                                                <span asp-validation-for="@CV.EmployerPhone" class="text-danger"></span>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="form-group">
+                                                                                <label asp-for="@CV.EmployerRating" class="control-label"></label><span class="text-danger">*</span>
+                                                                                <input asp-for="@CV.EmployerRating" name="EmployerRating" class="form-control" />
+                                                                                <span asp-validation-for="@CV.EmployerRating" class="text-danger"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group text-center">
+                                                                            <input style="background-color: forestgreen" type="button" onclick="onFeedback()" value="Feedback" class="btn btn-primary" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (CV.CVStatus == 3)
+                                            {
+                                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewFeedbackModal">View Feedback</a>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="viewFeedbackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Employer Feedback</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Employer Information:</label>
+                                                                            <p class="job-name">Job name: @CV.JobName | Feedback date: @CV.CommentOn</p>
+                                                                            <hr />
+                                                                            <div class="employer-address">
+                                                                                <strong>Address:</strong> @CV.EmployerAddress
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="employer-city">
+                                                                                <strong>City:</strong> @CV.EmployerCity
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="employer-email">
+                                                                                <strong>Email:</strong> @CV.EmployerEmail
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="employer-phone">
+                                                                                <strong>Phone:</strong> @CV.EmployerPhone
+                                                                            </div>
+                                                                            <hr />
+                                                                            <div class="employer-rating">
+                                                                                <strong>Rating:</strong> @CV.EmployerRating
+                                                                            </div>
+                                                                            <hr />
+                                                                            <div class="employer-comment">
+                                                                                <strong>Comment:</strong><br />
+                                                                                @Html.Raw(CV.EmployerComment)
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             }
                                         </td>
                                     </tr>
@@ -100,7 +392,6 @@
                                         <th>GPA</th>
                                         <th>Phone</th>
                                         <th>Email</th>
-                                        @*<th>CV Image</th>*@
                                     </tr>
                                     <tr class="targetfields">
                                         <td>
@@ -113,41 +404,10 @@
                                         <td>@CV.GPA</td>
                                         <td>@CV.CVPhone</td>
                                         <td>@CV.CVEmail</td>
-                                        @*<td>
-                                            <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="cv image" style="width: 100px;">
-                                        </td>*@
                                     </tr>
-                                    @*<tr style="background: #fbfbfb;">
-                                        <th></th>
-                                        <th></th>
-                                        <th>Tổng tiền đơn hàng</th>
-                                        <th>
-                                            <span class="text-danger">
-                                                <b id="total__@item.OrderId">0</b>
-                                            </span>
-                                            <script src="/admin/template/assets/vendors/js/vendor.bundle.base.js"></script>
-                                            <script type="text/javascript">
-                                                $(document).ready(function () {
-                                                    total_calculate(@item.OrderId);
-                                                });
-                                                function total_calculate(id) {
-                                                    var total = 0;
-                                                    //loop through subtotal
-                                                    $(".targetfields .shoping__cart__total__" + id).each(function () {
-                                                        //chck if not empty
-                                                        var value = $(this).text() != "" ? parseFloat($(this).text()) : 0;
-                                                        total += value; //add that value
-                                                    })
-                                                    //assign to total span
-                                                    $("#total__" + id).text(total.toFixed(0))
-                                                }
-                                            </script>
-                                        </th>
-                                    </tr>*@
                                 }
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -161,14 +421,15 @@
             //Fixing jQuery Click Events for the iPad
             var ua = navigator.userAgent,
                 event = (ua.match(/iPad/i)) ? "touchstart" : "click";
-            if ($('.table').length > 0) {
-                $('.table .header').on(event, function () {
-                    $(this).toggleClass("active", "").nextUntil('.header').css('display', function (i, v) {
-                        return this.style.display === 'table-row' ? 'none' : 'table-row';
-                    });
+            $('.table').on(event, '.header', function () {
+                $(this).toggleClass("active", "").nextUntil('.header').css('display', function (i, v) {
+                    return this.style.display === 'table-row' ? 'none' : 'table-row';
                 });
-            }
-        })
+            });
+            $('.table').on(event, '.header td:not(:last-child)', function (e) {
+                e.stopPropagation();
+            });
+        });
     </script>
     <script>
         function onAccept(id) {
@@ -209,53 +470,26 @@
                 }
             })
         }
+        function onFeedback() {
+            Swal.fire({
+                title: 'Provide feedback?',
+                text: "Are you sure to provide this feedback?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#feedbackForm").submit();
+                    Swal.fire(
+                        'Success!',
+                        '',
+                        'success'
+                    )
+                }
+            })
+        }
     </script>
+
+    <script>CKEDITOR.replace('CKEditor');</script>
 }
-
-<style>
-    .table thead tr {
-        display: table-row !important;
-        font-weight: 700 !important;
-    }
-
-    .table tr.header {
-        font-weight: bold;
-        background-color: #fff;
-        cursor: pointer;
-        -webkit-user-select: none;
-        /* Chrome all / Safari all */
-        -moz-user-select: none;
-        /* Firefox all */
-        -ms-user-select: none;
-        /* IE 10+ */
-        user-select: none;
-        /* Likely future */
-    }
-
-    .table tr:not(.header) {
-        display: none;
-    }
-
-    .table .header:after {
-        content: "\002b";
-        position: relative;
-        top: 1px;
-        display: inline-block;
-        font-family: 'Glyphicons Halflings';
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        float: right;
-        color: #999;
-        text-align: center;
-        padding: 3px;
-        transition: transform .25s linear;
-        -webkit-transition: -webkit-transform .25s linear;
-    }
-
-    .table .header.active:after {
-        content: "\2212";
-    }
-</style>

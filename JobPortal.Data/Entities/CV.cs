@@ -30,10 +30,6 @@ namespace JobPortal.Data.Entities
 
         [Display(Name = "Job")]
         public int JobId { get; set; }
-        public Title? Title { get; set; }
-
-        [Display(Name = "Title")]
-        public int? TitleId { get; set; }
 
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Please enter your description")]
@@ -46,7 +42,7 @@ namespace JobPortal.Data.Entities
         public string Introduce { get; set; }
         public AppUser? AppUser { get; set; }
         public Guid AppUserId { set; get; }
-        public int Status { get; set; } // = 0 denied // = 1 waiting // = 2 accepted // = -1 cancel
+        public int Status { get; set; } // = 0 denied // = 1 waiting // = 2 accepted // = 3 already feedback // = -1 cancel
 
         [Display(Name = "Your CV image")]
         public string? UrlImage { get; set; } //CV image
@@ -60,5 +56,30 @@ namespace JobPortal.Data.Entities
         [Required(ErrorMessage = "Please enter your email")]
         [StringLength(50, ErrorMessage = "Your email cannot be more than 50 characters.")]
         public string Email { get; set; }
+
+        //Feedback
+        [Display(Name = "Address")]
+        [StringLength(256, ErrorMessage = "The address cannot be more than 256 characters.")]
+        public string? EmployerAddress { get; set; }
+
+        [Display(Name = "Your phone")]
+        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
+        public string? EmployerPhone { get; set; }
+
+        [Display(Name = "Comment")]
+        public string? Comment { get; set; }
+
+        [Display(Name = "Rating")]
+        [Range(0, 10, ErrorMessage = "Please enter valid rating (0-10).")]
+        public byte? EmployerRating { get; set; }
+        public DateTime? CommentOn { get; set; }
+
+        [Display(Name = "City")]
+        [StringLength(30, ErrorMessage = "The city cannot be more than 30 characters.")]
+        public string? City { get; set; }
+
+        [Display(Name = "Email")]
+        [StringLength(50, ErrorMessage = "The email cannot be more than 50 characters.")]
+        public string? EmployerEmail { get; set; }
     }
 }

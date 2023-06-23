@@ -74,7 +74,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <p>@job.Description</p>
+                            <p>@Html.Raw(job.Description)</p>
                             <h5>Job Nature: @job.Time.Name</h5>
                             <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>

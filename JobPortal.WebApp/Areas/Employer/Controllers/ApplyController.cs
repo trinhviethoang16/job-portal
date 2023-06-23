@@ -6,6 +6,8 @@ using JobPortal.Data.ViewModel;
 using System;
 using JobPortal.Data.DataContext;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Microsoft.AspNetCore.Routing;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
@@ -25,7 +27,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         {
             var CV = (from cv in _context.CVs
                         orderby cv.Id descending
-                        select new ListCVsViewModel()
+                        select new CVsViewModel()
                         {
                             CVId = cv.Id,
                             Certificate = cv.Certificate,
@@ -44,6 +46,13 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                             CVPhone = cv.Phone,
                             CVEmail = cv.Email,
                             EmployerId = cv.Job.AppUser.Id,
+                            EmployerAddress = cv.EmployerAddress,
+                            EmployerCity = cv.City,
+                            EmployerComment = cv.Comment,
+                            EmployerEmail = cv.EmployerEmail,
+                            EmployerPhone = cv.EmployerPhone,
+                            EmployerRating = cv.EmployerRating,
+                            CommentOn = cv.CommentOn
                         }).Where(cv => cv.EmployerId == id);
             var CVs = await CV.ToListAsync();
             switch (status)
@@ -79,11 +88,21 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         }
 
         [Route("{id}/{CVId}/feedback")]
-        public async Task<IActionResult> Feedback(Guid id, int CVId)
+        [HttpPost]
+        public async Task<IActionResult> Feedback(Guid id, int CVId, CVsViewModel model)
         {
-            var user = await _context.AppUsers.FirstOrDefaultAsync(u => u.Id == id);
-            var CV = await _context.CVs.FirstOrDefaultAsync(CV => CV.Id == CVId);
-            return View();
+            CV cv = _context.CVs.Where(cv => cv.Id == CVId).First();
+            cv.EmployerAddress = model.EmployerAddress;
+            cv.EmployerEmail = model.EmployerEmail;
+            cv.EmployerPhone = model.EmployerPhone;
+            cv.EmployerRating = model.EmployerRating;
+            cv.City = model.EmployerCity;
+            cv.Comment = model.EmployerComment;
+            cv.CommentOn = DateTime.Now;
+            cv.Status = 3; //already feedback
+            _context.Update(cv);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Apply", new { id = id, status = 3 });
         }
     }
 }

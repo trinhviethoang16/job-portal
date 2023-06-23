@@ -41,13 +41,7 @@
         </form>
     </li>
     <li>
-        @if (user.Status == 1)
-        {
-            <form id="logoutForm" class="form-inline">
-                <a class="ticker-btn" href="#" type="button" onclick="onClick()">Register to Employer</a>
-            </form>
-        }
-        else if (user.Status == null)
+        @if (user.Status == null)
         {
             <form id="logoutForm" class="form-inline">
                 <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>
@@ -69,15 +63,6 @@ else
 }
 
 <script>
-    function onClick() {
-        Swal.fire({
-            title: 'You already register !',
-            text: 'Please wait for the confirmation.',
-            icon: 'info',
-            confirmButtonText: 'OK'
-        });
-    }
-
     function accessDenied() {
         Swal.fire({
             title: 'Sorry !',

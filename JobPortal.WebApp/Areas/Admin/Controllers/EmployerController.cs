@@ -16,13 +16,11 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     public class EmployerController : Controller
     {
         private readonly DataDbContext _context;
-        private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
 
-        public EmployerController(DataDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        public EmployerController(DataDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
-            _signInManager = signInManager;
             _userManager = userManager;
         }
 

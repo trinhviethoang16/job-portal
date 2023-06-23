@@ -46,7 +46,7 @@
 								<h6>@Model.Province.Name</h6>
 							</div>
 						</div>
-						<p>@Model.Description</p>
+						<p>@Html.Raw(Model.Description)</p>
 						<h5>Job Nature: @Model.Time.Name</h5>
 						<p class="address"><span class="lnr lnr-map"></span> @Model.Title.Name</p>
 						<p class="address"><span class="lnr lnr-database"></span> @Model.MinSalary - @Model.MaxSalary</p>

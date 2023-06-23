@@ -14,13 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Employer\Views\Apply\Feedback.cshtml" />
     <Content Remove="Views\Job\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Areas\Admin\Views\Employer\Index.cshtml" />
-    <None Include="Areas\Employer\Views\Apply\Feedback.cshtml" />
     <None Include="Areas\Employer\Views\Apply\Index.cshtml" />
     <None Include="Views\Apply\Apply.cshtml" />
     <None Include="Views\Job\Index.cshtml" />

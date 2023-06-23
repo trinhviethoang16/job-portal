@@ -57,7 +57,7 @@
                         <div class="details">
                             <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
                             <h6>@job.Province.Name</h6>
-                            <p>@job.Description</p>
+                            <p>@Html.Raw(job.Description)</p>
                         </div>
                     </div>
                 }

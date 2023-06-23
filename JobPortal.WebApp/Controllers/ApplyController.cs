@@ -31,7 +31,7 @@ namespace JobPortal.WebApp.Controllers
         {
             var CVs = await (from cv in _context.CVs
                              orderby cv.ApplyDate descending
-                             select new ListCVsViewModel()
+                             select new CVsViewModel()
                              {
                                  CVId = cv.Id,
                                  Certificate = cv.Certificate,
@@ -47,7 +47,14 @@ namespace JobPortal.WebApp.Controllers
                                  UserId = cv.AppUserId,
                                  CVStatus = cv.Status,
                                  JobName = cv.Job.Name,
-                                 EmployerLogo = cv.Job.AppUser.UrlAvatar
+                                 EmployerLogo = cv.Job.AppUser.UrlAvatar,
+                                 EmployerAddress = cv.EmployerAddress,
+                                 EmployerCity = cv.City,
+                                 EmployerComment = cv.Comment,
+                                 EmployerEmail = cv.EmployerEmail,
+                                 EmployerPhone = cv.EmployerPhone,
+                                 EmployerRating = cv.EmployerRating,
+                                 CommentOn = cv.CommentOn
                              }).Where(u => u.UserId == id).ToListAsync();
             return View(CVs);
         }
@@ -63,7 +70,7 @@ namespace JobPortal.WebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Apply(string slug, Guid id, CreateCVViewModel model)
         {
-            var job = await _context.Jobs.Where(j => j.Slug == slug).FirstAsync();
+            var job = await _context.Jobs.Where(j => j.Slug == slug).FirstOrDefaultAsync();
 
             if (ModelState.IsValid)
             {
@@ -123,31 +130,6 @@ namespace JobPortal.WebApp.Controllers
             _context.CVs.Update(cv);
             _context.SaveChanges();
             return Redirect("/apply/" + id);
-        }
-
-        [Route("{id}/{CVid}/feedback")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Feedback(Guid id, int CVid, IFormFile UrlImage)
-        {
-            string POST_IMAGE_PATH = "images/feedback/";
-
-            if (UrlImage != null)
-            {
-                var image = UploadImage.UploadImageFile(UrlImage, POST_IMAGE_PATH);
-                CV cv = _context.CVs.Where(s => s.Id == CVid).First();
-                cv.UrlImage = image;
-                _context.Update(cv);
-                await _context.SaveChangesAsync();
-                return Redirect("/apply/" + id);
-            }
-            return Redirect("/apply/" + id);
-        }
-
-        [Route("waiting")]
-        public IActionResult Waiting()
-        {
-            return View();
         }
     }
 }

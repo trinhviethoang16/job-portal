@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VFJBRX31yFqmxmclTHQk9dHra309qH12nIMrV3aJZog=",
+  "Hash": "azSW5MEh0mDQTH2DxHRIP4zYIYO3EMU2dQNkTzG8EaQ=",
   "Source": "JobPortal.WebApp",
   "BasePath": "_content/JobPortal.WebApp",
   "Mode": "Default",
@@ -15300,6 +15300,23 @@
       "OriginalItemSpec": "wwwroot\\images\\cvs\\75f643b4-0c0a-4045-b24c-c013add1d444.jpg"
     },
     {
+      "Identity": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\89fcf5d5-71ab-4d56-bbf3-3f4afec43808.jpg",
+      "SourceId": "JobPortal.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\",
+      "BasePath": "_content/JobPortal.WebApp",
+      "RelativePath": "images/cvs/89fcf5d5-71ab-4d56-bbf3-3f4afec43808.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cvs\\89fcf5d5-71ab-4d56-bbf3-3f4afec43808.jpg"
+    },
+    {
       "Identity": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\b111b16b-737e-4fe7-bec4-b02d186427c5.jpg",
       "SourceId": "JobPortal.WebApp",
       "SourceType": "Discovered",
@@ -15434,6 +15451,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\employers\\661a116f-eda6-48e2-b322-4d6ffda23279.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\81164cd5-c070-407c-af13-94c913c5e3ce.jpg",
+      "SourceId": "JobPortal.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\",
+      "BasePath": "_content/JobPortal.WebApp",
+      "RelativePath": "images/employers/81164cd5-c070-407c-af13-94c913c5e3ce.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\employers\\81164cd5-c070-407c-af13-94c913c5e3ce.jpg"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\8f2538cb-3d61-4a81-8ab6-45a8fe750949.jpg",
