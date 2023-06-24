@@ -38,8 +38,8 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.FilterSkills = _context.Skills.OrderBy(s => s.Id).ToList();
 
             //random employers - 4
-            var employerList = _context.Users.Where(e => e.Status == 2).ToList();
-            var randomEmployers = employerList.OrderBy(e => random.Next()).Take(4).ToList();
+            var employerList = _context.Users.Where(e => e.Status == 2).Include(e => e.Jobs).ToList();
+            var randomEmployers = employerList.OrderBy(e => Guid.NewGuid()).Where(e => e.Jobs.Count > 0).Take(4).ToList();
             ViewBag.RandomEmployers = randomEmployers;
 
             //random categories - 4
@@ -57,6 +57,7 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Province)
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
+                .Include(j => j.Time)
                 .ToList();
             var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
             ViewBag.RandomJobs = randomJobs;

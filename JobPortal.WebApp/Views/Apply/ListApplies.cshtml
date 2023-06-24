@@ -12,11 +12,48 @@
 <link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
 <head>
     <style>
+        /* Áp dụng CSS cho bảng */
+        .table-bordered {
+            border-collapse: collapse;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+            .table-bordered th,
+            .table-bordered td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+                vertical-align:middle;
+            }
+
+            .table-bordered th {
+                background-color: #f2f2f2;
+            }
+
+        /* Áp dụng CSS cho nội dung trong bảng */
+        .table-content {
+            font-size: 16px;
+        }
+
+            .table-content img {
+                width: 150px;
+                height:150px;
+                display: block;
+                margin: 0 auto;
+                border-radius: 20px;
+                object-fit: cover;
+            }
+
+
+
+
         .shoping__cart__table {
             border: 1px solid #e7e1e1;
             margin-bottom: 20px;
             display: block;
-            border-radius: 4px;
+            border-radius: 10px;
             padding: 20px 30px;
             box-shadow: 6px 6px 5px #cccccc1c;
         }
@@ -194,22 +231,22 @@
                                                 switch (CV.CVStatus)
                                                 {
                                                     case 0:
-                                                    <span class="text-danger"><b>Denied</b></span>
+                                                                <span class="text-danger"><b>Denied</b></span>
                                                         break;
                                                     case 1:
-                                                    <span class="text-success"><b>Waiting</b></span>
+                                                                <span class="text-success"><b>Waiting</b></span>
                                                         break;
                                                     case -1:
-                                                    <span class="text-success"><b>Canceled</b></span>
+                                                                <span class="text-success"><b>Canceled</b></span>
                                                         break;
                                                     case 2:
-                                                    <span class="text-success"><b>Accepted</b></span>
+                                                                <span class="text-success"><b>Accepted</b></span>
                                                         break;
                                                     case 3:
-                                                    <span class="text-success"><b>Accepted</b></span>
+                                                                <span class="text-success"><b>Accepted</b></span>
                                                         break;
                                                     default:
-                                                    <span class="text-success"></span>
+                                                                <span class="text-success"></span>
                                                         break;
                                                 }
                                             }
@@ -290,36 +327,38 @@
                                             }
                                         </div>
                                     </section>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th style="font-size: 18px">Employer</th>
-                                                <th style="font-size: 18px">Job</th>
-                                                <th style="font-size: 18px">Phone number</th>
-                                                <th style="font-size: 18px">Email</th>
-                                                <th style="font-size: 18px">Apply date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="items">
-                                            <tr class="targetfields">
-                                                <td>
-                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px;">
-                                                </td>
-                                                    <td style="width: 200px; vertical-align: middle">
-                                                    @CV.JobName <i class="pl-3"></i>
-                                                    </td>
-                                                <td style="width: 200px; vertical-align: middle">
-                                                    @CV.CVPhone <i class="pl-3"></i>
-                                                </td>
-                                                <td style="width: 200px; vertical-align: middle">
-                                                    @CV.CVEmail <i class="pl-3"></i>
-                                                </td>
-                                                <td style="width: 200px; vertical-align: middle">
-                                                    @CV.ApplyDate <i class="pl-3"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                           <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Employer</th>
+                <th>Job</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th>Apply date</th>
+            </tr>
+        </thead>
+        <tbody id="items">
+            <tr class="targetfields">
+                <td class="table-content">
+                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo"
+                     alt="@CV.JobName">
+                </td>
+                <td class="table-content">
+                        <span style="font-size: 16px; font-weight: bold;">@CV.JobName</span>
+                </td>
+                <td class="table-content">
+                    <span>@CV.CVPhone</span>
+                </td>
+                <td class="table-content">
+                    <span>@CV.CVEmail</span>
+                </td>
+                <td class="table-content">
+                    <span>@CV.ApplyDate</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
                                 </div>
                             }
                         </div>
