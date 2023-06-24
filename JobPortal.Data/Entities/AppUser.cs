@@ -34,9 +34,6 @@ namespace JobPortal.Data.Entities
         public string? UrlAvatar { get; set; }
 
         //Employer
-        public string? Logo { get; set; }
-        public string? City { get; set; }
-
         [Display(Name = "Contact")]
         [StringLength(256, ErrorMessage = "The contact cannot be more than 256 characters.")]
         public string? Contact { get; set; }

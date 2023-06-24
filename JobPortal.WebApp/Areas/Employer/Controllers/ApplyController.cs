@@ -8,6 +8,7 @@ using JobPortal.Data.DataContext;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Routing;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
@@ -23,8 +24,10 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         }
 
         [Route("{id}/{status}")]
-        public async Task<IActionResult> Index(Guid id, int status)
+        public async Task<IActionResult> Index(Guid id, int status, int? page)
         {
+            int pageSize = 10; //number of CVs per page
+
             var CV = (from cv in _context.CVs
                         orderby cv.Id descending
                         select new CVsViewModel()
@@ -73,7 +76,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                     CVs = await CV.Where(cv => cv.CVStatus != -1).ToListAsync();
                     break;
             }
-            return View(CVs);
+            return View(CVs.ToPagedList(page ?? 1, pageSize));
         }
 
         [Route("update-cv-status/{id}/{CVId}/{status}")]

@@ -11,6 +11,7 @@ using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using JobPortal.Common;
 using Microsoft.AspNetCore.Identity;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
@@ -27,8 +28,10 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         }
 
         [Route("{id}")]
-        public async Task<IActionResult> Index(Guid id)
+        public async Task<IActionResult> Index(Guid id, int? page)
         {
+            int pageSize = 5; //number of jobs per page
+
             var jobs = await _context.Jobs
                 .Where(j => j.AppUserId == id)
                 .Include(j => j.AppUser)
@@ -38,7 +41,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                 .Include(j => j.Title)
                 .OrderByDescending(j => j.Id)
                 .ToListAsync();
-            return View(jobs);
+            return View(jobs.ToPagedList(page ?? 1, pageSize));
         }
 
         [Route("{id}/create")]

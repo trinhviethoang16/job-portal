@@ -47,6 +47,7 @@ namespace JobPortal.Data.Extensions
                 SecurityStamp = string.Empty,
                 FullName = "Adminitrator",
                 Slug = "adminitrator",
+                UrlAvatar = "default_admin.png",
                 Status = -1
             });
 

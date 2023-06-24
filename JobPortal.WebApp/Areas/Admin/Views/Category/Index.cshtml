@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<JobPortal.Data.Entities.Category>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 
 <div class="content-wrapper">
     <div class="row">
@@ -24,24 +27,23 @@
                                 });
                             </script>
                         }
-                            <div class="table-responsive text-nowrap">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                @*<i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@Html.DisplayNameFor(model => model.Id)</strong>*@
-                                                <input type="checkbox" id="checkall" />
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Name)
-                                            </th>
-
-                                            <th>
-                                                Actions
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @*<i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@Html.DisplayNameFor(model => model.Id)</strong>*@
+                                            <input type="checkbox" id="checkall" />
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     @foreach (var category in Model)
                                     {
                                         <tr>
@@ -72,6 +74,25 @@
                                     }
                                 </tbody>
                             </table>
+                        </div>
+                        <!--Page list-->
+                        <div class="text-center">
+                            <ul class="pagination">
+                                @Html.PagedListPager((IPagedList)Model, page =>
+                                Url.Action("Index", new { page }),
+                                new PagedListRenderOptions
+                                {
+                                Display = PagedListDisplayMode.IfNeeded,
+                                LiElementClasses = new string[] { "page-item" },
+                                UlElementClasses = new string[] { "pagination" },
+                                PageClasses = new string[] { "page-link" },
+                                MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
+                                LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
+                                LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
+                                LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
+                                LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
+                                })
+                            </ul>
                         </div>
                     </form>
                 </div>
@@ -114,6 +135,32 @@
             background: transparent;
             color: #dc3545;
         }
+
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+            .pagination li a {
+                display: inline-block;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                color: #333;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            .pagination li.active a {
+                background-color: #333;
+                color: #fff;
+            }
 </style>
 
 <script>

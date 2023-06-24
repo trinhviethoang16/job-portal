@@ -350,7 +350,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\cvs\" />
     <Folder Include="wwwroot\images\cvs\" />
-    <Folder Include="wwwroot\images\categories\" />
   </ItemGroup>
 
 </Project>

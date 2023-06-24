@@ -10,6 +10,7 @@ using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using JobPortal.Common;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -27,10 +28,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 
         [Route("index")]
         [Route("")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
+            int pageSize = 5; //number of skills per page
+
             var skill = await _context.Skills.OrderByDescending(i => i.Id).ToListAsync();
-            return View(skill);
+            return View(skill.ToPagedList(page ?? 1, pageSize));
         }
 
         [Route("create")]
@@ -162,12 +165,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             }
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
-
-        [Route("fail")]
-        public IActionResult Fail()
-        {
-            return View();
         }
     }
 }

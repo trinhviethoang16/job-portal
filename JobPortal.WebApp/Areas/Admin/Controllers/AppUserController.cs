@@ -4,6 +4,7 @@ using JobPortal.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -24,8 +25,10 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         }
 
         [Route("")]
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
+            int pageSize = 5; //number of users per page
+
             var users = userManager.Users.ToList();
             var userRoles = new List<Dictionary<string, string>>();
 
@@ -41,17 +44,16 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 }
 
                 userRoles.Add(new Dictionary<string, string>
-        {
-            { "userId", user.Id.ToString()},
-            { "UserName", user.UserName },
-            { "Email", user.Email },
-            { "Avatar", user.UrlAvatar },
-            { "RoleNames", string.Join(", ", roleNames) }
-
-        });
+                {
+                    { "userId", user.Id.ToString()},
+                    { "UserName", user.UserName },
+                    { "Email", user.Email },
+                    { "Avatar", user.UrlAvatar },
+                    { "RoleNames", string.Join(", ", roleNames) }
+                });
             }
 
-            return View(userRoles);
+            return View(userRoles.ToPagedList(page ?? 1, pageSize));
         }
 
         // Phân quyền Users

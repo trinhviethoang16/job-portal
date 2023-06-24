@@ -2856,3 +2856,6 @@ D:\job-portal\JobPortal.WebApp\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutAc
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.WebApp\bin\Debug\net6.0\JetBrains.Annotations.dll
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.WebApp\bin\Debug\net6.0\X.PagedList.dll
 C:\Users\ADMIN\Downloads\job-portal\JobPortal.WebApp\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll
+E:\Code\source\job-portal\JobPortal.WebApp\bin\Debug\net6.0\JetBrains.Annotations.dll
+E:\Code\source\job-portal\JobPortal.WebApp\bin\Debug\net6.0\X.PagedList.dll
+E:\Code\source\job-portal\JobPortal.WebApp\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll

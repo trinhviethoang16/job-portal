@@ -8,6 +8,7 @@ using JobPortal.Data.ViewModel;
 using JobPortal.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Principal;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -26,8 +27,10 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 
         [Route("index/{status}")]
         [Route("{status}")]
-        public async Task<IActionResult> Index(int status)
+        public async Task<IActionResult> Index(int status, int? page)
         {
+            int pageSize = 5; //number of users per page
+
             var employer = (from emp in _context.AppUsers
                         orderby emp.CreateDate descending
                         select new ListEmployersViewWModel()
@@ -62,7 +65,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                     employers = await employer.Where(p => p.Status != null && p.Status != -1).ToListAsync();
                     break;
             }
-            return View(employers);
+            return View(employers.ToPagedList(page ?? 1, pageSize));
         }
 
         [Route("update-employer-status/{id}/{status}")]

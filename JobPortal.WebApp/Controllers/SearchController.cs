@@ -20,7 +20,7 @@ namespace JobPortal.WebApp.Controllers
         [Route("")]
         public async Task<IActionResult> Index(string q, int province, int skill, int? page)
         {
-            int pageSize = 3; //number of jobs per page
+            int pageSize = 5; //number of jobs per page
 
             //for random value
             var random = new Random();

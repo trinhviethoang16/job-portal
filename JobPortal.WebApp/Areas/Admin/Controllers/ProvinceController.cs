@@ -11,6 +11,7 @@ using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using JobPortal.Common;
+using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {
@@ -28,10 +29,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
 
         [Route("index")]
         [Route("")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
+            int pageSize = 5; //number of provinces per page
+
             var province = await _context.Provinces.OrderByDescending(i => i.Id).ToListAsync();
-            return View(province);
+            return View(province.ToPagedList(page ?? 1, pageSize));
         }
 
         [Route("create")]

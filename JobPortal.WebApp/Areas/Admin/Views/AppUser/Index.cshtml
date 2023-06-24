@@ -1,4 +1,7 @@
 ﻿@model List<Dictionary<string, string>>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 
 @{
     ViewData["Title"] = "User manager";
@@ -45,7 +48,25 @@
                                 }
                             </tbody>
                         </table>
-
+                    </div>
+                    <!--Page list-->
+                    <div class="text-center">
+                        <ul class="pagination">
+                            @Html.PagedListPager((IPagedList)Model, page =>
+                            Url.Action("Index", new { page }),
+                            new PagedListRenderOptions
+                            {
+                            Display = PagedListDisplayMode.IfNeeded,
+                            LiElementClasses = new string[] { "page-item" },
+                            UlElementClasses = new string[] { "pagination" },
+                            PageClasses = new string[] { "page-link" },
+                            MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
+                            LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
+                            LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
+                            LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
+                            LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
+                            })
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -63,4 +84,30 @@
     th {
         font-weight: 700 !important
     }
+
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+            .pagination li a {
+                display: inline-block;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                color: #333;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            .pagination li.active a {
+                background-color: #333;
+                color: #fff;
+            }
 </style>
