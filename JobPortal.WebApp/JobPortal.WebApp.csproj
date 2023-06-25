@@ -22,6 +22,8 @@
     <None Include="Areas\Employer\Views\Apply\Index.cshtml" />
     <None Include="Views\Apply\Apply.cshtml" />
     <None Include="Views\Job\Index.cshtml" />
+    <None Include="Views\Shared\Components\Category\Default.cshtml" />
+    <None Include="Views\Shared\Components\Time\Default.cshtml" />
     <None Include="wwwroot\assets\admin\.github\workflows\handle-new-issue-comment.yml" />
     <None Include="wwwroot\assets\admin\.github\workflows\handle-new-issue.yml" />
     <None Include="wwwroot\assets\admin\.github\workflows\issue-staler.yml" />

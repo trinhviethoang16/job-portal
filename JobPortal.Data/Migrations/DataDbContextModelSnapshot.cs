@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "9e5d4b3f-53d1-42b2-b1d4-c36bae11510b",
+                            ConcurrencyStamp = "de306376-4107-4480-8adc-2e84786f1924",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "1442cddf-8dda-46af-85d7-e847d6e9545f",
+                            ConcurrencyStamp = "adce77ec-3380-404f-9ed9-867e9fdbca08",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "73e13b94-2cf3-4d01-b469-70415434653e",
+                            ConcurrencyStamp = "56088f99-c88a-4b69-8897-d2f467c944d5",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -205,14 +205,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7eb4825-ce8b-428b-8eea-f386888bcd6c",
+                            ConcurrencyStamp = "d5600598-aa8b-45cb-b01a-d48a06c56c8f",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELtVYEzIoESVQ/Rj5kYNak7wgKGUAVT6GWIrdOhQJP+N3g/QagkX7lz7WBzq4PUxAw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBigDjh4QswX0msKFM7X66mbsrWJbKK578HmPikqOwatSPKRIuz9hZzBqBehwAcv/Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Slug = "adminitrator",
@@ -231,36 +231,30 @@ namespace JobPortal.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid?>("AppUserId")
+                    b.Property<Guid>("AppUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Author")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShortDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Slug")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -445,15 +439,13 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Experience")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Introduce")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte?>("MaxAge")
                         .HasColumnType("tinyint");
@@ -794,7 +786,8 @@ namespace JobPortal.Data.Migrations
                     b.HasOne("JobPortal.Data.Entities.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("AppUser");
                 });

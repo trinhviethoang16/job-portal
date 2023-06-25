@@ -24,11 +24,9 @@ namespace JobPortal.Data.Entities
         public int TitleId { get; set; }
 
         [Display(Name = "Description")]
-        [StringLength(256, ErrorMessage = "Description cannot be more than 256 characters.")]
         public string? Description { get; set; }
 
         [Display(Name = "Introduce")]
-        [StringLength(100, ErrorMessage = "The introduce cannot be more than 100 characters.")]
         public string? Introduce { get; set; }
 
         [Display(Name = "Object target")]

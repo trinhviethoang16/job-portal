@@ -29,29 +29,29 @@
                                     <br />
                                     <div class="form-group">
                                         <label asp-for="Introduce" class="control-label"></label><span class="text-danger">*</span>
-                                        <textarea asp-for="Introduce" class="form-control" rows="3"></textarea>
+                                        <textarea asp-for="Introduce" class="form-control ckeditor"></textarea>
                                         <span asp-validation-for="Introduce" class="text-danger"></span>
                                     </div>
                                     <br />
                                     <div class="form-group">
                                         <label asp-for="ObjectTarget" class="control-label"></label><span class="text-danger">*</span>
-                                        <textarea asp-for="ObjectTarget" class="form-control" rows="3"></textarea>
+                                        <textarea asp-for="ObjectTarget" class="form-control ckeditor"></textarea>
                                         <span asp-validation-for="ObjectTarget" class="text-danger"></span>
                                     </div>
                                     <br />
                                     <div class="form-group">
-                                        <label asp-for="Experience" class="control-label"></label><span class="text-danger">*</span>
-                                        <textarea asp-for="Experience" class="form-control" rows="3"></textarea>
-                                        <span asp-validation-for="Experience" class="text-danger"></span>
-                                    </div>
-                                    <br />
-                                    <div class="form-group">
                                         <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
-                                        <textarea asp-for="Description" class="form-control" id="CKEditor" style="height: 450px"></textarea>
+                                        <textarea asp-for="Description" class="form-control ckeditor"></textarea>
                                         <span asp-validation-for="Description" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Experience" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="Experience" class="form-control ckeditor"></textarea>
+                                        <span asp-validation-for="Experience" class="text-danger"></span>
+                                    </div>
+                                    <br />
                                     <div class="form-group">
                                         <label asp-for="MinAge" class="control-label"></label><span class="text-danger">*</span>
                                         <input asp-for="MinAge" class="form-control" />
@@ -141,5 +141,11 @@
         }
     </script>
 
-    <script>CKEDITOR.replace('CKEditor');</script>
+    <script>
+        $(document).ready(function () {
+            $('.ckeditor').each(function () {
+                CKEDITOR.replace($(this).attr('id'));
+            });
+        });
+    </script>
 }

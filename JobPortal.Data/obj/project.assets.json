@@ -2799,19 +2799,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\doanA\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
       "projectName": "JobPortal.Data",
-      "projectPath": "D:\\doanA\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\doanA\\job-portal\\JobPortal.Data\\obj\\",
+      "projectPath": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Data\\JobPortal.Data.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2825,8 +2825,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\doanA\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
-              "projectPath": "D:\\doanA\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
+            "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+              "projectPath": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj"
             }
           }
         }
@@ -2894,7 +2894,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

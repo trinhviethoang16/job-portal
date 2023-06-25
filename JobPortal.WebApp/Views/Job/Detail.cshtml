@@ -46,7 +46,7 @@
 								<h6>@Model.Province.Name</h6>
 							</div>
 						</div>
-						<p>@Html.Raw(Model.Description)</p>
+						<p>@Html.Raw(Model.Introduce)</p>
 						<h5>Job Nature: @Model.Time.Name</h5>
 						<p class="address"><span class="lnr lnr-map"></span> @Model.Title.Name</p>
 						<p class="address"><span class="lnr lnr-database"></span> @Model.MinSalary - @Model.MaxSalary</p>
@@ -54,7 +54,7 @@
 				</div>
 				<div class="single-post job-details">
 					<h4 class="single-title">Whom we are looking for</h4>
-					<p>@Model.Introduce</p>
+					<p>@Html.Raw(Model.Description)</p>
 				</div>
 				<div class="single-post job-experience">
 					<h4 class="single-title">Experience Requirements</h4>
@@ -63,7 +63,7 @@
 							<img src="../assets/user/img/pages/list.jpg" alt="">
 							<span>@Model.MinAge - @Model.MaxAge</span>
 						</li>
-						
+
 					</ul>
 				</div>
 				<div class="single-post job-experience">
@@ -71,7 +71,7 @@
 					<ul>
 						<li>
 							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.ObjectTarget</span>
+							<span>@Html.Raw(Model.ObjectTarget)</span>
 						</li>
 					</ul>
 				</div>
@@ -80,7 +80,7 @@
 					<ul>
 						<li>
 							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.Experience</span>
+							<span>@Html.Raw(Model.Experience)</span>
 						</li>
 					</ul>
 				</div>

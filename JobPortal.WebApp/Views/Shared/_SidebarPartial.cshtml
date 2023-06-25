@@ -3,9 +3,12 @@
     <div class="single-slidebar">
         <h4 class="text-center">Jobs by Location</h4>
         <ul class="cat-list">
-            @foreach (var pro in ViewBag.ListProvinces)
+            @foreach (var province in ViewBag.ListProvinces)
             {
-                <li><a class="justify-content-between d-flex" href="/job?slug=@pro.Slug"><p>@pro.Name</p><span>@*So luong job*@</span></a></li>
+                @if (province.Jobs.Count > 0)
+                {
+                    <li><a class="justify-content-between d-flex" href="/job?slug=@province.Slug"><p>@province.Name</p><span>@province.Jobs.Count</span></a></li>
+                }
             }
         </ul>
     </div>
@@ -15,7 +18,10 @@
         <ul class="cat-list">
             @foreach (var skill in ViewBag.ListSkills)
             {
-                <li><a class="justify-content-between d-flex" href="/job?slug=@skill.Slug"><p>@skill.Name</p><span>@*So luong job*@</span></a></li>
+                @if (skill.Jobs.Count > 0)
+                {
+                    <li><a class="justify-content-between d-flex" href="/job?slug=@skill.Slug"><p>@skill.Name</p><span>@skill.Jobs.Count</span></a></li>
+                }
             }
         </ul>
     </div>

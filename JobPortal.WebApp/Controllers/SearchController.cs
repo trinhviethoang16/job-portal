@@ -31,16 +31,15 @@ namespace JobPortal.WebApp.Controllers
 
             //random jobs - 6
             var jobList = _context.Jobs.Include(j => j.Province).ToList();
-			var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
-			ViewBag.ListJobs = randomJobs;
+            ViewBag.ListJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
 
-			//random skills - 10
-			var skillList = _context.Skills.ToList();
-			var randomSkills = skillList.OrderBy(s => random.Next()).Take(10).ToList();
-			ViewBag.ListSkills = randomSkills;
+            //random skills - 7
+            var skillList = _context.Skills.ToList();
+            ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Take(7).ToList();
 
-			ViewBag.ListProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
-            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
+            //random provinces - 4
+            var provinceList = _context.Provinces.ToList();
+            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Take(4).ToList();
 
             ViewBag.q = q;
             ViewBag.province = await _context.Provinces.FirstOrDefaultAsync(p => p.Id == province);
@@ -51,6 +50,7 @@ namespace JobPortal.WebApp.Controllers
                 .OrderByDescending(j => j.Id)
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
+                .Include(j => j.Time)
                 .ToListAsync();
 
             if (!string.IsNullOrEmpty(q))

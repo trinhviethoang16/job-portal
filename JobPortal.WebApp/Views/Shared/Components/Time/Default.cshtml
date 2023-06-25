@@ -1,0 +1,8 @@
+﻿@model List<JobPortal.Data.Entities.Time>
+
+<ul class="cat-list" style="width:auto">
+    @foreach (var time in Model)
+    {
+        <li class="col-xs-12 col-4"><a href="/job?slug=@time.Slug">@time.Name</a></li>
+    }
+</ul>

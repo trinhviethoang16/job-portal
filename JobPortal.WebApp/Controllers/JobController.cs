@@ -32,25 +32,21 @@ namespace JobPortal.WebApp.Controllers
 
             //random jobs - 6
             var jobList = _context.Jobs.Include(j => j.Province).ToList();
-            var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
-            ViewBag.ListJobs = randomJobs;
+            ViewBag.ListJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
 
-            //random skills - 10
-            var skillList = _context.Skills.ToList();
-            var randomSkills = skillList.OrderBy(s => random.Next()).Take(10).ToList();
-            ViewBag.ListSkills = randomSkills;
+            //random skills - 7
+            var skillList = _context.Skills.Include(s => s.Jobs).ToList();
+            ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Where(s => s.Jobs.Count > 0).Take(7).ToList();
 
-            //random provinces - 5
-            var provinceList = _context.Provinces.ToList();
-            var randomProvinces = provinceList.OrderBy(p => random.Next()).Take(5).ToList();
-            ViewBag.ListProvinces = randomProvinces;
+            //random provinces - 4
+            var provinceList = _context.Provinces.Include(p => p.Jobs).ToList();
+            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
-
-            ViewBag.ListTimes = _context.Times.OrderBy(t => t.Id).ToList();
             var jobs = _context.Jobs
                 .OrderByDescending(j => j.Id)
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
+                .Include(j => j.Time)
                 .ToList();
 
             if (slug != null)
@@ -112,15 +108,17 @@ namespace JobPortal.WebApp.Controllers
             //for random value
             var random = new Random();
 
-            //random skills - 10
-            var skillList = _context.Skills.ToList();
-            var randomSkills = skillList.OrderBy(s => random.Next()).Take(10).ToList();
-            ViewBag.ListSkills = randomSkills;
+            //random jobs - 6
+            var jobList = _context.Jobs.Include(j => j.Province).ToList();
+            ViewBag.ListJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
 
-            //random provinces - 5
-            var provinceList = _context.Provinces.ToList();
-            var randomProvinces = provinceList.OrderBy(p => random.Next()).Take(5).ToList();
-            ViewBag.ListProvinces = randomProvinces;
+            //random skills - 7
+            var skillList = _context.Skills.Include(s => s.Jobs).ToList();
+            ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Take(7).ToList();
+
+            //random provinces - 4
+            var provinceList = _context.Provinces.Include(p => p.Jobs).ToList();
+            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Take(4).ToList();
 
             var job = await _context.Jobs
                 .Where(j => j.Slug == slug)

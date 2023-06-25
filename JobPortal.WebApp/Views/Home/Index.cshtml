@@ -2,6 +2,8 @@
 
 @{
     Layout = "_Layout";
+    DateTime lastWeek = DateTime.Now.AddDays(-7); // get the time 7 days ago
+    byte jobCount = (byte)Model.Count(j => j.CreateDate >= lastWeek); // count the number of jobs in the period
 }
 
 <!-- Start banner Area -->
@@ -11,7 +13,7 @@
         <div class="row search-page-top d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    <span>@Model.Count()+</span> Jobs posted last week
+                    <span>@jobCount+</span> Jobs posted last week
                 </h1>
                 <!--Search box-->
                 @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
@@ -21,29 +23,19 @@
     </div>
 </section>
 <!-- End banner Area -->
-<!--Category-->
+
+<!-- Category -->
 <!-- Start features Area -->
 <section class="features-area">
     <div class="container">
-        <div class="row">
-            <!--Category-->
-            @foreach (var cate in ViewBag.RandomCategories)
-            {
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-feature">
-                        <h4>@cate.Name</h4>
-                        <hr />
-                        <p>@cate.Description</p>
-                    </div>
-                </div>
-            }
-        </div>
+        <!-- Category view component-->
+        <vc:category></vc:category>
     </div>
 </section>
 
-<!--Job model-->
+<!-- Job model -->
 <!-- Start popular-post Area -->
-<section class="popular-post-area pt-100" >
+<section class="popular-post-area pt-100">
     <div class="container" >
         <div class="row align-items-center">
             <div class="active-popular-post-carusel">
@@ -68,7 +60,8 @@
         </div>
     </div>
 </section>
-<!--Skill categories-->
+
+<!-- Skill categories -->
 <!-- Start feature-cat Area -->
 <section class="feature-cat-area pt-100" id="category">
     <div class="container">
@@ -81,7 +74,6 @@
             </div>
         </div>
         <div class="row">
-            <!--6-->
             @foreach (var skill in ViewBag.RandomSkills)
             {
                 <div class="col-lg-2 col-md-4 col-sm-6">
@@ -110,7 +102,6 @@
             </div>
         </div>
         <div class="row">
-            <!--4-->
             @foreach (var emp in ViewBag.RandomEmployers)
             {
                 if (@emp.Jobs.Count > 0)
@@ -153,6 +144,7 @@
     </div>
 </section>
 <!-- End calto-action Area -->
+
 <!-- Start download Area -->
 <section class="download-area section-gap" id="app">
     <div class="container">

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobPortal.Data.Entities;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
@@ -6,23 +7,21 @@ namespace JobPortal.Data.ViewModel
 {
     public class CreateBlogViewModel
     {
-        [Display(Name = "Blog")]
-        public string? Name { get; set; }
-
         [Display(Name = "Author")]
-        public string? Author { get; set; }
+        [StringLength(50, ErrorMessage = "The author cannot be more than 100 characters.")]
+        [Required(ErrorMessage = "Please enter author name.")]
+        public string Author { get; set; }
 
         [Display(Name = "Title")]
-        public string? Title { get; set; }
+        [StringLength(100, ErrorMessage = "The title cannot be more than 100 characters.")]
+        [Required(ErrorMessage = "Please enter title of blog.")]
+        public string Title { get; set; }
 
-        [Display(Name = "Descriprion")]
-        public string? Description { get; set; }
-
-        [Display(Name = "Introduce")]
-        public string? ShortDescription { get; set; }
+        [Display(Name = "Content")]
+        public string? Content { get; set; }
 
         [Display(Name = "Image")]
         public IFormFile? Image { get; set; }
-        public Guid UserId { set; get; }
+        public Guid AppUserId { set; get; }
     }
 }

@@ -34,23 +34,16 @@ namespace JobPortal.WebApp.Controllers
             var jobs = _context.Jobs.ToList();
 
             //For search filter area
-            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
-            ViewBag.FilterSkills = _context.Skills.OrderBy(s => s.Id).ToList();
+            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).Where(p => p.Jobs.Count > 0).ToList();
+            ViewBag.FilterSkills = _context.Skills.OrderBy(s => s.Id).Where(s => s.Jobs.Count > 0).ToList();
 
             //random employers - 4
-            var employerList = _context.Users.Where(e => e.Status == 2).Include(e => e.Jobs).ToList();
-            var randomEmployers = employerList.OrderBy(e => Guid.NewGuid()).Where(e => e.Jobs.Count > 0).Take(4).ToList();
-            ViewBag.RandomEmployers = randomEmployers;
-
-            //random categories - 4
-            var categoryList = _context.Categories.ToList();
-            var randomCategories = categoryList.OrderBy(c => random.Next()).Take(4).ToList();
-            ViewBag.RandomCategories = randomCategories;
+            var employerList = _context.Users.Where(e => e.Status == 2).Include(e => e.Province).Include(e => e.Jobs).ToList();
+            ViewBag.RandomEmployers = employerList.OrderBy(e => Guid.NewGuid()).Where(e => e.Jobs.Count > 0).Take(4).ToList();
 
             //random skills - 6
             var skillList = _context.Skills.ToList();
-            var randomSkills = skillList.OrderBy(s => random.Next()).Take(6).ToList();
-            ViewBag.RandomSkills = randomSkills;
+            ViewBag.RandomSkills = skillList.OrderBy(s => random.Next()).Take(6).ToList();
 
             //random jobs - 6
             var jobList = _context.Jobs

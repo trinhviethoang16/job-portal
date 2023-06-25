@@ -7,6 +7,34 @@
     Layout = "_Layout";
 }
 
+<style>
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .pagination li {
+        margin: 0 5px;
+    }
+
+    .pagination li a {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination li.active a {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
@@ -49,13 +77,10 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
-                <!--Time list-->
-                <ul class="cat-list" style="width:auto">
-                    @foreach (var time in @ViewBag.ListTimes)
-                    {
-                        <li class="col-xs-12 col-4"><a href="/job?slug=@time.Slug">@time.Name</a></li>
-                    }
-                </ul>
+                
+                <!-- Time view component -->
+                <vc:time></vc:time>
+
                 <!--Job list-->
                 @foreach (var job in Model)
                 {
@@ -83,7 +108,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <p>@Html.Raw(job.Description)</p>
+                            <p>@Html.Raw(job.Introduce)</p>
                             <h5>Job Nature: @job.Time.Name</h5>
                             <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
@@ -113,10 +138,91 @@
                 </div>
 
             </div>
-
-            <!-- Sidebar -->
-            @Html.Partial("../Shared/_SidebarPartial.cshtml")
-
+            <div class="col-lg-4 sidebar">
+                <!-- Jobs -->
+                <div class="single-slidebar">
+                    <h4 class="text-center">Top rated job posts</h4>
+                    <div class="active-relatedjob-carusel">
+                        @foreach (var job in ViewBag.ListJobs)
+                        {
+                            <div class="single-rated">
+                                <img href="/job/@job.Slug" style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image">
+                                <br />
+                                <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
+                                <h6>@job.Province.Name</h6>
+                                <p>@Html.Raw(job.Introduce)</p>
+                                <h5>Job Nature: @job.Time.Name</h5>
+                                <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
+                                <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
+                                <a href="/job/@job.Slug" class="btns text-uppercase">View job</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- Blogs -->
+                <div class="single-slidebar">
+                    <h4 class="text-center">Carrer Advice Blog</h4>
+                    <div class="blog-list">
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
+                            <a href="#">
+                                <h4>
+                                    Home Audio Recording <br>
+                                    For Everyone
+                                </h4>
+                            </a>
+                            <div class="meta justify-content-between d-flex">
+                                <p>
+                                    02 Hours ago
+                                </p>
+                                <p>
+                                    <span class="lnr lnr-heart"></span>
+                                    06
+                                    <span class="lnr lnr-bubble"></span>
+                                    02
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -137,31 +243,3 @@
     </div>
 </section>
 <!-- End calto-action Area -->
-
-<style>
-    .pagination {
-        list-style-type: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-
-    .pagination li {
-        margin: 0 5px;
-    }
-    
-    .pagination li a {
-        display: inline-block;
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        color: #333;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-    .pagination li.active a {
-        background-color: #333;
-        color: #fff;
-    }
-</style>

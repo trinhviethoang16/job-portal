@@ -1,7 +1,4 @@
 ﻿@model List<Dictionary<string, string>>
-@using X.PagedList;
-@using X.PagedList.Mvc.Core;
-@using X.PagedList.Web.Common;
 
 @{
     ViewData["Title"] = "User manager";
@@ -49,7 +46,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <!--Page list-->
+                    @*<!--Page list-->
                     <div class="text-center">
                         <ul class="pagination">
                             @Html.PagedListPager((IPagedList)Model, page =>
@@ -67,7 +64,7 @@
                             LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
                             })
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

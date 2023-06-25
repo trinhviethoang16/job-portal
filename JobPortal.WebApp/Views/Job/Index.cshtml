@@ -7,6 +7,34 @@
     Layout = "_Layout";
 }
 
+<style>
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .pagination li {
+        margin: 0 5px;
+    }
+
+    .pagination li a {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination li.active a {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
     <div class="overlay overlay-bg"></div>
@@ -39,14 +67,10 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
-                <!--Time list-->
-                <ul class="cat-list" style="width:auto">
-                    @foreach (var time in @ViewBag.ListTimes)
-                    {
-                        <li class="col-xs-12 col-4"><a href="/job?slug=@time.Slug">@time.Name</a></li>
-                    }
-                </ul>
-                <!--End time list-->
+                
+                <!-- Time view component -->
+                <vc:time></vc:time>
+
                 <!--Job list-->
                 @foreach (var job in Model)
                 {
@@ -74,7 +98,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <p>@Html.Raw(job.Description)</p>
+                            <p>@Html.Raw(job.Introduce)</p>
                             <h5>Job Nature: @job.Time.Name</h5>
                             <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
                             <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
@@ -128,31 +152,3 @@
     </div>
 </section>
 <!-- End calto-action Area -->
-
-<style>
-    .pagination {
-        list-style-type: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-    
-    .pagination li {
-        margin: 0 5px;
-    }
-    
-    .pagination li a {
-        display: inline-block;
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        color: #333;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-    .pagination li.active a {
-        background-color: #333;
-        color: #fff;
-    }
-</style>
