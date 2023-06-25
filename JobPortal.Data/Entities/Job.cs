@@ -39,11 +39,11 @@ namespace JobPortal.Data.Entities
         public DateTime? CreateDate { get; set; }
 
         [Display(Name = "Min age")]
-        //[Range(0, 100, ErrorMessage = "Please enter valid age.")]
+        [Range(0, 100, ErrorMessage = "Please enter valid age.")]
         public byte? MinAge { get; set; }
 
         [Display(Name = "Max age")]
-        //[Range(1, 100, ErrorMessage = "Please enter valid age.")]
+        [Range(1, 100, ErrorMessage = "Please enter valid age.")]
         //[AgeRange("MinAge")] //Age Range Validation Attribute
         public byte? MaxAge { get; set; }
         public int? Popular { get; set; }
@@ -57,11 +57,11 @@ namespace JobPortal.Data.Entities
         public int TimeId { get; set; }
 
         [Display(Name = "Min salary")]
-        //[Range(0, int.MaxValue, ErrorMessage = "Please enter valid salary.")]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid salary.")]
         public int? MinSalary { get; set; }
 
         [Display(Name = "Max salary")]
-        //[Range(1, int.MaxValue, ErrorMessage = "Please enter valid salary.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter valid salary.")]
         //[SalaryRange("MinSalary")] //Salary Range Validation Attribute
         public int? MaxSalary { get; set; }
         public AppUser? AppUser { get; set; }

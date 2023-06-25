@@ -46,15 +46,15 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                 {
                     //get email from login site and check 
                     var user = await userManager.FindByEmailAsync(model.Email);
-                    //get role by user
-                    var roles = await userManager.GetRolesAsync(user);
                     if (user == null || !await userManager.CheckPasswordAsync(user, model.Password))
                     {
                         ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                         return View(model);
                     }
-                    // check role
-                    else if (!roles.Contains("Employer"))
+                    
+                    //get role by user
+                    var roles = await userManager.GetRolesAsync(user);
+                    if (!roles.Contains("Employer"))
                     {
                         await signInManager.SignOutAsync();
                         ModelState.AddModelError(string.Empty, "This page is only for employer accounts.");
@@ -65,11 +65,10 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("index", "home");
+                        return RedirectToAction("index", "home", new { id = user.Id });
                     }
                 }
             }
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
     }

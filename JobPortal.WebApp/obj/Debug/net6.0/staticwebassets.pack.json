@@ -3621,6 +3621,14 @@
       "PackagePath": "staticwebassets\\images\\cvs\\f1b440b5-10ef-40f9-b211-fb96cb214881.jpg"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\default\\blog-icon.png",
+      "PackagePath": "staticwebassets\\images\\default\\blog-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\default\\job-icon.png",
+      "PackagePath": "staticwebassets\\images\\default\\job-icon.png"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\10411ebb-0601-452e-a9a5-eb888396749b.png",
       "PackagePath": "staticwebassets\\images\\employers\\10411ebb-0601-452e-a9a5-eb888396749b.png"
     },
@@ -3637,6 +3645,10 @@
       "PackagePath": "staticwebassets\\images\\employers\\48fc59fd-dc0b-457e-bb81-1ddbba5deb3e.jpg"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\57cac727-73f5-47e6-8d22-648a564ed09e.png",
+      "PackagePath": "staticwebassets\\images\\employers\\57cac727-73f5-47e6-8d22-648a564ed09e.png"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\5c3616d6-9871-42ab-9108-16d4b1e8feb9.jpg",
       "PackagePath": "staticwebassets\\images\\employers\\5c3616d6-9871-42ab-9108-16d4b1e8feb9.jpg"
     },
@@ -3647,6 +3659,10 @@
     {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\81164cd5-c070-407c-af13-94c913c5e3ce.jpg",
       "PackagePath": "staticwebassets\\images\\employers\\81164cd5-c070-407c-af13-94c913c5e3ce.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\81e980cf-da97-41f9-b629-ed4196819263.png",
+      "PackagePath": "staticwebassets\\images\\employers\\81e980cf-da97-41f9-b629-ed4196819263.png"
     },
     {
       "Id": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\8f2538cb-3d61-4a81-8ab6-45a8fe750949.jpg",
