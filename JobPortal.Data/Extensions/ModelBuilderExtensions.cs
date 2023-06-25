@@ -48,6 +48,8 @@ namespace JobPortal.Data.Extensions
                 FullName = "Adminitrator",
                 Slug = "adminitrator",
                 UrlAvatar = "default_admin.png",
+                Disable = false,
+                CreateDate = DateTime.Now,
                 Status = -1
             });
 

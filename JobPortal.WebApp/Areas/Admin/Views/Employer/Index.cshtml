@@ -88,6 +88,10 @@
                                             {
                                                 <button type="button" onclick="onDeny('@emp.Id')" class="btn btn-danger">Deny</button>
                                             }
+                                            @if (emp.Status == 0)
+                                            {
+                                                <button type="button" onclick="onConfirm('@emp.Id')" class="btn btn-success">Confirm</button>
+                                            }
                                         </td>
                                     </tr>
                                     <tr>

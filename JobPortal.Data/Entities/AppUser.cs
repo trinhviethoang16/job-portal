@@ -54,5 +54,6 @@ namespace JobPortal.Data.Entities
 
         [Display(Name = "Province")]
         public int? ProvinceId { get; set; }
+        public bool? Disable { get; set; }
     }
 }

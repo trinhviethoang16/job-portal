@@ -16,6 +16,7 @@ namespace JobPortal.Data.Configurations
             builder.Property(x => x.Slug).IsRequired();
             builder.Property(x => x.Status).HasDefaultValue(null);
             builder.Property(x => x.UrlAvatar).HasDefaultValue("default_user.png");
+            builder.Property(x => x.Disable).HasDefaultValue(false);
         }
     }
 }

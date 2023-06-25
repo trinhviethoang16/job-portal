@@ -66,8 +66,8 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                 case 1: // waiting
                     CVs = await CV.Where(cv => cv.CVStatus == 1).ToListAsync();
                     break;
-                case 2: // accepted
-                    CVs = await CV.Where(cv => cv.CVStatus == 2).ToListAsync();
+                case 2: // accepted and already feedback
+                    CVs = await CV.Where(cv => cv.CVStatus == 2 || cv.CVStatus == 3).ToListAsync();
                     break;
                 case 3: // all but cancel status
                     CVs = await CV.Where(cv => cv.CVStatus != -1).ToListAsync();
