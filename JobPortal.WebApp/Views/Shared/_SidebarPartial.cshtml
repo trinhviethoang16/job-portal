@@ -35,7 +35,7 @@
                     <img href="/job/@job.Slug" style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image">
                     <br />
                     <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
-                    <h6>@job.Province.Name</h6>
+                    <strong><p class="text-center" style="color: slateblue">@job.Province.Name</p></strong>
                     <p>@Html.Raw(job.Introduce)</p>
                     <h5>Job Nature: @job.Time.Name</h5>
                     <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>

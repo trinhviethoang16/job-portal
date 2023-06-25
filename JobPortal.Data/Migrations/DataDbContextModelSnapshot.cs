@@ -57,7 +57,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "de306376-4107-4480-8adc-2e84786f1924",
+                            ConcurrencyStamp = "992d2bc5-7577-4022-bb40-a3ee1f6f60bf",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +65,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "adce77ec-3380-404f-9ed9-867e9fdbca08",
+                            ConcurrencyStamp = "96013de0-0b22-4d4b-b400-350344fc9846",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +73,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "56088f99-c88a-4b69-8897-d2f467c944d5",
+                            ConcurrencyStamp = "1ae02baa-eea3-4ea0-86cc-37d339c6316a",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -90,8 +90,7 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Age")
                         .HasColumnType("int");
@@ -104,15 +103,13 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Contact")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -205,14 +202,14 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d5600598-aa8b-45cb-b01a-d48a06c56c8f",
+                            ConcurrencyStamp = "f598ecfb-2ff0-4c73-aaaf-9e5ae46a79ab",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Adminitrator",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBigDjh4QswX0msKFM7X66mbsrWJbKK578HmPikqOwatSPKRIuz9hZzBqBehwAcv/Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECyO0L4YvrE6t3tIsB0AP4KACnjg83VkBLjpePugjghnRlKJjp/jxr6+nPjZBwo6JQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Slug = "adminitrator",

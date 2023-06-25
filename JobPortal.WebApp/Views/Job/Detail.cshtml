@@ -42,8 +42,9 @@
 					<div class="details" style="margin-left:20px">
 						<div class="title d-flex flex-row justify-content-between">
 							<div class="titles">
-								<a href="#"><h4>@Model.Name</h4></a>
-								<h6>@Model.Province.Name</h6>
+								<a href="/job/@Model.Slug"><h4>@Model.Name</h4></a>
+                                    <h5>From: @Model.AppUser.FullName</h5>
+                                    <strong><p style="color: slateblue">@Model.Province.Name</p></strong>
 							</div>
 						</div>
 						<p>@Html.Raw(Model.Introduce)</p>

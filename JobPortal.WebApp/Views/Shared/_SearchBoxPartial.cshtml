@@ -15,7 +15,7 @@
                     {
                         foreach (var province in ViewBag.FilterProvinces)
                         {
-                            <option value="@province.Id">@province.Name</option>
+                            <option value="@province.Id" selected="@(ViewBag.SelectedProvinceId != null && ViewBag.SelectedProvinceId == province.Id)">@province.Name</option>
                         }
                     }
                 </select>
@@ -29,14 +29,14 @@
                     {
                         @foreach (var skill in ViewBag.FilterSkills)
                         {
-                            <option value="@skill.Id">@skill.Name</option>
+                            <option value="@skill.Id" selected="@(ViewBag.SelectedSkillId != null && ViewBag.SelectedSkillId == skill.Id)">@skill.Name</option>
                         }
                     }
                 </select>
             </div>
         </div>
         <div class="col-lg-2 form-cols">
-            <button type="submit" class="btn btn-info">
+            <button type="submit" class="btn btn-info" onclick="saveSelectedValue()">
                 <span class="lnr lnr-magnifier"></span> Search
             </button>
         </div>

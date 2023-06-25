@@ -11,11 +11,9 @@ namespace JobPortal.Data.ViewModel
         public string? FullName { get; set; }
 
         [Display(Name = "Description")]
-        [StringLength(256, ErrorMessage = "The description cannot be more than 256 characters.")]
         public string? Description { get; set; }
 
         [Display(Name = "Contact")]
-        [StringLength(256, ErrorMessage = "The contact cannot be more than 256 characters.")]
         public string? Contact { get; set; }
 
         [Display(Name = "Logo")]

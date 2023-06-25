@@ -45,6 +45,9 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.province = await _context.Provinces.FirstOrDefaultAsync(p => p.Id == province);
             ViewBag.skill = await _context.Skills.FirstOrDefaultAsync(s => s.Id == skill);
 
+            // Set selected values for dropdowns
+            ViewBag.SelectedProvinceId = province;
+            ViewBag.SelectedSkillId = skill;
 
             var jobs = await _context.Jobs
                 .OrderByDescending(j => j.Id)

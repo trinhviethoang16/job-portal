@@ -3430,3 +3430,6 @@ D:\doanA\job-portal\JobPortal.WebApp\obj\Debug\net6.0\refint\JobPortal.WebApp.dl
 D:\doanA\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.WebApp.pdb
 D:\doanA\job-portal\JobPortal.WebApp\obj\Debug\net6.0\JobPortal.WebApp.genruntimeconfig.cache
 D:\doanA\job-portal\JobPortal.WebApp\obj\Debug\net6.0\ref\JobPortal.WebApp.dll
+D:\job-portal\JobPortal.WebApp\bin\Debug\net6.0\JetBrains.Annotations.dll
+D:\job-portal\JobPortal.WebApp\bin\Debug\net6.0\X.PagedList.dll
+D:\job-portal\JobPortal.WebApp\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll

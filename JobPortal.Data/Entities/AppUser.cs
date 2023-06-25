@@ -16,7 +16,6 @@ namespace JobPortal.Data.Entities
         public string? Phone { get; set; }
 
         [Display(Name = "Address")]
-        [StringLength(256, ErrorMessage = "The address cannot be more than 100 characters.")]
         public string? Address { get; set; }
 
         [Display(Name = "Age")]
@@ -26,17 +25,15 @@ namespace JobPortal.Data.Entities
         [Display(Name = "Create date")]
         public DateTime? CreateDate { get; set; }
 
-        [Display(Name = "Description")]
-        [StringLength(256, ErrorMessage = "The description cannot be more than 256 characters.")]
-        public string? Description { get; set; }
-
         [Display(Name = "Logo")]
         public string? UrlAvatar { get; set; }
 
         //Employer
         [Display(Name = "Contact")]
-        [StringLength(256, ErrorMessage = "The contact cannot be more than 256 characters.")]
         public string? Contact { get; set; }
+
+        [Display(Name = "Description")]
+        public string? Description { get; set; }
 
         [Display(Name = "Website")]
         [StringLength(50, ErrorMessage = "The website cannot be more than 50 characters.")]

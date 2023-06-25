@@ -1,22 +1,25 @@
-﻿<!-- Content -->
+﻿
+<!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
-               <!-- Transactions -->
+        <!-- Transactions -->
         <div @*class="col-md-6 col-lg-4 order-2 mb-4"*@>
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h3 >OVERVIEW</h3>
+                    <h3>OVER-VIEW</h3>
                 </div>
-               
+
                 <div class="card-body">
                     <ul class="p-0 m-0">
-                        <li class="d-flex mb-4 pb-1">
+                        @*<li class="d-flex mb-4 pb-1">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="~/assets/admin/assets/img/icons/unicons/employer-icon.png" alt="User" class="rounded" />
+                                <a asp-action="ListEmployer" asp-controller="Home">
+                                    <!-- Thêm liên kết chuyển trang -->
+                                    <img src="~/assets/admin/assets/img/icons/unicons/employer-icon.png" alt="User" />
+                                </a>
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
-                                    @*<small class="text-muted d-block mb-1">Paypal</small>*@
                                     <h5 class="mb-0">Employer Count</h5>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
@@ -24,29 +27,46 @@
                                     <span class="text-muted">Account</span>
                                 </div>
                             </div>
+                        </li>*@
+
+                        <li class="d-flex mb-4 pb-1" onclick="window.location.href = '@Url.Action("ListEmployer", "Home")'">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="~/assets/admin/assets/img/icons/unicons/employer-icon.png" alt="User" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="me-2">
+                                    @*<small class="text-muted d-block mb-1">Paypal</small>*@
+                                    <h5 class="mb-0">All Employer</h5>
+                                </div>
+                                <div class="user-progress d-flex align-items-center gap-1">
+                                    <h6 class="mb-0">@ViewBag.CountEmployer</h6>
+                                    <span class="text-muted">Accounts</span>
+                                </div>
+                            </div>
                         </li>
+
 
                         <hr />
 
-                        <li class="d-flex mb-4 pb-1">
+                        <li class="d-flex mb-4 pb-1" onclick="window.location.href = '@Url.Action("ListUser", "Home")'">
                             <div class="avatar flex-shrink-0 me-3">
                                 <img src="~/assets/admin/assets/img/icons/unicons/user-icon.png" alt="User" style="object-fit:cover" class="rounded" />
                             </div>
                             <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                 <div class="me-2">
                                     @*<small class="text-muted d-block mb-1">Paypal</small>*@
-                                    <h5 class="mb-0">User Count</h5>
+                                    <h5 class="mb-0">All User</h5>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+82.6</h6>
-                                    <span class="text-muted">Account</span>
+                                    <h6 class="mb-0">@ViewBag.CountUser</h6>
+                                    <span class="text-muted">Accounts</span>
                                 </div>
                             </div>
                         </li>
 
                         <hr />
 
-                        <li class="d-flex mb-4 pb-1">
+                        <li class="d-flex mb-4 pb-1" >
                             <div class="avatar flex-shrink-0 me-3">
                                 <img src="~/assets/admin/assets/img/icons/unicons/job-icon.png" alt="User" style="object-fit:cover" class="rounded" />
                             </div>
@@ -56,89 +76,11 @@
                                     <h5 class="mb-0">Available Jobs</h5>
                                 </div>
                                 <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+82.6</h6>
+                                    <h6 class="mb-0">@ViewBag.CountJob</h6>
                                     <span class="text-muted">Jobs</span>
                                 </div>
                             </div>
                         </li>
-
-                        <hr />
-
-                        @*<li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="~/assets/admin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Wallet</small>
-                                    <h6 class="mb-0">Mac'D</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+270.69</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="~/assets/admin/assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Transfer</small>
-                                    <h6 class="mb-0">Refund</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+637.91</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="~/assets/admin/assets/img/icons/unicons/cc-success.png" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Credit Card</small>
-                                    <h6 class="mb-0">Ordered Food</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-838.71</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="~/assets/admin/assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Wallet</small>
-                                    <h6 class="mb-0">Starbucks</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+203.33</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="~/assets/admin/assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <small class="text-muted d-block mb-1">Mastercard</small>
-                                    <h6 class="mb-0">Ordered Food</h6>
-                                </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-92.45</h6>
-                                    <span class="text-muted">USD</span>
-                                </div>
-                            </div>
-                        </li>*@
                     </ul>
                 </div>
             </div>

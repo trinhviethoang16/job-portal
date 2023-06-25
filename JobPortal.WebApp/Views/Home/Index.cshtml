@@ -2,6 +2,8 @@
 
 @{
     Layout = "_Layout";
+
+    //Jobs posted week ago
     DateTime lastWeek = DateTime.Now.AddDays(-7); // get the time 7 days ago
     byte jobCount = (byte)Model.Count(j => j.CreateDate >= lastWeek); // count the number of jobs in the period
 }
@@ -13,7 +15,7 @@
         <div class="row search-page-top d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    <span>@jobCount+</span> Jobs posted last week
+                    <span>@jobCount+</span> Jobs posted week ago
                 </h1>
                 <!--Search box-->
                 @Html.Partial("../Shared/_SearchBoxPartial.cshtml")
@@ -46,9 +48,9 @@
                             <img href="/job/@job.Slug" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="JOB IMAGE" style="border-radius:5px" width="70" height="70" >
                             <a class="btns text-uppercase" style="width:100px; text-align:center; border-radius:5px" href="/job/@job.Slug">View job</a>
                         </div>
-                        <div class="details">
+                        <div class="details" >
                             <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                            <h6>@job.Province.Name</h6>
+                            <strong><p style="color: slateblue">@job.Province.Name</p></strong>
                             <p>@Html.Raw(job.Introduce)</p>
                             <p>Job Nature: @job.Time.Name</p>
                             <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
@@ -189,3 +191,36 @@
     </div>
 </section>
 <!-- End download Area -->
+
+<script>
+    // Lưu giá trị thuộc tính được chọn khi nhấn nút Search
+    function saveSelectedValue() {
+        var provinceSelect = document.getElementsByName("province")[0];
+        var skillSelect = document.getElementsByName("skill")[0];
+
+        sessionStorage.setItem("selectedProvince", provinceSelect.value);
+        sessionStorage.setItem("selectedSkill", skillSelect.value);
+    }
+
+    // Khôi phục giá trị thuộc tính được chọn khi trang được tải lại
+    function restoreSelectedValue() {
+        var provinceSelect = document.getElementsByName("province")[0];
+        var skillSelect = document.getElementsByName("skill")[0];
+
+        var selectedProvince = sessionStorage.getItem("selectedProvince");
+        var selectedSkill = sessionStorage.getItem("selectedSkill");
+
+        if (selectedProvince) {
+            provinceSelect.value = selectedProvince;
+        }
+
+        if (selectedSkill) {
+            skillSelect.value = selectedSkill;
+        }
+    }
+
+    // Gọi hàm khôi phục giá trị thuộc tính khi trang được tải lại
+    window.onload = function () {
+        restoreSelectedValue();
+    };
+</script>
