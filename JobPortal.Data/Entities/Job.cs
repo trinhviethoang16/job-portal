@@ -72,5 +72,7 @@ namespace JobPortal.Data.Entities
 
         [Display(Name = "Skill")]
         public int SkillId { get; set; }
+
+        public ICollection<CV>? CVs { get; set; }
     }
 }

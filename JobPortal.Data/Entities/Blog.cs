@@ -27,5 +27,6 @@ namespace JobPortal.Data.Entities
         public string Image { get; set; }
         public Guid AppUserId { set; get; }
         public AppUser? AppUser { get; set; }
+        public DateTime CreateDate { set; get; }
     }
 }

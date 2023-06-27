@@ -15,6 +15,7 @@ namespace JobPortal.Data.Configurations
             builder.Property(x => x.Logo).IsRequired();
             builder.Property(x => x.Slug).IsRequired();
             builder.Property(x => x.Disable).HasDefaultValue(false);
+            builder.Property(x => x.CategoryId).HasDefaultValue(1);
         }
     }
 }

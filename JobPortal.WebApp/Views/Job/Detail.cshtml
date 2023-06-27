@@ -31,26 +31,27 @@
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
 					<div class="thumb" style="align-items:center">
-						<img width="120" height="100" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
-						<ul class="tags">
+						<img style="border-radius:10px" width="120" height="100" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
+						<ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
 							<!--Skill-->
-							<li>
+							<li style="border-radius:10px">
 								<a href="/job?slug=@Model.Skill.Slug">@Model.Skill.Name</a>
 							</li>
 						</ul>
 					</div>
-					<div class="details" style="margin-left:20px">
+					<div class="details" style="margin-left:20px; width:600px;">
 						<div class="title d-flex flex-row justify-content-between">
 							<div class="titles">
 								<a href="/job/@Model.Slug"><h4>@Model.Name</h4></a>
-                                    <h5>From: @Model.AppUser.FullName</h5>
-                                    <strong><p style="color: slateblue">@Model.Province.Name</p></strong>
+								<h5>From: @Model.AppUser.FullName</h5>
+								<strong><p style="color: slateblue">@Model.Province.Name</p></strong>
 							</div>
 						</div>
+						<hr />
 						<p>@Html.Raw(Model.Introduce)</p>
 						<h5>Job Nature: @Model.Time.Name</h5>
 						<p class="address"><span class="lnr lnr-map"></span> @Model.Title.Name</p>
-						<p class="address"><span class="lnr lnr-database"></span> @Model.MinSalary - @Model.MaxSalary</p>
+						<p class="address"><span class="lnr lnr-database"></span> $@Model.MinSalary - $@Model.MaxSalary</p>
 					</div>
 				</div>
 				<div class="single-post job-details">

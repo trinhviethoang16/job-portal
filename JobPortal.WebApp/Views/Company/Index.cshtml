@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JobPortal.Data.Entities.Job>
+﻿@model IEnumerable<JobPortal.Data.Entities.AppUser>
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
@@ -42,21 +42,9 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    @if (ViewBag.Time == null && ViewBag.Province == null && ViewBag.Skill == null && ViewBag.Employer == null)
-                    {
-                        <text>@ViewBag.jobCount IT Jobs For Developers</text>
-                    }
-                    else
-                    {
-                        <text>
-                            @((ViewBag.Time != null ? $"{ViewBag.Time.Name} jobs" : null) ??
-                                (ViewBag.Province != null ? $"Jobs in {ViewBag.Province.Name}" :
-                                (ViewBag.Skill != null ? $"Jobs for {ViewBag.Skill.Name}" :
-                                (ViewBag.Employer != null ? $"{ViewBag.Employer.FullName} Jobs" : null))))
-                        </text>
-                    }
+                    <span>Vietnam Best IT Companies</span>
                 </h1>
-                <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/job"> All Jobs</a></p>
+                <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="/company"> All Companies</a></p>
             </div>
         </div>
     </div>
@@ -67,49 +55,46 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
-                
-                <!-- Time view component -->
-                <vc:time></vc:time>
 
-                <!-- Job list -->
-                @foreach (var job in Model)
+                <!-- Employer list -->
+                @foreach (var employer in Model)
                 {
                     <div class="single-post d-flex flex-row">
-                        <!-- Job skill -->
+                        <!-- Employer province -->
                         <div class="thumb" style="align-items:center">
-                            <img href="/job/@job.Slug" style="border-radius:10px" width="120" height="100" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
+                            <img href="/company/@employer.Slug" style="border-radius:10px" width="120" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="EMPLOYER IMAGE">
                             <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
-                                <!-- Skill -->
+                                <!--Skill-->
                                 <li style="border-radius:10px">
-                                    <a href="/job?slug=@job.Skill.Slug">@job.Skill.Name</a>
+                                    <a href="/job?slug=@employer.Province.Slug">@employer.Province.Name</a>
                                 </li>
                             </ul>
                         </div>
-                        <!-- End job skill -->
+                        <!--End job skill list-->
                         <div class="details" style="margin-left:20px; width:600px;">
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
-                                    <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                                    <h5>From: @job.AppUser.FullName</h5>
-                                    <strong><p style="color: slateblue">@job.Province.Name</p></strong>
+                                    <a href="/company/@employer.Slug"><h4>@employer.FullName</h4></a>
+                                    <h5>@employer.WebsiteURL</h5>
+                                    <strong><p style="color: slateblue">@employer.Location</p></strong>
                                 </div>
                                 <div class="ml-auto">
                                     <ul class="btns">
-                                        <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
+                                        <li style="border-radius:10px"><a href="/company/@employer.Slug">View company</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <hr>
-                            <p>@Html.Raw(job.Introduce)</p>
-                            <h5>Job Nature: @job.Time.Name</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
-                            <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>
+                            <p>Description</p>
+                            <h5>@employer.Contact</h5>
+                            <p class="address"><span class="lnr lnr-map"></span> Email: @employer.Email</p>
+                            <p class="address"><span class="lnr lnr-database"></span> @employer.Phone</p>
                         </div>
                     </div>
                 }
-                <!-- End job list -->
+                <!--End job list-->
 
-                <!-- Page list -->
+                <!--Page list-->
                 <div class="text-center">
                     <ul class="pagination">
                         @Html.PagedListPager((IPagedList)Model, page =>

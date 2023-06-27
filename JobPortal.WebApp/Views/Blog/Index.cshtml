@@ -1,6 +1,39 @@
-﻿@{
-	Layout = "_Layout";
+﻿@model IEnumerable<JobPortal.Data.Entities.Blog>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+@{
+    Layout = "_Layout";
 }
+
+<style>
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .pagination li {
+        margin: 0 5px;
+    }
+
+    .pagination li a {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination li.active a {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
 
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
@@ -29,7 +62,7 @@
 						<li><a href="#">Technology, </a></li>
 						<li><a href="#">Fashion</a></li>
 					</ul>
-					<a asp-controller="Home" asp-action="BlogSingle">
+					<a href="#">
 						<h1>
 							Cartridge Is Better Than Ever
 							A Discount Toner
@@ -65,7 +98,7 @@
 						<li><a href="#">Technology, </a></li>
 						<li><a href="#">Fashion</a></li>
 					</ul>
-					<a asp-controller="Home" asp-action="BlogSingle">
+					<a href="#">
 						<h1>
 							Cartridge Is Better Than Ever
 							A Discount Toner
@@ -101,7 +134,7 @@
 						<li><a href="#">Technology, </a></li>
 						<li><a href="#">Fashion</a></li>
 					</ul>
-					<a asp-controller="Home" asp-action="BlogSingle">
+					<a href="#">
 						<h1>
 							Cartridge Is Better Than Ever
 							A Discount Toner
@@ -137,7 +170,7 @@
 						<li><a href="#">Technology, </a></li>
 						<li><a href="#">Fashion</a></li>
 					</ul>
-					<a asp-controller="Home" asp-action="BlogSingle">
+					<a href="#">
 						<h1>
 							Cartridge Is Better Than Ever
 							A Discount Toner
@@ -212,7 +245,7 @@
 								<img class="img-fluid" src="~/assets/user/img/blog/r1.jpg" alt="">
 							</div>
 							<div class="recent-details">
-								<a asp-controller="Home" asp-action="BlogSingle">
+								<a href="#">
 									<h4>
 										Home Audio Recording
 										For Everyone
@@ -228,7 +261,7 @@
 								<img class="img-fluid" src="~/assets/user/img/blog/r2.jpg" alt="">
 							</div>
 							<div class="recent-details">
-								<a asp-controller="Home" asp-action="BlogSingle">
+								<a href="#">
 									<h4>
 										Home Audio Recording
 										For Everyone
@@ -244,7 +277,7 @@
 								<img class="img-fluid" src="~/assets/user/img/blog/r3.jpg" alt="">
 							</div>
 							<div class="recent-details">
-								<a asp-controller="Home" asp-action="BlogSingle">
+								<a href="#">
 									<h4>
 										Home Audio Recording
 										For Everyone
@@ -260,7 +293,7 @@
 								<img class="img-fluid" src="~/assets/user/img/blog/r4.jpg" alt="">
 							</div>
 							<div class="recent-details">
-								<a asp-controller="Home" asp-action="BlogSingle">
+								<a href="#">
 									<h4>
 										Home Audio Recording
 										For Everyone

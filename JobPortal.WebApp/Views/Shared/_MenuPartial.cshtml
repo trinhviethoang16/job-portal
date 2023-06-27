@@ -11,6 +11,7 @@
 
 <li class="menu-active"><a href="/">Home</a></li>
 <li><a href="/job">All Jobs</a></li>
+<li><a href="/company">IT Companies</a></li>
 @if (isSignedIn)
 {
     if (isInRoleUser)
@@ -40,14 +41,14 @@
             <a href="/logout" class="ticker-btn">Logout</a>
         </form>
     </li>
-    <li>
+    @*<li>
         @if (user.Status == null)
         {
             <form id="logoutForm" class="form-inline">
                 <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>
             </form>
         }
-    </li>
+    </li>*@
 }
 else
 {
@@ -61,14 +62,3 @@ else
         <a href="/employer/login" class="ticker-btn">For Employer</a>
     </li>
 }
-
-<script>
-    function accessDenied() {
-        Swal.fire({
-            title: 'Sorry !',
-            text: 'This page only for user account.',
-            icon: 'warning',
-            confirmButtonText: 'OK'
-        });
-    }
-</script>

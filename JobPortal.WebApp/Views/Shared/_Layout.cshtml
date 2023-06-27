@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+	var isSignedIn = signInManager.IsSignedIn(User);
+}
+
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
 	<!-- Mobile Specific Meta -->
@@ -29,6 +39,8 @@
 	<link rel="stylesheet" href="~/assets/user/css/main.css">
 	<!-- CKEditor -->
 	<script type="text/javascript" src="~/assets/ckeditor/ckeditor.js"></script>
+	<!-- Button -->
+	<link rel="stylesheet" href="~/assets/css/button.css" class="template-customizer-core-css" />
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -130,6 +142,55 @@
 	</footer>
 	<!-- End footer Area -->
 
+	<!-- Register -->
+	@if (isSignedIn)
+	{
+		@if (@user.Status == null)
+		{
+			<div class="buy-now">
+				<button href="#" data-toggle="modal" data-target="#viewRegister" class="btn btn-danger btn-buy-now">Register to Employer</button>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="viewRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 style="color: white" class="modal-title" id="exampleModalLabel">
+								Become an employer to recruit great IT talents with Job Portal
+							</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<p>By registering as an employer, you gain access to numerous benefits:</p>
+										<ul class="unordered-list">
+											<li>Ability to post job listings and reach a wider audience</li>
+											<li>Direct communication with potential candidates</li>
+											<li>Access to advanced search filters and candidate matching</li>
+											<li>Manage and track applications efficiently</li>
+											<li>Build your company's brand and reputation</li>
+										</ul>
+										<p>Don't miss out on these advantages. Register now!</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<a href="/register-employer/@user.Id" class="btn btn-primary">Register now</a>
+							<hr />
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	}
+
 	<script src="~/assets/user/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="~/assets/user/js/vendor/bootstrap.min.js"></script>
@@ -168,3 +229,92 @@
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<style>
+	.modal-title {
+		font-weight: bold;
+	}
+
+	.modal-body {
+		padding: 20px;
+	}
+
+	.modal-footer {
+		background-color: #f5f5f5;
+	}
+
+	/* Background color */
+	.modal-content {
+		background-color: #f8f9fa;
+	}
+
+	/* Modal header */
+	.modal-header {
+		background-color: #007bff;
+		color: #fff;
+		border-bottom: none;
+		padding: 1rem;
+		text-align: center;
+	}
+
+	.modal-title {
+		font-size: 1.2rem;
+	}
+
+	/* Modal body */
+	.modal-body {
+		padding: 2rem;
+	}
+
+		.modal-body hr {
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.modal-body strong {
+			font-weight: bold;
+		}
+
+		.modal-body label.control-label {
+			font-weight: bold;
+		}
+
+	/* Modal footer */
+	.modal-footer {
+		border-top: none;
+		padding: 1rem;
+		justify-content: center;
+	}
+
+	/* Close button */
+	.modal-header .close {
+		color: #fff;
+		font-size: 1.5rem;
+		font-weight: bold;
+		opacity: 1;
+	}
+
+	/* Apply button */
+	.btn-primary {
+		background-color: #007bff;
+		border-color: #007bff;
+	}
+
+		.btn-primary:hover {
+			background-color: #0069d9;
+			border-color: #0062cc;
+		}
+
+		.btn-primary:focus {
+			box-shadow: none;
+		}
+
+	/* Employer information */
+	.modal-body .form-group {
+		margin-bottom: 0;
+	}
+
+		.modal-body .form-group div:not(:last-child) {
+			margin-bottom: 0.5rem;
+		}
+</style>

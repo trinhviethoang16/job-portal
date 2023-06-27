@@ -70,12 +70,6 @@ namespace JobPortal.WebApp.Controllers
             return View();
         }
 
-        [Route("blog")]
-        public IActionResult Blog()
-        {
-            return View();
-        }
-
         [Route("contact")]
         public IActionResult Contact()
         {

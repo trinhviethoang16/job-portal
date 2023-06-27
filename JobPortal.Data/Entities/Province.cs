@@ -15,7 +15,7 @@ namespace JobPortal.Data.Entities
         public Category? Category { get; set; }
 
         [Display(Name = "Category")]
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public bool? Disable { get; set; }
         public ICollection<Job>? Jobs { get; set; }
     }

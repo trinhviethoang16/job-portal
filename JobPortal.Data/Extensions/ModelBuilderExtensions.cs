@@ -11,6 +11,7 @@ namespace JobPortal.Data.Extensions
             // Any guid
             var roleId = new Guid("8D04DCE2-969A-435D-BBA4-DF3F325983DC");
             var adminId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00DE");
+
             modelBuilder.Entity<AppRole>().HasData(new AppRole
             {
                 Id = roleId,
@@ -72,6 +73,12 @@ namespace JobPortal.Data.Extensions
                new Time() { Id = 3, Name = "Work from home", Slug = "work-from-home" },
                new Time() { Id = 4, Name = "At office", Slug = "at-office" }
             );
+
+            //modelBuilder.Entity<Province>().HasData(
+            //   new Province() { Id = 1, Name = "Ho Chi Minh", Slug = "ho-chi-minh", CategoryId = 4 },
+            //   new Province() { Id = 2, Name = "Ha Noi", Slug = "ha-noi", CategoryId = 4 },
+            //   new Province() { Id = 3, Name = "Da Nang", Slug = "da-nang", CategoryId = 4 }
+            //);
         }
     }
 }

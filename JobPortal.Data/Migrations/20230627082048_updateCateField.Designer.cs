@@ -4,6 +4,7 @@ using JobPortal.Data.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobPortal.Data.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    partial class DataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230627082048_updateCateField")]
+    partial class updateCateField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +59,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "8379a68e-ce12-4f66-bb1f-bede7c2f9ed3",
+                            ConcurrencyStamp = "8e02199b-24dc-4739-ac2e-0e1244b22f8e",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
@@ -65,7 +67,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "7d422fbc-1981-492b-b965-740cc0673c7a",
+                            ConcurrencyStamp = "6f819c8d-f8e3-48c0-a74d-5b01ba99a881",
                             Description = "Emloyer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
@@ -73,7 +75,7 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "607b7643-dde6-41d4-bc09-8f2c49aa4e14",
+                            ConcurrencyStamp = "53e91e9c-49d4-4cc6-8077-e392bf175e08",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -207,8 +209,8 @@ namespace JobPortal.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d41b4fe4-f3fc-4332-8363-b74e7ed97e48",
-                            CreateDate = new DateTime(2023, 6, 27, 17, 38, 53, 779, DateTimeKind.Local).AddTicks(906),
+                            ConcurrencyStamp = "15f950d1-1f8e-4a6b-b4e0-9e1bb1b414b3",
+                            CreateDate = new DateTime(2023, 6, 27, 15, 20, 47, 526, DateTimeKind.Local).AddTicks(1959),
                             Disable = false,
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
@@ -216,7 +218,7 @@ namespace JobPortal.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMDAy/hNMjGlfZR2qdyb1PAC7TizKWZS33tRetuc/ZKgTe/BQufDibPhYeOre6GV/A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJob1r1U9CLm5CqTmSwbR/1tZQN+W9eH7HhLVeMkXTVJMDLB3ImLdSIbfl4qMs6PYg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             Slug = "adminitrator",
@@ -246,9 +248,6 @@ namespace JobPortal.Data.Migrations
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Image")
                         .IsRequired()

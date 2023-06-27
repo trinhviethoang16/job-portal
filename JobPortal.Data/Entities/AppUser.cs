@@ -41,10 +41,6 @@ namespace JobPortal.Data.Entities
 
         [Display(Name = "Location")]
         public string? Location { get; set; }
-        public Category? Category { get; set; }
-
-        [Display(Name = "Category")]
-        public int? CategoryId { get; set; }
         public ICollection<Job>? Jobs { get; set; }
         public int? Status { set; get; } // 0 = denied, 1 = waiting, 2 = confirmed, -1 = admin, null = default
 
@@ -55,5 +51,7 @@ namespace JobPortal.Data.Entities
         [Display(Name = "Province")]
         public int? ProvinceId { get; set; }
         public bool? Disable { get; set; }
+        //public Blog? Blog { get; set; }
+        //public int? BlogId { get; set; }
     }
 }
