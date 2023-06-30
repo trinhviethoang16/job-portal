@@ -1,0 +1,174 @@
+﻿@model JobPortal.Data.Entities.AppUser
+
+@{
+    Layout = "_Layout";
+}
+
+<!-- CKEditor -->
+<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<!-- Start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    <span>@Model.FullName information</span>
+                </h1>
+                <p class="text-white"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> 👋</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start contact-page Area -->
+<section class="contact-page-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 style="text-align: center" class="card-title">Update your information</h4>
+                        <br />
+                        <div class="col-md-4i">
+                            <form asp-action="Update" enctype="multipart/form-data" id="form">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label asp-for="Email" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Email" class="form-control" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Description" class="form-control ckeditor"></textarea>
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Content" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Content" class="form-control ckeditor"></textarea>
+                                            <span asp-validation-for="Content" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Contact" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Contact" class="form-control ckeditor"></textarea>
+                                            <span asp-validation-for="Contact" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="FullName" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="FullName" class="form-control" />
+                                            <span asp-validation-for="FullName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="UrlAvatar" class="control-label"></label><span class="text-danger">*</span>
+                                            <input type="file" asp-for="UrlAvatar" class="form-control" accept="image/*" id="imgInp" />
+                                            <span asp-validation-for="UrlAvatar" class="text-danger"></span>
+                                            <img id="blah" src="https://localhost:7211/images/employers/@Model.UrlAvatar" alt="your logo" style="width: 335px;" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CompanySize" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="CompanySize" class="form-control" />
+                                            <span asp-validation-for="CompanySize" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="WorkingDays" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="WorkingDays" class="form-control" />
+                                            <span asp-validation-for="WorkingDays" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Phone" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Phone" class="form-control" />
+                                            <span asp-validation-for="Phone" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Location" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Location" class="form-control" />
+                                            <span asp-validation-for="Location" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="WebsiteURL" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="WebsiteURL" class="form-control" />
+                                            <span asp-validation-for="WebsiteURL" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ProvinceId" class="control-label"></label><span class="text-danger">*</span>
+                                            <select asp-for="ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CountryId" class="control-label"></label><span class="text-danger">*</span>
+                                            <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
+                                        </div>
+                                        <div class="form-group text-center" style="margin-bottom: 15px">
+                                            <input style="background-color:forestgreen" type="button" onclick="onUpdate()" value="Update" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End contact-page Area -->
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('#imgInp').change(function (evt) {
+                var file = evt.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+
+    <script>
+      var quill = new Quill('#editor', {
+        theme: 'snow'
+      });
+    </script>
+
+    <script>
+        function onUpdate() {
+            Swal.fire({
+                title: 'Update information?',
+                text: "Are you sure you want to update?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form").submit();
+                    Swal.fire(
+                        'Update!',
+                        '',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.ckeditor').each(function () {
+                CKEDITOR.replace($(this).attr('id'));
+            });
+        });
+    </script>
+}

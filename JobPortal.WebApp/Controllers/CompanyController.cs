@@ -38,14 +38,15 @@ namespace JobPortal.WebApp.Controllers
             var skillList = _context.Skills.Include(s => s.Jobs).ToList();
             ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Where(s => s.Jobs.Count > 0).Take(7).ToList();
 
-            //random provinces - 5
+            //random provinces - 4
             var provinceList = _context.Provinces.Include(p => p.Jobs).ToList();
-            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Where(p => p.Jobs.Count > 0).Take(5).ToList();
+            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
             var employers = _context.AppUsers
                 .Where(e => e.Status == 2)
-                .OrderByDescending(e => e.CreateDate)
+                .OrderByDescending(e => e.Popular)
                 .Include(e => e.Province)
+                .Include(e => e.Country)
                 .ToList();
 
             return View(employers.ToPagedList(page ?? 1, pageSize));
@@ -72,7 +73,10 @@ namespace JobPortal.WebApp.Controllers
             var employer = await _context.AppUsers
                 .Where(e => e.Slug == slug)
                 .Include(e => e.Province)
+                .Include(e => e.Country)
                 .FirstOrDefaultAsync();
+            employer.Popular++;
+            await _context.SaveChangesAsync();
 
             return View(employer);
         }

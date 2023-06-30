@@ -8,11 +8,13 @@ namespace JobPortal.Common
         public static string ToUnsignString(string input)
         {
             input = input.Trim();
+            input = input.Replace("+", "p");
+            input = input.Replace("#", "sharp");
+            input = input.Replace(".", "dot");
             for (int i = 0x20; i < 0x30; i++)
             {
                 input = input.Replace(((char)i).ToString(), " ");
             }
-            input = input.Replace(".", "-");
             input = input.Replace(" ", "-");
             input = input.Replace(",", "-");
             input = input.Replace(";", "-");
@@ -29,8 +31,6 @@ namespace JobPortal.Common
             {
                 str2 = str2.Replace("--", "-").ToLower();
             }
-            str2 = str2.Replace("#", "sharp");
-            str2 = str2.Replace("+", "p");
             return str2;
         }
         public static String GetFullTimestamp(DateTime value)

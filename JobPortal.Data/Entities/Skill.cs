@@ -22,5 +22,6 @@ namespace JobPortal.Data.Entities
         public int CategoryId { get; set; }
         public bool? Disable { get; set; }
         public virtual ICollection<Job>? Jobs { get; set; }
+        public int Popular { get; set; }
     }
 }

@@ -56,24 +56,24 @@ namespace JobPortal.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "8379a68e-ce12-4f66-bb1f-bede7c2f9ed3",
+                            Id = new Guid("9f685d0f-bd6f-44dd-ab60-c606952eb2a8"),
+                            ConcurrencyStamp = "4769f83e-1356-4c37-9c87-34f1635e7bf2",
                             Description = "Administrator role",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = new Guid("92a170c6-118c-45c9-053a-08d83b9c9ecb"),
-                            ConcurrencyStamp = "7d422fbc-1981-492b-b965-740cc0673c7a",
-                            Description = "Emloyer role",
+                            Id = new Guid("4e233be7-c199-4567-9c07-9271a9de4c64"),
+                            ConcurrencyStamp = "f4bcae36-3244-4b62-8cae-163f69ac8996",
+                            Description = "Employer role",
                             Name = "Employer",
                             NormalizedName = "EMPLOYER"
                         },
                         new
                         {
-                            Id = new Guid("aa6f243a-5cbc-42d5-a432-08d83b5447b1"),
-                            ConcurrencyStamp = "607b7643-dde6-41d4-bc09-8f2c49aa4e14",
+                            Id = new Guid("376c1d1e-0b04-47da-9657-a2a87faf0a59"),
+                            ConcurrencyStamp = "90f962a1-2886-4837-9d6c-2d5af2fa5328",
                             Description = "User role",
                             Name = "User",
                             NormalizedName = "USER"
@@ -98,12 +98,21 @@ namespace JobPortal.Data.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CompanySize")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Contact")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -148,14 +157,19 @@ namespace JobPortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("Popular")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<int?>("ProvinceId")
                         .HasColumnType("int");
@@ -186,9 +200,14 @@ namespace JobPortal.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("WorkingDays")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("CountryId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -205,10 +224,10 @@ namespace JobPortal.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
+                            Id = new Guid("769f41bd-ccd4-45ba-abbd-550ccd0b62e3"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d41b4fe4-f3fc-4332-8363-b74e7ed97e48",
-                            CreateDate = new DateTime(2023, 6, 27, 17, 38, 53, 779, DateTimeKind.Local).AddTicks(906),
+                            ConcurrencyStamp = "77a8efa9-08ca-473a-8271-cfc4b4e0dcc6",
+                            CreateDate = new DateTime(2023, 6, 30, 21, 5, 5, 256, DateTimeKind.Local).AddTicks(747),
                             Disable = false,
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
@@ -216,8 +235,9 @@ namespace JobPortal.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMDAy/hNMjGlfZR2qdyb1PAC7TizKWZS33tRetuc/ZKgTe/BQufDibPhYeOre6GV/A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAw5tfyWUYlOitoYBXrMllmnlWLYOQ5ysa4g0ejJvgSB0efR01d3QsHf0xUgTVGTVA==",
                             PhoneNumberConfirmed = false,
+                            Popular = 0,
                             SecurityStamp = "",
                             Slug = "adminitrator",
                             Status = -1,
@@ -235,7 +255,7 @@ namespace JobPortal.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid>("AppUserId")
+                    b.Property<Guid?>("AppUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Author")
@@ -250,9 +270,15 @@ namespace JobPortal.Data.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Popular")
+                        .HasColumnType("int");
 
                     b.Property<string>("Slug")
                         .IsRequired()
@@ -304,30 +330,161 @@ namespace JobPortal.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "an ability to do an activity",
+                            Description = "the ability to carry out diverse duties in IT roles",
                             Name = "Skill",
                             Slug = "skill"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "the name of a work of art",
+                            Description = "the type of position and level an employee holds",
                             Name = "Title",
                             Slug = "title"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "an organization employs people",
+                            Description = "seek candidates who write code in several coding languages",
                             Name = "Employer",
                             Slug = "employer"
                         },
                         new
                         {
                             Id = 4,
-                            Description = "a principal administrative",
+                            Description = "where an Employee reports for work at Company",
                             Name = "Province",
                             Slug = "province"
+                        });
+                });
+
+            modelBuilder.Entity("JobPortal.Data.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool?>("Disable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Flag")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Flag = "Vietnam.png",
+                            Name = "Vietnam"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Flag = "USA.png",
+                            Name = "United States"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Flag = "China.png",
+                            Name = "China"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Flag = "Japan.png",
+                            Name = "Japan"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Flag = "Singapore.png",
+                            Name = "Singapore"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Flag = "Canada.png",
+                            Name = "Canada"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Flag = "England.png",
+                            Name = "England"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Flag = "India.png",
+                            Name = "India"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Flag = "Russia.png",
+                            Name = "Russia"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Flag = "Switzerland.png",
+                            Name = "Switzerland"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Flag = "France.png",
+                            Name = "France"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Flag = "Italy.png",
+                            Name = "Italy"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Flag = "Poland.png",
+                            Name = "Poland"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Flag = "Korea.png",
+                            Name = "South Korea"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Flag = "Australia.png",
+                            Name = "Australia"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Flag = "Germany.png",
+                            Name = "Germany"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Flag = "Sweden.png",
+                            Name = "Sweden"
                         });
                 });
 
@@ -474,7 +631,7 @@ namespace JobPortal.Data.Migrations
                     b.Property<string>("ObjectTarget")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Popular")
+                    b.Property<int>("Popular")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
@@ -535,6 +692,11 @@ namespace JobPortal.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("Popular")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -544,6 +706,40 @@ namespace JobPortal.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Provinces", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 4,
+                            Name = "Ho Chi Minh",
+                            Popular = 0,
+                            Slug = "ho-chi-minh"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 4,
+                            Name = "Ha Noi",
+                            Popular = 0,
+                            Slug = "ha-noi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 4,
+                            Name = "Da Nang",
+                            Popular = 0,
+                            Slug = "da-nang"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 4,
+                            Name = "Others",
+                            Popular = 0,
+                            Slug = "others"
+                        });
                 });
 
             modelBuilder.Entity("JobPortal.Data.Entities.Skill", b =>
@@ -573,6 +769,11 @@ namespace JobPortal.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("Popular")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
                     b.Property<string>("Slug")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -593,7 +794,9 @@ namespace JobPortal.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool?>("Disable")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -632,6 +835,12 @@ namespace JobPortal.Data.Migrations
                             Id = 4,
                             Name = "At office",
                             Slug = "at-office"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Temporary",
+                            Slug = "temporary"
                         });
                 });
 
@@ -657,6 +866,11 @@ namespace JobPortal.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Popular")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("Slug")
                         .IsRequired()
@@ -753,8 +967,8 @@ namespace JobPortal.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
+                            UserId = new Guid("769f41bd-ccd4-45ba-abbd-550ccd0b62e3"),
+                            RoleId = new Guid("9f685d0f-bd6f-44dd-ab60-c606952eb2a8")
                         });
                 });
 
@@ -784,10 +998,17 @@ namespace JobPortal.Data.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("JobPortal.Data.Entities.Country", "Country")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("JobPortal.Data.Entities.Province", "Province")
                         .WithMany()
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Country");
 
                     b.Navigation("Province");
                 });
@@ -797,8 +1018,7 @@ namespace JobPortal.Data.Migrations
                     b.HasOne("JobPortal.Data.Entities.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("AppUser");
                 });
@@ -970,6 +1190,11 @@ namespace JobPortal.Data.Migrations
                     b.Navigation("Skills");
 
                     b.Navigation("Titles");
+                });
+
+            modelBuilder.Entity("JobPortal.Data.Entities.Country", b =>
+                {
+                    b.Navigation("AppUsers");
                 });
 
             modelBuilder.Entity("JobPortal.Data.Entities.Job", b =>

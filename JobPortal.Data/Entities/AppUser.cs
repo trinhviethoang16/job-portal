@@ -12,7 +12,7 @@ namespace JobPortal.Data.Entities
         public string? FullName { get; set; }
 
         [Display(Name = "Phone")]
-        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
+        [StringLength(20, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string? Phone { get; set; }
 
         [Display(Name = "Address")]
@@ -32,7 +32,7 @@ namespace JobPortal.Data.Entities
         [Display(Name = "Contact")]
         public string? Contact { get; set; }
 
-        [Display(Name = "Description")]
+        [Display(Name = "Company overview")]
         public string? Description { get; set; }
 
         [Display(Name = "Website")]
@@ -51,7 +51,19 @@ namespace JobPortal.Data.Entities
         [Display(Name = "Province")]
         public int? ProvinceId { get; set; }
         public bool? Disable { get; set; }
-        //public Blog? Blog { get; set; }
-        //public int? BlogId { get; set; }
+
+        [Display(Name = "Company size")]
+        public string? CompanySize { get; set; }
+
+        [Display(Name = "Working days")]
+        public string? WorkingDays { get; set; }
+        public Country? Country { get; set; }
+
+        [Display(Name = "Country")]
+        public int? CountryId { get; set; }
+
+        [Display(Name = "Content")]
+        public string? Content { get; set; }
+        public int Popular { get; set; }
     }
 }

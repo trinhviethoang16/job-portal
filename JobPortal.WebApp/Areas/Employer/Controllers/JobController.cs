@@ -45,13 +45,12 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         }
 
         [Route("{id}/create")]
-        public IActionResult Create(Guid id)
+        public IActionResult Create()
         {
-            var user = _context.AppUsers.Where(u => u.Id == id).FirstAsync();
-            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Name");
-            ViewData["TimeId"] = new SelectList(_context.Times, "Id", "Name");
-            ViewData["SkillId"] = new SelectList(_context.Skills, "Id", "Name");
-            ViewData["TitleId"] = new SelectList(_context.Titles, "Id", "Name");
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces.OrderBy(p => p.Id), "Id", "Name");
+            ViewData["TimeId"] = new SelectList(_context.Times.OrderBy(t => t.Id), "Id", "Name");
+            ViewData["SkillId"] = new SelectList(_context.Skills.OrderBy(s => s.Name), "Id", "Name");
+            ViewData["TitleId"] = new SelectList(_context.Titles.OrderBy(t => t.Name), "Id", "Name");
             return View();
         }
 
@@ -92,10 +91,10 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         [Route("{id}/update")]
         public IActionResult Update(int id)
         {
-            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Name");
-            ViewData["TimeId"] = new SelectList(_context.Times, "Id", "Name");
-            ViewData["SkillId"] = new SelectList(_context.Skills, "Id", "Name");
-            ViewData["TitleId"] = new SelectList(_context.Titles, "Id", "Name");
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces.OrderBy(p => p.Id), "Id", "Name");
+            ViewData["TimeId"] = new SelectList(_context.Times.OrderBy(t => t.Id), "Id", "Name");
+            ViewData["SkillId"] = new SelectList(_context.Skills.OrderBy(s => s.Name), "Id", "Name");
+            ViewData["TitleId"] = new SelectList(_context.Titles.OrderBy(t => t.Name), "Id", "Name");
             var job = _context.Jobs.Where(j => j.Id == id).First();
             return View(job);
         }

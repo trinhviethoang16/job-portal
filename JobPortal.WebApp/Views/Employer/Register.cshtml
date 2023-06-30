@@ -1,4 +1,4 @@
-﻿@model JobPortal.Data.Entities.AppUser
+﻿@model JobPortal.Data.ViewModel.UpdateEmployerViewModel
 
 @{
     Layout = "_Layout";
@@ -35,27 +35,52 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
+                                            <label asp-for="Email" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Email" class="form-control" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Description" class="form-control ckeditor"></textarea>
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Content" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Content" class="form-control ckeditor"></textarea>
+                                            <span asp-validation-for="Content" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Contact" class="control-label"></label><span class="text-danger">*</span>
+                                            <textarea asp-for="Contact" class="form-control ckeditor"></textarea>
+                                            <span asp-validation-for="Contact" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label asp-for="FullName" class="control-label"></label><span class="text-danger">*</span>
                                             <input asp-for="FullName" class="form-control" />
                                             <span asp-validation-for="FullName" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label asp-for="Contact" class="control-label"></label><span class="text-danger">*</span>
-                                            <textarea asp-for="Contact" class="form-control" rows="3"></textarea>
-                                            <span asp-validation-for="Contact" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
-                                            <textarea asp-for="Description" class="form-control" id="CKEditor" style="height: 450px"></textarea>
-                                            <span asp-validation-for="Description" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
                                             <label asp-for="UrlAvatar" class="control-label"></label><span class="text-danger">*</span>
                                             <input type="file" asp-for="UrlAvatar" class="form-control" accept="image/*" id="imgInp" />
                                             <span asp-validation-for="UrlAvatar" class="text-danger"></span>
                                             <img id="blah" src="#" alt="your logo" style="width: 335px;" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CompanySize" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="CompanySize" class="form-control" />
+                                            <span asp-validation-for="CompanySize" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="WorkingDays" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="WorkingDays" class="form-control" />
+                                            <span asp-validation-for="WorkingDays" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Phone" class="control-label"></label><span class="text-danger">*</span>
+                                            <input asp-for="Phone" class="form-control" />
+                                            <span asp-validation-for="Phone" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
                                             <label asp-for="Location" class="control-label"></label><span class="text-danger">*</span>
@@ -70,6 +95,10 @@
                                         <div class="form-group">
                                             <label asp-for="ProvinceId" class="control-label"></label><span class="text-danger">*</span>
                                             <select asp-for="ProvinceId" class="form-control" asp-items="ViewBag.ProvinceId"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CountryId" class="control-label"></label><span class="text-danger">*</span>
+                                            <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
                                         </div>
                                         <div class="form-group text-center" style="margin-bottom: 15px">
                                             <input style="background-color:forestgreen" type="button" onclick="onRegister()" value="Register" class="btn btn-primary" />
@@ -118,7 +147,7 @@
             if ($('#imgInp').get(0).files.length === 0) {
                 Swal.fire(
                     'Fail',
-                    'Please select a logo image.',
+                    'Please select a logo company.',
                     'error'
                 );
                 return; // Stop further execution
@@ -143,5 +172,11 @@
         }
     </script>
 
-    <script>CKEDITOR.replace('CKEditor');</script>
+    <script>
+        $(document).ready(function () {
+            $('.ckeditor').each(function () {
+                CKEDITOR.replace($(this).attr('id'));
+            });
+        });
+    </script>
 }

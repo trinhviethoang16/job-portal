@@ -25,8 +25,12 @@ namespace JobPortal.Data.Entities
         [Display(Name = "Image")]
         [Required(ErrorMessage = "Please enter image of blog")]
         public string Image { get; set; }
-        public Guid AppUserId { set; get; }
+        public Guid? AppUserId { set; get; }
         public AppUser? AppUser { get; set; }
         public DateTime CreateDate { set; get; }
+
+        [Display(Name = "Blog overview")]
+        public string? Description { get; set; }
+        public int Popular { get; set; }
     }
 }

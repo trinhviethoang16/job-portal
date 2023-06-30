@@ -4,7 +4,7 @@
 @inject UserManager<AppUser> userManager
 
 @{
-    var user = await userManager.GetUserAsync(User);
+    var account = await userManager.GetUserAsync(User);
 	var isSignedIn = signInManager.IsSignedIn(User);
 }
 
@@ -145,7 +145,7 @@
 	<!-- Register -->
 	@if (isSignedIn)
 	{
-		@if (@user.Status == null)
+		@if (@account.Status == null)
 		{
 			<div class="buy-now">
 				<button href="#" data-toggle="modal" data-target="#viewRegister" class="btn btn-danger btn-buy-now">Register to Employer</button>
@@ -181,7 +181,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a href="/register-employer/@user.Id" class="btn btn-primary">Register now</a>
+							<a href="/register-employer/register/@account.Id" class="btn btn-primary">Register now</a>
 							<hr />
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>

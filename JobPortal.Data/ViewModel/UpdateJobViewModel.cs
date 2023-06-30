@@ -1,4 +1,5 @@
 ﻿using JobPortal.Common;
+using JobPortal.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;

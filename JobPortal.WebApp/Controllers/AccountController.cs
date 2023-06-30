@@ -45,6 +45,7 @@ namespace JobPortal.WebApp.Controllers
                     Age = model.Age,
                     Address = model.Address,
                     Email = model.Email,
+                    CreateDate = DateTime.Now,
                     Phone = model.Phone
                 };
                 var result = await userManager.CreateAsync(user, model.Password);

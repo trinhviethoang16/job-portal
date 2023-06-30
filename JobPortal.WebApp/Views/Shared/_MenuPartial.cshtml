@@ -4,25 +4,33 @@
 @inject UserManager<AppUser> userManager
 
 @{
-    var user = await userManager.GetUserAsync(User);
+    var account = await userManager.GetUserAsync(User);
     var isSignedIn = signInManager.IsSignedIn(User);
     var isInRoleUser = User.IsInRole("User");
+    var isInRoleEmployer = User.IsInRole("Employer");
+    var isInRoleAdmin = User.IsInRole("Admin");
 }
 
 <li class="menu-active"><a href="/">Home</a></li>
-<li><a href="/job">All Jobs</a></li>
-<li><a href="/company">IT Companies</a></li>
+<li><a href="/job">Jobs</a></li>
+<li><a href="/company">Companies</a></li>
 @if (isSignedIn)
 {
     if (isInRoleUser)
     {
-        <li><a href="/apply/@user.Id">Interview</a></li>
+        <li><a href="/apply/@account.Id">Interview</a></li>
     }
 }
-<li><a href="/blog">Blog</a></li>
+<li><a href="/blog">Blogs</a></li>
 <li class="menu-has-children">
-    <a href="">Pages</a>
+    <a href="#">Options</a>
     <ul>
+        @if (isInRoleEmployer)
+        {
+            <li><a href="/register-employer/update/@account.Id">update information</a></li>
+            <li><a href="#">change password</a></li>
+            <hr />
+        }
         <li><a href="/search">search</a></li>
         <li><a href="/price">price</a></li>
         <li><a href="/about-us">about us</a></li>
@@ -33,22 +41,35 @@
 
 @if (isSignedIn)
 {
-    <li>
-        <a class="ticker-btn">Hi, @(user.FullName ?? user.UserName)</a>
-    </li>
+    if (isInRoleEmployer)
+    {
+        <li>
+            <a href="/company/@account.Slug" class="ticker-btn">@(account.FullName ?? account.UserName)</a>
+        </li>
+        <li>
+            <a href="/employer/index/@account.Id" class="ticker-btn">Employer Site</a>
+        </li>
+    }
+    else if (isInRoleAdmin)
+    {
+        <li>
+            <a href="#" class="ticker-btn">Hi, @(account.FullName ?? account.UserName)</a>
+        </li>
+        <li>
+            <a href="/admin" class="ticker-btn">Admin Site</a>
+        </li>
+    }
+    else
+    {
+        <li>
+            <a href="#" class="ticker-btn">Hi, @(account.FullName ?? account.UserName)</a>
+        </li>
+    }
     <li>
         <form id="logoutForm" class="form-inline">
             <a href="/logout" class="ticker-btn">Logout</a>
         </form>
     </li>
-    @*<li>
-        @if (user.Status == null)
-        {
-            <form id="logoutForm" class="form-inline">
-                <a href="/register-employer/@user.Id" class="ticker-btn">Register to Employer</a>
-            </form>
-        }
-    </li>*@
 }
 else
 {

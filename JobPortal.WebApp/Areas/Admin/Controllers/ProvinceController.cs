@@ -33,7 +33,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         {
             int pageSize = 5; //number of provinces per page
 
-            var province = await _context.Provinces.OrderByDescending(i => i.Id).ToListAsync();
+            var province = await _context.Provinces.OrderBy(i => i.Id).ToListAsync();
             return View(province.ToPagedList(page ?? 1, pageSize));
         }
 

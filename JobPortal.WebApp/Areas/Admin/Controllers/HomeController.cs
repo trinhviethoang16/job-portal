@@ -35,7 +35,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             ViewBag.CountEmployer = employerCount;
 
             //user count
-            var userCount = _context.AppUsers.Count(e => e.Status == 1);
+            var userCount = _context.AppUsers.Count(u => u.Status != -1 && u.Status != 2);
             ViewBag.CountUser = userCount;
 
             //job count
@@ -52,12 +52,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             return View(employers.ToPagedList(page ?? 1, pageSize));
         }
 
-
         [Route("list-user")]
         public IActionResult ListUser(int? page)
         {
             int pageSize = 5;
-            var users = _context.AppUsers.OrderByDescending(u => u.Id).Where(u => u.Status == 1).ToList();
+            var users = _context.AppUsers.OrderByDescending(u => u.Id).Where(u => u.Status != -1 && u.Status != 2).ToList();
+
             return View(users.ToPagedList(page ?? 1, pageSize));
         }
     }

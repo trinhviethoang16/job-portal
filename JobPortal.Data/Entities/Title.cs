@@ -17,5 +17,6 @@ namespace JobPortal.Data.Entities
         [Required]
         public string Slug { get; set; }
         public ICollection<Job>? Jobs { get; set; }
+        public int Popular { get; set; }
     }
 }

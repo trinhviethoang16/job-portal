@@ -30,9 +30,9 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         [Route("index")]
         public async Task<IActionResult> Index(int? page)
         {
-            int pageSize = 5; //number of titles per page
+            int pageSize = 10; //number of titles per page
 
-            var title = await _context.Titles.OrderByDescending(t => t.Id).ToListAsync();
+            var title = await _context.Titles.OrderBy(t => t.Name).ToListAsync();
             return View(title.ToPagedList(page ?? 1, pageSize));
         }
 

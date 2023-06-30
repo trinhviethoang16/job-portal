@@ -18,7 +18,7 @@
 				<h1 class="text-white">
 					@Model.FullName
 				</h1>
-				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Company Details</a></p>
+				<p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Company overview</a></p>
 			</div>
 		</div>
 	</div>
@@ -30,62 +30,57 @@
         <div class="row">
             <div class="col-lg-8 post-list blog-post-list">
                 <div class="single-post">
-                    <img class="img-fluid" src="~/assets/user/img/blog/p1.jpg" alt="">
+                    <a href="/job?slug=@Model.Slug"><img class="img-fluid" src="https://localhost:7211/images/employers/@Model.UrlAvatar" alt="flag"></a>
                     <ul class="tags">
-                        <li><a href="#">Art</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Fashion</a></li>
+                        <li><a target="_blank" href="https://@Model.WebsiteURL/">@Model.WebsiteURL</a></li> - Established: @Model.CreateDate -
+                        <img width="30" height="20" src="https://localhost:7211/images/countries/@Model.Country.Flag" alt="flag"> @Model.Country.Name
                     </ul>
-                    <a href="#">
-                        <h1>
-                            Cartridge Is Better Than Ever
-                            A Discount Toner
-                        </h1>
-                    </a>
                     <div class="content-wrap">
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
 
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
-
+                        <h6>Company overview:</h6>
                         <blockquote class="generic-blockquote">
-                            “Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks such as Party Gaming and PlayTech left the United States. Overnight, online casino players found themselves being chased by the Federal government.banking”
+                            <p>@Html.Raw(Model.Description)</p>
+                            <p>@Html.Raw(Model.Content)</p>
                         </blockquote>
 
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
+                        <h6>Location:</h6>
+                        <p>@Html.Raw(Model.Location)</p>
 
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
+                        <h6>Company size:</h6>
+                        <p>@Html.Raw(Model.CompanySize)</p>
 
+                        <h6>Working days:</h6>
+                        <p>@Html.Raw(Model.WorkingDays)</p>
 
+                        <h6>Province:</h6>
+                        <p>@Html.Raw(Model.Province.Name)</p>
+
+                        <h6>Contact:</h6>
+                        <p>@Html.Raw(Model.Contact)</p>
+                        
                     </div>
+                    <hr />
                     <div class="bottom-meta">
                         <div class="user-details row align-items-center">
                             <div class="comment-wrap col-lg-6 col-sm-6">
-                                <ul>
+                                @*<ul>
                                     <li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
                                     <li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
-                                </ul>
+                                </ul>*@
                             </div>
                             <div class="social-wrap col-lg-6">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    <li><a href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="https://behance.net/"><i class="fa fa-behance"></i></a></li>
                                 </ul>
 
                             </div>
                         </div>
                     </div>
 
-                    <!-- Start nav Area -->
+                   @* <!-- Start nav Area -->
                     <section class="nav-area pt-50 pb-100">
                         <div class="container">
                             <div class="row justify-content-between">
@@ -234,7 +229,7 @@
                             </div>
                         </div>
                     </section>
-                    <!-- End commentform Area -->
+                    <!-- End commentform Area -->*@
                 </div>
             </div>
             

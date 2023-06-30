@@ -37,9 +37,8 @@ namespace JobPortal.WebApp.Controllers
             var skillList = _context.Skills.ToList();
             ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Take(7).ToList();
 
-            //random provinces - 5
-            var provinceList = _context.Provinces.ToList();
-            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Take(5).ToList();
+            //provinces - 4
+            ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
             ViewBag.q = q;
             ViewBag.province = await _context.Provinces.FirstOrDefaultAsync(p => p.Id == province);

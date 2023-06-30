@@ -50,7 +50,7 @@
                         </div>
                         <div class="details" >
                             <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                            <strong><p style="color: slateblue">@job.Province.Name</p></strong>
+                            <strong><p style="color: black">@job.Province.Name</p></strong>
                             <p>@Html.Raw(job.Introduce)</p>
                             <p>Job Nature: @job.Time.Name</p>
                             <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
@@ -81,10 +81,10 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="single-fcat">
                         <a href="/job?slug=@skill.Slug">
-                            <img height="70" width="80" src="https://localhost:7211/images/skills/@skill.Logo" alt="">
+                            <img height="80" width="80" src="https://localhost:7211/images/skills/@skill.Logo" alt="">
                         </a>
                         <hr />
-                        <a href="/job?slug=@skill.Slug">@skill.Name</a>
+                        <a href="/job?slug=@skill.Slug"><h5>@skill.Name</h5></a>
                     </div>
                 </div>
             }

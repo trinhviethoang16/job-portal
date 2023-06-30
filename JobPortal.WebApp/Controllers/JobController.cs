@@ -38,12 +38,11 @@ namespace JobPortal.WebApp.Controllers
             var skillList = _context.Skills.Include(s => s.Jobs).ToList();
             ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Where(s => s.Jobs.Count > 0).Take(7).ToList();
 
-            //random provinces - 5
-            var provinceList = _context.Provinces.Include(p => p.Jobs).ToList();
-            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Where(p => p.Jobs.Count > 0).Take(5).ToList();
+            //provinces - 4
+            ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
             var jobs = _context.Jobs
-                .OrderByDescending(j => j.Id)
+                .OrderByDescending(j => j.Popular)
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
                 .Include(j => j.Time)
@@ -116,9 +115,8 @@ namespace JobPortal.WebApp.Controllers
             var skillList = _context.Skills.Include(s => s.Jobs).ToList();
             ViewBag.ListSkills = skillList.OrderBy(s => random.Next()).Where(s => s.Jobs.Count > 0).Take(7).ToList();
 
-            //random provinces - 5
-            var provinceList = _context.Provinces.Include(p => p.Jobs).ToList();
-            ViewBag.ListProvinces = provinceList.OrderBy(p => random.Next()).Where(p => p.Jobs.Count > 0).Take(5).ToList();
+            //provinces - 4
+            ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
             var job = await _context.Jobs
                 .Where(j => j.Slug == slug)
@@ -126,6 +124,8 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Time)
                 .Include(j => j.Title)
                 .FirstOrDefaultAsync();
+            job.Popular++;
+            await _context.SaveChangesAsync();
 
             //check existing CV
             var user = await _userManager.GetUserAsync(User);

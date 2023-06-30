@@ -5,6 +5,7 @@
 
 @{
     Layout = "_Layout";
+    int i = 1;
 }
 
 <style>
@@ -55,28 +56,29 @@
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
-
                 <!-- Employer list -->
                 @foreach (var employer in Model)
                 {
                     <div class="single-post d-flex flex-row">
                         <!-- Employer province -->
                         <div class="thumb" style="align-items:center">
-                            <img href="/company/@employer.Slug" style="border-radius:10px" width="120" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="EMPLOYER IMAGE">
+                            <img href="/job/@employer.Slug" style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="EMPLOYER IMAGE">
                             <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
                                 <!--Skill-->
                                 <li style="border-radius:10px">
                                     <a href="/job?slug=@employer.Province.Slug">@employer.Province.Name</a>
                                 </li>
                             </ul>
+                            <hr />
+                            <h3 style="color: red; text-align: center">#@i</h3>
                         </div>
                         <!--End job skill list-->
                         <div class="details" style="margin-left:20px; width:600px;">
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
-                                    <a href="/company/@employer.Slug"><h4>@employer.FullName</h4></a>
-                                    <h5>@employer.WebsiteURL</h5>
-                                    <strong><p style="color: slateblue">@employer.Location</p></strong>
+                                    <a href="/job/@employer.Slug"><h4>@employer.FullName</h4></a>
+                                    <div class="country"> <img width="30" height="20" src="https://localhost:7211/images/countries/@employer.Country.Flag" alt="flag"> @employer.Country.Name</div>
+                                    <strong><a target="_blank" href="https://@employer.WebsiteURL" style="color: black">@employer.WebsiteURL</a></strong>
                                 </div>
                                 <div class="ml-auto">
                                     <ul class="btns">
@@ -85,12 +87,13 @@
                                 </div>
                             </div>
                             <hr>
-                            <p>Description</p>
-                            <h5>@employer.Contact</h5>
+                            <p>@employer.WorkingDays</p>
+                            <h5>@employer.CompanySize</h5>
                             <p class="address"><span class="lnr lnr-map"></span> Email: @employer.Email</p>
                             <p class="address"><span class="lnr lnr-database"></span> @employer.Phone</p>
                         </div>
                     </div>
+                    i++;
                 }
                 <!--End job list-->
 

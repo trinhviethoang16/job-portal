@@ -106,8 +106,8 @@
                                             <img src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="@emp.FullName" style="width: 100px;">
                                         </td>
                                         <td>@Html.Raw(emp.Description)</td>
-                                        <td>@emp.Contact</td>
-                                        <td>@emp.Location</td>
+                                        <td>@Html.Raw(emp.Contact)</td>
+                                        <td>@Html.Raw(emp.Location)</td>
                                         <td>@emp.WebsiteURL</td>
                                     </tr>
                                 }
@@ -160,7 +160,7 @@
         function onConfirm(id) {
             Swal.fire({
                 title: 'Confirm this employer?',
-                text: "Are you sure you want to accept this user?",
+                text: "Are you sure you want to accept this employer?",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
