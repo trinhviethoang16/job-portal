@@ -48,6 +48,7 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Time)
                 .ToList();
             ViewBag.jobCount = _context.Jobs.Count();
+
             if (slug != null)
             {
                 var time = _context.Times.FirstOrDefault(t => t.Slug == slug);

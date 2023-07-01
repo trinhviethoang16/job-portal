@@ -32,10 +32,10 @@
             @foreach (var job in ViewBag.ListJobs)
             {
                 <div class="single-rated">
-                    <img href="/job/@job.Slug" style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image">
+                    <a href="/job/@job.AppUser.Slug"><img style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image"></a>
                     <br />
                     <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
-                    <strong><p class="text-center" style="color: slateblue">@job.Province.Name</p></strong>
+                    <strong><h6 class="text-center" style="color: black">@job.Province.Name</h6></strong>
                     <p>@Html.Raw(job.Introduce)</p>
                     <h5>Job Nature: @job.Time.Name</h5>
                     <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>

@@ -31,7 +31,7 @@
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
 					<div class="thumb" style="align-items:center">
-						<img style="border-radius:10px" width="150" height="75" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
+						<a href="/job?slug=@Model.AppUser.Slug"><img style="border-radius:10px" width="150" height="75" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
 						<ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
 							<!--Skill-->
 							<li style="border-radius:10px">
@@ -44,44 +44,37 @@
 							<div class="titles">
 								<a href="/job/@Model.Slug"><h4>@Model.Name</h4></a>
 								<h5>From: @Model.AppUser.FullName</h5>
-								<strong><p style="color: black">@Model.Province.Name</p></strong>
+								<strong><a style="color: black">@Model.Province.Name</a></strong>
 							</div>
 						</div>
 						<hr />
-						<p>@Html.Raw(Model.Introduce)</p>
+						<p>Age: @Model.MinAge - @Model.MaxAge</p>
 						<h5>Job Nature: @Model.Time.Name</h5>
 						<p class="address"><span class="lnr lnr-map"></span> @Model.Title.Name</p>
 						<p class="address"><span class="lnr lnr-database"></span> $@Model.MinSalary - $@Model.MaxSalary</p>
 					</div>
+				</div>
+				<div class="single-post job-experience">
+					<ul>
+						<li>
+							<span>@Html.Raw(Model.Introduce)</span>
+						</li>
+					</ul>
 				</div>
 				<div class="single-post job-details">
 					<h4 class="single-title">Whom we are looking for</h4>
 					<p>@Html.Raw(Model.Description)</p>
 				</div>
 				<div class="single-post job-experience">
-					<h4 class="single-title">Experience Requirements</h4>
 					<ul>
 						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
-							<span>@Model.MinAge - @Model.MaxAge</span>
-						</li>
-
-					</ul>
-				</div>
-				<div class="single-post job-experience">
-					<h4 class="single-title">Job Features & Overviews</h4>
-					<ul>
-						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
 							<span>@Html.Raw(Model.ObjectTarget)</span>
 						</li>
 					</ul>
 				</div>
 				<div class="single-post job-experience">
-					<h4 class="single-title">Education Requirements</h4>
 					<ul>
 						<li>
-							<img src="../assets/user/img/pages/list.jpg" alt="">
 							<span>@Html.Raw(Model.Experience)</span>
 						</li>
 					</ul>
@@ -216,7 +209,7 @@
 	function accessDenied() {
 		Swal.fire({
 			title: 'Sorry !',
-			text: 'This page only for user account.',
+			text: 'Apply job only for user account.',
 			icon: 'warning',
 			confirmButtonText: 'OK'
 		});

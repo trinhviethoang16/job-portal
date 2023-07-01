@@ -3669,6 +3669,14 @@
       "PackagePath": "staticwebassets\\images\\default\\job-icon.png"
     },
     {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\default\\oops.png",
+      "PackagePath": "staticwebassets\\images\\default\\oops.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\135334aa-56ab-4ef6-be4e-77ccb17559a1.png",
+      "PackagePath": "staticwebassets\\images\\employers\\135334aa-56ab-4ef6-be4e-77ccb17559a1.png"
+    },
+    {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\135e9a03-8019-4bb7-afab-eacc8a4a43c6.png",
       "PackagePath": "staticwebassets\\images\\employers\\135e9a03-8019-4bb7-afab-eacc8a4a43c6.png"
     },
@@ -3683,6 +3691,10 @@
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\890c5972-c6d7-480a-b08a-76e5834e53a1.png",
       "PackagePath": "staticwebassets\\images\\employers\\890c5972-c6d7-480a-b08a-76e5834e53a1.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\8f8a77e1-cf60-4633-afcc-2d28d5abf217.png",
+      "PackagePath": "staticwebassets\\images\\employers\\8f8a77e1-cf60-4633-afcc-2d28d5abf217.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\employers\\9071d676-3946-4c9b-a982-c12a523093c7.png",
@@ -3737,8 +3749,24 @@
       "PackagePath": "staticwebassets\\images\\skills\\009a632e-9169-4063-9349-8c36cb14d9dd.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\1bc63b9f-1928-489e-b37d-b84aa1a01605.png",
-      "PackagePath": "staticwebassets\\images\\skills\\1bc63b9f-1928-489e-b37d-b84aa1a01605.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\09eb3415-8442-4d2f-a9ed-371b2c01e809.png",
+      "PackagePath": "staticwebassets\\images\\skills\\09eb3415-8442-4d2f-a9ed-371b2c01e809.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\0a56fd6a-8a6e-4fc4-88a6-1e001f8c408d.png",
+      "PackagePath": "staticwebassets\\images\\skills\\0a56fd6a-8a6e-4fc4-88a6-1e001f8c408d.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\0cef441d-ceee-43ee-a672-fc4b8ba4da5b.jpg",
+      "PackagePath": "staticwebassets\\images\\skills\\0cef441d-ceee-43ee-a672-fc4b8ba4da5b.jpg"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\108fddff-618a-4f30-bfa6-b70f9a701097.png",
+      "PackagePath": "staticwebassets\\images\\skills\\108fddff-618a-4f30-bfa6-b70f9a701097.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\1add6073-89ee-4b93-96f8-e3a695d770ae.png",
+      "PackagePath": "staticwebassets\\images\\skills\\1add6073-89ee-4b93-96f8-e3a695d770ae.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\1f036f33-ae6e-4f43-a489-c349cbe91886.png",
@@ -3749,8 +3777,32 @@
       "PackagePath": "staticwebassets\\images\\skills\\1f99b56c-ff18-4847-ac20-273d5b575f4b.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\25412341-abb7-4d96-9f56-daf6cd7ae1bd.png",
-      "PackagePath": "staticwebassets\\images\\skills\\25412341-abb7-4d96-9f56-daf6cd7ae1bd.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\2198a273-85c8-4ebd-8f0a-4f5351902729.png",
+      "PackagePath": "staticwebassets\\images\\skills\\2198a273-85c8-4ebd-8f0a-4f5351902729.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\26342b46-36ef-435c-9ff4-fcb4548856d9.png",
+      "PackagePath": "staticwebassets\\images\\skills\\26342b46-36ef-435c-9ff4-fcb4548856d9.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\268d7ffc-34bd-4376-88c2-2c7566047764.jpg",
+      "PackagePath": "staticwebassets\\images\\skills\\268d7ffc-34bd-4376-88c2-2c7566047764.jpg"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\2999644d-7da0-4c6d-b969-8683fd045dec.png",
+      "PackagePath": "staticwebassets\\images\\skills\\2999644d-7da0-4c6d-b969-8683fd045dec.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\431178d2-345f-4008-86ab-8ff94f2e5040.png",
+      "PackagePath": "staticwebassets\\images\\skills\\431178d2-345f-4008-86ab-8ff94f2e5040.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\46fd3794-41fc-4f1d-b63c-39d1d6f41a44.png",
+      "PackagePath": "staticwebassets\\images\\skills\\46fd3794-41fc-4f1d-b63c-39d1d6f41a44.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\4707ba40-ecb1-4673-9649-de586bdd942d.png",
+      "PackagePath": "staticwebassets\\images\\skills\\4707ba40-ecb1-4673-9649-de586bdd942d.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\4f810d7f-81c8-463f-aaf3-5cee19720956.png",
@@ -3761,16 +3813,12 @@
       "PackagePath": "staticwebassets\\images\\skills\\52617713-71fe-43a0-9077-9f622735cb53.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\664a1dde-825f-4e6f-836f-3409f306233c.png",
-      "PackagePath": "staticwebassets\\images\\skills\\664a1dde-825f-4e6f-836f-3409f306233c.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\6e314142-36c6-41f4-85bb-fdf4166d6c46.png",
+      "PackagePath": "staticwebassets\\images\\skills\\6e314142-36c6-41f4-85bb-fdf4166d6c46.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\7544db68-71b3-4073-834d-d61b5b9b28ea.png",
-      "PackagePath": "staticwebassets\\images\\skills\\7544db68-71b3-4073-834d-d61b5b9b28ea.png"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\7556a79d-ae8a-45d3-9910-e044561f213e.jpg",
-      "PackagePath": "staticwebassets\\images\\skills\\7556a79d-ae8a-45d3-9910-e044561f213e.jpg"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\73597a49-b989-407c-8c18-9f68273fb656.png",
+      "PackagePath": "staticwebassets\\images\\skills\\73597a49-b989-407c-8c18-9f68273fb656.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\75b1ea3f-e347-45d3-9eb1-0e0550aa6e87.jpg",
@@ -3789,80 +3837,56 @@
       "PackagePath": "staticwebassets\\images\\skills\\9060c55a-3e92-4b03-9724-f9cc8fee0be7.jpg"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\9236291e-51db-4383-9da4-fb2a72ff5b59.png",
-      "PackagePath": "staticwebassets\\images\\skills\\9236291e-51db-4383-9da4-fb2a72ff5b59.png"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\93ac4238-0fa6-4f66-8389-3b65e938dd2d.jpg",
-      "PackagePath": "staticwebassets\\images\\skills\\93ac4238-0fa6-4f66-8389-3b65e938dd2d.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\9608f659-286c-4277-b2f2-d55dc8aa0a99.png",
-      "PackagePath": "staticwebassets\\images\\skills\\9608f659-286c-4277-b2f2-d55dc8aa0a99.png"
-    },
-    {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\980fcb5f-04cc-4508-ac96-118e6ddb3827.png",
       "PackagePath": "staticwebassets\\images\\skills\\980fcb5f-04cc-4508-ac96-118e6ddb3827.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\9d099070-daf6-4021-b71e-dcac9ddf5d60.png",
-      "PackagePath": "staticwebassets\\images\\skills\\9d099070-daf6-4021-b71e-dcac9ddf5d60.png"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\abdbda92-3a93-47d3-8379-b505a4b4d55a.png",
-      "PackagePath": "staticwebassets\\images\\skills\\abdbda92-3a93-47d3-8379-b505a4b4d55a.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\a80846fd-de7f-4a7e-963e-60d31af051b0.png",
+      "PackagePath": "staticwebassets\\images\\skills\\a80846fd-de7f-4a7e-963e-60d31af051b0.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\ac0d91b2-7c3d-4622-ad01-806ca1e349a4.png",
       "PackagePath": "staticwebassets\\images\\skills\\ac0d91b2-7c3d-4622-ad01-806ca1e349a4.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\b31e2a7c-9ce0-49d6-876d-c1dd8c75ca56.jpg",
-      "PackagePath": "staticwebassets\\images\\skills\\b31e2a7c-9ce0-49d6-876d-c1dd8c75ca56.jpg"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\b2a49590-2b4b-409c-b4d9-5ae9d9d90661.png",
+      "PackagePath": "staticwebassets\\images\\skills\\b2a49590-2b4b-409c-b4d9-5ae9d9d90661.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\b6ffeb4f-b307-4d34-a773-8fcc1a2ce04f.png",
       "PackagePath": "staticwebassets\\images\\skills\\b6ffeb4f-b307-4d34-a773-8fcc1a2ce04f.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\c22d0128-20e8-4003-9fbc-f24a73b91c40.png",
-      "PackagePath": "staticwebassets\\images\\skills\\c22d0128-20e8-4003-9fbc-f24a73b91c40.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\c85e83d4-0e90-4bfb-9b69-98a307bfdaa7.jpg",
+      "PackagePath": "staticwebassets\\images\\skills\\c85e83d4-0e90-4bfb-9b69-98a307bfdaa7.jpg"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\c2935997-911c-4298-8b9c-100b382a1622.png",
-      "PackagePath": "staticwebassets\\images\\skills\\c2935997-911c-4298-8b9c-100b382a1622.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\cca64e1f-e0a7-4964-9bbb-9139aeb4e44a.png",
+      "PackagePath": "staticwebassets\\images\\skills\\cca64e1f-e0a7-4964-9bbb-9139aeb4e44a.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\c53a14bf-a340-44fb-8425-c470f9f925bd.jpg",
-      "PackagePath": "staticwebassets\\images\\skills\\c53a14bf-a340-44fb-8425-c470f9f925bd.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\cdc83abb-a223-4b62-a1c3-4e236cfcf433.jpg",
-      "PackagePath": "staticwebassets\\images\\skills\\cdc83abb-a223-4b62-a1c3-4e236cfcf433.jpg"
-    },
-    {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\ce027f92-cb13-457e-bdb6-487a99dc439c.png",
-      "PackagePath": "staticwebassets\\images\\skills\\ce027f92-cb13-457e-bdb6-487a99dc439c.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\cd70231f-f334-4b47-a6a1-694139768ad7.png",
+      "PackagePath": "staticwebassets\\images\\skills\\cd70231f-f334-4b47-a6a1-694139768ad7.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\d681fa95-5f2a-4367-a045-cfe92d5eefd4.png",
       "PackagePath": "staticwebassets\\images\\skills\\d681fa95-5f2a-4367-a045-cfe92d5eefd4.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\e24ab9f8-c831-43f1-895f-9b897b4ffc8c.png",
-      "PackagePath": "staticwebassets\\images\\skills\\e24ab9f8-c831-43f1-895f-9b897b4ffc8c.png"
-    },
-    {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\e4d35ba6-2ebc-4888-919a-04fffa1da6ae.png",
       "PackagePath": "staticwebassets\\images\\skills\\e4d35ba6-2ebc-4888-919a-04fffa1da6ae.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\fb15ac79-fb44-446a-989f-4a00ac752576.png",
-      "PackagePath": "staticwebassets\\images\\skills\\fb15ac79-fb44-446a-989f-4a00ac752576.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\eabf0179-75d1-43b5-8eda-4650cf2cb15b.png",
+      "PackagePath": "staticwebassets\\images\\skills\\eabf0179-75d1-43b5-8eda-4650cf2cb15b.png"
     },
     {
-      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\fb961d98-a012-41fe-8deb-4336622b1040.png",
-      "PackagePath": "staticwebassets\\images\\skills\\fb961d98-a012-41fe-8deb-4336622b1040.png"
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\f81b20a5-e57e-4d1f-8167-261119e2639d.png",
+      "PackagePath": "staticwebassets\\images\\skills\\f81b20a5-e57e-4d1f-8167-261119e2639d.png"
+    },
+    {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\skills\\f944f528-c413-4781-858f-4b00f2141544.png",
+      "PackagePath": "staticwebassets\\images\\skills\\f944f528-c413-4781-858f-4b00f2141544.png"
     },
     {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\js\\site.js",

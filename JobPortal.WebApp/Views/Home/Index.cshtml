@@ -50,8 +50,9 @@
                         </div>
                         <div class="details" >
                             <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                            <strong><p style="color: black">@job.Province.Name</p></strong>
-                            <p>@Html.Raw(job.Introduce)</p>
+                            <strong><a style="color: white">@job.Province.Name</a></strong>
+                            <hr />
+                            <p>Age: @job.MinAge - @job.MaxAge</p>
                             <p>Job Nature: @job.Time.Name</p>
                             <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
                             <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>

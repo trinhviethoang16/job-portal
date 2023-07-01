@@ -62,7 +62,7 @@
                     <div class="single-post d-flex flex-row">
                         <!-- Employer province -->
                         <div class="thumb" style="align-items:center">
-                            <img href="/job/@employer.Slug" style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="EMPLOYER IMAGE">
+                            <a href="/job?slug=@employer.Slug"><img style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="EMPLOYER IMAGE"></a>
                             <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
                                 <!--Skill-->
                                 <li style="border-radius:10px">
@@ -76,8 +76,8 @@
                         <div class="details" style="margin-left:20px; width:600px;">
                             <div class="title d-flex flex-row justify-content-between">
                                 <div class="titles">
-                                    <a href="/job/@employer.Slug"><h4>@employer.FullName</h4></a>
-                                    <div class="country"> <img width="30" height="20" src="https://localhost:7211/images/countries/@employer.Country.Flag" alt="flag"> @employer.Country.Name</div>
+                                    <a href="/job?slug=@employer.Slug"><h4>@employer.FullName</h4></a>
+                                    <p><img width="30" height="20" src="https://localhost:7211/images/countries/@employer.Country.Flag" alt="flag"> @employer.Country.Name</p>
                                     <strong><a target="_blank" href="https://@employer.WebsiteURL" style="color: black">@employer.WebsiteURL</a></strong>
                                 </div>
                                 <div class="ml-auto">

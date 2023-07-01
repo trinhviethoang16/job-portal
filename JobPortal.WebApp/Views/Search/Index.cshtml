@@ -82,39 +82,49 @@
                 <vc:time></vc:time>
 
                 <!--Job list-->
-                @foreach (var job in Model)
+                @if (Model.Any())
                 {
-                    <div class="single-post d-flex flex-row">
-                        <!--Job skill list-->
-                        <div class="thumb" style="align-items:center">
-                            <img href="/job/@job.Slug" style="border-radius:10px" width="150" height="75" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
-                            <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
-                                <!--Skill-->
-                                <li style="border-radius:10px">
-                                    <a href="/job?slug=@job.Skill.Slug">@job.Skill.Name</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--End job skill list-->
-                        <div class="details" style="margin-left:20px; width:600px;">
-                            <div class="title d-flex flex-row justify-content-between">
-                                <div class="titles">
-                                    <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                                    <h5>From: @job.AppUser.FullName</h5>
-                                    <strong><p style="color: slateblue">@job.Province.Name</p></strong>
-                                </div>
-                                <div class="ml-auto">
-                                    <ul class="btns">
-                                        <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
-                                    </ul>
-                                </div>
+                    @foreach (var job in Model)
+                    {
+                        <div class="single-post d-flex flex-row">
+                            <!--Job skill list-->
+                            <div class="thumb" style="align-items:center">
+                                <img href="/job/@job.Slug" style="border-radius:10px" width="150" height="75" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
+                                <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+                                    <!--Skill-->
+                                    <li style="border-radius:10px">
+                                        <a href="/job?slug=@job.Skill.Slug">@job.Skill.Name</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <hr>
-                            <p>@Html.Raw(job.Introduce)</p>
-                            <h5>Job Nature: @job.Time.Name</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
-                            <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>
+                            <!--End job skill list-->
+                            <div class="details" style="margin-left:20px; width:600px;">
+                                <div class="title d-flex flex-row justify-content-between">
+                                    <div class="titles">
+                                        <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
+                                        <h5>From: @job.AppUser.FullName</h5>
+                                        <strong><a style="color: black">@job.Province.Name</a></strong>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <ul class="btns">
+                                            <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p>@Html.Raw(job.Introduce)</p>
+                                <h5>Job Nature: @job.Time.Name</h5>
+                                <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
+                                <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>
+                            </div>
                         </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center" style="margin-top: 50px;">
+                        <img src="~/images/default/oops.png" alt="oops robot" width="600" height="400" style="margin-bottom: 10px; border-radius:10px">
+                        <h4>Oops! The job you're looking for doesn't exist.</h4>
                     </div>
                 }
                 <!--End job list-->
@@ -151,7 +161,7 @@
                                 <img href="/job/@job.Slug" style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image">
                                 <br />
                                 <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
-                                <strong><p class="text-center" style="color: slateblue">@job.Province.Name</p></strong>
+                                <strong><h6 class="text-center" style="color: black">@job.Province.Name</h6></strong>
                                 <p>@Html.Raw(job.Introduce)</p>
                                 <h5>Job Nature: @job.Time.Name</h5>
                                 <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
