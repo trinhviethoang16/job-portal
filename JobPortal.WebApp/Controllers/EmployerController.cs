@@ -85,7 +85,9 @@ namespace JobPortal.WebApp.Controllers
                 employer.FullName = model.FullName;
                 employer.Slug = TextHelper.ToUnsignString(model.FullName ?? employer.FullName).ToLower();
             }
-            else if (model.UrlAvatar != null)
+
+            //fix bug for null value
+            if (model.UrlAvatar != null)
             {
                 string oldLogoImage = employer.UrlAvatar;
                 var newLogoImage = UploadImage.UploadImageFile(model.UrlAvatar, POST_IMAGE_PATH);

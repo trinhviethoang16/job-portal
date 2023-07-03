@@ -18,7 +18,7 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("")]
-        public async Task<IActionResult> Index(string q, int province, int skill, int? page)
+        public async Task<IActionResult> Index(string q, int province, int skill)
         {
             int pageSize = 5; //number of jobs per page
 
@@ -69,7 +69,7 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.SkillId == skill).ToList();
                 }
 
-                return View(jobs.ToPagedList(page ?? 1, pageSize));
+                return View(jobs);
             }
             else
             {
@@ -83,7 +83,7 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.SkillId == skill).ToList();
                 }
 
-                return View(jobs.ToPagedList(page ?? 1, pageSize));
+                return View(jobs);
             }
         }
     }

@@ -31,11 +31,18 @@
 			<div class="col-lg-8 post-list">
 				<div class="single-post d-flex flex-row">
 					<div class="thumb" style="align-items:center">
-						<a href="/job?slug=@Model.AppUser.Slug"><img style="border-radius:10px" width="150" height="75" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
+						<a href="/job?slug=@Model.AppUser.Slug"><img style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
 						<ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
-							<!--Skill-->
+							<!-- Province -->
 							<li style="border-radius:10px">
-								<a href="/job?slug=@Model.Skill.Slug">@Model.Skill.Name</a>
+								<strong><a href="/job?slug=@Model.Province.Slug" style="color: black"><span class="lnr lnr-map-marker"></span> @Model.Province.Name</a></strong>
+							</li>
+						</ul>
+						<hr />
+						<ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+							<!-- Skill -->
+							<li style="border-radius:10px">
+								<strong><a href="/job?slug=@Model.Skill.Slug" style="color: black">@Model.Skill.Name</a></strong>
 							</li>
 						</ul>
 					</div>
@@ -43,23 +50,18 @@
 						<div class="title d-flex flex-row justify-content-between">
 							<div class="titles">
 								<a href="/job/@Model.Slug"><h4>@Model.Name</h4></a>
-								<h5>From: @Model.AppUser.FullName</h5>
-								<strong><a style="color: black">@Model.Province.Name</a></strong>
+								<h5 style="color: gray; margin-bottom: 5px;"><span class="lnr lnr-hourglass"></span> @GetTimeAgo(Model.CreateDate)</h5>
+								<h5 style="margin-top: 10px; margin-bottom: 10px"><strong>From: <a href="/company/@Model.AppUser.Slug">@Model.AppUser.FullName</a></strong></h5>
 							</div>
 						</div>
+						<hr>
+						<p>@Html.Raw(Model.Introduce)</p>
 						<hr />
-						<p>Age: @Model.MinAge - @Model.MaxAge</p>
-						<h5>Job Nature: @Model.Time.Name</h5>
-						<p class="address"><span class="lnr lnr-map"></span> @Model.Title.Name</p>
-						<p class="address"><span class="lnr lnr-database"></span> $@Model.MinSalary - $@Model.MaxSalary</p>
+						<h5><strong>Age: @Model.MinAge - @Model.MaxAge</strong></h5>
+						<h5><strong>Job Nature: @Model.Time.Name</strong></h5>
+						<h5 style="color: blue"><span class="lnr lnr-book"></span> <strong>@Model.Title.Name</strong></h5>
+						<h5 style="color: green"><strong>$ @Model.MinSalary - @Model.MaxSalary USD</strong></h5>
 					</div>
-				</div>
-				<div class="single-post job-experience">
-					<ul>
-						<li>
-							<span>@Html.Raw(Model.Introduce)</span>
-						</li>
-					</ul>
 				</div>
 				<div class="single-post job-details">
 					<h4 class="single-title">Whom we are looking for</h4>
@@ -97,27 +99,33 @@
 				}
 				else
 				{
-					<a class="text-uppercase loadmore-btn mx-auto d-block" href="/login">login to apply now</a>
+					<a target="_blank" class="text-uppercase loadmore-btn mx-auto d-block" href="/login">login to apply now</a>
 				}
 			</div>
 			<div class="col-lg-4 sidebar">
+				<!-- Provinces -->
 				<div class="single-slidebar">
-					<!--Province-->
-					<h4 class="text-center">Jobs by Location</h4>
+					<h4 class="text-center">Jobs by Location <span class="lnr lnr-map-marker"></span></h4>
 					<ul class="cat-list">
-						@foreach (var pro in ViewBag.ListProvinces)
+						@foreach (var province in ViewBag.ListProvinces)
 						{
-							<li><a class="justify-content-between d-flex" href="/job?slug=@pro.Slug"><p>@pro.Name</p><span></span></a></li>
+							@if (province.Jobs.Count > 0)
+							{
+								<li><a class="justify-content-between d-flex" href="/job?slug=@province.Slug"><p>@province.Name</p><span>@province.Jobs.Count</span></a></li>
+							}
 						}
 					</ul>
 				</div>
+				<!-- Skills -->
 				<div class="single-slidebar">
-					<!--Skill-->
-					<h4 class="text-center">Jobs by Skill</h4>
+					<h4 class="text-center">Jobs by Skill <span class="lnr lnr-tag"></span></h4>
 					<ul class="cat-list">
 						@foreach (var skill in ViewBag.ListSkills)
 						{
-							<li><a class="justify-content-between d-flex" href="/job?slug=@skill.Slug"><p>@skill.Name</p><span></span></a></li>
+							@if (skill.Jobs.Count > 0)
+							{
+								<li><a class="justify-content-between d-flex" href="/job?slug=@skill.Slug"><p>@skill.Name</p><span>@skill.Jobs.Count</span></a></li>
+							}
 						}
 					</ul>
 				</div>
@@ -224,3 +232,24 @@
 		});
 	}
 </script>
+
+@functions {
+	public string GetTimeAgo(DateTime? createDate)
+	{
+		DateTime actualCreateDate = createDate.Value;
+		TimeSpan timeAgo = DateTime.Now - actualCreateDate;
+
+		if (timeAgo.TotalMinutes < 60)
+		{
+			return $"Posted {Math.Max(1, (int)timeAgo.TotalMinutes)} minute{(timeAgo.TotalMinutes >= 2 ? "s" : "")} ago";
+		}
+		else if (timeAgo.TotalHours < 24)
+		{
+			return $"Posted {Math.Max(1, (int)timeAgo.TotalHours)} hour{(timeAgo.TotalHours >= 2 ? "s" : "")} ago";
+		}
+		else
+		{
+			return $"Posted {Math.Max(1, (int)timeAgo.TotalDays)} day{(timeAgo.TotalDays >= 2 ? "s" : "")} ago";
+		}
+	}
+}

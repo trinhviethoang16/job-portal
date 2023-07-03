@@ -43,19 +43,20 @@
             <div class="active-popular-post-carusel">
                 @foreach (var job in ViewBag.RandomJobs)
                 {
-                    <div class="single-popular-post d-flex flex-row" style="border-radius:10px;">
-                        <div class="thumb" >
-                            <img href="/job/@job.Slug" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="JOB IMAGE" style="border-radius:5px" width="70" height="70" >
+                    <div class="single-popular-post d-flex flex-row"
+                    style="border-radius: 10px; color: white; background-color: #333; padding: 10px;">
+                        <div class="thumb">
+                            <img href="/job/@job.Slug" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image" style="border-radius:5px" width="70" height="70" >
                             <a class="btns text-uppercase" style="width:100px; text-align:center; border-radius:5px" href="/job/@job.Slug">View job</a>
                         </div>
-                        <div class="details" >
+                        <div class="details">
                             <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                            <strong><a style="color: white">@job.Province.Name</a></strong>
-                            <hr />
+                            <p style="color: #ccc"><span class="lnr lnr-hourglass"></span> @GetTimeAgo(job.CreateDate)</p>
+                            <strong><a href="/job?slug=@job.Province.Slug" style="color: #ccc;"><span class="lnr lnr-map-marker"></span> @job.Province.Name</a></strong>
                             <p>Age: @job.MinAge - @job.MaxAge</p>
                             <p>Job Nature: @job.Time.Name</p>
-                            <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
-                            <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>
+                            <p class="address"><span class="lnr lnr-book"></span> @job.Title.Name</p>
+                            <p class="address">$ @job.MinSalary - @job.MaxSalary USD</p>
                         </div>
                     </div>
                 }
@@ -110,16 +111,16 @@
                 if (@emp.Jobs.Count > 0)
                 {
                     <div class='col-xs-16 col-3'>
-                        <a href="/job?slug=@emp.Slug">
+                        <a href="/company/@emp.Slug">
                             <div class="card" style="overflow: hidden;">
                                 <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='200' width='150' >
                                 <div class='card-body'>
                                     <h5 class="text-center" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">@emp.FullName</h5>
                                     <hr />
                                     <footer class='card-text text-center'>
-                                        <span>@emp.Province.Name</span>
+                                        <span class="lnr lnr-map-marker"></span><span> @emp.Province.Name</span>
                                         <p></p>
-                                        <span> <img src="~/assets/admin/assets/img/icons/unicons/job-icon.png" alt="User" style="object-fit:cover; width:20px; height:20px " class="rounded" /> @emp.Jobs.Count Jobs ></span>
+                                        <span> <img src="~/assets/admin/assets/img/icons/unicons/job-icon.png" alt="User" style="object-fit:cover; width:20px; height:20px " class="rounded" /> @emp.Jobs.Count Jobs <span class="lnr lnr-chevron-right"></span></span>
                                     </footer>
                                 </div>
                             </div>
@@ -225,3 +226,24 @@
         restoreSelectedValue();
     };
 </script>
+
+@functions {
+    public string GetTimeAgo(DateTime? createDate)
+    {
+        DateTime actualCreateDate = createDate.Value;
+        TimeSpan timeAgo = DateTime.Now - actualCreateDate;
+
+        if (timeAgo.TotalMinutes < 60)
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalMinutes)} minute{(timeAgo.TotalMinutes >= 2 ? "s" : "")} ago";
+        }
+        else if (timeAgo.TotalHours < 24)
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalHours)} hour{(timeAgo.TotalHours >= 2 ? "s" : "")} ago";
+        }
+        else
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalDays)} day{(timeAgo.TotalDays >= 2 ? "s" : "")} ago";
+        }
+    }
+}

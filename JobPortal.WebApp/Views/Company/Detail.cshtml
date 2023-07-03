@@ -31,12 +31,24 @@
             <div class="col-lg-8 post-list blog-post-list">
                 <div class="single-post">
                     <a href="/job?slug=@Model.Slug"><img class="img-fluid" src="https://localhost:7211/images/employers/@Model.UrlAvatar" alt="flag"></a>
+                    <hr />
+                    <h3 style="text-align: center; margin-top: 10px; margin-bottom: 5px">@Model.FullName</h3>
+                    <ul class="cat-list">
+                        @if (ViewBag.CountJob == 1)
+                        {
+                            <li class="col-xs-12 col-4"><a href="/job?slug=@Model.Slug">@ViewBag.CountJob job opening</a></li>
+
+                        }
+                        else if (ViewBag.CountJob > 1)
+                        {
+                            <li class="col-xs-12 col-4"><a href="/job?slug=@Model.Slug">@ViewBag.CountJob jobs opening</a></li>
+                        }
+                    </ul>
                     <ul class="tags">
                         <li><a target="_blank" href="https://@Model.WebsiteURL/">@Model.WebsiteURL</a></li> - Established: @Model.CreateDate -
                         <img width="30" height="20" src="https://localhost:7211/images/countries/@Model.Country.Flag" alt="flag"> @Model.Country.Name
                     </ul>
                     <div class="content-wrap">
-
                         <h6>Company overview:</h6>
                         <blockquote class="generic-blockquote">
                             <p>@Html.Raw(Model.Description)</p>

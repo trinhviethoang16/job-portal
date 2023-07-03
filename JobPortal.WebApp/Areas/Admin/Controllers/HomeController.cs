@@ -41,6 +41,7 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
             //job count
             var jobCount = _context.Jobs.Count();
             ViewBag.CountJob = jobCount;
+
             return View();
         }
 

@@ -1,39 +1,8 @@
 ﻿@model IEnumerable<JobPortal.Data.Entities.Job>
-@using X.PagedList;
-@using X.PagedList.Mvc.Core;
-@using X.PagedList.Web.Common;
 
 @{
     Layout = "_Layout";
 }
-
-<style>
-    .pagination {
-        list-style-type: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-    
-    .pagination li {
-        margin: 0 5px;
-    }
-
-    .pagination li a {
-        display: inline-block;
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        color: #333;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-    .pagination li.active a {
-        background-color: #333;
-        color: #fff;
-    }
-</style>
 
 <!-- Start banner Area -->
 <section class="banner-area relative" id="home">
@@ -87,35 +56,52 @@
                     @foreach (var job in Model)
                     {
                         <div class="single-post d-flex flex-row">
-                            <!--Job skill list-->
+                            <!-- Job skill -->
                             <div class="thumb" style="align-items:center">
-                                <img href="/job/@job.Slug" style="border-radius:10px" width="150" height="75" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE">
+                                <a href="/company/@job.AppUser.Slug"><img href="/job/@job.Slug" style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
                                 <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
-                                    <!--Skill-->
+                                    <!-- Province -->
                                     <li style="border-radius:10px">
-                                        <a href="/job?slug=@job.Skill.Slug">@job.Skill.Name</a>
+                                        <strong><a href="/job?slug=@job.Province.Slug" style="color: black"><span class="lnr lnr-map-marker"></span> @job.Province.Name</a></strong>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+                                    <!-- Skill -->
+                                    <li style="border-radius:10px">
+                                        <strong><a href="/job?slug=@job.Skill.Slug" style="color: black">@job.Skill.Name</a></strong>
                                     </li>
                                 </ul>
                             </div>
-                            <!--End job skill list-->
+                            <!-- End job skill -->
                             <div class="details" style="margin-left:20px; width:600px;">
                                 <div class="title d-flex flex-row justify-content-between">
                                     <div class="titles">
                                         <a href="/job/@job.Slug"><h4>@job.Name</h4></a>
-                                        <h5>From: @job.AppUser.FullName</h5>
-                                        <strong><a style="color: black">@job.Province.Name</a></strong>
+                                        <h5 style="color: gray"><span class="lnr lnr-hourglass"></span> @GetTimeAgo(job.CreateDate)</h5>
+                                        <h5><strong>From: <a href="/company/@job.AppUser.Slug">@job.AppUser.FullName</a></strong></h5>
                                     </div>
-                                    <div class="ml-auto">
+                                    @*<div class="ml-auto" style="text-align:right;">
+                            <ul class="btns">
+                            <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
+                            </ul>
+                            </div>*@
+                                </div>
+                                <hr>
+                                <p>@Html.Raw(job.Introduce)</p>
+                                <hr />
+                                <div style="display:flex; justify-content: space-between;">
+                                    <div>
+                                        <h5><strong>Job Nature: @job.Time.Name</strong></h5>
+                                        <h5 style="color: blue"><span class="lnr lnr-book"></span> <strong>@job.Title.Name</strong></h5>
+                                        <h5 style="color: green"><strong>$ @job.MinSalary - @job.MaxSalary USD</strong></h5>
+                                    </div>
+                                    <div style="text-align:right; margin-top: 40px">
                                         <ul class="btns">
                                             <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <hr>
-                                <p>@Html.Raw(job.Introduce)</p>
-                                <h5>Job Nature: @job.Time.Name</h5>
-                                <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
-                                <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>
                             </div>
                         </div>
                     }
@@ -123,32 +109,11 @@
                 else
                 {
                     <div class="text-center" style="margin-top: 50px;">
-                        <img src="~/images/default/oops.png" alt="oops robot" width="600" height="400" style="margin-bottom: 10px; border-radius:10px">
+                        <img src="~/images/default/oops.png" alt="oops" width="600" height="400" style="margin-bottom: 10px; border-radius:10px">
                         <h4>Oops! The job you're looking for doesn't exist.</h4>
                     </div>
                 }
                 <!--End job list-->
-
-                <!--Page list-->
-                <div class="text-center">
-                    <ul class="pagination">
-                        @Html.PagedListPager((IPagedList)Model, page =>
-                        Url.Action("Index", new { page }),
-                        new PagedListRenderOptions
-                        {
-                        Display = PagedListDisplayMode.IfNeeded,
-                        LiElementClasses = new string[] { "page-item" },
-                        UlElementClasses = new string[] { "pagination" },
-                        PageClasses = new string[] { "page-link" },
-                        MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
-                        LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
-                        LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
-                        LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
-                        LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
-                        })
-                    </ul>
-                </div>
-
             </div>
             <div class="col-lg-4 sidebar">
                 <!-- Jobs -->
@@ -255,3 +220,24 @@
     </div>
 </section>
 <!-- End calto-action Area -->
+
+@functions {
+    public string GetTimeAgo(DateTime? createDate)
+    {
+        DateTime actualCreateDate = createDate.Value;
+        TimeSpan timeAgo = DateTime.Now - actualCreateDate;
+
+        if (timeAgo.TotalMinutes < 60)
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalMinutes)} minute{(timeAgo.TotalMinutes >= 2 ? "s" : "")} ago";
+        }
+        else if (timeAgo.TotalHours < 24)
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalHours)} hour{(timeAgo.TotalHours >= 2 ? "s" : "")} ago";
+        }
+        else
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalDays)} day{(timeAgo.TotalDays >= 2 ? "s" : "")} ago";
+        }
+    }
+}

@@ -48,7 +48,13 @@ namespace JobPortal.WebApp.Controllers
                 .Include(e => e.Country)
                 .ToList();
 
-            return View(employers.ToPagedList(page ?? 1, pageSize));
+            int pageNumber = page ?? 1; // Trang hiện tại
+            int startRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của employers trên trang hiện tại
+
+            ViewBag.StartRank = startRank; // Truyền giá trị startRank vào ViewBag
+
+            return View(employers.ToPagedList(pageNumber, pageSize));
+
         }
 
         [Route("{slug}")]
@@ -67,6 +73,10 @@ namespace JobPortal.WebApp.Controllers
 
             //provinces - 4
             ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
+
+            //job count
+            var jobCount = _context.Jobs.Where(j => j.AppUser.Slug == slug).Count();
+            ViewBag.CountJob = jobCount;
 
             var employer = await _context.AppUsers
                 .Where(e => e.Slug == slug)

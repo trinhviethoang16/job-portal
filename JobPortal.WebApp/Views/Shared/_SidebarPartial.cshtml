@@ -1,7 +1,7 @@
 ﻿<div class="col-lg-4 sidebar">
     <!-- Provinces -->
     <div class="single-slidebar">
-        <h4 class="text-center">Jobs by Location</h4>
+        <h4 class="text-center">Jobs by Location <span class="lnr lnr-map-marker"></span></h4>
         <ul class="cat-list">
             @foreach (var province in ViewBag.ListProvinces)
             {
@@ -14,7 +14,7 @@
     </div>
     <!-- Skills -->
     <div class="single-slidebar">
-        <h4 class="text-center">Jobs by Skill</h4>
+        <h4 class="text-center">Jobs by Skill <span class="lnr lnr-tag"></span></h4>
         <ul class="cat-list">
             @foreach (var skill in ViewBag.ListSkills)
             {
@@ -32,14 +32,22 @@
             @foreach (var job in ViewBag.ListJobs)
             {
                 <div class="single-rated">
-                    <a href="/job/@job.AppUser.Slug"><img style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image"></a>
+                    <a href="/company/@job.AppUser.Slug"><img style="width: 300px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="employer"></a>
                     <br />
                     <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
-                    <strong><h6 class="text-center" style="color: black">@job.Province.Name</h6></strong>
+                    <div style="text-align: center;">
+                        <strong><a href="/job?slug=@job.Province.Slug" style="color: black"><span class="lnr lnr-map-marker"></span> @job.Province.Name</a></strong>
+                    </div>
+                    <hr>
                     <p>@Html.Raw(job.Introduce)</p>
-                    <h5>Job Nature: @job.Time.Name</h5>
-                    <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
-                    <p class="address"><span class="lnr lnr-database"></span> $@job.MinSalary - $@job.MaxSalary</p>
+                    <hr />
+                    <div style="display:flex; justify-content: space-between;">
+                        <div>
+                            <h5><strong>Job Nature: @job.Time.Name</strong></h5>
+                            <h5 style="color: blue"><span class="lnr lnr-book"></span> <strong>@job.Title.Name</strong></h5>
+                            <h5 style="color: green"><strong>$ @job.MinSalary - @job.MaxSalary USD</strong></h5>
+                        </div>
+                    </div>
                     <a href="/job/@job.Slug" style="display: flex; justify-content: center;" class="btns text-uppercase">View job</a>
                 </div>
             }

@@ -5,7 +5,7 @@
 
 @{
     Layout = "_Layout";
-    int i = 1;
+    int startRank = ViewBag.StartRank ?? 1; // Lấy giá trị startRank từ ViewBag, mặc định là 1 nếu không tồn tại
 }
 
 <style>
@@ -57,43 +57,64 @@
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 post-list">
                 <!-- Employer list -->
-                @foreach (var employer in Model)
+                @if (Model.Any())
                 {
-                    <div class="single-post d-flex flex-row">
-                        <!-- Employer province -->
-                        <div class="thumb" style="align-items:center">
-                            <a href="/job?slug=@employer.Slug"><img style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="EMPLOYER IMAGE"></a>
-                            <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
-                                <!--Skill-->
-                                <li style="border-radius:10px">
-                                    <a href="/job?slug=@employer.Province.Slug">@employer.Province.Name</a>
-                                </li>
-                            </ul>
-                            <hr />
-                            <h3 style="color: red; text-align: center">#@i</h3>
-                        </div>
-                        <!--End job skill list-->
-                        <div class="details" style="margin-left:20px; width:600px;">
-                            <div class="title d-flex flex-row justify-content-between">
-                                <div class="titles">
-                                    <a href="/job?slug=@employer.Slug"><h4>@employer.FullName</h4></a>
-                                    <p><img width="30" height="20" src="https://localhost:7211/images/countries/@employer.Country.Flag" alt="flag"> @employer.Country.Name</p>
-                                    <strong><a target="_blank" href="https://@employer.WebsiteURL" style="color: black">@employer.WebsiteURL</a></strong>
+                    @for (int i=0; i<Model.Count(); i++)
+                    {
+                        //for rank
+                        var employer = Model.ElementAt(i);
+
+                        <div class="single-post d-flex flex-row">
+                            <!-- Employer province -->
+                            <div class="thumb" style="align-items:center">
+                                <a href="/job?slug=@employer.Slug"><img style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@employer.UrlAvatar" alt="employer image"></a>
+                                <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+                                    <!--Skill-->
+                                    <li style="border-radius:10px">
+                                        <strong><span class="lnr lnr-map-marker"></span><a href="/job?slug=@employer.Province.Slug"> @employer.Province.Name</a></strong>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <h3 style="color: red; text-align: center">#@(startRank++)</h3>
+                            </div>
+                            <!--End job skill list-->
+                            <div class="details" style="margin-left:20px; width:600px;">
+                                <div class="title d-flex flex-row justify-content-between">
+                                    <div class="titles">
+                                        <a href="/company/@employer.Slug"><h4>@employer.FullName</h4></a>
+                                        <p><img width="30" height="20" src="https://localhost:7211/images/countries/@employer.Country.Flag" alt="flag"> @employer.Country.Name</p>
+                                        <strong><a target="_blank" href="https://@employer.WebsiteURL" style="color: black"><span class="lnr lnr-link"></span> @employer.WebsiteURL</a></strong>
+                                    </div>
+                                    @*<div class="ml-auto">
+                                        <ul class="btns">
+                                            <li style="border-radius:10px"><a href="/company/@employer.Slug">View company</a></li>
+                                        </ul>
+                                    </div>*@
                                 </div>
-                                <div class="ml-auto">
-                                    <ul class="btns">
-                                        <li style="border-radius:10px"><a href="/company/@employer.Slug">View company</a></li>
-                                    </ul>
+                                <hr>
+                                <div style="display:flex; justify-content: space-between;">
+                                    <div>
+                                        <h5><strong><span class="lnr lnr-clock"></span> @employer.WorkingDays</strong></h5>
+                                        <h5><strong><span class="lnr lnr-users"></span> @employer.CompanySize</strong></h5>
+                                        <h5 style="color: blue" class="address"><strong><span class="lnr lnr-envelope"></span> @employer.Email</strong></h5>
+                                        <h5 style="color: green" class="address"><strong><span class="lnr lnr-phone-handset"></span> @employer.Phone</strong></h5>
+                                    </div>
+                                    <div style="text-align:right; margin-top: 80px">
+                                        <ul class="btns">
+                                            <li style="border-radius:10px"><a href="/company/@employer.Slug">View company</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <hr>
-                            <p>@employer.WorkingDays</p>
-                            <h5>@employer.CompanySize</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> Email: @employer.Email</p>
-                            <p class="address"><span class="lnr lnr-database"></span> @employer.Phone</p>
                         </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center" style="margin-top: 50px;">
+                        <img src="~/images/default/oops.png" alt="oops" width="600" height="400" style="margin-bottom: 10px; border-radius:10px">
+                        <h4>Oops! There are currently no employers available.</h4>
                     </div>
-                    i++;
                 }
                 <!--End job list-->
 
