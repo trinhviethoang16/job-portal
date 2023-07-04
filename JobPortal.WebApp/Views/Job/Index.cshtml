@@ -87,11 +87,14 @@
                                     </li>
                                 </ul>
                                 <hr />
-                                <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+                                <ul class="tags" style="justify-content:center; text-align: center; border-radius:10px">
                                     <!-- Skill -->
-                                    <li style="border-radius:10px">
-                                        <strong><a href="/job?slug=@job.Skill.Slug" style="color: black">@job.Skill.Name</a></strong>
-                                    </li>
+                                    @foreach (var skill in job.Skills)
+                                    {
+                                        <li style="border-radius:10px">
+                                            <strong><a href="/job?slug=@skill.Slug" style="color: black">@skill.Name</a></strong>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                             <!-- End job skill -->
@@ -102,11 +105,6 @@
                                         <h5 style="color: gray"><span class="lnr lnr-hourglass"></span> @GetTimeAgo(job.CreateDate)</h5>
                                         <h5><strong>From: <a href="/company/@job.AppUser.Slug">@job.AppUser.FullName</a></strong></h5>
                                     </div>
-                                    @*<div class="ml-auto" style="text-align:right;">
-                                        <ul class="btns">
-                                            <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
-                                        </ul>
-                                    </div>*@
                                 </div>
                                 <hr>
                                 <p>@Html.Raw(job.Introduce)</p>

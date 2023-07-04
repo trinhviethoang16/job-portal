@@ -37,15 +37,6 @@ namespace JobPortal.Data.Entities
 
         [Display(Name = "Create date")]
         public DateTime? CreateDate { get; set; }
-
-        [Display(Name = "Min age")]
-        [Range(0, 100, ErrorMessage = "Please enter valid age.")]
-        public byte? MinAge { get; set; }
-
-        [Display(Name = "Max age")]
-        [Range(1, 100, ErrorMessage = "Please enter valid age.")]
-        //[AgeRange("MinAge")] //Age Range Validation Attribute
-        public byte? MaxAge { get; set; }
         public int Popular { get; set; }
         public Province? Province { get; set; }
 
@@ -68,10 +59,7 @@ namespace JobPortal.Data.Entities
 
         [Display(Name = "Employer")]
         public Guid AppUserId { get; set; }
-		public Skill? Skill { get; set; }
-
-        [Display(Name = "Skill")]
-        public int SkillId { get; set; }
-		public ICollection<CV>? CVs { get; set; }
+        public virtual ICollection<Skill> Skills { get; set; }
+        public ICollection<CV>? CVs { get; set; }
     }
 }

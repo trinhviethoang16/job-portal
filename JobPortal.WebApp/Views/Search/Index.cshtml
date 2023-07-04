@@ -58,7 +58,7 @@
                         <div class="single-post d-flex flex-row">
                             <!-- Job skill -->
                             <div class="thumb" style="align-items:center">
-                                <a href="/company/@job.AppUser.Slug"><img href="/job/@job.Slug" style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="EMPLOYER IMAGE"></a>
+                                <a href="/company/@job.AppUser.Slug"><img href="/job/@job.Slug" style="border-radius:10px" width="200" height="100" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="employer image"></a>
                                 <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
                                     <!-- Province -->
                                     <li style="border-radius:10px">
@@ -66,11 +66,14 @@
                                     </li>
                                 </ul>
                                 <hr />
-                                <ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+                                <ul class="tags" style="justify-content:center; text-align: center; border-radius:10px">
                                     <!-- Skill -->
-                                    <li style="border-radius:10px">
-                                        <strong><a href="/job?slug=@job.Skill.Slug" style="color: black">@job.Skill.Name</a></strong>
-                                    </li>
+                                    @foreach (var skill in job.Skills)
+                                    {
+                                        <li style="border-radius:10px">
+                                            <strong><a href="/job?slug=@skill.Slug" style="color: black">@skill.Name</a></strong>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                             <!-- End job skill -->
@@ -81,11 +84,6 @@
                                         <h5 style="color: gray"><span class="lnr lnr-hourglass"></span> @GetTimeAgo(job.CreateDate)</h5>
                                         <h5><strong>From: <a href="/company/@job.AppUser.Slug">@job.AppUser.FullName</a></strong></h5>
                                     </div>
-                                    @*<div class="ml-auto" style="text-align:right;">
-                            <ul class="btns">
-                            <li style="border-radius:10px"><a href="/job/@job.Slug">Apply now</a></li>
-                            </ul>
-                            </div>*@
                                 </div>
                                 <hr>
                                 <p>@Html.Raw(job.Introduce)</p>

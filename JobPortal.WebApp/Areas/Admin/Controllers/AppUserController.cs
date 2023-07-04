@@ -26,8 +26,8 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
         [Route("")]
         public IActionResult Index()
         {
-
-            var users = userManager.Users.ToList();
+            //All users but admin
+            var users = userManager.Users.Where(u => u.Status != -1).ToList();
             var userRoles = new List<Dictionary<string, string>>();
 
             foreach (var user in users)
@@ -44,7 +44,6 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                 userRoles.Add(new Dictionary<string, string>
                 {
                     { "userId", user.Id.ToString()},
-                    { "UserName", user.UserName },
                     { "Email", user.Email },
                     { "Avatar", user.UrlAvatar },
                     { "RoleNames", string.Join(", ", roleNames) }

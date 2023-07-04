@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +12,7 @@ using JobPortal.Data.ViewModel;
 using JobPortal.Common;
 using Microsoft.AspNetCore.Identity;
 using X.PagedList;
+using NuGet.Packaging;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
@@ -37,7 +38,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                 .Include(j => j.AppUser)
                 .Include(j => j.Province)
                 .Include(j => j.Time)
-                .Include(j => j.Skill)
+                .Include(j => j.Skills)
                 .Include(j => j.Title)
                 .OrderByDescending(j => j.Id)
                 .ToListAsync();
@@ -49,8 +50,9 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         {
             ViewData["ProvinceId"] = new SelectList(_context.Provinces.OrderBy(p => p.Id), "Id", "Name");
             ViewData["TimeId"] = new SelectList(_context.Times.OrderBy(t => t.Id), "Id", "Name");
-            ViewData["SkillId"] = new SelectList(_context.Skills.OrderBy(s => s.Name), "Id", "Name");
             ViewData["TitleId"] = new SelectList(_context.Titles.OrderBy(t => t.Name), "Id", "Name");
+            var skills = _context.Skills.OrderBy(s => s.Name).ToList();
+            ViewBag.SkillId = new MultiSelectList(skills, "Id", "Name");
             return View();
         }
 
@@ -71,13 +73,11 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                     Introduce = model.Introduce,
                     ObjectTarget = model.ObjectTarget,
                     Experience = model.Experience,
-                    MinAge = model.MinAge,
-                    MaxAge = model.MaxAge,
                     MinSalary = model.MinSalary,
                     MaxSalary = model.MaxSalary,
                     ProvinceId = model.ProvinceId,
                     TimeId = model.TimeId,
-                    SkillId = model.SkillId,
+                    Skills = _context.Skills.Where(s => model.SkillIds.Contains(s.Id)).ToList(),
                     TitleId = model.TitleId,
                     AppUserId = id
                 };
@@ -93,36 +93,72 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         {
             ViewData["ProvinceId"] = new SelectList(_context.Provinces.OrderBy(p => p.Id), "Id", "Name");
             ViewData["TimeId"] = new SelectList(_context.Times.OrderBy(t => t.Id), "Id", "Name");
-            ViewData["SkillId"] = new SelectList(_context.Skills.OrderBy(s => s.Name), "Id", "Name");
             ViewData["TitleId"] = new SelectList(_context.Titles.OrderBy(t => t.Name), "Id", "Name");
-            var job = _context.Jobs.Where(j => j.Id == id).First();
-            return View(job);
-        }
 
+            var skills = _context.Skills.OrderBy(s => s.Name).ToList();
+            ViewBag.SkillId = new MultiSelectList(skills, "Id", "Name");
+
+            var job = _context.Jobs
+                .Include(j => j.Skills)
+                .Where(j => j.Id == id)
+                .First();
+
+            var model = new UpdateJobViewModel
+            {
+                Name = job.Name,
+                Description = job.Description,
+                Introduce = job.Introduce,
+                ObjectTarget = job.ObjectTarget,
+                Experience = job.Experience,
+                ProvinceId = job.ProvinceId,
+                TimeId = job.TimeId,
+                MinSalary = job.MinSalary,
+                MaxSalary = job.MaxSalary,
+                TitleId = job.TitleId,
+                SkillIds = job.Skills.Select(s => s.Id).ToList()
+            };
+
+            return View(model);
+        }
 
         [Route("{id}/update")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, UpdateJobViewModel model)
         {
-            Job job = _context.Jobs.Where(j => j.Id == id).First();
-            job.Name = model.Name;
-            job.Slug = TextHelper.ToUnsignString(job.Name).ToLower();
-            job.Description = model.Description;
-            job.Introduce = model.Introduce;
-            job.Experience = model.Experience;
-            job.ObjectTarget = model.ObjectTarget;
-            job.MinAge = model.MinAge;
-            job.MaxAge = model.MaxAge;
-            job.MinSalary = model.MinSalary;
-            job.MaxSalary = model.MaxSalary;
-            job.ProvinceId = model.ProvinceId;
-            job.TimeId = model.TimeId;
-            job.SkillId = model.SkillId;
-            job.TitleId = model.TitleId;
-            _context.Jobs.Update(job);
-            await _context.SaveChangesAsync();
-            return Redirect("/employer/job/" + job.AppUserId);
+            if (ModelState.IsValid)
+            {
+                var job = _context.Jobs
+                    .Include(j => j.Skills)
+                    .FirstOrDefault(j => j.Id == id);
+
+                if (job == null)
+                {
+                    return NotFound();
+                }
+                job.Name = model.Name;
+                job.Slug = TextHelper.ToUnsignString(job.Name).ToLower();
+                job.Description = model.Description;
+                job.Introduce = model.Introduce;
+                job.Experience = model.Experience;
+                job.ObjectTarget = model.ObjectTarget;
+                job.MinSalary = model.MinSalary;
+                job.MaxSalary = model.MaxSalary;
+                job.ProvinceId = model.ProvinceId;
+                job.TimeId = model.TimeId;
+                job.TitleId = model.TitleId;
+
+                var selectedSkills = _context.Skills
+                    .Where(s => model.SkillIds.Contains(s.Id))
+                    .ToList();
+                job.Skills.Clear();
+                job.Skills.AddRange(selectedSkills);
+
+                _context.Jobs.Update(job);
+                await _context.SaveChangesAsync();
+                return Redirect("/employer/job/" + job.AppUserId);
+            }
+            return View(model);
         }
 
         [HttpGet("{id}/delete")]
@@ -130,33 +166,58 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         {
             try
             {
-                Job job = _context.Jobs.Where(s => s.Id == id).First();
+                Job job = _context.Jobs.Include(j => j.Skills).FirstOrDefault(s => s.Id == id);
+
+                if (job == null)
+                {
+                    // Job with the given id not found
+                    return NotFound();
+                }
+
+                // Remove the associated JobSkill records
+                foreach (var skill in job.Skills.ToList())
+                {
+                    job.Skills.Remove(skill);
+                }
+
+                // Now remove the job itself
                 _context.Jobs.Remove(job);
+
                 _context.SaveChanges();
                 return Redirect("/employer/job/" + job.AppUserId);
             }
             catch (System.Exception)
             {
-                Job job = _context.Jobs.Where(s => s.Id == id).First();
-                return Redirect("/employer/job/" + job.AppUserId);
+                // Handle any exceptions if necessary
+                return RedirectToAction("Index"); // Redirect to some error page or handle the error as needed
             }
         }
 
         [HttpPost("delete-selected")]
         public async Task<IActionResult> DeleteSelected(int[] listDelete)
         {
-            var jobs = await _context.Jobs.Where(j => listDelete.Contains(j.Id)).ToListAsync();
+            var jobs = await _context.Jobs
+                .Include(j => j.Skills) // Include the Skills related to the Jobs
+                .Where(j => listDelete.Contains(j.Id))
+                .ToListAsync();
+
             foreach (var job in jobs)
             {
+                // Remove the associated JobSkill records
+                foreach (var skill in job.Skills.ToList())
+                {
+                    job.Skills.Remove(skill);
+                }
+
                 _context.Jobs.Remove(job);
             }
+
             await _context.SaveChangesAsync();
 
-            // Lấy giá trị id của người dùng từ một trong các job đã xóa
             var userId = jobs.FirstOrDefault()?.AppUserId;
 
-            // Trả về trang Index với giá trị id
             return RedirectToAction("Index", new { id = userId });
         }
+
     }
 }

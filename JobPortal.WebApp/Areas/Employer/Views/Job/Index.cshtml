@@ -44,31 +44,18 @@
                         }
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>
                                             <input type="checkbox" id="checkall" />
                                         </th>
-                                        @*<th>#</th>*@
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Name)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.CreateDate)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Province)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Time)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Skill)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Title)
-                                        </th>
+                                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                        <th>@Html.DisplayNameFor(model => model.CreateDate)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Province)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Time)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Skills)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Title)</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -79,31 +66,15 @@
                                             <td>
                                                 <input type="checkbox" name="listDelete" value="@job.Id" />
                                             </td>
-                                            @*<td>
-                                                @job.Id
-                                            </td>*@
+                                            <td>@Html.DisplayFor(modelJob => job.Name)</td>
+                                            <td>@Html.DisplayFor(modelJob => job.CreateDate)</td>
+                                            <td>@Html.DisplayFor(modelJob => job.Province.Name)</td>
+                                            <td>@Html.DisplayFor(modelJob => job.Time.Name)</td>
+                                            <td>@Html.Raw(string.Join(", ", job.Skills.Select(skill => skill.Name)))</td>
+                                            <td>@Html.DisplayFor(modelJob => job.Title.Name)</td>
                                             <td>
-                                                @Html.DisplayFor(modelJob => job.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelJob => job.CreateDate)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelJob => job.Province.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelJob => job.Time.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelJob => job.Skill.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelJob => job.Title.Name)
-                                            </td>
-                                            <td>
-                                                
-                                                <a href="/employer/job/@job.Id/update" class="btn btn-primary">Update</a> |
-                                                <a href="#" class="btn btn-danger" onclick="onDelete(@job.Id)">Delete</a>
+                                                <a style="color: blue" href="/employer/job/@job.Id/update">Update</a> |
+                                                <a style="color: red" href="#" onclick="onDelete(@job.Id)">Delete</a>
                                             </td>
                                         </tr>
                                     }

@@ -39,11 +39,14 @@
 							</li>
 						</ul>
 						<hr />
-						<ul class="tags" style="justify-content:center; display: grid; border-radius:10px">
+						<ul class="tags" style="justify-content:center; text-align: center; border-radius:10px">
 							<!-- Skill -->
-							<li style="border-radius:10px">
-								<strong><a href="/job?slug=@Model.Skill.Slug" style="color: black">@Model.Skill.Name</a></strong>
-							</li>
+							@foreach (var skill in Model.Skills)
+							{
+								<li style="border-radius:10px">
+									<strong><a href="/job?slug=@skill.Slug" style="color: black">@skill.Name</a></strong>
+								</li>
+							}
 						</ul>
 					</div>
 					<div class="details" style="margin-left:20px; width:600px;">
@@ -57,7 +60,6 @@
 						<hr>
 						<p>@Html.Raw(Model.Introduce)</p>
 						<hr />
-						<h5><strong>Age: @Model.MinAge - @Model.MaxAge</strong></h5>
 						<h5><strong>Job Nature: @Model.Time.Name</strong></h5>
 						<h5 style="color: blue"><span class="lnr lnr-book"></span> <strong>@Model.Title.Name</strong></h5>
 						<h5 style="color: green"><strong>$ @Model.MinSalary - @Model.MaxSalary USD</strong></h5>

@@ -64,10 +64,10 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.ProvinceId == province).ToList();
                 }
 
-                if (skill != 0)
-                {
-                    jobs = jobs.Where(job => job.SkillId == skill).ToList();
-                }
+                //if (skill != 0)
+                //{
+                //    jobs = jobs.Where(job => job.SkillId == skill).ToList();
+                //}
 
                 return View(jobs);
             }
@@ -78,10 +78,10 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.ProvinceId == province).ToList();
                 }
 
-                if (skill != 0)
-                {
-                    jobs = jobs.Where(job => job.SkillId == skill).ToList();
-                }
+                //if (skill != 0)
+                //{
+                //    jobs = jobs.Where(job => job.SkillId == skill).ToList();
+                //}
 
                 return View(jobs);
             }

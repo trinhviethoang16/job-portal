@@ -27,17 +27,40 @@
     </div>
     <!-- Jobs -->
     <div class="single-slidebar">
-        <h4 class ="text-center">Top rated job posts</h4>
+        <h4 class="text-center">Top rated job posts</h4>
         <div class="active-relatedjob-carusel">
             @foreach (var job in ViewBag.ListJobs)
             {
                 <div class="single-rated">
-                    <a href="/company/@job.AppUser.Slug"><img style="width: 300px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="employer"></a>
+                    <a href="/company/@job.AppUser.Slug">
+                        <img style="width: 300px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="employer">
+                    </a>
                     <br />
-                    <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
+                    <a href="/job/@job.Slug">
+                        <h4 class="text-center">@job.Name</h4>
+                    </a>
                     <div style="text-align: center;">
-                        <strong><a href="/job?slug=@job.Province.Slug" style="color: black"><span class="lnr lnr-map-marker"></span> @job.Province.Name</a></strong>
+                        <strong>
+                            <a href="/job?slug=@job.Province.Slug" style="color: black">
+                                <span class="lnr lnr-map-marker"></span> @job.Province.Name
+                            </a>
+                        </strong>
                     </div>
+                    <ul class="tags" style="justify-content:center; text-align: center; border-radius:10px">
+                        <!-- Skill -->
+                        <li style="border-radius:10px">
+                            <ul class="skill-list" style="list-style: none; padding: 0; margin: 0;">
+                                @foreach (var skill in job.Skills)
+                                {
+                                    <li style="display: inline-block; margin: 10px;">
+                                        <a href="/job?slug=@skill.Slug" style="color: black; background-color: #f2f2f2; padding: 5px 10px; border-radius: 20px; text-decoration: none;">
+                                            @skill.Name
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
                     <hr>
                     <p>@Html.Raw(job.Introduce)</p>
                     <hr />
@@ -53,6 +76,7 @@
             }
         </div>
     </div>
+
     <!-- Blogs -->
     <div class="single-slidebar">
         <h4 class="text-center">Carrer Advice Blog</h4>

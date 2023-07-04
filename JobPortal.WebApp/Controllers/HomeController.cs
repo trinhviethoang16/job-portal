@@ -51,6 +51,7 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
                 .Include(j => j.Time)
+                .Include(j => j.Skills)
                 .ToList();
             var randomJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
             ViewBag.RandomJobs = randomJobs;

@@ -9,17 +9,14 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title" style="text-align:center">List User With Role</h4>
+                    <h4 class="card-title" style="text-align:center">List Account With Role</h4>
                     <br />
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Email
+                                        Account
                                     </th>
                                     <th>
                                         Avatar
@@ -34,9 +31,8 @@
                                 @foreach (var user in Model)
                                 {
                                     <tr>
-                                        <td>@user["UserName"]</td>
                                         <td>@user["Email"]</td>
-                                        <td><img src="https://localhost:7211/images/employers/@user["Avatar"]" style="width: 40px" /></td>
+                                        <td><img src="https://localhost:7211/images/employers/@user["Avatar"]" style="width: 50px" /></td>
                                         <td>@user["RoleNames"]</td>
                                         <td>
                                             <a class="btn btn-primary" asp-action="ManageUserRoles" asp-route-userId="@user["userId"]">Set Role</a>

@@ -42,10 +42,11 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
             var jobs = _context.Jobs
-                .OrderByDescending(j => j.Popular)
+                .OrderByDescending(j => j.Id)
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
                 .Include(j => j.Time)
+                .Include(j => j.Skills)
                 .ToList();
             ViewBag.jobCount = _context.Jobs.Count();
 
@@ -53,7 +54,6 @@ namespace JobPortal.WebApp.Controllers
             {
                 var time = _context.Times.FirstOrDefault(t => t.Slug == slug);
                 var province = _context.Provinces.FirstOrDefault(p => p.Slug == slug);
-                var skill = _context.Skills.FirstOrDefault(s => s.Slug == slug);
                 var employer = _context.AppUsers.FirstOrDefault(e => e.Slug == slug);
 
                 if (time != null)
@@ -74,15 +74,6 @@ namespace JobPortal.WebApp.Controllers
                                   select job).ToList();
                     ViewBag.Province = province;
                 }
-                else if (skill != null)
-                {
-                    jobs = (from s in _context.Skills
-                                  join job in _context.Jobs on s.Id equals job.SkillId
-                                  orderby job.Id descending
-                                  where s.Slug == slug
-                                  select job).ToList();
-                    ViewBag.Skill = skill;
-                }
                 else if (employer != null)
                 {
                     jobs = (from e in _context.AppUsers
@@ -94,11 +85,15 @@ namespace JobPortal.WebApp.Controllers
                 }
                 else
                 {
-                    jobs = _context.Jobs.OrderByDescending(j => j.Id).ToList();
+                    var skill = _context.Skills.FirstOrDefault(s => s.Slug == slug);
+                    if (skill != null)
+                    {
+                        jobs = jobs.Where(j => j.Skills.Any(s => s.Slug == slug)).ToList();
+                        ViewBag.Skill = skill;
+                    }
                 }
-                return View(jobs.ToPagedList(page ?? 1, pageSize));
+                return View(jobs.ToPagedList(page ?? 1, pageSize)); //phan trang se lam mat danh sach
             }
-            jobs = _context.Jobs.OrderByDescending(j => j.Id).ToList();
             return View(jobs.ToPagedList(page ?? 1, pageSize));
         }
 
@@ -124,6 +119,7 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.AppUser)
                 .Include(j => j.Time)
                 .Include(j => j.Title)
+                .Include(j => j.Skills)
                 .FirstOrDefaultAsync();
             job.Popular++;
             await _context.SaveChangesAsync();
