@@ -61,9 +61,7 @@
                 {
                     @for (int i=0; i<Model.Count(); i++)
                     {
-                        //for rank
                         var employer = Model.ElementAt(i);
-
                         <div class="single-post d-flex flex-row">
                             <!-- Employer province -->
                             <div class="thumb" style="align-items:center">
@@ -85,11 +83,6 @@
                                         <p><img width="30" height="20" src="https://localhost:7211/images/countries/@employer.Country.Flag" alt="flag"> @employer.Country.Name</p>
                                         <strong><a target="_blank" href="https://@employer.WebsiteURL" style="color: black"><span class="lnr lnr-link"></span> @employer.WebsiteURL</a></strong>
                                     </div>
-                                    @*<div class="ml-auto">
-                                        <ul class="btns">
-                                            <li style="border-radius:10px"><a href="/company/@employer.Slug">View company</a></li>
-                                        </ul>
-                                    </div>*@
                                 </div>
                                 <hr>
                                 <div style="display:flex; justify-content: space-between;">

@@ -26,8 +26,6 @@ namespace JobPortal.WebApp.Controllers
         public IActionResult Index(string slug, int? page)
         {
             int pageSize = 5; //number of jobs per page
-
-            //for random value
             var random = new Random();
 
             //random jobs - 6
@@ -49,6 +47,10 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Skills)
                 .ToList();
             ViewBag.jobCount = _context.Jobs.Count();
+
+            ViewBag.SkillSlug = null;
+            ViewBag.ProvinceSlug = null;
+            ViewBag.EmployerSlug = null;
 
             if (slug != null)
             {
@@ -92,7 +94,10 @@ namespace JobPortal.WebApp.Controllers
                         ViewBag.Skill = skill;
                     }
                 }
-                return View(jobs.ToPagedList(page ?? 1, pageSize)); //phan trang se lam mat danh sach
+                ViewBag.SkillSlug = ViewBag.Skill?.Slug;
+                ViewBag.ProvinceSlug = ViewBag.Province?.Slug;
+                ViewBag.EmployerSlug = ViewBag.Employer?.Slug;
+                return View(jobs.ToPagedList(page ?? 1, pageSize));
             }
             return View(jobs.ToPagedList(page ?? 1, pageSize));
         }
@@ -100,7 +105,6 @@ namespace JobPortal.WebApp.Controllers
         [Route("{slug}")]
         public async Task<IActionResult> Detail(string slug)
         {
-            //for random value
             var random = new Random();
 
             //random jobs - 6

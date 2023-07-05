@@ -137,8 +137,23 @@
                 <!-- Page list -->
                 <div class="text-center">
                     <ul class="pagination">
-                        @Html.PagedListPager((IPagedList)Model, page =>
-                        Url.Action("Index", new { page }),
+                        @{
+                            string slug = null;
+                            if (ViewBag.Skill != null)
+                            {
+                                slug = ViewBag.Skill.Slug;
+                            }
+                            else if (ViewBag.Province != null)
+                            {
+                                slug = ViewBag.Province.Slug;
+                            }
+                            else if (ViewBag.Employer != null)
+                            {
+                                slug = ViewBag.Employer.Slug;
+                            }
+                        }
+                        @Html.PagedListPager((IPagedList)Model,
+                        page => Url.Action("Index", new { slug, page}),
                         new PagedListRenderOptions
                         {
                         Display = PagedListDisplayMode.IfNeeded,
