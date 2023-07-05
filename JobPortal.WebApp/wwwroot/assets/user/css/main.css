@@ -1778,6 +1778,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .default-select .nice-select .list {
+
+    height:150px;
+    overflow-y:scroll;
   margin-top: 0;
   border: none;
   border-radius: 0px;

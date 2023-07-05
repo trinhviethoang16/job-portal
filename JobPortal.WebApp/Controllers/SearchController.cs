@@ -20,9 +20,6 @@ namespace JobPortal.WebApp.Controllers
         [Route("")]
         public async Task<IActionResult> Index(string q, int province, int skill)
         {
-            int pageSize = 5; //number of jobs per page
-
-            //for random value
             var random = new Random();
 
             //For search filter area
@@ -53,6 +50,7 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.AppUser)
                 .Include(j => j.Title)
                 .Include(j => j.Time)
+                .Include(j => j.Skills)
                 .ToListAsync();
 
             if (!string.IsNullOrEmpty(q))
@@ -64,10 +62,10 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.ProvinceId == province).ToList();
                 }
 
-                //if (skill != 0)
-                //{
-                //    jobs = jobs.Where(job => job.SkillId == skill).ToList();
-                //}
+                if (skill != 0)
+                {
+                    jobs = jobs.Where(job => job.Skills.Any(s => s.Id == skill)).ToList();
+                }
 
                 return View(jobs);
             }
@@ -78,10 +76,10 @@ namespace JobPortal.WebApp.Controllers
                     jobs = jobs.Where(job => job.ProvinceId == province).ToList();
                 }
 
-                //if (skill != 0)
-                //{
-                //    jobs = jobs.Where(job => job.SkillId == skill).ToList();
-                //}
+                if (skill != 0)
+                {
+                    jobs = jobs.Where(job => job.Skills.Any(s => s.Id == skill)).ToList();
+                }
 
                 return View(jobs);
             }

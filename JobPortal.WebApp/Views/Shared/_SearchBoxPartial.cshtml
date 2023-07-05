@@ -2,9 +2,9 @@
     <div class="row justify-content-center form-wrap">
         <div class="col-lg-4 form-cols">
             <label for="inputPassword2" class="sr-only">Password</label>
-            <input type="text" class="form-control" id="inputPassword2" placeholder="what are you looking for ?" name="q" value="@if (ViewBag.q != null)
+            <input type="text" class="form-control" id="inputPassword2" placeholder="What are you looking for?" name="q" value="@if (ViewBag.q != null) 
             {<text>@ViewBag.q</text>}">
-            <input type="hidden" name="catelog" value="@if (ViewBag.Category != null)
+            <input type="hidden" name="catelog" value="@if (ViewBag.Category != null) 
             {<text>@ViewBag.Category.Slug</text>}">
         </div>
         <div class="col-lg-3 form-cols">
@@ -42,3 +42,6 @@
         </div>
     </div>
 </form>
+
+
+
