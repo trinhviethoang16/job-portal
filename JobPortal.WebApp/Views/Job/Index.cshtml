@@ -139,7 +139,11 @@
                     <ul class="pagination">
                         @{
                             string slug = null;
-                            if (ViewBag.Skill != null)
+                            if (ViewBag.Time != null)
+                            {
+                                slug = ViewBag.Time.Slug;
+                            }
+                            else if (ViewBag.Skill != null)
                             {
                                 slug = ViewBag.Skill.Slug;
                             }

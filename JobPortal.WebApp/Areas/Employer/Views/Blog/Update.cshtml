@@ -1,0 +1,152 @@
+﻿@model JobPortal.Data.Entities.Blog
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+    ViewData["Title"] = "Update blog";
+}
+
+<script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="UpdateImage" asp-route-id="@Model.Id" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label><span class="text-danger">*</span>
+                        <input type="file" asp-for="Image" class="form-control" accept="image/*" id="imgInp" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                        <br />
+                        <img id="blah" src="#" alt="your image" style="width: 510px;" />
+                    </div>
+                    <br />
+                    <div class="form-group text-center">
+                        <input type="submit" value="Update" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="text-align: center" class="card-title">FORM UPDATE BLOG</h4>
+                    <br />
+                    <div class="col-md-4i">
+                        <form asp-action="Update" enctype="multipart/form-data" id="form">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label asp-for="Title" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="Title" class="form-control" />
+                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="Description" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="Description" class="form-control ckeditor"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for="Content" class="control-label"></label><span class="text-danger">*</span>
+                                        <textarea asp-for="Content" class="form-control ckeditor"></textarea>
+                                        <span asp-validation-for="Content" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Author" class="control-label"></label><span class="text-danger">*</span>
+                                        <input asp-for="Author" class="form-control" />
+                                        <span asp-validation-for="Author" class="text-danger"></span>
+                                    </div>
+                                    <br />
+                                    <div class="form-group" style="text-align: center">
+                                        <img id="blah" src="https://localhost:7211/images/blogs/@Model.Image" alt="your image" style="width: 390px;" />
+                                        <a style="margin-top: 10px" class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal">Change image</a>
+                                    </div>
+                                    <br />
+                                    <div class="form-group text-center">
+                                        <input style="background-color:forestgreen" type="button" onclick="onUpdate()" value="Update" class="btn btn-primary" />
+                                    </div>
+                                    <br />
+                                    <div class="form-group text-center">
+                                        <a class="btn btn-primary" href="/employer/blog/@user.Id">Back to List</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('#imgInp').change(function (evt) {
+                var file = evt.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function onUpdate() {
+            Swal.fire({
+                title: 'Update this blog?',
+                text: "Are you sure to update this blog?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#form").submit();
+                    Swal.fire(
+                        'Update!',
+                        '',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.ckeditor').each(function () {
+                CKEDITOR.replace($(this).attr('id'));
+            });
+        });
+    </script>
+}

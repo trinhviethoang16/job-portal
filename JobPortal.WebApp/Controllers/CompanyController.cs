@@ -25,9 +25,7 @@ namespace JobPortal.WebApp.Controllers
         [Route("")]
         public IActionResult Index(int? page)
         {
-            int pageSize = 5; //number of employers per page
-
-            //for random value
+            int pageSize = 7; //number of employers per page
             var random = new Random();
 
             //random jobs - 6
@@ -40,6 +38,10 @@ namespace JobPortal.WebApp.Controllers
 
             //provinces - 4
             ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
+
+            //random blogs - 5
+            var blogList = _context.Blogs.Include(b => b.AppUser).ToList();
+            ViewBag.ListBlogs = blogList.OrderBy(s => random.Next()).Take(5).ToList();
 
             var employers = _context.AppUsers
                 .Where(e => e.Status == 2)
@@ -73,6 +75,10 @@ namespace JobPortal.WebApp.Controllers
 
             //provinces - 4
             ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
+
+            //random blogs - 5
+            var blogList = _context.Blogs.Include(b => b.AppUser).ToList();
+            ViewBag.ListBlogs = blogList.OrderBy(s => random.Next()).Take(5).ToList();
 
             //job count
             var jobCount = _context.Jobs.Where(j => j.AppUser.Slug == slug).Count();

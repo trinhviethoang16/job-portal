@@ -28,7 +28,7 @@
                             </script>
                         }
                         <div class="table-responsive text-nowrap">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="text-align: center">
                                 <thead>
                                     <tr>
                                         <th>
@@ -36,6 +36,9 @@
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Logo)
                                         </th>
                                         <th>
                                             Actions
@@ -52,7 +55,9 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => skill.Name)
                                             </td>
-                                           
+                                            <td>
+                                                <img src="https://localhost:7211/images/skills/@skill.Logo" style="width: 50px" />
+                                            </td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

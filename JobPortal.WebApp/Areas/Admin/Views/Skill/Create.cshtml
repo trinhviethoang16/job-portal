@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Create";
 }
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -82,7 +83,7 @@
                 if (result.isConfirmed) {
                     $("#form").submit();
                     Swal.fire(
-                        'Update!',
+                        'Success!',
                         '',
                         'success'
                     )

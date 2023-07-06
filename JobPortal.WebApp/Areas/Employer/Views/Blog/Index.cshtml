@@ -1,0 +1,164 @@
+﻿@model IEnumerable<JobPortal.Data.Entities.Blog>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> userManager
+
+@{
+    var user = await userManager.GetUserAsync(User);
+    ViewData["Title"] = "Blog";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-description">
+                        <a class="btn btn-primary" href="/employer/blog/create/@user.Id">Add new blog</a>
+                    </p>
+                    @*<form asp-action="Index" method="get" class="form-inline">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <input type="text" class="form-control" name="q" style="height: 2.3rem!important;">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Filter</button>
+                    </form>*@
+                    <form asp-action="DeleteSelected" method="post">
+                        <input type="submit" class="btn btn-danger" value="Delete Selected" onclick="return confirm('Confirm deletion of the selected sections?') " />
+
+                        @section Scripts {
+                            <script>
+                                $(function () {
+                                    $('#checkall').change(function () {
+                                        if ($(this).prop("checked") == true) {
+                                            $("input[name=listDelete]").prop("checked", true);
+                                        } else {
+                                            $("input[name=listDelete]").prop("checked", false);
+                                        }
+                                    });
+                                });
+                            </script>
+                        }
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" style="text-align: center">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" id="checkall" />
+                                        </th>
+                                        <th>@Html.DisplayNameFor(model => model.Author)</th>
+                                        <th>@Html.DisplayNameFor(model => model.CreateDate)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                                        <th>@Html.DisplayNameFor(model => model.Image)</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var blog in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="listDelete" value="@blog.Id" />
+                                            </td>
+                                            <td>@Html.DisplayFor(modelBlog => blog.Author)</td>
+                                            <td>@Html.DisplayFor(modelBlog => blog.CreateDate)</td>
+                                            <td>@Html.DisplayFor(modelBlog => blog.Title)</td>
+                                            <td><img src="https://localhost:7211/images/blogs/@blog.Image" style="width: 200px" /></td>
+                                            <td>
+                                                <a style="color: blue" href="/employer/blog/update/@blog.Id">Update</a> |
+                                                <a style="color: red" href="#" onclick="onDelete(@blog.Id)">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--Page list-->
+                        <div class="text-center">
+                            <ul class="pagination">
+                                @Html.PagedListPager((IPagedList)Model, page =>
+                                Url.Action("Index", new { page }),
+                                new PagedListRenderOptions
+                                {
+                                Display = PagedListDisplayMode.IfNeeded,
+                                LiElementClasses = new string[] { "page-item" },
+                                UlElementClasses = new string[] { "pagination" },
+                                PageClasses = new string[] { "page-link" },
+                                MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
+                                LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
+                                LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
+                                LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
+                                LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
+                                })
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input.btn.btn-danger {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+    }
+
+    th {
+        font-weight: 700 !important
+    }
+
+    .pagination {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .pagination li {
+        margin: 0 5px;
+    }
+
+    .pagination li a {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination li.active a {
+        background-color: #333;
+        color: #fff;
+    }
+</style>
+
+<script>
+    function onDelete(id) {
+        Swal.fire({
+            title: 'Delete this blog?',
+            text: "Are you sure to delete this blog?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/employer/blog/delete/' + id;
+                Swal.fire(
+                    'Delete!',
+                    '',
+                    'success'
+                )
+            }
+        })
+    }
+</script>

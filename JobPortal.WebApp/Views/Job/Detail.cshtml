@@ -104,96 +104,10 @@
 					<a target="_blank" class="text-uppercase loadmore-btn mx-auto d-block" href="/login">login to apply now</a>
 				}
 			</div>
-			<div class="col-lg-4 sidebar">
-				<!-- Provinces -->
-				<div class="single-slidebar">
-					<h4 class="text-center">Jobs by Location <span class="lnr lnr-map-marker"></span></h4>
-					<ul class="cat-list">
-						@foreach (var province in ViewBag.ListProvinces)
-						{
-							@if (province.Jobs.Count > 0)
-							{
-								<li><a class="justify-content-between d-flex" href="/job?slug=@province.Slug"><p>@province.Name</p><span>@province.Jobs.Count</span></a></li>
-							}
-						}
-					</ul>
-				</div>
-				<!-- Skills -->
-				<div class="single-slidebar">
-					<h4 class="text-center">Jobs by Skill <span class="lnr lnr-tag"></span></h4>
-					<ul class="cat-list">
-						@foreach (var skill in ViewBag.ListSkills)
-						{
-							@if (skill.Jobs.Count > 0)
-							{
-								<li><a class="justify-content-between d-flex" href="/job?slug=@skill.Slug"><p>@skill.Name</p><span>@skill.Jobs.Count</span></a></li>
-							}
-						}
-					</ul>
-				</div>
-				<div class="single-slidebar">
-					<h4 class="text-center">Carrer Advice Blog</h4>
-					<div class="blog-list">
-						<div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-							<a href="#">
-								<h4>
-									Home Audio Recording <br>
-									For Everyone
-								</h4>
-							</a>
-							<div class="meta justify-content-between d-flex">
-								<p>
-									02 Hours ago
-								</p>
-								<p>
-									<span class="lnr lnr-heart"></span>
-									06
-									<span class="lnr lnr-bubble"></span>
-									02
-								</p>
-							</div>
-						</div>
-						<div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
-							<a href="#">
-								<h4>
-									Home Audio Recording <br>
-									For Everyone
-								</h4>
-							</a>
-							<div class="meta justify-content-between d-flex">
-								<p>
-									02 Hours ago
-								</p>
-								<p>
-									<span class="lnr lnr-heart"></span>
-									06
-									<span class="lnr lnr-bubble"></span>
-									02
-								</p>
-							</div>
-						</div>
-						<div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-							<a href="#">
-								<h4>
-									Home Audio Recording <br>
-									For Everyone
-								</h4>
-							</a>
-							<div class="meta justify-content-between d-flex">
-								<p>
-									02 Hours ago
-								</p>
-								<p>
-									<span class="lnr lnr-heart"></span>
-									06
-									<span class="lnr lnr-bubble"></span>
-									02
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+
+			<!-- Sidebar -->
+			@Html.Partial("../Shared/_SidebarPartial.cshtml")
+
 		</div>
 	</div>
 </section>

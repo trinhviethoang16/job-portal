@@ -40,7 +40,7 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                 .Include(j => j.Time)
                 .Include(j => j.Skills)
                 .Include(j => j.Title)
-                .OrderByDescending(j => j.Id)
+                .OrderByDescending(j => j.CreateDate)
                 .ToListAsync();
             return View(jobs.ToPagedList(page ?? 1, pageSize));
         }
@@ -61,7 +61,6 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Guid id, CreateJobViewModel model)
         {
-            var user = await _context.AppUsers.Where(u => u.Id == id).FirstAsync();
             if (ModelState.IsValid)
             {
                 Job job = new Job()
@@ -218,6 +217,5 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
 
             return RedirectToAction("Index", new { id = userId });
         }
-
     }
 }

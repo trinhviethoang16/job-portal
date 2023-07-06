@@ -1,11 +1,6 @@
 ﻿@model JobPortal.Data.Entities.Blog
-@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Http
-@inject SignInManager<AppUser> signInManager
-@inject UserManager<AppUser> userManager
 
 @{
-    var user = await userManager.GetUserAsync(User);
     Layout = "_Layout";
 }
 
@@ -30,40 +25,25 @@
         <div class="row">
             <div class="col-lg-8 post-list blog-post-list">
                 <div class="single-post">
-                    <img class="img-fluid" src="~/assets/user/img/blog/p1.jpg" alt="">
+                    <img class="img-fluid" src="https://localhost:7211/images/blogs/@Model.Image" alt="blog image">
                     <ul class="tags">
-                        <li><a href="#">Art</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Fashion</a></li>
+                        <li>
+                            <a href="#">
+									<img style="width: 80px" src="https://localhost:7211/images/employers/@Model.AppUser.UrlAvatar"
+										 alt="blog image"> Content Writer: @Model.Author • @Model.CreateDate.ToString("dddd, yy/MM/yyyy - HH:mm:ss - tt")
+                            </a>
+                        </li>
                     </ul>
-                    <a href="#">
+                    <a>
                         <h1>
-                            Cartridge Is Better Than Ever
-                            A Discount Toner
+                            @Html.Raw(Model.Title)
                         </h1>
                     </a>
                     <div class="content-wrap">
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
-
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
-
-                        <blockquote class="generic-blockquote">
-                            “Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks such as Party Gaming and PlayTech left the United States. Overnight, online casino players found themselves being chased by the Federal government.banking”
-                        </blockquote>
-
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
-
-                        <p>
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-                        </p>
-
-
+                        @Html.Raw(Model.Description)
+                    </div>
+                    <div class="content-wrap">
+                        @Html.Raw(Model.Content)
                     </div>
                     <div class="bottom-meta">
                         <div class="user-details row align-items-center">
@@ -85,7 +65,7 @@
                         </div>
                     </div>
 
-                    <!-- Start nav Area -->
+                    @*<!-- Start nav Area -->
                     <section class="nav-area pt-50 pb-100">
                         <div class="container">
                             <div class="row justify-content-between">
@@ -215,8 +195,9 @@
                             </div>
                         </div>
                     </section>
-                    <!-- End comment-sec Area -->
-                    <!-- Start commentform Area -->
+                    <!-- End comment-sec Area -->*@
+
+                    @*<!-- Start commentform Area -->
                     <section class="commentform-area pt-80">
                         <div class="container">
                             <h5 class="pb-50">Leave a Reply</h5>
@@ -234,10 +215,14 @@
                             </div>
                         </div>
                     </section>
-                    <!-- End commentform Area -->
+                    <!-- End commentform Area -->*@
                 </div>
             </div>
-            <div class="col-lg-4 sidebar">
+
+            <!-- Sidebar -->
+            @Html.Partial("../Shared/_SidebarPartial.cshtml")
+
+            @*<div class="col-lg-4 sidebar">
                 <div class="single-widget search-widget">
                     <form class="example" action="#" style="margin:auto;max-width:300px">
                         <input type="text" placeholder="Search Posts" name="search2">
@@ -372,7 +357,7 @@
                     </ul>
                 </div>
 
-            </div>
+            </div>*@
         </div>
     </div>
 </section>

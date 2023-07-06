@@ -39,6 +39,10 @@ namespace JobPortal.WebApp.Controllers
             //provinces - 4
             ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
 
+            //random blogs - 5
+            var blogList = _context.Blogs.Include(b => b.AppUser).ToList();
+            ViewBag.ListBlogs = blogList.OrderBy(s => random.Next()).Take(5).ToList();
+
             var jobs = _context.Jobs
                 .OrderByDescending(j => j.Id)
                 .Include(j => j.AppUser)
@@ -47,10 +51,6 @@ namespace JobPortal.WebApp.Controllers
                 .Include(j => j.Skills)
                 .ToList();
             ViewBag.jobCount = _context.Jobs.Count();
-
-            ViewBag.SkillSlug = null;
-            ViewBag.ProvinceSlug = null;
-            ViewBag.EmployerSlug = null;
 
             if (slug != null)
             {
@@ -94,6 +94,8 @@ namespace JobPortal.WebApp.Controllers
                         ViewBag.Skill = skill;
                     }
                 }
+
+                ViewBag.TimeSlug = ViewBag.Time?.Slug;
                 ViewBag.SkillSlug = ViewBag.Skill?.Slug;
                 ViewBag.ProvinceSlug = ViewBag.Province?.Slug;
                 ViewBag.EmployerSlug = ViewBag.Employer?.Slug;
@@ -108,7 +110,12 @@ namespace JobPortal.WebApp.Controllers
             var random = new Random();
 
             //random jobs - 6
-            var jobList = _context.Jobs.Include(j => j.Province).ToList();
+            var jobList = _context.Jobs
+                .Include(j => j.Province)
+                .Include(j => j.AppUser)
+				.Include(j => j.Time)
+				.Include(j => j.Title)
+				.ToList();
             ViewBag.ListJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
 
             //random skills - 7
@@ -117,6 +124,10 @@ namespace JobPortal.WebApp.Controllers
 
             //provinces - 4
             ViewBag.ListProvinces = _context.Provinces.Include(p => p.Jobs).Where(p => p.Jobs.Count > 0).Take(4).ToList();
+
+            //random blogs - 5
+            var blogList = _context.Blogs.Include(b => b.AppUser).ToList();
+            ViewBag.ListBlogs = blogList.OrderBy(s => random.Next()).Take(5).ToList();
 
             var job = await _context.Jobs
                 .Where(j => j.Slug == slug)

@@ -55,152 +55,74 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 post-list blog-post-list">
-				<div class="single-post">
-					<img class="img-fluid" src="~/assets/user/img/blog/p1.jpg" alt="">
-					<ul class="tags">
-						<li><a href="#">Art, </a></li>
-						<li><a href="#">Technology, </a></li>
-						<li><a href="#">Fashion</a></li>
-					</ul>
-					<a href="#">
-						<h1>
-							Cartridge Is Better Than Ever
-							A Discount Toner
-						</h1>
-					</a>
-					<p>
-						MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-					</p>
-					<div class="bottom-meta">
-						<div class="user-details row align-items-center">
-							<div class="comment-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
-								</ul>
-							</div>
-							<div class="social-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#"><i class="fa fa-behance"></i></a></li>
-								</ul>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single-post">
-					<img class="img-fluid" src="~/assets/user/img/blog/p2.jpg" alt="">
-					<ul class="tags">
-						<li><a href="#">Art, </a></li>
-						<li><a href="#">Technology, </a></li>
-						<li><a href="#">Fashion</a></li>
-					</ul>
-					<a href="#">
-						<h1>
-							Cartridge Is Better Than Ever
-							A Discount Toner
-						</h1>
-					</a>
-					<p>
-						MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-					</p>
-					<div class="bottom-meta">
-						<div class="user-details row align-items-center">
-							<div class="comment-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
-								</ul>
-							</div>
-							<div class="social-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#"><i class="fa fa-behance"></i></a></li>
-								</ul>
-
+				@foreach(var blog in Model)
+				{
+					<div class="single-post">
+						<a href="/blog/@blog.Slug"><img class="img-fluid" src="https://localhost:7211/images/blogs/@blog.Image" alt="blog image"></a>
+						<ul class="tags">
+							<li>
+								<a href="#">
+									<img style="width: 80px" src="https://localhost:7211/images/employers/@blog.AppUser.UrlAvatar"
+										 alt="blog image"> Content Writer: @blog.Author • @blog.CreateDate.ToString("dddd, yy/MM/yyyy - HH:mm:ss - tt")
+								</a>
+							</li>
+						</ul>
+						<a href="/blog/@blog.Slug">
+							<h1>
+								@Html.Raw(blog.Title)
+							</h1>
+						</a>
+						<p>
+							@Html.Raw(blog.Description)
+						</p>
+						<div class="bottom-meta">
+							<div class="user-details row align-items-center">
+								<div class="comment-wrap col-lg-6">
+									<ul>
+										<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
+										<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
+									</ul>
+								</div>
+								<div class="social-wrap col-lg-6">
+									<ul>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+										<li><a href="#"><i class="fa fa-behance"></i></a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="single-post">
-					<img class="img-fluid" src="~/assets/user/img/blog/p3.jpg" alt="">
-					<ul class="tags">
-						<li><a href="#">Art, </a></li>
-						<li><a href="#">Technology, </a></li>
-						<li><a href="#">Fashion</a></li>
-					</ul>
-					<a href="#">
-						<h1>
-							Cartridge Is Better Than Ever
-							A Discount Toner
-						</h1>
-					</a>
-					<p>
-						MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-					</p>
-					<div class="bottom-meta">
-						<div class="user-details row align-items-center">
-							<div class="comment-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
-								</ul>
-							</div>
-							<div class="social-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#"><i class="fa fa-behance"></i></a></li>
-								</ul>
+					<hr />
+				}
 
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="single-post">
-					<img class="img-fluid" src="~/assets/user/img/blog/p4.jpg" alt="">
-					<ul class="tags">
-						<li><a href="#">Art, </a></li>
-						<li><a href="#">Technology, </a></li>
-						<li><a href="#">Fashion</a></li>
+				<!-- Page list -->
+				<div class="text-center">
+					<ul class="pagination">
+						@Html.PagedListPager((IPagedList)Model,
+						page => Url.Action("Index", new { page }),
+						new PagedListRenderOptions
+						{
+						Display = PagedListDisplayMode.IfNeeded,
+						LiElementClasses = new string[] { "page-item" },
+						UlElementClasses = new string[] { "pagination" },
+						PageClasses = new string[] { "page-link" },
+						MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
+						LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
+						LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
+						LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
+						LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
+						})
 					</ul>
-					<a href="#">
-						<h1>
-							Cartridge Is Better Than Ever
-							A Discount Toner
-						</h1>
-					</a>
-					<p>
-						MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.
-					</p>
-					<div class="bottom-meta">
-						<div class="user-details row align-items-center">
-							<div class="comment-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
-									<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
-								</ul>
-							</div>
-							<div class="social-wrap col-lg-6">
-								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-									<li><a href="#"><i class="fa fa-behance"></i></a></li>
-								</ul>
-
-							</div>
-						</div>
-					</div>
 				</div>
+
 			</div>
-			<div class="col-lg-4 sidebar">
+			
+			<!-- Sidebar -->
+			@Html.Partial("../Shared/_SidebarPartial.cshtml")
+
+			@*<div class="col-lg-4 sidebar">
 				<div class="single-widget search-widget">
 					<form class="example" action="#" style="margin:auto;max-width:300px">
 						<input type="text" placeholder="Search Posts" name="search2">
@@ -333,9 +255,7 @@
 						<li><a href="#">Food</a></li>
 						<li><a href="#">Technology</a></li>
 					</ul>
-				</div>
-
-			</div>
+				</div>*@
 		</div>
 	</div>
 </section>

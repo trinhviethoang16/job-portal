@@ -19,9 +19,7 @@ namespace JobPortal.Data.ViewModel
         [Display(Name = "Content")]
         public string? Content { get; set; }
 
-        [Display(Name = "Image")]
-        [Required(ErrorMessage = "Please enter image of blog")]
-        public IFormFile? Image { get; set; }
-        public Guid AppUserId { set; get; }
+        [Display(Name = "Blog overview")]
+        public string? Description { get; set; }
     }
 }

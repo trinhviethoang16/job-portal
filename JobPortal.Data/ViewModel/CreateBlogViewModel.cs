@@ -22,6 +22,8 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Image")]
         public IFormFile? Image { get; set; }
-        public Guid AppUserId { set; get; }
+
+        [Display(Name = "Blog overview")]
+        public string? Description { get; set; }
     }
 }

@@ -25,8 +25,12 @@
                 else
                 {
                     <p style="font-size: 25px; display: inline;" class="text-white">
-                        <span>@Model.Count()</span> Results found for <span>"@ViewBag.q"</span>
+                        <span>@Model.Count()</span> Results found
                     </p>
+                    @if (ViewBag.q != null)
+                    {
+                        <p style="font-size: 25px; display: inline;" class="text-white">for <span>"@ViewBag.q"</span></p>
+                    }
                     @if (ViewBag.province != null)
                     {
                         <p style="font-size: 25px; display: inline;" class="text-white">in <span>@(ViewBag.province != null ? $"{ViewBag.province.Name}" : "")</span></p>
@@ -112,91 +116,10 @@
                     </div>
                 }
             </div>
-            <div class="col-lg-4 sidebar">
-                <!-- Jobs -->
-                <div class="single-slidebar">
-                    <h4 class="text-center">Top rated job posts</h4>
-                    <div class="active-relatedjob-carusel">
-                        @foreach (var job in ViewBag.ListJobs)
-                        {
-                            <div class="single-rated">
-                                <img href="/job/@job.Slug" style="width: 400px; height: 150px; margin: 0 auto;" src="https://localhost:7211/images/employers/@job.AppUser.UrlAvatar" alt="job image">
-                                <br />
-                                <a href="/job/@job.Slug"><h4 class="text-center">@job.Name</h4></a>
-                                <strong><h6 class="text-center" style="color: black">@job.Province.Name</h6></strong>
-                                <p>@Html.Raw(job.Introduce)</p>
-                                <h5>Job Nature: @job.Time.Name</h5>
-                                <p class="address"><span class="lnr lnr-map"></span> @job.Title.Name</p>
-                                <p class="address"><span class="lnr lnr-database"></span> @job.MinSalary - @job.MaxSalary</p>
-                                <a href="/job/@job.Slug" style="display: flex; justify-content: center;" class="btns text-uppercase">View job</a>
-                            </div>
-                        }
-                    </div>
-                </div>
-                <!-- Blogs -->
-                <div class="single-slidebar">
-                    <h4 class="text-center">Carrer Advice Blog</h4>
-                    <div class="blog-list">
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                            <a href="#">
-                                <h4>
-                                    Home Audio Recording <br>
-                                    For Everyone
-                                </h4>
-                            </a>
-                            <div class="meta justify-content-between d-flex">
-                                <p>
-                                    02 Hours ago
-                                </p>
-                                <p>
-                                    <span class="lnr lnr-heart"></span>
-                                    06
-                                    <span class="lnr lnr-bubble"></span>
-                                    02
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <!-- Sidebar -->
+            @Html.Partial("../Shared/_SidebarPartial.cshtml")
+
         </div>
     </div>
 </section>

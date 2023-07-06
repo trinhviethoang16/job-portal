@@ -1,4 +1,32 @@
-﻿<div class="col-lg-4 sidebar">
+﻿<head>
+    <style>
+        .single-blog {
+            position: relative;
+        }
+
+        .over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Màu nền của lớp over */
+            z-index: 1;
+        }
+
+        .single-blog a {
+            position: relative;
+            z-index: 2;
+        }
+
+        .single-blog .meta {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<div class="col-lg-4 sidebar">
     <!-- Provinces -->
     <div class="single-slidebar">
         <h4 class="text-center">Jobs by Location <span class="lnr lnr-map-marker"></span></h4>
@@ -76,68 +104,42 @@
             }
         </div>
     </div>
-
     <!-- Blogs -->
     <div class="single-slidebar">
         <h4 class="text-center">Carrer Advice Blog</h4>
         <div class="blog-list">
-            <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                <a href="#">
-                    <h4>
-                        Home Audio Recording <br>
-                        For Everyone
-                    </h4>
-                </a>
-                <div class="meta justify-content-between d-flex">
-                    <p>
-                        02 Hours ago
-                    </p>
-                    <p>
-                        <span class="lnr lnr-heart"></span>
-                        06
-                        <span class="lnr lnr-bubble"></span>
-                        02
-                    </p>
+            @foreach (var blog in ViewBag.ListBlogs)
+            {
+                <div class="single-blog" style="background:#000 url(https://localhost:7211/images/blogs/@blog.Image);">
+                    <div class="over"></div>
+                    <a href="/blog/@blog.Slug"><h4>@blog.Title</h4></a>
+                    <div class="meta justify-content-between d-flex">
+                        <p>@GetTimeAgo(blog.CreateDate)</p>
+                        @*<p><span class="lnr lnr-heart"></span>06 <span class="lnr lnr-bubble"></span>02</p>*@
+                    </div>
                 </div>
-            </div>
-            <div class="single-blog " style="background:#000 url(../assets/user/img/blog2.jpg);">
-                <a href="#">
-                    <h4>
-                        Home Audio Recording <br>
-                        For Everyone
-                    </h4>
-                </a>
-                <div class="meta justify-content-between d-flex">
-                    <p>
-                        02 Hours ago
-                    </p>
-                    <p>
-                        <span class="lnr lnr-heart"></span>
-                        06
-                        <span class="lnr lnr-bubble"></span>
-                        02
-                    </p>
-                </div>
-            </div>
-            <div class="single-blog " style="background:#000 url(../assets/user/img/blog1.jpg);">
-                <a href="#">
-                    <h4>
-                        Home Audio Recording <br>
-                        For Everyone
-                    </h4>
-                </a>
-                <div class="meta justify-content-between d-flex">
-                    <p>
-                        02 Hours ago
-                    </p>
-                    <p>
-                        <span class="lnr lnr-heart"></span>
-                        06
-                        <span class="lnr lnr-bubble"></span>
-                        02
-                    </p>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
+
+@functions {
+    public string GetTimeAgo(DateTime? createDate)
+    {
+        DateTime actualCreateDate = createDate.Value;
+        TimeSpan timeAgo = DateTime.Now - actualCreateDate;
+
+        if (timeAgo.TotalMinutes < 60)
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalMinutes)} minute{(timeAgo.TotalMinutes >= 2 ? "s" : "")} ago";
+        }
+        else if (timeAgo.TotalHours < 24)
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalHours)} hour{(timeAgo.TotalHours >= 2 ? "s" : "")} ago";
+        }
+        else
+        {
+            return $"Posted {Math.Max(1, (int)timeAgo.TotalDays)} day{(timeAgo.TotalDays >= 2 ? "s" : "")} ago";
+        }
+    }
+}
