@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Routing;
 using X.PagedList;
+using System.Xml.Linq;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers
 {
@@ -44,11 +45,11 @@ namespace JobPortal.WebApp.Areas.Employer.Controllers
                             CVStatus = cv.Status,
                             JobName = cv.Job.Name,
                             EmployerLogo = cv.Job.AppUser.UrlAvatar,
-                            UserName = cv.Job.AppUser.FullName,
+                            UserName = cv.AppUser.FullName,
                             CVImage = cv.UrlImage,
                             CVPhone = cv.Phone,
                             CVEmail = cv.Email,
-                            EmployerId = cv.Job.AppUser.Id,
+							EmployerId = cv.Job.AppUser.Id,
                             EmployerAddress = cv.EmployerAddress,
                             EmployerCity = cv.City,
                             EmployerComment = cv.Comment,

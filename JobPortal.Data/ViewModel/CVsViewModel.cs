@@ -52,18 +52,15 @@ namespace JobPortal.Data.ViewModel
         [Display(Name = "Email")]
         public string CVEmail { get; set; }
 
-
-        //Feedback
-        [Display(Name = "Address")]
-        [StringLength(256, ErrorMessage = "The address cannot be more than 256 characters.")]
+		//Feedback
+		[Display(Name = "Address")]
         public string? EmployerAddress { get; set; }
 
         [Display(Name = "Phone")]
-        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
+        [StringLength(20, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string? EmployerPhone { get; set; }
 
         [Display(Name = "Comment")]
-        [StringLength(256, ErrorMessage = "The comment cannot be more than 256 characters.")]
         public string? EmployerComment { get; set; }
 
         [Display(Name = "Rating")]

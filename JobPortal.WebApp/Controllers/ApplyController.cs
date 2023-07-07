@@ -43,10 +43,11 @@ namespace JobPortal.WebApp.Controllers
                                  Introduce = cv.Introduce,
                                  CVEmail = cv.Email,
                                  CVPhone = cv.Phone,
-                                 //CVImage = cv.UrlImage,
+                                 CVImage = cv.UrlImage,
                                  UserId = cv.AppUserId,
                                  CVStatus = cv.Status,
                                  JobName = cv.Job.Name,
+                                 UserName = cv.AppUser.FullName,
                                  EmployerLogo = cv.Job.AppUser.UrlAvatar,
                                  EmployerAddress = cv.EmployerAddress,
                                  EmployerCity = cv.City,
@@ -60,7 +61,7 @@ namespace JobPortal.WebApp.Controllers
         }
 
         [Route("{slug}/{id}")]
-        public async Task<IActionResult> Apply()
+        public IActionResult Apply()
         {
             return View();
         }

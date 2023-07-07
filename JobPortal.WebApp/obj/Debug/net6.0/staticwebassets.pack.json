@@ -3725,6 +3725,10 @@
       "PackagePath": "staticwebassets\\images\\countries\\Vietnam.png"
     },
     {
+      "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\1bd149c9-f220-4266-a33d-e27e4018403e.jpg",
+      "PackagePath": "staticwebassets\\images\\cvs\\1bd149c9-f220-4266-a33d-e27e4018403e.jpg"
+    },
+    {
       "Id": "E:\\Code\\source\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\default\\ads.jpg",
       "PackagePath": "staticwebassets\\images\\default\\ads.jpg"
     },

@@ -187,7 +187,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a href="/register-employer/register/@account.Id" class="btn btn-danger">Register now</a>
+							<a href="/register-employer/register/@account.Id" class="btn btn-primary">Register now</a>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 					</div>
@@ -224,14 +224,6 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<!-- Bootstrap -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
-	<script>
-		var loader = document.getElementById("preloader");
-		window.addEventListener("load", function () {
-			loader.style.display = "none";
-		}) I
-	</script>
-
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
@@ -271,19 +263,19 @@
 	.modal-body {
 		padding: 2rem;
 	}
-
-		.modal-body hr {
-			margin-top: 2rem;
-			margin-bottom: 2rem;
-		}
-
-		.modal-body strong {
-			font-weight: bold;
-		}
-
-		.modal-body label.control-label {
-			font-weight: bold;
-		}
+	
+	.modal-body hr {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+	
+	.modal-body strong {
+		font-weight: bold;
+	}
+	
+	.modal-body label.control-label {
+		font-weight: bold;
+	}
 
 	/* Modal footer */
 	.modal-footer {
@@ -305,22 +297,22 @@
 		background-color: #007bff;
 		border-color: #007bff;
 	}
-
-		.btn-primary:hover {
-			background-color: #0069d9;
-			border-color: #0062cc;
-		}
-
-		.btn-primary:focus {
-			box-shadow: none;
-		}
+	
+	.btn-primary:hover {
+		background-color: #0069d9;
+		border-color: #0062cc;
+	}
+	
+	.btn-primary:focus {
+		box-shadow: none;
+	}
 
 	/* Employer information */
 	.modal-body .form-group {
 		margin-bottom: 0;
 	}
-
-		.modal-body .form-group div:not(:last-child) {
-			margin-bottom: 0.5rem;
-		}
+	
+	.modal-body .form-group div:not(:last-child) {
+		margin-bottom: 0.5rem;
+	}
 </style>

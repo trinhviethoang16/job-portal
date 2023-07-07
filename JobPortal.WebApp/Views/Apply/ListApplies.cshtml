@@ -316,7 +316,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -336,24 +336,54 @@
                                                 <th>Phone number</th>
                                                 <th>Email</th>
                                                 <th>Apply date</th>
+                                                <th>Your CV</th>
                                             </tr>
                                         </thead>
                                         <tbody id="items">
                                             <tr class="targetfields">
-                                                <td class="table-content">
-                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName">
+                                                <td>
+                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 150px">
                                                 </td>
-                                                <td class="table-content">
-                                                        <span style="font-size: 16px; font-weight: bold;">@CV.JobName</span>
+                                                <td>
+                                                    <span>@CV.JobName</span>
                                                 </td>
-                                                <td class="table-content">
+                                                <td>
                                                     <span>@CV.CVPhone</span>
                                                 </td>
-                                                <td class="table-content">
+                                                <td>
                                                     <span>@CV.CVEmail</span>
                                                 </td>
-                                                <td class="table-content">
-                                                    <span>@CV.ApplyDate</span>
+                                                <td>
+                                                    <span>@CV.ApplyDate.ToString("dd/MM/yyyy")</span>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewYourCVModal">View CV</a>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="viewYourCVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">CV: @CV.UserName</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="@CV.UserName" style="width: 750px; height: 1000px">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>

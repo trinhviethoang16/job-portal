@@ -14,12 +14,12 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Major")]
         [Required(ErrorMessage = "Please enter your major")]
-        [StringLength(50, ErrorMessage = "Your major cannot be more than 50 characters.")]
+        [StringLength(100, ErrorMessage = "Your major cannot be more than 50 characters.")]
         public string Major { get; set; }
 
         [Display(Name = "Graduated at")]
         [Required(ErrorMessage = "Please enter where you graduated")]
-        [StringLength(50, ErrorMessage = "Your place cannot be more than 50 characters.")]
+        [StringLength(100, ErrorMessage = "Your place cannot be more than 50 characters.")]
         public string GraduatedAt { get; set; }
 
         [Display(Name = "Your GPA")]
@@ -29,12 +29,10 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Description")]
         [Required(ErrorMessage = "Please enter your description")]
-        [StringLength(256, ErrorMessage = "Your description cannot be more than 256 characters.")]
         public string Description { get; set; }
 
         [Display(Name = "Introduce")]
         [Required(ErrorMessage = "Please enter your introduce")]
-        [StringLength(100, ErrorMessage = "Your introduce cannot be more than 100 characters.")]
         public string Introduce { get; set; }
 
         [Display(Name = "Your CV image")]
@@ -42,7 +40,7 @@ namespace JobPortal.Data.ViewModel
 
         [Display(Name = "Your phone")]
         [Required(ErrorMessage = "Please enter your phone")]
-        [StringLength(12, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
+        [StringLength(20, ErrorMessage = "Please enter valid phonenumber.", MinimumLength = 9)]
         public string Phone { get; set; }
 
         [Display(Name = "Your email")]
