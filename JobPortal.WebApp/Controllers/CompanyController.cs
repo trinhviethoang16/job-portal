@@ -52,7 +52,6 @@ namespace JobPortal.WebApp.Controllers
 
             int pageNumber = page ?? 1; // Trang hiện tại
             int startRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của employers trên trang hiện tại
-
             ViewBag.StartRank = startRank; // Truyền giá trị startRank vào ViewBag
 
             return View(employers.ToPagedList(pageNumber, pageSize));
@@ -62,7 +61,6 @@ namespace JobPortal.WebApp.Controllers
         [Route("{slug}")]
         public async Task<IActionResult> Detail(string slug)
         {
-            //for random value
             var random = new Random();
 
             //random jobs - 6

@@ -15,9 +15,13 @@ namespace JobPortal.WebApp.Controllers
     public class EmployerController : Controller
     {
         private readonly DataDbContext _context;
+        private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
 
-        public EmployerController(DataDbContext context)
+        public EmployerController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, DataDbContext context)
         {
+            this.userManager = userManager;
+            this.signInManager = signInManager;
             this._context = context;
         }
 
@@ -26,6 +30,17 @@ namespace JobPortal.WebApp.Controllers
         {
             ViewData["ProvinceId"] = new SelectList(_context.Provinces.OrderBy(p => p.Id), "Id", "Name");
             ViewData["CountryId"] = new SelectList(_context.Countries.OrderBy(p => p.Name), "Id", "Name");
+            // Set default country to Vietnam
+            var countries = _context.Countries.OrderBy(p => p.Name).ToList();
+            var vietnam = countries.FirstOrDefault(c => c.Name == "Vietnam");
+            if (vietnam != null)
+            {
+                ViewData["CountryId"] = new SelectList(countries, "Id", "Name", vietnam.Id);
+            }
+            else
+            {
+                ViewData["CountryId"] = new SelectList(countries, "Id", "Name");
+            }
             return View();
         }
 
@@ -44,7 +59,6 @@ namespace JobPortal.WebApp.Controllers
             employer.Email = employer.UserName = model.Email;
             employer.NormalizedEmail = employer.NormalizedUserName = (employer.Email ?? model.Email).ToUpper();
             employer.CreateDate = DateTime.Now;
-            employer.ProvinceId = model.ProvinceId;
             employer.Description = model.Description;
             employer.Contact = model.Contact;
             employer.Content = model.Content;
@@ -59,6 +73,74 @@ namespace JobPortal.WebApp.Controllers
             _context.Update(employer);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Route("register")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult RegisterToEmployer()
+        {
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces.OrderBy(p => p.Id), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(_context.Countries.OrderBy(p => p.Name), "Id", "Name");
+            // Set default country to Vietnam
+            var countries = _context.Countries.OrderBy(p => p.Name).ToList();
+            var vietnam = countries.FirstOrDefault(c => c.Name == "Vietnam");
+            if (vietnam != null)
+            {
+                ViewData["CountryId"] = new SelectList(countries, "Id", "Name", vietnam.Id);
+            }
+            else
+            {
+                ViewData["CountryId"] = new SelectList(countries, "Id", "Name");
+            }
+            return View();
+        }
+
+        [Route("register")]
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterToEmployer(RegisterEmployerViewModel model)
+        {
+            string POST_IMAGE_PATH = "images/employers/";
+
+            if (ModelState.IsValid)
+            {
+                var image = UploadImage.UploadImageFile(model.UrlAvatar, POST_IMAGE_PATH);
+
+                var employer = new AppUser
+                {
+                    UserName = model.Email,
+                    FullName = model.FullName,
+                    Slug = TextHelper.ToUnsignString(model.FullName).ToLower(),
+                    UrlAvatar = image,
+                    Email = model.Email,
+                    NormalizedEmail = model.Email.ToUpper(),
+                    NormalizedUserName = model.Email.ToUpper(),
+                    CreateDate = DateTime.Now,
+                    Description = model.Description,
+                    Contact = model.Contact,
+                    Content = model.Content,
+                    WorkingDays = model.WorkingDays,
+                    CompanySize = model.CompanySize,
+                    Location = model.Location,
+                    WebsiteURL = model.WebsiteURL,
+                    ProvinceId = model.ProvinceId,
+                    CountryId = model.CountryId,
+                    Phone = model.Phone,
+                    Status = 1 // waiting to confirm
+                };
+                var result = await userManager.CreateAsync(employer, model.Password);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(employer, "User");
+                    return Redirect("/login");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View();
         }
 
         [Route("update/{id}")]

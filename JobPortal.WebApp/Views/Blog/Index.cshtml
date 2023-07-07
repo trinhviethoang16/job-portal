@@ -5,6 +5,7 @@
 
 @{
     Layout = "_Layout";
+	int startRank = ViewBag.StartRank ?? 1; // Lấy giá trị startRank từ ViewBag, mặc định là 1 nếu không tồn tại
 }
 
 <style>
@@ -65,6 +66,7 @@
 									<img style="width: 80px" src="https://localhost:7211/images/employers/@blog.AppUser.UrlAvatar"
 										 alt="blog image"> Content Writer: @blog.Author • @blog.CreateDate.ToString("dddd, yy/MM/yyyy - HH:mm:ss - tt")
 								</a>
+								<h3 style="color: red; margin: 10px; margin-left: 100px; float: right">#@(startRank++)</h3>
 							</li>
 						</ul>
 						<a href="/blog/@blog.Slug">
@@ -81,6 +83,7 @@
 									<ul>
 										<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
 										<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
+										<li><a href="#"><span class="lnr lnr-eye"></span> @blog.Popular Views</a></li>
 									</ul>
 								</div>
 								<div class="social-wrap col-lg-6">

@@ -16,7 +16,6 @@ namespace JobPortal.WebApp.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //for random value
             var random = new Random();
 
             //random categories - 4

@@ -46,7 +46,9 @@ namespace JobPortal.WebApp.Controllers
                     Address = model.Address,
                     Email = model.Email,
                     CreateDate = DateTime.Now,
-                    Phone = model.Phone
+                    Phone = model.Phone,
+                    UrlAvatar = "default_user.png",
+                    Status = null
                 };
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -67,6 +69,10 @@ namespace JobPortal.WebApp.Controllers
         [Route("login")]
         public IActionResult Login()
         {
+            if (TempData.ContainsKey("PasswordChanged") && (bool)TempData["PasswordChanged"])
+            {
+                ViewBag.PasswordChanged = true;
+            }
             return View();
         }
 
@@ -86,6 +92,11 @@ namespace JobPortal.WebApp.Controllers
                 {
                     return RedirectToAction("index", "home");
                 }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid account or password. Please try again !");
+                    return View(model);
+                }
             }
             return View(model);
         }
@@ -97,6 +108,51 @@ namespace JobPortal.WebApp.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("index", "home");
+        }
+
+        [Route("change-password")]
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [Route("change-password")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (model.NewPassword != model.ConfirmPassword)
+            {
+                ModelState.AddModelError(string.Empty, "The password and confirmation password do not match.");
+                return View(model);
+            }
+
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var changePasswordResult = await userManager.ChangePasswordAsync(user, model.Password, model.NewPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                foreach (var error in changePasswordResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return View(model);
+            }
+            await signInManager.RefreshSignInAsync(user);
+            TempData["PasswordChanged"] = true;
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Login");
         }
     }
 }

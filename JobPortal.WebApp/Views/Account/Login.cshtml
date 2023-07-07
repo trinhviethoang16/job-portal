@@ -11,7 +11,7 @@
 <form asp-action="Login" asp-controller="Account" id="account" class="mb-3" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
+        <label asp-for="Email" class="form-label"></label><span class="text-danger">*</span>
         <input asp-for="Email"
                type="text"
                class="form-control"
@@ -22,28 +22,29 @@
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3 form-password-toggle">
-        <div class="d-flex justify-content-between">
+        @*<div class="d-flex justify-content-between">
             <label asp-for="Password" class="form-label"></label>
             <a href="#">
                 <small>Forgot Password?</small>
             </a>
-        </div>
-        <div class="input-group input-group-merge">
-            <input asp-for="Password"
-                   type="password"
-                   class="form-control"
-                   autocomplete="current-password"
-                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                   aria-required="true" />
-            <span asp-validation-for="Password" class="input-group-text cursor-pointer"></span>
-        </div>
+        </div>*@
+            <label asp-for="Password" class="form-label"></label><span class="text-danger">*</span>
+            <div class="input-group input-group-merge">
+                <input asp-for="Password"
+                       type="password"
+                       class="form-control"
+                       autocomplete="new-password"
+                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                       aria-required="true" />
+                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+            </div>
     </div>
-    <div class="mb-3">
+    @*<div class="mb-3">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="remember-me" />
             <label class="form-check-label" for="remember-me"> Remember Me </label>
         </div>
-    </div>
+    </div>*@
     <div class="mb-3">
         <button id="login-submit" class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
     </div>
@@ -60,5 +61,17 @@
    class="btn btn-primary d-grid w-100" style="position:center">Login for Employer</a>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+        <partial name="_ValidationScriptsPartial" />
+
+    @if (ViewBag.PasswordChanged != null && (bool)ViewBag.PasswordChanged)
+    {
+                <script>
+                    Swal.fire({
+                        title: 'Password Changed',
+                        text: 'Your password has been changed successfully. Please sign in again.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+    }
 }

@@ -28,7 +28,12 @@
         @if (isInRoleEmployer)
         {
             <li><a href="/register-employer/update/@account.Id">update information</a></li>
-            <li><a href="#">change password</a></li>
+            <li><a href="/change-password">change password</a></li>
+            <hr />
+        }
+        else if(isInRoleUser)
+        {
+            <li><a href="/change-password">change password</a></li>
             <hr />
         }
         <li><a href="/search">search</a></li>

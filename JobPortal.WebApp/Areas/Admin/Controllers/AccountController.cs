@@ -71,6 +71,11 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
                         return RedirectToAction("index", "home");
                     }
                 }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid account or password. Please try again !");
+                    return View(model);
+                }
             }
             return View(model);
         }

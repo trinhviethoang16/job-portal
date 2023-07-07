@@ -45,11 +45,15 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.ListBlogs = blogList.OrderBy(s => random.Next()).Take(5).ToList();
 
             var blogs = _context.Blogs
-                .OrderByDescending(j => j.CreateDate)
+                .OrderByDescending(j => j.Popular)
                 .Include(j => j.AppUser)
                 .ToList();
 
-            return View(blogs.ToPagedList(page ?? 1, pageSize));
+            int pageNumber = page ?? 1; // Trang hiện tại
+            int startRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của employers trên trang hiện tại
+            ViewBag.StartRank = startRank; // Truyền giá trị startRank vào ViewBag
+
+            return View(blogs.ToPagedList(pageNumber, pageSize));
         }
 
         [Route("{slug}")]
@@ -81,6 +85,8 @@ namespace JobPortal.WebApp.Controllers
                 .Where(j => j.Slug == slug)
                 .Include(j => j.AppUser)
                 .FirstOrDefaultAsync();
+            blog.Popular++;
+            await _context.SaveChangesAsync();
             return View(blog);
         }
     }

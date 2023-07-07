@@ -27,7 +27,7 @@ namespace JobPortal.WebApp.Controllers
 
         public IActionResult Index()
         {
-			var random = new Random();
+            var random = new Random();
 
             //for model
             var jobs = _context.Jobs.ToList();

@@ -128,20 +128,20 @@
                 if (@emp.Jobs.Count > 0)
                 {
                     <div class='col-xs-16 col-3'>
-                        <a href="/company/@emp.Slug">
                             <div class="card" style="overflow: hidden;">
-                                <img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='200' width='150'>
+                                <a href="/company/@emp.Slug"><img class="card-img card-img-top" src="https://localhost:7211/images/employers/@emp.UrlAvatar" alt="EMPLOYER IMAGE" height='200' width='150'></a>
                                 <div class='card-body'>
+                                <a href="/company/@emp.Slug">
                                     <h5 class="text-center" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">@emp.FullName</h5>
+                                </a>
                                     <hr />
                                     <footer class='card-text text-center'>
-                                        <span class="lnr lnr-map-marker"></span><span> @emp.Province.Name</span>
-                                        <p></p>
-                                        <span> <img src="~/assets/admin/assets/img/icons/unicons/job-icon.png" alt="User" style="object-fit:cover; width:20px; height:20px " class="rounded" /> @emp.Jobs.Count Jobs <span class="lnr lnr-chevron-right"></span></span>
+                                    <a href="/job?slug=@emp.Province.Slug"><span class="lnr lnr-map-marker"></span><span> @emp.Province.Name</span></a>
+                                    <p></p>
+                                    <a href="/job?slug=@emp.Slug"><span> <img src="~/assets/admin/assets/img/icons/unicons/job-icon.png" alt="User" style="object-fit:cover; width:20px; height:20px " class="rounded" /> @emp.Jobs.Count Jobs <span class="lnr lnr-chevron-right"></span></span></a>
                                     </footer>
                                 </div>
                             </div>
-                        </a>
                     </div>
                 }
             }
@@ -211,38 +211,42 @@
 </section>
 <!-- End download Area -->
 
-<script>
-    // Lưu giá trị thuộc tính được chọn khi nhấn nút Search
-    function saveSelectedValue() {
-        var provinceSelect = document.getElementsByName("province")[0];
-        var skillSelect = document.getElementsByName("skill")[0];
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 
-        sessionStorage.setItem("selectedProvince", provinceSelect.value);
-        sessionStorage.setItem("selectedSkill", skillSelect.value);
-    }
+    <script>
+        // Lưu giá trị thuộc tính được chọn khi nhấn nút Search
+        function saveSelectedValue() {
+            var provinceSelect = document.getElementsByName("province")[0];
+            var skillSelect = document.getElementsByName("skill")[0];
 
-    // Khôi phục giá trị thuộc tính được chọn khi trang được tải lại
-    function restoreSelectedValue() {
-        var provinceSelect = document.getElementsByName("province")[0];
-        var skillSelect = document.getElementsByName("skill")[0];
-
-        var selectedProvince = sessionStorage.getItem("selectedProvince");
-        var selectedSkill = sessionStorage.getItem("selectedSkill");
-
-        if (selectedProvince) {
-            provinceSelect.value = selectedProvince;
+            sessionStorage.setItem("selectedProvince", provinceSelect.value);
+            sessionStorage.setItem("selectedSkill", skillSelect.value);
         }
 
-        if (selectedSkill) {
-            skillSelect.value = selectedSkill;
-        }
-    }
+        // Khôi phục giá trị thuộc tính được chọn khi trang được tải lại
+        function restoreSelectedValue() {
+            var provinceSelect = document.getElementsByName("province")[0];
+            var skillSelect = document.getElementsByName("skill")[0];
 
-    // Gọi hàm khôi phục giá trị thuộc tính khi trang được tải lại
-    window.onload = function () {
-        restoreSelectedValue();
-    };
-</script>
+            var selectedProvince = sessionStorage.getItem("selectedProvince");
+            var selectedSkill = sessionStorage.getItem("selectedSkill");
+
+            if (selectedProvince) {
+                provinceSelect.value = selectedProvince;
+            }
+
+            if (selectedSkill) {
+                skillSelect.value = selectedSkill;
+            }
+        }
+
+        // Gọi hàm khôi phục giá trị thuộc tính khi trang được tải lại
+        window.onload = function () {
+            restoreSelectedValue();
+        };
+    </script>
+}
 
 @functions {
     public string GetTimeAgo(DateTime? createDate)

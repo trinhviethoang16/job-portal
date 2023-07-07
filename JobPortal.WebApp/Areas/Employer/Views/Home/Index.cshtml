@@ -49,7 +49,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Hi, @(user.FullName ?? user.UserName)!</h5>
                             <p class="mb-4">
-                                You have add <span class="fw-bold">@Model.Count()</span> jobs to your respository. Manage your job work now.
+                                You have add <span class="fw-bold">@ViewBag.jobCount</span> jobs to your respository. Manage your job work now.
                             </p>
                             <a href="/employer/job/@user.Id" class="btn btn-sm btn-outline-primary">Manage your job</a>
                         </div>
@@ -76,31 +76,41 @@
         </div>
     </div>
     <div class="row">
-        <!-- Jobs -->
+        <!-- Jobs Statistics-->
         <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
             <div class="card h-100">
-                <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title m-0 me-2">Jobs</h5>
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                    <div class="card-title mb-0">
+                        <h5 class="m-0 me-2">Job Statistics</h5>
+                        <small class="text-muted">@ViewBag.jobCount Total Jobs</small>
+                    </div>
                 </div>
                 <div class="card-body">
                     <ul class="p-0 m-0">
                         <!-- Loop -->
-                        @foreach (var job in Model)
+                        @if (Model.Any())
                         {
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <img src="~/assets/admin/assets/img/icons/unicons/cc-primary.png" alt="Job" class="rounded" />
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <small class="text-muted d-block mb-1">@job.Province.Name</small>
-                                        <h6 class="mb-0">@job.Name</h6>
+                            foreach (var job in Model)
+                            {
+                                <li class="d-flex mb-4 pb-1">
+                                    <div class="avatar flex-shrink-0 me-3">
+                                        <img src="~/assets/admin/assets/img/icons/unicons/cc-primary.png" alt="Job" class="rounded" />
                                     </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0">@job.CreateDate</h6>
+                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                        <div class="me-2">
+                                            <small class="text-muted d-block mb-1">@job.Province.Name</small>
+                                            <h6 class="mb-0">@job.Name</h6>
+                                        </div>
+                                        <div class="user-progress d-flex align-items-center gap-1">
+                                            <h6 class="mb-0">@job.CreateDate</h6>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li>No jobs available</li>
                         }
                     </ul>
                     <!--Page list-->
@@ -125,7 +135,48 @@
                 </div>
             </div>
         </div>
-        <!--/ Jobs -->
+        <!--/ Jobs Statistics-->
+        <!-- Blog Statistics -->
+        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                    <div class="card-title mb-0">
+                        <h5 class="m-0 me-2">Blog Statistics</h5>
+                        <small class="text-muted">@ViewBag.blogCount Total Blogs</small>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="p-0 m-0">
+                        <!-- Loop -->
+                        @if (ViewBag.blogList != null && ViewBag.blogList.Count > 0)
+                        {
+                            @foreach (var blog in ViewBag.blogList)
+                            {
+                                <li class="d-flex mb-4 pb-1">
+                                    <div class="avatar flex-shrink-0 me-3">
+                                        <img src="~/assets/admin/assets/img/icons/unicons/cc-primary.png" alt="Job" class="rounded" />
+                                    </div>
+                                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                        <div class="me-2">
+                                            <small class="text-muted d-block mb-1">@blog.Author</small>
+                                            <h6 class="mb-0">@blog.Title</h6>
+                                        </div>
+                                        <div class="user-progress d-flex align-items-center gap-1">
+                                            <h6 class="mb-0">@blog.CreateDate.ToString("dd/MM/yyyy")</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li>No blogs available</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/ Blog Statistics -->
         <!-- CV Statistics -->
         <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
             <div class="card h-100">
@@ -163,10 +214,10 @@
                                     <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                         <div class="me-2">
                                             <h6 class="mb-0">@cv.AppUser.FullName</h6>
-                                            <small class="text-muted">@cv.GPA</small>
+                                            <small class="text-muted">@cv.Job.Name</small>
                                         </div>
                                         <div class="user-progress">
-                                            <small class="fw-semibold">@cv.EmployerRating</small>
+                                            <small class="fw-semibold">@cv.ApplyDate.ToString("dd/MM/yyyy")</small>
                                         </div>
                                     </div>
                                 </li>
@@ -181,95 +232,6 @@
             </div>
         </div>
         <!--/ CV Statistics -->
-        <!-- Blog Statistics -->
-        <div class="col-md-6 col-lg-4 order-2 mb-4">
-            <div class="card h-100">
-                <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                    <div class="card-title mb-0">
-                        <h5 class="m-0 me-2">Blog Statistics</h5>
-                        <small class="text-muted">1 Total Blogs</small>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex flex-column align-items-center gap-1">
-                            <h2 class="mb-2">ABC</h2>
-                            <span>Total CVs</span>
-                        </div>
-                        <img src="~/images/default/blog-icon.png"
-                             height="120"
-                             style="margin-bottom: 10px"
-                             alt="EMPLOYER IMAGE"
-                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                             data-app-light-img="illustrations/man-with-laptop-light.png" />
-                    </div>
-                    <ul class="p-0 m-0">
-                        <!-- Blogs -->
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-primary">
-                                    <i class="bx bx-mobile-alt"></i>
-                                </span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Electronic</h6>
-                                    <small class="text-muted">Mobile, Earbuds, TV</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">82.5k</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Fashion</h6>
-                                    <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">23.8k</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Decor</h6>
-                                    <small class="text-muted">Fine Art, Dining</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">849k</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <span class="avatar-initial rounded bg-label-secondary">
-                                    <i class="bx bx-football"></i>
-                                </span>
-                            </div>
-                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <h6 class="mb-0">Sports</h6>
-                                    <small class="text-muted">Football, Cricket Kit</small>
-                                </div>
-                                <div class="user-progress">
-                                    <small class="fw-semibold">99</small>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--/ Blog Statistics -->
     </div>
 </div>
 <!-- / Content -->

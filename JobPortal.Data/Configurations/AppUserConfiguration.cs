@@ -14,8 +14,6 @@ namespace JobPortal.Data.Configurations
             builder.Property(x => x.Phone).HasMaxLength(20);
             builder.Property(x => x.WebsiteURL).HasMaxLength(50);
             builder.Property(x => x.Slug).IsRequired();
-            builder.Property(x => x.Status).HasDefaultValue(null);
-            builder.Property(x => x.UrlAvatar).HasDefaultValue("default_user.png");
             builder.Property(x => x.Disable).HasDefaultValue(false);
             builder.Property(x => x.Popular).HasDefaultValue(0);
         }

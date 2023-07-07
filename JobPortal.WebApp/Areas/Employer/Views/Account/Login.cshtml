@@ -11,7 +11,7 @@
 <form asp-action="Login" asp-controller="Account" id="account" class="mb-3" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email</label>
+        <label asp-for="Email" class="form-label">Email</label><span class="text-danger">*</span>
         <input asp-for="Email"
                type="text"
                class="form-control"
@@ -22,32 +22,28 @@
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3 form-password-toggle">
-        <div class="d-flex justify-content-between">
-            <label asp-for="Password" class="form-label">Password</label>
-            <a href="#">
-                <small>Forgot Password?</small>
-            </a>
-        </div>
+        <label asp-for="Password" class="form-label"></label><span class="text-danger">*</span>
         <div class="input-group input-group-merge">
             <input asp-for="Password"
                    type="password"
                    class="form-control"
-                   autocomplete="current-password"
+                   autocomplete="new-password"
                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                    aria-required="true" />
-            <span asp-validation-for="Password" class="input-group-text cursor-pointer"></span>
-        </div>
-    </div>
-    <div class="mb-3">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="remember-me" />
-            <label class="form-check-label" for="remember-me"> Remember Me </label>
+            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
         </div>
     </div>
     <div class="mb-3">
         <button id="login-submit" class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
     </div>
 </form>
+
+<p class="text-center">
+    <span>Want to be an employer?</span>
+    <a href="/register-employer/register">
+        <span>Register now</span>
+    </a>
+</p>
 
 <a href="/login" class="btn btn-primary d-grid w-100" style="position:center">Login for User</a>
 
