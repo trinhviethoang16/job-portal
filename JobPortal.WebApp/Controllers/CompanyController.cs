@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
-using JobPortal.Data.Entities;
-using System;
-using Microsoft.AspNetCore.Identity;
 using X.PagedList;
 
 namespace JobPortal.WebApp.Controllers
@@ -12,14 +9,10 @@ namespace JobPortal.WebApp.Controllers
     public class CompanyController : Controller
     {
         private readonly DataDbContext _context;
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly UserManager<AppUser> _userManager;
 
-        public CompanyController(DataDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        public CompanyController(DataDbContext context)
         {
             _context = context;
-            _signInManager = signInManager;
-            _userManager = userManager;
         }
 
         [Route("")]

@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
-using JobPortal.Data.DataContext;
-using Microsoft.EntityFrameworkCore;
 
 namespace JobPortal.WebApp.Areas.Admin.Controllers
 {

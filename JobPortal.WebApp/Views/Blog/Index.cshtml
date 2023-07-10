@@ -58,6 +58,7 @@
 			<div class="col-lg-8 post-list blog-post-list">
 				@foreach(var blog in Model)
 				{
+					<br />
 					<div class="single-post">
 						<a href="/blog/@blog.Slug"><img class="img-fluid" src="https://localhost:7211/images/blogs/@blog.Image" alt="blog image"></a>
 						<ul class="tags">
@@ -66,7 +67,7 @@
 									<img style="width: 80px" src="https://localhost:7211/images/employers/@blog.AppUser.UrlAvatar"
 										 alt="blog image"> Content Writer: @blog.Author • @blog.CreateDate.ToString("dddd, yy/MM/yyyy - HH:mm:ss - tt")
 								</a>
-								<h3 style="color: red; margin: 10px; margin-left: 100px; float: right">#@(startRank++)</h3>
+								
 							</li>
 						</ul>
 						<a href="/blog/@blog.Slug">
@@ -80,19 +81,21 @@
 						<div class="bottom-meta">
 							<div class="user-details row align-items-center">
 								<div class="comment-wrap col-lg-6">
+									
 									<ul>
-										<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
-										<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
+										@*<li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
+										<li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>*@
 										<li><a href="#"><span class="lnr lnr-eye"></span> @blog.Popular Views</a></li>
 									</ul>
 								</div>
 								<div class="social-wrap col-lg-6">
-									<ul>
+									<h3 style="color: red; float: right">#@(startRank++)</h3>
+									@*<ul>
 										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
 										<li><a href="#"><i class="fa fa-behance"></i></a></li>
-									</ul>
+									</ul>*@
 								</div>
 							</div>
 						</div>

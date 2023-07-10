@@ -157,18 +157,18 @@
                             }
                         }
                         @Html.PagedListPager((IPagedList)Model,
-                        page => Url.Action("Index", new { slug, page}),
+                        page => Url.Action("Index", new { slug, page }),
                         new PagedListRenderOptions
                         {
-                        Display = PagedListDisplayMode.IfNeeded,
-                        LiElementClasses = new string[] { "page-item" },
-                        UlElementClasses = new string[] { "pagination" },
-                        PageClasses = new string[] { "page-link" },
-                        MaximumPageNumbersToDisplay = 7, // Maximum number of pages displayed
-                        LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
-                        LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
-                        LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
-                        LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
+                            Display = PagedListDisplayMode.IfNeeded,
+                            LiElementClasses = new string[] { "page-item" },
+                            UlElementClasses = new string[] { "pagination" },
+                            PageClasses = new string[] { "page-link" },
+                            MaximumPageNumbersToDisplay = 5, // Maximum number of pages displayed
+                            LinkToPreviousPageFormat = "<span aria-hidden=\"true\">&lsaquo;</span>",
+                            LinkToNextPageFormat = "<span aria-hidden=\"true\">&rsaquo;</span>",
+                            LinkToFirstPageFormat = "<span aria-hidden=\"true\">&lsaquo;&lsaquo;</span>",
+                            LinkToLastPageFormat = "<span aria-hidden=\"true\">&rsaquo;&rsaquo;</span>"
                         })
                     </ul>
                 </div>

@@ -19,37 +19,33 @@
             border-radius: 10px;
             overflow: hidden;
         }
-
-            .table-bordered th,
-            .table-bordered td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: center;
-                vertical-align:middle;
-            }
-
-            .table-bordered th {
-                background-color: #f2f2f2;
-
-            }
+        
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            vertical-align:middle;
+        }
+        
+        .table-bordered th {
+            background-color: #f2f2f2;
+        }
 
         /* Áp dụng CSS cho nội dung trong bảng */
         .table-content {
             font-size: 16px;
         }
 
-            .table-content img {
-                width: 150px;
-                height:150px;
-                display: block;
-                margin: 0 auto;
-                border-radius: 20px;
-                object-fit: cover;
-            }
-
-
-
-
+        .table-content img {
+            width: 150px;
+            height:150px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+        
         .shoping__cart__table {
             border: 1px solid #e7e1e1;
             margin-bottom: 20px;
@@ -82,19 +78,19 @@
         .employer-comment {
             margin-bottom: 10px;
         }
-
-            .employer-address strong,
-            .employer-city strong,
-            .employer-email strong,
-            .employer-phone strong,
-            .employer-rating strong {
-                color: #555;
-            }
-
-            .employer-comment strong {
-                display: block;
-                margin-top: 10px;
-            }
+        
+        .employer-address strong,
+        .employer-city strong,
+        .employer-email strong,
+        .employer-phone strong,
+        .employer-rating strong {
+            color: #555;
+        }
+        
+        .employer-comment strong {
+            display: block;
+            margin-top: 10px;
+        }
 
         .modal-title {
             font-weight: bold;
@@ -130,19 +126,19 @@
         .modal-body {
             padding: 2rem;
         }
-
-            .modal-body hr {
-                margin-top: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .modal-body strong {
-                font-weight: bold;
-            }
-
-            .modal-body label.control-label {
-                font-weight: bold;
-            }
+        
+        .modal-body hr {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .modal-body strong {
+            font-weight: bold;
+        }
+        
+        .modal-body label.control-label {
+            font-weight: bold;
+        }
 
         /* Modal footer */
         .modal-footer {
@@ -164,24 +160,24 @@
             background-color: #007bff;
             border-color: #007bff;
         }
-
-            .btn-primary:hover {
-                background-color: #0069d9;
-                border-color: #0062cc;
-            }
-
-            .btn-primary:focus {
-                box-shadow: none;
-            }
+        
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+        
+        .btn-primary:focus {
+            box-shadow: none;
+        }
 
         /* Employer information */
         .modal-body .form-group {
             margin-bottom: 0;
         }
-
-            .modal-body .form-group div:not(:last-child) {
-                margin-bottom: 0.5rem;
-            }
+        
+        .modal-body .form-group div:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 
@@ -232,22 +228,22 @@
                                                 switch (CV.CVStatus)
                                                 {
                                                     case 0:
-                                                                <span class="text-danger"><b>Denied</b></span>
+                                                    <span class="text-danger"><b>Denied</b></span>
                                                         break;
                                                     case 1:
-                                                                <span class="text-success"><b>Waiting</b></span>
+                                                    <span class="text-success"><b>Waiting</b></span>
                                                         break;
                                                     case -1:
-                                                                <span class="text-success"><b>Canceled</b></span>
+                                                    <span class="text-success"><b>Canceled</b></span>
                                                         break;
                                                     case 2:
-                                                                <span class="text-success"><b>Accepted</b></span>
+                                                    <span class="text-success"><b>Accepted</b></span>
                                                         break;
                                                     case 3:
-                                                                <span class="text-success"><b>Accepted</b></span>
+                                                    <span class="text-success"><b>Accepted</b></span>
                                                         break;
                                                     default:
-                                                                <span class="text-success"></span>
+                                                    <span class="text-success"></span>
                                                         break;
                                                 }
                                             }
@@ -342,7 +338,7 @@
                                         <tbody id="items">
                                             <tr class="targetfields">
                                                 <td>
-                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 150px">
+                                                    <img src="https://localhost:7211/images/employers/@CV.EmployerLogo" alt="@CV.JobName" style="width: 100px">
                                                 </td>
                                                 <td>
                                                     <span>@CV.JobName</span>
@@ -357,10 +353,10 @@
                                                     <span>@CV.ApplyDate.ToString("dd/MM/yyyy")</span>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewYourCVModal">View CV</a>
+                                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewYourCVModal-@CV.CVId">View CV</a>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="viewYourCVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="viewYourCVModal-@CV.CVId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -373,7 +369,7 @@
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="form-group">
-                                                                                <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="@CV.UserName" style="width: 750px; height: 1000px">
+                                                                                <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="@CV.UserName" style="width: 800px; height: 1000px">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -467,7 +463,7 @@
 
         function onWaiting() {
             Swal.fire({
-                title: 'Congratulations ! your CV has been accepted.',
+                title: 'Congratulations ! Your CV has been accepted.',
                 text: 'Please wait for the feedback from the employer.',
                 icon: 'info',
                 confirmButtonText: 'OK'

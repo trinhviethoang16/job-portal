@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using JobPortal.Data.ViewModel;
 using JobPortal.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Security.Principal;
 
 namespace JobPortal.WebApp.Controllers
 {
@@ -16,12 +15,10 @@ namespace JobPortal.WebApp.Controllers
     {
         private readonly DataDbContext _context;
         private readonly UserManager<AppUser> userManager;
-        private readonly SignInManager<AppUser> signInManager;
 
-        public EmployerController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, DataDbContext context)
+        public EmployerController(UserManager<AppUser> userManager, DataDbContext context)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
             this._context = context;
         }
 

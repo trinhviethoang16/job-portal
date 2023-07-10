@@ -9,11 +9,9 @@ namespace JobPortal.Data.Entities
         [StringLength(100, ErrorMessage = "The title name cannot be more than 100 characters.")]
         public string Name { get; set; }
         public Category? Category { get; set; }
-
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
         public bool? Disable { get; set; }
-
         [Required]
         public string Slug { get; set; }
         public ICollection<Job>? Jobs { get; set; }

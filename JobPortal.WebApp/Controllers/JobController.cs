@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
-using System;
 using Microsoft.AspNetCore.Identity;
 using X.PagedList;
 
@@ -12,13 +11,11 @@ namespace JobPortal.WebApp.Controllers
     public class JobController : Controller
     {
         private readonly DataDbContext _context;
-        private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
 
-        public JobController(DataDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        public JobController(DataDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
-            _signInManager = signInManager;
             _userManager = userManager;
         }
 

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
-using JobPortal.Data.Entities;
-using Microsoft.Build.Framework;
-using X.PagedList;
 
 namespace JobPortal.WebApp.Controllers
 {
@@ -45,7 +42,7 @@ namespace JobPortal.WebApp.Controllers
             ViewBag.province = await _context.Provinces.FirstOrDefaultAsync(p => p.Id == province);
             ViewBag.skill = await _context.Skills.FirstOrDefaultAsync(s => s.Id == skill);
 
-            // Set selected values for dropdowns
+            //set selected values for dropdowns
             ViewBag.SelectedProvinceId = province;
             ViewBag.SelectedSkillId = skill;
 

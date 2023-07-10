@@ -226,7 +226,7 @@
                     </ul>
                     <br />
                     <div class="table-responsive">
-                        <table class="table table-bordered" style="text-align: center">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>
@@ -273,6 +273,9 @@
                                                     case 2:
                                                         <span class="text-success"><b>Accepted</b></span>
                                                         break;
+                                                    case 3:
+                                                        <span class="text-success"><b>Accepted</b></span>
+                                                        break;
                                                     default:
                                                         <span class="text-success"></span>
                                                         break;
@@ -287,9 +290,9 @@
                                             }
                                             @if (CV.CVStatus == 2)
                                             {
-                                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#exampleModal">Feedback</a>
+                                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -356,11 +359,11 @@
                                             }
                                             @if (CV.CVStatus == 3)
                                             {
-                                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewFeedbackModal">View Feedback</a>
+                                                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewFeedbackModal-@CV.CVId">View Feedback</a>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="viewFeedbackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                                <div class="modal fade" id="viewFeedbackModal-@CV.CVId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Employer Feedback</h5>
@@ -396,7 +399,7 @@
                                                                             </div>
                                                                             <hr />
                                                                             <div class="employer-comment">
-                                                                                <strong>Comment:</strong><br />
+                                                                                <strong>Comment:</strong>
                                                                                 @Html.Raw(CV.EmployerComment)
                                                                             </div>
                                                                         </div>
@@ -432,11 +435,11 @@
                                         <td>@CV.GPA</td>
                                         <td>@CV.CVPhone</td>
                                         <td>@CV.CVEmail</td>
-                                        <td>
-                                            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewCVModal">View CV</a>
+                                        <td style="text-align: center">
+                                            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#viewCVModal-@CV.CVId">View CV</a>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="viewCVModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="viewCVModal-@CV.CVId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -449,7 +452,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group">
-                                                                        <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="@CV.JobName" style="width: 750px; height: 1000px">
+                                                                        <img src="https://localhost:7211/images/cvs/@CV.CVImage" alt="@CV.JobName" style="width: 800px; height: 1000px">
                                                                     </div>
                                                                 </div>
                                                             </div>

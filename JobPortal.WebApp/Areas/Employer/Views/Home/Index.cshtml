@@ -86,6 +86,18 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-column align-items-center gap-1">
+                            <h2 class="mb-2">@ViewBag.jobCount</h2>
+                            <span>Total Jobs</span>
+                        </div>
+                        <img src="~/images/default/job-icon.png"
+                             height="120"
+                             style="margin-bottom: 10px"
+                             alt="EMPLOYER IMAGE"
+                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                             data-app-light-img="illustrations/man-with-laptop-light.png" />
+                    </div>
                     <ul class="p-0 m-0">
                         <!-- Loop -->
                         @if (Model.Any())
@@ -102,7 +114,7 @@
                                             <h6 class="mb-0">@job.Name</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">@job.CreateDate</h6>
+                                            <small class="fw-semibold">@job.CreateDate</small>
                                         </div>
                                     </div>
                                 </li>
@@ -146,6 +158,18 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-column align-items-center gap-1">
+                            <h2 class="mb-2">@ViewBag.blogCount</h2>
+                            <span>Total Blogs</span>
+                        </div>
+                        <img src="~/images/default/blog-icon.png"
+                             height="120"
+                             style="margin-bottom: 10px"
+                             alt="EMPLOYER IMAGE"
+                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                             data-app-light-img="illustrations/man-with-laptop-light.png" />
+                    </div>
                     <ul class="p-0 m-0">
                         <!-- Loop -->
                         @if (ViewBag.blogList != null && ViewBag.blogList.Count > 0)
@@ -162,7 +186,7 @@
                                             <h6 class="mb-0">@blog.Title</h6>
                                         </div>
                                         <div class="user-progress d-flex align-items-center gap-1">
-                                            <h6 class="mb-0">@blog.CreateDate.ToString("dd/MM/yyyy")</h6>
+                                            <small class="fw-semibold">Posted: @blog.CreateDate.ToString("dd/MM/yyyy")</small>
                                         </div>
                                     </div>
                                 </li>
@@ -192,7 +216,7 @@
                             <h2 class="mb-2">@ViewBag.cvCount</h2>
                             <span>Total CVs</span>
                         </div>
-                        <img src="~/images/default/job-icon.png"
+                        <img src="~/images/default/cv-icon.png"
                              height="120"
                              style="margin-bottom: 10px"
                              alt="EMPLOYER IMAGE"
@@ -217,7 +241,7 @@
                                             <small class="text-muted">@cv.Job.Name</small>
                                         </div>
                                         <div class="user-progress">
-                                            <small class="fw-semibold">@cv.ApplyDate.ToString("dd/MM/yyyy")</small>
+                                            <small class="fw-semibold">Apply date: @cv.ApplyDate.ToString("dd/MM/yyyy")</small>
                                         </div>
                                     </div>
                                 </li>

@@ -8,7 +8,7 @@ namespace JobPortal.Data.Extensions
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            //For Admin Role
+            //For Admin role
             var adminRoleId = new Guid("9f685d0f-bd6f-44dd-ab60-c606952eb2a8");
 
             //For Admin default account

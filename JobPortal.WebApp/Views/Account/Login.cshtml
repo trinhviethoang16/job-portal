@@ -65,13 +65,13 @@
 
     @if (ViewBag.PasswordChanged != null && (bool)ViewBag.PasswordChanged)
     {
-                <script>
-                    Swal.fire({
-                        title: 'Password Changed',
-                        text: 'Your password has been changed successfully. Please sign in again.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
-                </script>
+        <script>
+            Swal.fire({
+                title: 'Password Changed',
+                text: 'Your password has been changed successfully. Please sign in again.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>        
     }
 }

@@ -2,25 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
 using JobPortal.Data.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using JobPortal.Data.ViewModel;
 using JobPortal.Common;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Security.Principal;
-using System.Net.NetworkInformation;
 
 namespace JobPortal.WebApp.Controllers
 {
     [Route("apply")]
     public class ApplyController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
         private readonly DataDbContext _context;
 
-        public ApplyController(UserManager<AppUser> userManager, DataDbContext context)
+        public ApplyController(DataDbContext context)
         {
-            _userManager = userManager;
             _context = context;
         }
 

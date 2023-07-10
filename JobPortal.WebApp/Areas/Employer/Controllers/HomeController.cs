@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using JobPortal.Data.DataContext;
-using JobPortal.Data.Entities;
-using JobPortal.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using X.PagedList;
 
 namespace JobPortal.WebApp.Areas.Employer.Controllers

@@ -1,27 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
-using JobPortal.Data.Entities;
 using JobPortal.WebApp.Models;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using JobPortal.Data.ViewModel;
 
 namespace JobPortal.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly SignInManager<AppUser> signInManager;
-        private readonly RoleManager<AppRole> roleManager;
-        private readonly UserManager<AppUser> userManager;
         private readonly DataDbContext _context;
 
-        public HomeController(SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, DataDbContext dataDbContext)
+        public HomeController(DataDbContext dataDbContext)
         {
-            this.signInManager = signInManager;
-            this.roleManager = roleManager;
-            this.userManager = userManager;
             this._context = dataDbContext;
         }
 

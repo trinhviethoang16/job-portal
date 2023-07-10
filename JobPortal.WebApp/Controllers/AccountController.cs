@@ -92,6 +92,10 @@ namespace JobPortal.WebApp.Controllers
                 {
                     return RedirectToAction("index", "home");
                 }
+                else if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid account or password. Please try again !");

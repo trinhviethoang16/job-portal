@@ -1,5 +1,4 @@
-﻿using JobPortal.Data.DataContext;
-using JobPortal.Data.Entities;
+﻿using JobPortal.Data.Entities;
 using JobPortal.Data.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,14 +12,12 @@ namespace JobPortal.WebApp.Areas.Admin.Controllers
     public class AppUserController : Controller
     {
         private readonly RoleManager<AppRole> roleManager;
-        private readonly DataDbContext dataDbContext;
         private readonly UserManager<AppUser> userManager;
 
-        public AppUserController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, DataDbContext dataDbContext)
+        public AppUserController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
-            this.dataDbContext = dataDbContext;
         }
 
         [Route("")]

@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobPortal.Data.DataContext;
-using JobPortal.Data.Entities;
-using System;
-using Microsoft.AspNetCore.Identity;
 using X.PagedList;
 
 namespace JobPortal.WebApp.Controllers
