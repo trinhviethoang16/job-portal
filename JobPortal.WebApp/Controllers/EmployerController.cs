@@ -99,7 +99,11 @@ namespace JobPortal.WebApp.Controllers
         public async Task<IActionResult> RegisterToEmployer(RegisterEmployerViewModel model)
         {
             string POST_IMAGE_PATH = "images/employers/";
-
+            if (IsUsernameExists(model.Email))
+            {
+                ModelState.AddModelError("Email", "This account has already existed.");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 var image = UploadImage.UploadImageFile(model.UrlAvatar, POST_IMAGE_PATH);
@@ -193,6 +197,12 @@ namespace JobPortal.WebApp.Controllers
             _context.Update(employer);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        private bool IsUsernameExists(string email)
+        {
+            var existingUser = _context.Users.FirstOrDefault(u => u.Email == email);
+            return existingUser != null;
         }
     }
 }

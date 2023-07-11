@@ -47,7 +47,7 @@
         }
         
         .shoping__cart__table {
-            border: 1px solid #e7e1e1;
+            border: 1px solid grey;
             margin-bottom: 20px;
             display: block;
             border-radius: 10px;
@@ -156,7 +156,7 @@
         }
 
         /* Apply button */
-        .btn-primary {
+        /*.btn-primary {
             background-color: #007bff;
             border-color: #007bff;
         }
@@ -164,7 +164,7 @@
         .btn-primary:hover {
             background-color: #0069d9;
             border-color: #0062cc;
-        }
+        }*/
         
         .btn-primary:focus {
             box-shadow: none;
@@ -214,7 +214,7 @@
                                 <li data-filter=".deny">Denied</li>
                             </ul>
                         </div>
-                        <div class="featured__filter">
+                        <div class="featured__filter" >
                             @foreach (var CV in Model)
                             {
                                 <div class="shoping__cart__table mix @if(CV.CVStatus == 0) {<text>deny</text>}

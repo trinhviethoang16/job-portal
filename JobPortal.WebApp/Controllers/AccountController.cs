@@ -35,6 +35,11 @@ namespace JobPortal.WebApp.Controllers
         [Route("register")]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            if (IsUsernameExists(model.Email))
+            {
+                ModelState.AddModelError("Email", "This account has already existed.");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 var user = new AppUser
@@ -157,6 +162,12 @@ namespace JobPortal.WebApp.Controllers
             TempData["PasswordChanged"] = true;
             await signInManager.SignOutAsync();
             return RedirectToAction("Login");
+        }
+
+        private bool IsUsernameExists(string email)
+        {
+            var existingUser = _context.Users.FirstOrDefault(u => u.Email == email);
+            return existingUser != null;
         }
     }
 }
