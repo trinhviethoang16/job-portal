@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YLjooPUWZsAG305uKlKix0rwbi1HyJeA6lFK5nN0nrg=",
+  "Hash": "DCcPX9Bgp2Uj3mZ4kOScnkm8Jw2Uq7JTkPMup5AsU0s=",
   "Source": "JobPortal.WebApp",
   "BasePath": "_content/JobPortal.WebApp",
   "Mode": "Default",
@@ -16031,6 +16031,23 @@
       "OriginalItemSpec": "wwwroot\\images\\cvs\\501af5f7-5b93-4265-bba1-0eba7ae9bbfa.jpg"
     },
     {
+      "Identity": "D:\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\661e121e-e123-441e-8eb3-411cd338f035.jpg",
+      "SourceId": "JobPortal.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\job-portal\\JobPortal.WebApp\\wwwroot\\",
+      "BasePath": "_content/JobPortal.WebApp",
+      "RelativePath": "images/cvs/661e121e-e123-441e-8eb3-411cd338f035.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cvs\\661e121e-e123-441e-8eb3-411cd338f035.jpg"
+    },
+    {
       "Identity": "D:\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\68367241-cc89-45a9-afdc-85376cc92a38.jpg",
       "SourceId": "JobPortal.WebApp",
       "SourceType": "Discovered",
@@ -16165,6 +16182,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\cvs\\9964ac5a-a40f-4726-846f-5d73f5d2dd75.jpg"
+    },
+    {
+      "Identity": "D:\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\9faecc50-6c93-404a-bf35-3336b028e9fe.png",
+      "SourceId": "JobPortal.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\job-portal\\JobPortal.WebApp\\wwwroot\\",
+      "BasePath": "_content/JobPortal.WebApp",
+      "RelativePath": "images/cvs/9faecc50-6c93-404a-bf35-3336b028e9fe.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cvs\\9faecc50-6c93-404a-bf35-3336b028e9fe.png"
     },
     {
       "Identity": "D:\\job-portal\\JobPortal.WebApp\\wwwroot\\images\\cvs\\a4d28b8f-07fc-4d6c-b3a2-bb64c0d77437.png",
