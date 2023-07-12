@@ -298,7 +298,7 @@
                                                 <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#feedbackModal">Feedback</a>
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Provide Feedback</h5>
@@ -505,30 +505,30 @@
     
 
 
-   @* <script>
+    @*<script>
         $(document).ready(function () {
-            //Fixing jQuery Click Events for the iPad
-            var ua = navigator.userAgent,
-                event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+            //fixing jquery click events for the ipad
+            var ua = navigator.useragent,
+                event = (ua.match(/ipad/i)) ? "touchstart" : "click";
             $('.table').on(event, '.header', function () {
-                $(this).toggleClass("active", "").nextUntil('.header').css('display', function (i, v) {
+                $(this).toggleclass("active", "").nextuntil('.header').css('display', function (i, v) {
                     return this.style.display === 'table-row' ? 'none' : 'table-row';
                 });
             });
             $('.table').on(event, '.header td:not(:last-child)', function (e) {
-                e.stopPropagation();
+                e.stoppropagation();
             });
         });
-    </script>*@
+    </script>
 
-    @*<script>
+    <script>
         $(document).ready(function () {
-            $('#feedbackModal').on('show.bs.modal', function () {
-                $('body').addClass('modal-open');
+            $('#feedbackmodal').on('show.bs.modal', function () {
+                $('body').addclass('modal-open');
             });
 
-            $('#feedbackModal').on('hidden.bs.modal', function () {
-                $('body').removeClass('modal-open');
+            $('#feedbackmodal').on('hidden.bs.modal', function () {
+                $('body').removeclass('modal-open');
             });
         });
     </script>*@
