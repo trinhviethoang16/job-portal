@@ -500,7 +500,6 @@
 </div>
 
 @section Scripts {
-
     <script>
         $(document).ready(function () {
             // Fixing jQuery click events for the iPad
@@ -516,9 +515,6 @@
             });
         });
     </script>
-
-
-    
 
     <script>
         $(document).ready(function () {
@@ -574,7 +570,6 @@
                 }
             })
         }
-
         function onFeedback() {
             Swal.fire({
                 title: 'Provide feedback?',
@@ -594,37 +589,6 @@
                 }
             })
         }
-
-
-        //cái này là popup chỉ xuất hiện khi tắt hộp thoại
-
-        //function onFeedback() {
-        //    $('#feedbackModal').modal('hide').on('hidden.bs.modal', function (e) {
-        //        Swal.fire({
-        //            title: 'Provide feedback?',
-        //            text: "Are you sure to provide this feedback?",
-        //            showCancelButton: true,
-        //            confirmButtonColor: '#3085d6',
-        //            cancelButtonColor: '#d33',
-        //            confirmButtonText: 'Confirm'
-        //        }).then((result) => {
-        //            if (result.isConfirmed) {
-        //                $("#feedbackForm").submit();
-        //                Swal.fire(
-        //                    'Success!',
-        //                    '',
-        //                    'success'
-        //                )
-        //            }
-        //        });
-        //    });
-        //}
-
-       
-
-
-        
-
     </script>
 
     <script>CKEDITOR.replace('CKEditor');</script>
