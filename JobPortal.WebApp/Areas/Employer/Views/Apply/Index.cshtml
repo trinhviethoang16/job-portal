@@ -500,38 +500,25 @@
 </div>
 
 @section Scripts {
-    
-        
-    
 
-
-    @*<script>
+    <script>
         $(document).ready(function () {
-            //fixing jquery click events for the ipad
-            var ua = navigator.useragent,
+            // Fixing jQuery click events for the iPad
+            var ua = navigator.userAgent,
                 event = (ua.match(/ipad/i)) ? "touchstart" : "click";
             $('.table').on(event, '.header', function () {
-                $(this).toggleclass("active", "").nextuntil('.header').css('display', function (i, v) {
+                $(this).toggleClass("active", "").nextUntil('.header').css('display', function (i, v) {
                     return this.style.display === 'table-row' ? 'none' : 'table-row';
                 });
             });
             $('.table').on(event, '.header td:not(:last-child)', function (e) {
-                e.stoppropagation();
+                e.stopPropagation();
             });
         });
     </script>
 
-    <script>
-        $(document).ready(function () {
-            $('#feedbackmodal').on('show.bs.modal', function () {
-                $('body').addclass('modal-open');
-            });
 
-            $('#feedbackmodal').on('hidden.bs.modal', function () {
-                $('body').removeclass('modal-open');
-            });
-        });
-    </script>*@
+    
 
     <script>
         $(document).ready(function () {
