@@ -23,8 +23,8 @@ namespace JobPortal.WebApp.Controllers
             var jobs = _context.Jobs.ToList();
 
             //For search filter area
-            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).Where(p => p.Jobs.Count > 0).ToList();
-            ViewBag.FilterSkills = _context.Skills.OrderBy(s => s.Name).Where(s => s.Jobs.Count > 0).ToList();
+            ViewBag.FilterProvinces = _context.Provinces.OrderBy(p => p.Id).ToList();
+            ViewBag.FilterSkills = _context.Skills.OrderBy(s => s.Name).ToList();
 
             //random employers - 4
             var employerList = _context.Users.Where(e => e.Status == 2).Include(e => e.Province).Include(e => e.Jobs).ToList();
