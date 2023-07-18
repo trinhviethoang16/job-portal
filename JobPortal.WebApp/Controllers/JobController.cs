@@ -91,7 +91,6 @@ namespace JobPortal.WebApp.Controllers
                         ViewBag.Skill = skill;
                     }
                 }
-
                 ViewBag.TimeSlug = ViewBag.Time?.Slug;
                 ViewBag.SkillSlug = ViewBag.Skill?.Slug;
                 ViewBag.ProvinceSlug = ViewBag.Province?.Slug;

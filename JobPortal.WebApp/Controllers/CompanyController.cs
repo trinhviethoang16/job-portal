@@ -22,7 +22,12 @@ namespace JobPortal.WebApp.Controllers
             var random = new Random();
 
             //random jobs - 6
-            var jobList = _context.Jobs.Include(j => j.Province).Include(j => j.Time).Include(j => j.Title).Include(j => j.AppUser).ToList();
+            var jobList = _context.Jobs
+                .Include(j => j.Province)
+                .Include(j => j.Time)
+                .Include(j => j.Title)
+                .Include(j => j.AppUser)
+                .ToList();
             ViewBag.ListJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
 
             //random skills - 7
@@ -44,8 +49,7 @@ namespace JobPortal.WebApp.Controllers
                 .ToList();
 
             int pageNumber = page ?? 1; // Trang hiện tại
-            int startRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của employers trên trang hiện tại
-            ViewBag.StartRank = startRank; // Truyền giá trị startRank vào ViewBag
+            ViewBag.StartRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của employers trên trang hiện tại
 
             return View(employers.ToPagedList(pageNumber, pageSize));
 
@@ -57,7 +61,12 @@ namespace JobPortal.WebApp.Controllers
             var random = new Random();
 
             //random jobs - 6
-            var jobList = _context.Jobs.Include(j => j.Province).Include(j => j.Time).Include(j => j.Title).Include(j => j.AppUser).ToList();
+            var jobList = _context.Jobs
+                .Include(j => j.Province)
+                .Include(j => j.Time)
+                .Include(j => j.Title)
+                .Include(j => j.AppUser)
+                .ToList();
             ViewBag.ListJobs = jobList.OrderBy(j => random.Next()).Take(6).ToList();
 
             //random skills - 7

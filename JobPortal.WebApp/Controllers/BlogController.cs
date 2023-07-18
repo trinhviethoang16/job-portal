@@ -47,8 +47,7 @@ namespace JobPortal.WebApp.Controllers
                 .ToList();
 
             int pageNumber = page ?? 1; // Trang hiện tại
-            int startRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của employers trên trang hiện tại
-            ViewBag.StartRank = startRank; // Truyền giá trị startRank vào ViewBag
+            ViewBag.StartRank = (pageNumber - 1) * pageSize + 1; // Xếp hạng bắt đầu của blogs trên trang hiện tại
 
             return View(blogs.ToPagedList(pageNumber, pageSize));
         }
@@ -84,6 +83,7 @@ namespace JobPortal.WebApp.Controllers
                 .FirstOrDefaultAsync();
             blog.Popular++;
             await _context.SaveChangesAsync();
+
             return View(blog);
         }
     }

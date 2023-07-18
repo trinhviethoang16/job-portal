@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {}
+    "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {}
   },
   "projects": {
-    "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
+    "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
         "projectName": "JobPortal.Common",
-        "projectPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\JobPortal.Common.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\source\\job-portal\\JobPortal.Common\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Downloads\\job-portal\\JobPortal.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

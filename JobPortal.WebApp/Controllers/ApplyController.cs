@@ -90,7 +90,6 @@ namespace JobPortal.WebApp.Controllers
                 _context.CVs.Add(cv);
                 await _context.SaveChangesAsync();
                 return Redirect("/apply/" + id);
-
             }
             return View(model);
         }
