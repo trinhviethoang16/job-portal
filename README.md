@@ -36,6 +36,6 @@ user1@gmail.com | 123123 | User
 ... | 123123 | User
 user10@gmail.com | 123123 | User
 
-# Coder Information
+# Contact Information
 - Email: trinhviethoang16@gmail.com
 - Facebook: facebook.com/viethoang1630
